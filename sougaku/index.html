@@ -21,70 +21,24 @@
 	<!-- PWA設定 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link rel="manifest" href="./manifest.json">-->
-	<script>
-		/*
-		//service workerの登録関係
-		if ('serviceWorker' in navigator) {
-			navigator.serviceWorker
-				.register('./serviceWorker.js')
-				.then(registration => {
-					// 登録成功
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-					registration.onupdatefound = function () {
-						console.log('アップデートがあります！');
-						registration.update();
-					}
-				})
-				.catch(err => {
-					// 登録失敗
-					console.log('ServiceWorker registration failed: ', err);
-				});
-		}
-		*/
-	</script>
 
 	<!-- JS/CSS master -->
-	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
-	<link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+	<script src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./importer.js" type="module"></script>
+	<link rel="stylesheet" type="text/css" href="../../exScripts/master.css" />
 
+	<script>
+
+	</script>
 	<style>
-		div#container {
-			margin: 5px;
-			display: grid;
-			grid-gap: 10px;
-			grid-template-columns: 100%;
-			grid-template-areas:
-				"notice"
-				"links"
-				"ft"
-				"debugArea";
-		}
 
-		/* PCレイアウト */
-		@media screen and (min-width:600px) {
-			div#container {
-				max-width: 100%;
-				grid-template-columns: 3fr minmax(max-content, 1fr);
-				grid-template-areas:
-					"notice	links"
-					"ft		ft"
-					"debugArea debugArea";
-			}
-		}
-
-		div#container>section {
-			text-align: left;
-			border: rgba(255, 255, 255, 0.3) 5px solid;
-			border-radius: 10px;
-			padding: 10px;
-		}
 	</style>
-	<title>KG総学 - WEBサイトを作ろう！</title>
+	<title>INDEX</title>
 </head>
 
 <body>
-	<div id="container">
+	<div class="container">
 		<section style="grid-area:notice">
 			<h2 class="zHead">総合的な学習の時間 - WEBサイトを作ろう！</h2>
 			<dl class="zList">
@@ -115,14 +69,14 @@
 			<p style="text-align:right">※クリックで展開</p>
 			<div>
 				<h3 class="zHead"><label for="学校関係" class="zClickable">◆学校関係◆</label></h3>
-				<input type="checkbox" class="zHiddenBlock" id="学校関係" checked="checked" />
+				<input type="checkbox" class="zDispControl" id="学校関係" />
 				<div style="grid-area:links;display:grid;">
 					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
 					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
 					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
 				</div>
 				<h3 class="zHead"><label for="参考リンク" class="zClickable">◆参考リンク◆</label></h3>
-				<input type="checkbox" class="zHiddenBlock" id="参考リンク" checked="checked" />
+				<input type="checkbox" class="zDispControl" id="参考リンク" />
 				<div style="grid-area:links;display:grid;">
 					<a class="zBtn" target="_blank" href="http://www.htmq.com/">HTMLクイックリファレンス</a>
 					<a class="zBtn" target="_blank" href="https://codepen.io/">CodePen</a>
