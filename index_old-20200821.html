@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="manifest" href="./manifest.json">-->
+	<script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+	</script>
+
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+
+
+	<style>
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-columns: 100%;
+			grid-template-areas:
+				"notice"
+				"health"
+				"5mine"
+				"links"
+				"ft"
+				"debugArea";
+		}
+
+		/* PCレイアウト */
+		@media screen and (min-width:600px) {
+			div#container {
+				max-width: 100%;
+				grid-template-columns: 3fr minmax(max-content, 1fr);
+				grid-template-areas:
+					"notice	health"
+					"notice	5mine"
+					"notice	links"
+					"ft		ft"
+					"debugArea debugArea";
+			}
+		}
+
+		div#container>section {
+			text-align: left;
+			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	</style>
+
+	<title>KG</title>
+</head>
+
+<body>
+	<p style="text-align:left;">（教職員用便利リンク集）<br />Last Update：7/9　新型コロナウイルス関係リンク追加</p>
+	<div id="container">
+		<section style="grid-area:notice">
+			<h2 class="zHead">入力用（要サインイン）</h2>
+			<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
+				<a class="zBtn" target="_blank"
+					href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒健康観察</a>
+				<a class="zBtn" target="_blank"
+					href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUNVk4OU9XRlBGM0s5SVI2QzNHU0xFUENERSQlQCN0PWcu">生徒総会</a>
+				<a class="zBtn" target="_blank"
+					href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKrrQV_Ds3nlPm9dRr6u4IARUMFVPUlhEWk04MFFBVVkxVEUwVEIxTExZRSQlQCN0PWcu">出欠確認</a>
+				<a class="zBtn" target="_blank"
+					href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQ01TVElDRjVaUlY2QlRJM1o0NzJYRDJSSiQlQCN0PWcu">進路希望調査</a>
+			</div>
+
+			<h2 class="zHead">閲覧専用（要サインイン）</h2>
+			<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
+				<a class="zBtn" target="_blank"
+					href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">生徒健康観察</a>
+
+				<a class="zBtn" target="_blank"
+					href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">生徒健康観察<br />（月例レポート）</a>
+				<a href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc={2357771b-2f9b-4d33-a582-02a8bcc24984}&action=embedview&AllowTyping=True&ActiveCell='%E6%8A%95%E7%A5%A8%E7%8A%B6%E6%B3%81'!A1&wdInConfigurator=True"
+					class="zBtn" target="_blank">生徒総会</a>
+				<a class="zBtn" target="_blank"
+					href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">出欠確認</a>
+				<a class="zBtn" target="_blank"
+					href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc={e0b05023-3b92-4444-82e3-e57375cd3a6d}&action=embedview&wdAllowInteractivity=False&wdInConfigurator=True">進路希望調査</a>
+				<a class="zBtn" target="_blank"
+					href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc=%7ba9791a21-8d19-4f27-ba9d-868039d2792b%7d&action=embedview&wdAllowInteractivity=False&ActiveCell='%E9%9B%86%E8%A8%88'!B28&wdInConfigurator=True">通学方法調査</a>
+			</div>
+			<p>ファイル欠損防止のため、必ず閲覧専用から確認してください。</p>
+			<label for="印刷したいとき" class="zBtn">印刷したいとき</label>
+			<input type="checkbox" class="zHiddenBlock" id="印刷したいとき" />
+			<div>
+				<a href="pict/印刷テンプレート.xlsx" class="zBtn">健康観察テンプレ<br />（印刷テンプレート.xlsx）</a>をダウンロードしてください。<br />
+				※以下の作業は、必ずセルではなく「列」を選択してください。
+				<ol>
+					<li>プレビューモード「Ａ～（印刷右端列）」を選択＆コピー</li>
+					<li>該当テンプレートの「Ａ列」を選択し、貼付け</li>
+				</ol>
+				※貼付け後のデータは「値」です。<br />
+				自動更新されないので、ご注意ください。<br />
+
+				<a href="pict/テンプレコピペ.png"><img src="pict/テンプレコピペ.png" style="width:600px;max-width:95%;" /></a>
+
+			</div>
+			<div>
+				<h4 class="zHead">健康観察：カスタム名表</h4>
+				ダウンロードして編集後、ご提出ください。<br />
+				<a class="zBtn" target="_blank"
+					href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={46C2EA38-BFEA-4FC6-B5CA-676BF422DA04}">カスタム名表
+					登録シート<br />（要サインイン）</a>
+			</div>
+
+			<h2 class="zHead">備忘録</h2>
+			<div class="zTbl">
+				<table>
+					<caption>検定一覧</caption>
+					<thead>
+						<tr>
+							<th>検定</th>
+							<th>申込〆切</th>
+							<th>試験日</th>
+							<th>備考</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>数学検定</th>
+							<td>6月12日(金)<br />一貫：10日(水)</td>
+							<td>7月18日(土)</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>日本語ワープロ検定<br />情報処理技能検定</th>
+							<td>7月3日(金)</td>
+							<td>7月31日(金)</td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>世界遺産検定</th>
+							<td>7月9日(木)17：00</td>
+							<td>9月4日(金)16：00</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<section style="grid-area:health">
+			<h2 class="zHead">保健関連</h2>
+			<div class="zCentering">
+				<a class="zBtn" href="https://www.wbgt.env.go.jp/graph_ref_td.php?region=03&prefecture=43&point=43241"
+					target="_blank">環境省 熱中症予防情報サイト<br />暑さ指数(WBGT)：さいたま</a>
+			</div>
+			<div>
+				<h3 class="zHead"><label for="COVID-19" class="zClickable">◆COVID-19情報◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="COVID-19" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="https://extranet.who.int/kobe_centre/ja/covid">WHO公式</a>
+					<a class="zBtn" target="_blank" href="https://corona.go.jp/">内閣官房</a>
+					<a class="zBtn" target="_blank"
+						href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000164708_00001.html">厚労省</a>
+					<a class="zBtn" target="_blank" href="https://stopcovid19.metro.tokyo.lg.jp/">東京都（公式）</a>
+					<a class="zBtn" target="_blank"
+						href="https://www.pref.saitama.lg.jp/a0301/covid19_sougousite.html">埼玉県（公式）</a>
+					<a class="zBtn" target="_blank" href="https://saitama.stopcovid19.jp/">埼玉県<br />（有志作成：非公式）</a>
+					<a class="zBtn" target="_blank"
+						href="https://www.town.saitama-ina.lg.jp/category/15-8-8-0-0.html">伊奈町（公式）</a>
+					<a class="zBtn" target="_blank" href="https://www.city.ageo.lg.jp/page/coronavirus.html">上尾市（公式）</a>
+					<a class="zBtn" target="_blank"
+						href="https://www.city.saitama.jp/002/001/008/006/index.html">さいたま市（公式）</a>
+					<a class="zBtn" target="_blank" href="https://toyokeizai.net/sp/visual/tko/covid19/">東洋経済</a>
+					<a class="zBtn" target="_blank" href="https://gis.jag-japan.com/covid19jp/">マップ（民間作成）</a>
+					</a>
+				</div>
+			</div>
+		</section>
+		<section style="grid-area:5mine">
+			<h2 class="zHead">五峯祭</h2>
+			<div style="display:grid;">
+				<a class="zBtn" target="_blank" href="https://fes.kgef.ac.jp/2020jsh/index.html">本番サイト</a>
+				<a class="zBtn" target="_blank" href="https://fes.kgef.ac.jp/2020jsh-test/index.html">テストサイト</a>
+				<a class="zBtn" target="_blank"
+					href="https://fes.kgef.ac.jp/2020jsh-test/index2.html">ティザー期間中の<br />メインページpreview</a>
+				<a class="zBtn" target="_blank"
+					href="https://trello.com/b/bqhGSOZ2">作業進捗まとめ<br />(個人的な資料ですが<br />よければどうぞ)</a>
+
+			</div>
+		</section>
+		<section style="grid-area:links">
+			<h2 class="zHead">Links</h2>
+			<p style="text-align:right">※クリックで展開</p>
+			<div>
+				<h3 class="zHead"><label for="学校関係" class="zClickable">◆学校関係◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="学校関係" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+				</div>
+			</div>
+			<div>
+				<h3 class="zHead"><label for="個別相談" class="zClickable">◆個別相談◆<br />(2020.08より運用)</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="個別相談" />
+				<div style="grid-area:links;display:grid;">
+					<span style="text-align: center;">※7月中の利用不可</span>
+					<a class="zBtn" target="_blank"
+						href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約サーバー<br />(受験生用)</a>
+				</div>
+			</div>
+			<div>
+				<h3 class="zHead"><label for="intranet" class="zClickable">◆intranet◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="intranet" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="http://192.168.20.41/iraimenu.HTM">支払依頼</a>
+					<span style="text-align: center;">旧・事前相談関係<br />(2020.04入学分迄)</span>
+					<a class="zBtn" target="_blank" href="http://192.168.20.100/hs/">事前相談管理システム</a>
+					<a class="zBtn" target="_blank" href="KobetsuSoudanIkkatsu.html">一括印刷ツール</a>
+				</div>
+			</div>
+			<div>
+				<h3 class="zHead"><label for="外部サイト" class="zClickable">◆外部サイト◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="外部サイト" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="http://bhso.benesse.ne.jp/">Benesse High School Online</a>
+					<a class="zBtn" target="_blank" href="https://link.studysapuri.jp/ja/login">スタディサプリ<br />for
+						TEACHERS</a>
+					<a class="zBtn" target="_blank" href="https://machicomi.jp/admin/login.html">マチコミ(管理画面)
+					</a>
+				</div>
+			</div>
+			<div>
+				<h3 class="zHead"><label for="Teams" class="zClickable">◆Microsoft◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="Teams" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<script>
+						if (getOS() == "Windows") {
+							document.write(
+								'<a class="zBtn" target="_blank" href="msteams:/">Teams<br/>Winアプリ版</a >' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams<br/>ブラウザ版</a>' +
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/%EF%BC%97%E6%9C%88?threadId=19:e0f13549c0cd404384b050f02e57dcce@thread.tacv2&ctx=channel">Teams日報<br/>7月ブラウザ版</a>' +
+
+								'<a class="zBtn" target="_blank" href="https://outlook.office.com/mail/">Outlook</a>'
+							);
+						}
+						// URIスキーマ調べる？
+						// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
+						// else if (ua.indexOf('Android') > 0) {}
+						else {
+							document.write(
+								'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>'
+							);
+						}
+					</script>
+				</div>
+			</div>
+		</section>
+
+		<section style="grid-area:ft">
+			<p>本ページをブックマークすると便利だと思います。<br />
+				スマホからも利用可能ですが、「閲覧専用」は超重たいと思います。<br />
+				※PWA対応準備中・・・対応すれば、PC/スマホからアプリとして使えます。</p>
+			<p style="display:none">何かあれば、コチラから本ページ管理者へ報告してください。 <br />
+				<a class="zBtn" target="_blank"
+					href="https://teams.microsoft.com/_#/conversations/19:238a7e12-4099-4e4f-8efc-d9c52c31dc57_a2ac2f38-b668-4769-9552-9829ea148620@unq.gbl.spaces?ctx=chat">
+					Teamsチャット：ブラウザ版
+				</a>
+				<a class="zBtn">Teamsチャット：アプリ版</a>
+			</p>
+		</section>
+		<section id="debugArea" style="grid-area:debugArea">
+			<input type="text" size="30" style="max-width:95%;" placeholder="Input Password for Debug mode"
+				onclick="if(!getOnline()){this.parentElement.children[1].classList.remove('zUndisp')}"
+				onkeyup="if( this.value=='debug' ){this.parentElement.children[1].classList.remove('zUndisp')}" />
+			<div class="zUndisp">
+				<a class="zBtn" target="_blank"
+					href="file:///C:/z/GitHub/Zacky0922.github.io/KG/index.html">local直link</a>
+				<div>
+					<a class="zBtn" onclick="this.parentElement.children[1].innerText=debugMsgText">debugMsg</a>
+					<div style="border:1px dashed #fff;"></div>
+				</div>
+
+				<h3>Forms編集</h3>
+				<div>
+					<a class="zBtn" target="_blank"
+						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId#formId=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQ01TVElDRjVaUlY2QlRJM1o0NzJYRDJSSiQlQCN0PWcu&XlWorkbookId=https%3A%2F%2Fkgefac.sharepoint.com%2Fsites%2Fmsteams_1d13d1%2F_layouts%2F15%2FDoc.aspx%3Fsourcedoc%3D%7Be0b05023-3b92-4444-82e3-e57375cd3a6d%7D%26action%3Dedit%26wdSkeletonState%3D%7B%22IsEnabled%22%3Atrue%2C%22Options%22%3A32%7D%26wdenableroaming%3D1%26wdorigin%3DItemsView%26wdhostclicktime%3D1589777346522%26wdredirectionreason%3DForce_SingleStepBoot&Host=Excel">進路希望調査</a>
+					<a class="zBtn" target="_blank"
+						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId#formId=z327fGQzzUGZdki7xIvYKrrQV_Ds3nlPm9dRr6u4IARUMFVPUlhEWk04MFFBVVkxVEUwVEIxTExZRSQlQCN0PWcu&XlWorkbookId=https%3A%2F%2Fkgefac.sharepoint.com%2Fsites%2FICT%2F_layouts%2F15%2FDoc.aspx%3Fsourcedoc%3D%7B47b5f946-2257-476c-8c97-de7cd595cd3a%7D%26action%3Dedit&Host=Excel">出欠確認</a>
+					<a class="zBtn" target="_blank"
+						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId#formId=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu&XlWorkbookId=https%3A%2F%2Fkgefac.sharepoint.com%2Fsites%2Fmsteams_777150%2F_layouts%2F15%2FDoc.aspx%3Fsourcedoc%3D%7Bf97a00e7-cb58-4e6f-850f-2ed85b87b1f3%7D%26action%3Dedit%26wdSkeletonState%3D%7B%22IsEnabled%22%3Atrue%2C%22Options%22%3A32%7D%26wdenableroaming%3D1%26wdorigin%3DItemsView%26wdhostclicktime%3D1589506453530%26wdredirectionreason%3DForce_SingleStepBoot&Host=Excel">健康観察</a>
+					<a class="zBtn" target="_blank"
+						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId#formId=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUN1M3VFhOTjJIMEpEOUlJWUtWSk1POFRBQiQlQCN0PWcu&XlWorkbookId=https%3A%2F%2Fkgefac.sharepoint.com%2Fsites%2Fmsteams_1d13d1%2F_layouts%2F15%2FDoc.aspx%3Fsourcedoc%3D%7B01441946-ac10-4aaa-a306-174c89d96977%7D%26action%3Dedit%26wdSkeletonState%3D%7B%22IsEnabled%22%3Atrue%2C%22Options%22%3A32%7D%26wdenableroaming%3D1%26wdorigin%3DItemsView%26wdhostclicktime%3D1590044294091%26wdredirectionreason%3DForce_SingleStepBoot&Host=Excel">生徒会選挙</a>
+					<a class="zBtn" target="_blank"
+						href="https://forms.office.com/Pages/DesignPage.aspx?auth_pvr=OrgId&Fragment=formId%3Dz327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURDFXQlA3NjgwRFlXUjIwNzlaSkhLR0xENyQlQCN0PWcu%26XlWorkbookId%3Dhttps%253A%252F%252Fkgefac.sharepoint.com%252Fsites%252Fmsteams_1d13d1%252F_layouts%252F15%252FDoc.aspx%253Fsourcedoc%253D%257B0f7bff64-91a6-4bbb-8df1-7dd9f9564f1e%257D%2526action%253Dedit%2526wdSkeletonState%253D%257B%2522IsEnabled%2522%253Atrue%252C%2522Options%2522%253A32%257D%2526wdenableroaming%253D1%2526wdorigin%253DItemsView%2526wdhostclicktime%253D1589521327036%2526wdredirectionreason%253DForce_SingleStepBoot%26Host%3DExcel">通学方法調査</a>
+				</div>
+				<hr>
+
+			</div>
+		</section>
+	</div><!-- /container -->
+</body>
+
+</html>

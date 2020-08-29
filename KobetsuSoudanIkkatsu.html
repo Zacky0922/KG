@@ -1,0 +1,83 @@
+<!DOCTYPE html><!--HTML5-->
+<html Lang="ja">
+<head>
+<!-- meta設定 -->
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+<meta name="robots" content="noindex,nofollow">
+</head>
+<body>
+
+<h1>「事前相談管理システム - 相談情報印刷」補助ツール</h1>
+<p>（イントラネット内のみ利用可／対象生徒：18期＝2015.04入学～23期＝2020.04入学）</p>
+<form name="myForm">
+年度：<input type="text" name="myYear"><br/>
+KG番号：<br/>
+<textarea name="KGnumbers" rows="10" cols="15"></textarea>
+<input type="button" value="個票出力" onclick="createSheets()">
+</form>
+
+<p>※出力をする前に、「<a href="http://192.168.20.100/hs/" target="_blank">事前相談管理システム</a>」にログインしていることを確認してください。</p>
+<p>※ブラウザにより表示が異なりますが、「ポップアップ」・「JavaScript」の実行を許可してください。</p>
+<hr/>
+
+<h2>使い方</h2>
+<ul>
+<li>出力したいKG番号を入力してください。<br/>
+	その際、範囲の場合は「-」（半角ハイフン）で区切って入力してください。</li>
+<li>複数のKG番号（単発・範囲）を出力したい場合は、改行で区切って下さい。</li>
+<li>各行ごとにページが開きますので、個別に印刷をしてください。</li>
+<li>該当KG番号が存在しない場合、白紙のページが表示されます。</li>
+<li>ブラウザによっては「ポップアップがブロックされました」などと表示されることがあります。<br/>
+複数のポップアップやタブを開くことを許可してください。</li>
+</ul>
+<form>
+入力例：<br/>
+<textarea rows="4" cols="15">181001
+181003-181004</textarea>
+　→→→　「181001」・「181003-181004」の印刷用ページ（2つのタブ）が開きます。
+</form>
+
+
+<script type="text/javascript"><!--
+//年度初期設定
+/*	A年		1～3月	→　A年相談(受験生)情報取得	KG:AA****
+	A年		4～5月	→　A年相談(入学生)情報取得	KG:AA****
+	A年		6～12月	→　(A+1)年相談情報取得		KG:(AA+1)****
+	(A+1)年	1～3月	→　(A+1)年相談情報取得		KG:(AA+1)****
+*/
+	let myDate = new Date();
+	if(myDate.getMonth() < 5){
+		document.myForm.myYear.value = myDate.getFullYear();
+
+	}else{
+		document.myForm.myYear.value = myDate.getFullYear() + 1;
+	}
+
+function createSheets(){
+	let KGY = document.myForm.myYear.value;
+	let KGN = document.myForm.KGnumbers.value;
+		KGN = KGN.split(/\r\n|\n/);		//正規表現：/\r\n|\n/　→　「\r\n、\n」のいずれかでsplit
+	let myURL = "";
+	
+	for(let i = 0 ; i < KGN.length ; i++){
+		if(KGN[i] != ""){	//エラーチェック
+			//alert("KG番号 " + KGN[i] + "　を出力します。");
+			
+			if( KGN[i].indexOf("-") == -1 ){	//単発の場合
+				KGN[i] = KGN[i].toString(10);
+				myURL = "&fcode=" + KGN[i] + "&tcode=" + KGN[i];
+			}
+			else{	//範囲の場合
+				KGN[i] = KGN[i].split("-");
+				myURL = "&fcode=" + KGN[i][0].toString(10) + "&tcode=" + KGN[i][1].toString(10);
+			}
+			window.open("http://192.168.20.100/hs/soudanjyouho_print.php?year=" + KGY + myURL);
+		}
+	}
+}
+--></script>
+
+</body>
+</html> 
