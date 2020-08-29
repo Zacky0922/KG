@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="manifest" href="./manifest.json">-->
+	<script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+	</script>
+
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
+	<style>
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-columns: 100%;
+			grid-template-areas:
+				"text";
+		}
+
+		/* PCレイアウト */
+		@media screen and (min-width:600px) {
+			div#container {
+				max-width: 100%;
+				/*
+                grid-template-columns: 3fr minmax(max-content, 1fr);
+                */
+				grid-template-areas:
+					"text";
+			}
+		}
+
+		div#container>section {
+			text-align: left;
+			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	</style>
+	<title>sample - WEBサイトを作ろう！</title>
+</head>
+
+<body>
+	<div id="container">
+		<section style="grid-area:text">
+			<h2 class="zHead">背景サンプル</h2>
+			本来はリストを作るUL・LI要素をつかって、背景をつくる。（別に、UL・LIでなくてもよい）<br />
+			LIがふわふわしてるアレで、ULはただまとめるだけの外枠（見えない）
+			<pre class="prettyprint lang-html linenums">
+&lt;ul id="bg"&gt;
+	&lt;li&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+			これにスタイルを適用していく。
+			<pre class="prettyprint lang-css linenums">
+ul#bg {
+	/* リストの丸ポチを消す */
+	list-style: none;
+
+	/* 余白なく */
+	margin: 0;
+	padding: 0;
+
+	/* 画面全体に */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+
+	/* 他の要素より後ろ側に */
+	z-index: -100;
+}
+
+ul#bg li {
+	/* 絶対的な場所指定（アニメーション開始前の最初の位置） */
+	position: absolute;
+	bottom:-150px; /* 自分自身が隠れるように、自分自身の高さの分だけ下にめり込むように */
+
+	/* 角を丸めた箱型表示にする */
+	display: block;
+	width: 150px;
+	height: 150px;
+	border-radius: 30px;
+
+	/* 箱の色を決める（仮） */
+	background: #f00;
+	opacity:0.6;
+
+	/* アニメーション設定 */
+	animation: float 5s infinite;
+}
+
+	@keyframes float {
+
+		/* 最初の状態 */
+		0% {
+			transform: translateY(0) rotate(0);
+		}
+
+		/* 最後の状態 */
+		100% {
+			/* 元の位置より画面の縦幅120％分だけ上へ移動 ＆ 720度回転 */
+			transform: translateY(-120vh) rotate(720deg);
+		}
+	}
+}
+			</pre>
+			このままだと、すべてのボックスが同じ動きをして＝重なって1つにしか見えないので、個別に設定を書き加える。<br />
+			スタイルシートで一括して設定したものよりも、個別に指定したものが優先的に採用される。<br/>
+			ここは趣味とセンスが問われる（余計なプレッシャー）。
+			<pre class="prettyprint lang-html linenums">
+&lt;ul id="bg"&gt;
+	&lt;li style="left:0%; background:#f00; animation:float 7s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:15%; background:#ff0; animation:float 10s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:30%; background:#00f; animation:float 8s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:40%; background:#0f0; animation:float 5s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:55%; background:#0ff; animation:float 12s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:70%; background:#fff; animation:float 9s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:85%; background:#f0f; animation:float 15s infinite;"&gt;&lt;/li&gt;
+	&lt;li style="left:100%; background:#000; animation:float 10s infinite;"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+			</pre>
+			<div class="zTbl">
+			<table>
+				<thead>
+					<tr>
+						<th>項目</th>
+						<th>内容</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>left</td>
+						<td>左からどれくらい？</td>
+					</tr>
+					<tr>
+						<td>background</td>
+						<td>色は？<br/>
+						（注）透明度は既に「opacity」で設定済み</td>
+					</tr>
+					<tr>
+						<td>animation</td>
+						<td>何のアニメーションで：float<br/>
+						どのくらいの時間で：＊＊s（sはsecond＝秒を表す）<br/>
+					何回繰り返す？：infinite（永遠に）</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			<ul id="bg">
+				<li style="left:0%; background:#f00; animation:float 7s infinite;"></li>
+				<li style="left:15%; background:#ff0; animation:float 10s infinite;"></li>
+				<li style="left:30%; background:#00f; animation:float 8s infinite;"></li>
+				<li style="left:40%; background:#0f0; animation:float 5s infinite;"></li>
+				<li style="left:55%; background:#0ff; animation:float 12s infinite;"></li>
+				<li style="left:70%; background:#fff; animation:float 9s infinite;"></li>
+				<li style="left:85%; background:#f0f; animation:float 15s infinite;"></li>
+				<li style="left:100%; background:#000; animation:float 10s infinite;"></li>
+			</ul>
+			<style>
+				ul#bg {
+					/* リストの丸ポチを消す */
+					list-style: none;
+
+					/* 余白なく */
+					margin: 0;
+					padding: 0;
+
+					/* 画面全体に */
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100vw;
+					height: 100vh;
+
+					/* 他の要素より後ろ側に */
+					z-index: -100;
+				}
+
+				ul#bg li {
+					/* 絶対的な場所指定（アニメーション開始前の最初の位置） */
+					position: absolute;
+					bottom: -150px;
+					/* 自分自身が隠れるように、自分自身の高さの分だけ下にめり込むように */
+
+					/* 角を丸めた箱型表示にする */
+					display: block;
+					width: 150px;
+					height: 150px;
+					border-radius: 30px;
+
+					/* 箱の色を決める（仮） */
+					background: #f00;
+					opacity: 0.6;
+
+					/* アニメーション設定 */
+					animation: float 5s infinite;
+				}
+
+				@keyframes float {
+
+					/* 最初の状態 */
+					0% {
+						transform: translateY(0) rotate(0);
+					}
+
+					/* 最後の状態 */
+					100% {
+						/* 元の位置より、画面の縦幅120％分だけ上へ移動 ＆ 720度回転 */
+						transform: translateY(-120vh) rotate(720deg);
+					}
+				}
+			</style>
+			<div style="height:100vh !important">　</div>
+		</section>
+	</div><!-- /container -->
+</body>
+
+</html>

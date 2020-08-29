@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics by KG-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-116915593-1');
+	</script>
+
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="manifest" href="./manifest.json">-->
+	<script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+	</script>
+
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="https://zacky0922.github.io/scripts/master.js?mode=kgfes&css=KGfes.css"></script>
+
+	<style>
+		div#gridWrapper {
+			margin: var(--z-spacing);
+			display: grid;
+			grid-gap: 15px;
+			grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
+			grid-template-areas:
+				"main	menu"
+				"main	.";
+		}
+	</style>
+
+	<title>企画紹介</title>
+</head>
+
+<body>
+	<div id="gridWrapper">
+		<section id="PageMenu" style="grid-area:menu;background:rgba(255,255,255,0.85);padding:20px"></section>
+
+		<section style="grid-area:main">
+			<h2 class="zHeadList zHead" id="企画紹介">企画紹介</h2>
+			<form class="zForm">
+				<fieldset>
+				<legend>並べ替え</legend>
+				<input type="radio" name="eventSort" id="time" checked><label for="time">放送時間</label>
+			</fieldset>
+			<fieldset>
+				<legend>フィルタ</legend>
+				<input type="radio" name="eventFilter" id="all" checked><label for="all">全表示</label>
+				<input type="radio" name="eventFilter" id="動画"><label for="動画">動画</label>
+				<input type="radio" name="eventFilter" id="WEB"><label for="WEB">WEB Gallery</label>
+			</fieldset>
+			</form>
+			<div id="eventList">
+				<article class="bc_11:00">
+					<h3>イベント名</h3>
+					<h4>団体名</h4>
+					<img src="pict/gp.png" />
+					<div>あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん</div>
+				</article>
+				<article class="bc_10:30">
+					<h3>イベント名</h3>
+					<h4>団体名</h4>
+					<img src="pict/gp.png" />
+					<div>あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん</div>
+				</article>
+				<article class="webGallery">
+					<h3>イベント名</h3>
+					<h4>団体名</h4>
+					<img src="pict/gp.png" />
+					<div>あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん</div>
+				</article>
+			</div>
+			<script>
+				eventList_init("eventList");
+				$(document.getElementById("eventList").children[0]).hover(
+						$(events[i].children[2]).show(400),
+						$(events[i].children[2]).hide(400)
+					);
+			</script>
+		</section>
+	</div><!-- /container -->
+</body>
+
+</html>

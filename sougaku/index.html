@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!--<link rel="manifest" href="./manifest.json">-->
+	<script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+	</script>
+
+	<!-- JS/CSS master -->
+	<script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+	<link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
+	<style>
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-columns: 100%;
+			grid-template-areas:
+				"notice"
+				"links"
+				"ft"
+				"debugArea";
+		}
+
+		/* PCレイアウト */
+		@media screen and (min-width:600px) {
+			div#container {
+				max-width: 100%;
+				grid-template-columns: 3fr minmax(max-content, 1fr);
+				grid-template-areas:
+					"notice	links"
+					"ft		ft"
+					"debugArea debugArea";
+			}
+		}
+
+		div#container>section {
+			text-align: left;
+			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	</style>
+	<title>KG総学 - WEBサイトを作ろう！</title>
+</head>
+
+<body>
+	<div id="container">
+		<section style="grid-area:notice">
+			<h2 class="zHead">総合的な学習の時間 - WEBサイトを作ろう！</h2>
+			<dl class="zList">
+				<dt><a href="start.html">はじめに</a></dt>
+				<dd>タグとはなにか？ - html,head,bodyタグ</dd>
+				<dt>文字の表示と装飾</dt>
+				<dd>p,div,span,brタグ と style要素</dd>
+				<dt><a href="table.html">表の表示</a></dt>
+				<dd>tableタグ</dd>
+				<dt>画像の表示</dt>
+				<dd>imgタグ</dd>
+				<dt><a href="style.html">style要素について</a></dt>
+				<dd>文字（色・サイズ・太さ）,背景（色）,枠線(色・太さ)</dd>
+				<dt>外部スタイルシートとclass</dt>
+				<dd>styleの一括指定</dd>
+			</dl>
+			<h3 class="zHead">ファイルの保存について</h3>
+			<ul class="zList">
+				<li>デスクトップで、「新規作成 ＞ テキスト ドキュメント」を選択</li>
+				<li>内容を記載</li>
+				<li>「名前を付けて保存」のとき、ファイル名の末尾を「～～.html」にする。</li>
+				<li>PCではなく、USBメモリへの保存を忘れずに。</li>
+			</ul>
+		</section>
+
+		<section style="grid-area:links">
+			<h2 class="zHead">Links</h2>
+			<p style="text-align:right">※クリックで展開</p>
+			<div>
+				<h3 class="zHead"><label for="学校関係" class="zClickable">◆学校関係◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="学校関係" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+					<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+				</div>
+				<h3 class="zHead"><label for="参考リンク" class="zClickable">◆参考リンク◆</label></h3>
+				<input type="checkbox" class="zHiddenBlock" id="参考リンク" checked="checked" />
+				<div style="grid-area:links;display:grid;">
+					<a class="zBtn" target="_blank" href="http://www.htmq.com/">HTMLクイックリファレンス</a>
+					<a class="zBtn" target="_blank" href="https://codepen.io/">CodePen</a>
+				</div>
+			</div>
+		</section>
+
+		<section style="grid-area:ft">
+			<p>本ページをブックマークすると便利だと思います。</p>
+
+		</section>
+		<section id="debugArea" style="grid-area:debugArea">
+
+
+		</section>
+	</div><!-- /container -->
+</body>
+
+</html>

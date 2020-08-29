@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
+    <!-- PWA設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="manifest" href="./manifest.json">-->
+    <script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+    </script>
+
+    <!-- JS/CSS master -->
+    <script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+    <link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
+    <style>
+        div#container {
+            margin: 5px;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 100%;
+            grid-template-areas:
+                "text";
+        }
+
+        /* PCレイアウト */
+        @media screen and (min-width:600px) {
+            div#container {
+                max-width: 100%;
+                /*
+                grid-template-columns: 3fr minmax(max-content, 1fr);
+                */
+                grid-template-areas:
+                    "text";
+            }
+        }
+
+        div#container>section {
+            text-align: left;
+            border: rgba(255, 255, 255, 0.3) 5px solid;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+    <title>table - WEBサイトを作ろう！</title>
+</head>
+
+<body>
+    <div id="container">
+        <section style="grid-area:text">
+            <h2 class="zHead">styleの設定</h2>
+            要素の装飾をするために、styleの設定をします。方法は次の3つあります。
+            <ul>
+                <li>1つの要素に指定する</li>
+                <li>複数の要素に指定する（ファイル内指定）</li>
+                <li>複数の要素に指定する（別ファイル指定）</li>
+            </ul>
+            <h3>1つの要素に指定する</h3>
+            指定したいタグの内部に「style=""」の形で書き込みます。
+            <p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result"
+                data-user="Zacky0922" data-slug-hash="eYJyGae"
+                style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+                data-pen-title="style inTag">
+                <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/eYJyGae">
+                        style inTag</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+            <h3>複数の要素に指定する（ファイル内指定）</h3>
+            <p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result"
+                data-user="Zacky0922" data-slug-hash="rNxpGEJ"
+                style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+                data-pen-title="style">
+                <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/rNxpGEJ">
+                        style</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+            <h3>複数の要素に指定する（別ファイル指定）</h3>
+            （今回は省略）
+            <h3 class="zHead">簡易エディタ</h3>
+            <section id="quickEditor"></section>
+            <script>
+                setQuickEditor("quickEditor", "あああ");
+            </script>
+            <style>
+                .prettyprintQuickEditor>div.prettyprintQuickPreviewer {
+                    background: #fff;
+                    color: #000;
+                }
+
+                .prettyprintQuickEditor>div.prettyprintQuickPreviewer tr,
+                .prettyprintQuickEditor>div.prettyprintQuickPreviewer td {
+                    border: #000 1px solid;
+                }
+            </style>
+            <h2 class="zHead">カラーコード</h2>
+            <dl>
+                <dt>光の三原色</dt>
+                <dd>赤（Red）・緑（Green）・青（Blue）の3色を混ぜることで、どんな色でも表すことができる。<br />
+                    何も混ぜなければ黒、全てを混ぜると白になる。
+                </dd>
+                <dt>10進数</dt>
+                <dd>10種類の数（0～9）を使って値を表す方法。</dd>
+                <dt>16進数</dt>
+                <dd>16種類の数（0～9,A,B,C,D,E,F）を用いて表す方法。<br />
+                    Fまで数を使って、初めて桁上がりする。<br />
+                    カラーコードの指定では、各色0～255（0～FF）までの範囲で指定をする。</dd>
+                <dt>2進数</dt>
+                <dd>2種類の数（0,1）を用いて表す方法。</dd>
+                                <dt>位取り記数法</dt>
+                                <dd>数を書く位置によって、大きさを表す方法。<br/>
+                                （例）123　一の位の3より百の位の3（=300）が、大きな値を表している。<br/>
+                            （例２）位取り記数法でない数<br/>
+                            ローマ数字（Ⅰ＝1もⅩ＝10も、1桁で表され、書く場所と数の大きさに関係がない）</dd>
+            </dl>
+            <div class="zTbl">
+                <table>
+                <thead>
+                    <tr>
+                        <th>10進数</th>
+                        <th>2進数</th>
+                        <th>16進数</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>2進数が2種類の数を使い切った</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>2</td>
+                        <td>10進数が繰り上がった</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>11</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>100</td>
+                        <td>4</td>
+                        <td>2進数：$11+1$<br/>
+                        1の位から繰り上がった数が、さらに繰り上がる</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>101</td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>110</td>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>111</td>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>8</td>
+                        <td>1000</td>
+                        <td>8</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>1001</td>
+                        <td>9</td>
+                        <td>10進数が10種類の数を使い切った</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>1010</td>
+                        <td>A</td>
+                        <td>10進数が繰り上がった</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>1011</td>
+                        <td>B</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>1100</td>
+                        <td>C</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>1101</td>
+                        <td>D</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>1110</td>
+                        <td>E</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>1111</td>
+                        <td>F</td>
+                        <td>16進数が16種類の数を使い切った</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>10000</td>
+                        <td>10</td>
+                        <td>16進数が繰り上がった</td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+
+            <table></table>
+
+        </section>
+    </div><!-- /container -->
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
+    <!-- PWA設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="manifest" href="./manifest.json">-->
+    <script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+    </script>
+
+    <!-- JS/CSS master -->
+    <script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+    <link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
+    <style>
+        div#container {
+            margin: 5px;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 100%;
+            grid-template-areas:
+                "text";
+        }
+
+        /* PCレイアウト */
+        @media screen and (min-width:600px) {
+            div#container {
+                max-width: 100%;
+                /*
+                grid-template-columns: 3fr minmax(max-content, 1fr);
+                */
+                grid-template-areas:
+                    "text";
+            }
+        }
+
+        div#container>section {
+            text-align: left;
+            border: rgba(255, 255, 255, 0.3) 5px solid;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+    <title>style - WEBサイトを作ろう！</title>
+</head>
+
+<body>
+    <div id="container">
+        <section style="grid-area:text">
+            <h2 class="zHead">table要素</h2>
+            table（表）は、大きく3つの要素で構成されます。
+            <dl class="zList">
+                <dt>表全体 tableタグ</dt>
+                <dd>表全体を囲むタグ。この中に内容を書き込んでいきます。</dd>
+                <dt>行 trタグ</dt>
+                <dd>表の中で、行ごとに区切りるためのタグです。</dd>
+                <dt>セル th,tdタグ</dt>
+                <dd>1マスずつ区切るためのタグです。</dd>
+            </dl>
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result" data-user="Zacky0922"
+    data-slug-hash="LYGxRKR"
+    style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+    data-pen-title="KG：table">
+    <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/LYGxRKR">
+            KG：table</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
+        on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+
+<h3 class="zHead">応用編</h3>
+<dl>
+    <dt>列（横）の連結 colspan</dt>
+    <dd>連結したいセルに、その数を設定する。</dd>
+    <dt>行（縦）の連結 rowspan</dt>
+    <dd>連結したいセルに、その数を設定する。</dd>
+</dl>
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="html,result" data-user="Zacky0922"
+    data-slug-hash="NWxddbG"
+    style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+    data-pen-title="KG：table span">
+    <span>See the Pen <a href="https://codepen.io/Zacky0922/pen/NWxddbG">
+            KG：table span</a> by Zacky (<a href="https://codepen.io/Zacky0922">@Zacky0922</a>)
+        on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<h3>練習</h3>
+次の表を作ってみましょう。
+<div class="zTbl">
+    <table>
+        <tr>
+            <td colspan="3">年組番</td>
+            <td>氏名</td>
+            <td>掃除担当</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
+            <td>国際 太郎</td>
+            <td rowspan="2">教室</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>2</td>
+            <td>鈴木 次郎</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>3</td>
+            <td>学院 花子</td>
+            <td rowspan="2">廊下</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>4</td>
+            <td>佐藤 良子</td>
+        </tr>
+    </table>
+</div>
+<h3 class="zHead">簡易エディタ</h3>
+            <section id="quickEditor"></section>
+            <script>
+                setQuickEditor("quickEditor");
+            </script>
+            <style>
+                .prettyprintQuickEditor > div.prettyprintQuickPreviewer{
+                    background:#fff;
+                    color:#000;
+                }
+                .prettyprintQuickEditor > div.prettyprintQuickPreviewer tr,
+                .prettyprintQuickEditor > div.prettyprintQuickPreviewer td{
+                    border:#000 1px solid;
+                }
+            </style>
+        </section>
+    </div><!-- /container -->
+</body>
+
+</html>

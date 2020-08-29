@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
+    <!-- PWA設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="manifest" href="./manifest.json">-->
+    <script>
+		/*
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+		*/
+    </script>
+
+    <!-- JS/CSS master -->
+    <script type="text/javascript" src="../scripts/master.js?lv=1"></script>
+    <link rel="stylesheet" type="text/css" href="../scripts/master.css" />
+
+    <style>
+        div#container {
+            margin: 5px;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 100%;
+            grid-template-areas:
+                "content";
+        }
+
+        /* PCレイアウト */
+        @media screen and (min-width:600px) {
+            div#container {
+                max-width: 100%;
+                /*
+                grid-template-columns: 3fr minmax(max-content, 1fr);
+                grid-template-areas:
+                    "content";
+                */
+            }
+        }
+
+        div#container>div {
+            text-align: left;
+            border: rgba(255, 255, 255, 0.3) 5px solid;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+    <title>KG</title>
+</head>
+
+<body>
+    <div id="container" style="text-align: left;">
+        <div style="grid-area:content">
+            <h2 class="zHead">雛形</h2>
+            <pre class="prettyprint lang-html linenums">
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;タイトル&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p>本文&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+            </pre>
+            <div class="zTbl"><table>
+                <thead>
+                    <tr>
+                        <th>タグ</th>
+                        <th>用途</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>p</th>
+                        <td>ブロック要素<br/>
+                            段落（paragraph）を表すタグ。</td>
+                    </tr>
+                    <tr>
+                        <th>div</th>
+                        <td>ブロック要素<br/>
+                            区切り（division）を表すタグ。</td>
+                    </tr>
+                    <tr>
+                        <th>section</th>
+                        <td>ブロック要素<br/>
+                            ひとまとまりの部分を表すタグ。</td>
+                    </tr>
+                    <tr>
+                        <th>article</th>
+                        <td>ブロック要素<br/>
+                            1つの記事を表すタグ。</td>
+                    </tr>
+                    <tr>
+                        <th>span</th>
+                        <td>インライン要素<br/>
+                            区間を表すタグ。</td>
+                    </tr>
+
+                </tbody>
+            </table></div>
+        </div>
+    </div><!-- /container -->
+</body>
+
+</html>

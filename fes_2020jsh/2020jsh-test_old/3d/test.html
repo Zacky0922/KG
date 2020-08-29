@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- JS/CSS master -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.js"></script>
+    <title>test</title>
+</head>
+
+<body>
+    <script>
+        // （参考）
+        // holeスクリプト
+        // https://stackoverflow.com/questions/56192021/how-to-declare-a-mask-material-using-a-frame-js
+        // 一定深度以下を非表示？
+        // https://qiita.com/aa_debdeb/items/c9e52c840fd965757d71
+        AFRAME.registerComponent('z-hole', {
+            init: function () {
+                let geometry = new THREE.BoxGeometry(1, 1, 1)
+                //geometry.faces.splice(4, 2) // cut out the top faces 
+                let material = new THREE.MeshBasicMaterial({
+                    colorWrite: false
+                })
+                let mesh = new THREE.Mesh(geometry, material)
+                mesh.scale.set(1, 1, 1)     //original sourceは (1.1, 1.1, 1.1)
+                this.el.object3D.add(mesh)
+            }
+        });
+
+
+        AFRAME.registerComponent('frameBox', {
+
+            init: function () {
+                let boxGeometry = new THREE.BoxBufferGeometry(1, 1, 1, this.data.segments, this.data.segments, this.data.segments)
+                let edges = new THREE.EdgesGeometry(boxGeometry)
+                //let material = new THREE.LineBasicMaterial({ color: 0x000000 })
+                let material = new THREE.MeshBasicMaterial({})
+                let lineBox = new THREE.LineSegments(boxGeometry, material)
+                lineBox.scale.set(1, 1, 1)
+                this.el.object3D.add(lineBox)
+            }
+        });
+
+
+
+
+        /*
+
+var geometry = new THREE.PlaneGeometry(10, 10, 10,10);
+
+var material = new THREE.MeshLambertMaterial({color:0xff0000,opacity:0.2,transparent:true,overdraw:0.5});
+
+
+        // 動くかよくわからない…
+        AFRAME.registerComponent('invisiblePlane', {
+            init: function () {
+                let geometry = new THREE.PlaneBufferGeometry(1, 1)
+                let material = new THREE.MeshBasicMaterial({
+                    colorWrite: false,
+                    side: THREE.DoubleSide
+                })
+
+
+                let mesh = new THREE.Mesh(geometry, material)
+                mesh.renderOrder = -1;
+                mesh.scale.set(1, 1)     //original sourceは (1.1, 1.1, 1.1)
+                this.el.object3D.add(mesh)
+            }
+        });
+        */
+
+
+    </script>
+
+    <a-scene id="myScene" gltf-model="dracoDecoderPath: path/to/decoder/;" renderer="colorManagement: true;">
+        <a-assets>
+            <a-asset-item id="model" src="test/movingTP.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity frameBox position="2 0 0">
+        </a-entity>
+
+
+
+
+        <a-sky color="#fed"></a-sky>
+        <a-entity id="recognizing">
+            <!-- loading rings -->
+            <a-entity position="0 0.2 0">
+                <a-torus color="#8f8" opacity="0.8" arc="120" rotation="-90 0 0" radius="0.5" radius-tubular="0.005"
+                    metalness="0" animation="property:rotation;to:-90 360 0;easing:linear;dur:700;loop:true;"></a-torus>
+                <a-torus color="#8f8" opacity="0.8" arc="120" rotation="-90 0 0" radius="0.6" radius-tubular="0.005"
+                    metalness="0" animation="property:rotation;to:-90 -360 0;easing:linear;dur:2500;loop:true;">
+                </a-torus>
+                <a-torus color="#8f8" opacity="0.8" arc="120" rotation="-90 0 0" radius="0.8" radius-tubular="0.005"
+                    metalness="0" animation="property:rotation;to:-90 360 0;easing:linear;dur:1300;loop:true;">
+                </a-torus>
+            </a-entity>
+            <!-- virtual sphere field -->
+            <a-sphere radius="100" color="#8f8" opacity="0.5" wireframe="true" wireframe-linewidth="10"
+                animation="property:rotation;to:0 360 0;easing:linear;dur:60000;loop:true;"></a-sphere>
+            <!-- hole & Magic Circle -->
+            <a-entity animation="property:rotation;to:0 0 0;dur:5000;easing:linear;loop:true;">
+                <!-- hole obj -->
+                <a-box material="side: back;" color="#bbb" position="0 -0.49 0" z-hole></a-box>
+                <!-- magic circle objs -->
+                <a-entity>
+                    <!-- basis circle -->
+                    <a-circle color="#888" radius="1.5" position="0 0 0" rotation="-90 0 0" metalness="1.0" roughness="0.7"
+                        wireframe="false">
+                    </a-circle>
+                    <!-- ornaments rotating L-->
+                    <a-entity animation="property:rotation;to:0 360 0;easing:linear;dur:700;loop:true;">
+
+                    </a-entity>
+                    <!-- ornaments rotating R-->
+                    <a-entity animation="property:rotation;to:0 -360 0;easing:linear;dur:700;loop:true;">
+
+                    </a-entity>
+                    <!--
+                    <a-plane width="5" height="5" rotation="-90 0 0" color="#fcc"
+                        animation="property:rotation;to:-90 360 0;easing:linear;dur:700;loop:true;"></a-plane>
+                    <a-plane width="5" height="5" rotation="-90 0 0" color="#fcc"
+                        animation="property:rotation;to:-90 -360 0;easing:linear;dur:700;loop:true;"></a-plane>
+
+                    -->
+                </a-entity>
+
+            </a-entity>
+
+
+            <a-entity gltf-model="test/movingTP.glb" position="0 1 0" scale=".5 .5 .5" animation-mixer="clip:*"
+                animation="property:rotation;to:0 -360 0;dur:35000;easing:linear;loop:true;">
+            </a-entity>
+
+
+        </a-entity>
+
+        <!--
+
+        -->
+
+        <!-- 座標軸 for debug -->
+        <a-entity id="axis" position="0 0 0">
+            <!--Point of Origin-->
+            <a-sphere position="0 0 0" radius="0.1" color="#000" opacity="0.5" wireframe="true"></a-sphere>
+            <!-- X-axis -->
+            <a-cylinder color="#f00" opacity="0.5" radius="0.01" rotation="0 0 90" position="0.5 0 0"></a-cylinder>
+            <a-cone color="#f00" opacity="0.5" radius-bottom="0.1" height="0.1" rotation="0 0 -90" position="1 0 0">
+            </a-cone>
+            <!-- Y-axis -->
+            <a-cylinder color="#0F0" opacity="0.5" radius="0.01" rotation="0 0 0" position="0 0.5 0"></a-cylinder>
+            <a-cone color="#0f0" opacity="0.5" radius-bottom="0.1" height="0.1" rotation="0 0 0" position="0 1 0">
+            </a-cone>
+            <!-- Z-axis -->
+            <a-cylinder color="#00f" opacity="0.5" radius="0.01" rotation="90 0 0" position="0 0 0.5"></a-cylinder>
+            <a-cone color="#00f" opacity="0.5" radius-bottom="0.1" height="0.1" rotation="90 0 0" position="0 0 1">
+            </a-cone>
+            <!-- unit box -->
+            <a-box color="#000" opacity="0" wireframe="true"></a-box>
+        </a-entity>
+
+
+        <!-- 衛星軌道 -->
+        <a-entity animation="property:rotation;to:0 360 0;dur:5000;easing:linear;loop:true;">
+            <a-entity position="2 1 0">
+                <a-sphere radius="0.1" color="#000" opacity="0.5" wireframe="true"></a-sphere>
+                <a-text material="side:double;" color="#000" value="I am Light" position="0 0.2 0" align="center"
+                    animation="property:rotation;to:0 -360 0;dur:5000;easing:linear;loop:true;"></a-text>
+                <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2" color="#ffd"></a-entity>
+            </a-entity>
+        </a-entity>
+
+
+        <!-- カメラ -->
+        <a-entity id="z-camera-wrap" position="1 1.5 3" rotation="-20 10 0">
+            <a-entity id="z-camera" camera look-controls>
+                <!--<a-cursor color="#114" opacity="0.5"></a-cursor>-->
+            </a-entity>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>

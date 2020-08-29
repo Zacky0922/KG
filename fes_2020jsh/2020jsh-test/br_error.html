@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics by KG-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-116915593-1');
+	</script>
+
+	<!-- 画面設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>ブラウザエラー！</title>
+</head>
+
+<body>
+	<p>ご使用のブラウザは、本サイトの閲覧に対応しておりません。<br />
+		お手数ですが、以下のブラウザのご利用をお願いします。</p>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		tr>* {
+			border: 1px var(--z-border-color, #000) solid;
+		}
+		th,
+		td {
+			padding: 10px;
+		}
+		th {
+			text-align: center;
+		}
+		td {
+			text-align: left;
+		}
+	</style>
+	<table>
+		<thead>
+			<tr>
+				<th>端末</th>
+				<th>ブラウザ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Windows PC</th>
+				<td>
+					<a href="https://www.google.com/chrome/">Google Chrome</a><br />
+					<a href="https://www.microsoft.com/ja-jp/edge/">Microsoft Edge</a> (Chronium版：v79以降)
+				</td>
+			</tr>
+			<tr>
+				<th>Android</th>
+				<td>
+					<a href="https://play.google.com/store/apps/details?id=com.android.chrome&hl=ja">Google Chrome</a>
+				</td>
+			</tr>
+			<tr>
+				<th>iOS<br/>（確認中）</th>
+				<td>
+					safari<br />
+					chrome
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>

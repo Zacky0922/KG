@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-163335381-1');
+	</script>
+
+	<!-- PWA設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="manifest" href="./manifest.json">
+	<script>
+		//service workerの登録関係
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker
+				.register('./serviceWorker.js')
+				.then(registration => {
+					// 登録成功
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					registration.onupdatefound = function () {
+						console.log('アップデートがあります！');
+						registration.update();
+					}
+				})
+				.catch(err => {
+					// 登録失敗
+					console.log('ServiceWorker registration failed: ', err);
+				});
+		}
+	</script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../scripts/master.css">
+	<style>
+		div#container {
+			margin: 5px;
+			display: grid;
+			grid-gap: 10px;
+			grid-template-areas:
+				"notice"
+				"links"
+				"ft";
+		}
+		/* PCレイアウト */
+		@media screen and (min-width:600px) {
+			div#container {
+				grid-template-columns: minmax(max-content,3fr) minmax(max-content,1fr);
+				grid-template-areas:
+					"notice	links"
+					"ft		ft";
+
+			}
+		}
+
+		div#container>div {
+			text-align: left;
+			border: rgba(255, 255, 255, 0.3) 5px solid;
+			border-radius: 10px;
+			padding: 10px;
+		}
+	</style>
+
+	<title>KGapp</title>
+</head>
+
+<body>
+	<div id="container">
+
+		<div style="grid-area:notice">
+			<h2>連絡事項</h2>
+
+			<div class="zTbl">
+				<table>
+					<caption>Schedule</caption>
+					<thead>
+						<tr>
+							<th>月日</th>
+							<th>内容</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>6／4木</th>
+							<td>分散登校開始</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h2>閲覧専用</h2>
+			<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));">
+				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc=%7ba9791a21-8d19-4f27-ba9d-868039d2792b%7d&action=embedview&wdAllowInteractivity=False&ActiveCell='%E9%9B%86%E8%A8%88'!B28&wdInConfigurator=True">通学方法調査</a>
+				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">出欠確認</a>
+				<a class="zBtn" target="_blank" href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7bf97a00e7-cb58-4e6f-850f-2ed85b87b1f3%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E5%AD%A6%E5%B9%B4%E9%9B%86%E8%A8%88'!D1&wdInConfigurator=True">生徒健康観察</a>
+				<a class="zBtn" target="_blank" href="">進路希望調査（準備中）</a>
+				<a class="zBtn" target="_blank" href="">生徒会選挙（準備中）</a>
+			</div>
+
+		</div>
+
+		<div style="grid-area:links">
+			<h2>Links</h2>
+			<div>
+				<h2>◆学校関係◆</h2>
+				<div class="zHoverDisp-sp">
+					<div style="grid-area:links;display:grid;">
+						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
+						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
+						<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
+					</div>
+				</div>
+			</div>
+			<div>
+				<h2>◆外部サイト◆</h2>
+				<div class="zHoverDisp-sp">
+					<div style="grid-area:links;display:grid;">
+						<a class="zBtn" target="_blank" href="https://learn.studysapuri.jp/ja/login">スタディサプリ</a>
+						<script>
+							let ua = navigator.userAgent;
+							if (ua.indexOf('Win') > 0) {
+								document.write("" +
+									'<a class="zBtn" target="_blank" href="msteams:/">Teams：Winアプリ版</a >'+
+									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>' +
+									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/_#/school/files/01.%E9%80%A3%E7%B5%A1%E4%BA%8B%E9%A0%85?threadId=19:f344daa94d6344e4ab821dd8b96d4e70@thread.tacv2&ctx=channel&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252F%25E9%2580%25A3%25E7%25B5%25A1%25E4%25BA%258B%25E9%25A0%2585%252F%25E6%2597%25A5%25E5%25A0%25B1">Teams日報：ブラウザ版</a>'
+								);
+							}
+							// URIスキーマ調べる？
+							// else if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0) {}
+							// else if (ua.indexOf('Android') > 0) {}
+							else {
+								document.write("" +
+									'<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams：ブラウザ版</a>'
+								);
+							}
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="grid-area:ft">
+			本ページを「ホームに追加」で、アプリ（PWA）として利用できます。<br />
+			※オフライン使用不可＝キャッシュ無効（調整中）・・・将来的にはオフライン利用もできるようにする
+			<div>
+				<h3>動作確認済み環境（PWA）</h3>
+				<dl class="zHoverDisp zList">
+					<dt>Windows</dt>
+					<dd>Chrome</dd>
+					<dt>Android</dt>
+					<dd>標準ブラウザ、Chrome</dd>
+					<dt>iOS</dt>
+					<dd>未確認</dd>
+				</dl>
+			</div>
+			<script type="text/javascript" src="./serviceWorker.js"></script>
+			<div style="text-align:right">Latest：<script>document.write(cacheVersion());</script>
+				<a class="zBtn" onclick="cacheUnregister()">PWA update<br/>（準備中）</a></div>
+		</div>
+
+	</div><!-- /container -->
+</body>
+
+</html>

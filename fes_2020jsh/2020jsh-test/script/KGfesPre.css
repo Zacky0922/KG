@@ -1,0 +1,202 @@
+
+/* 汎用部品 */
+@import url("https://zacky0922.github.io/scripts/common.css");
+
+/* 五峯祭モジュール */
+@import "./gallery.css";
+@import "./group.css";
+@import "./news.css";
+@import "./pickup.css";
+@import "./pageMenu.css";
+@import "./events.css";
+
+/* Google Font */
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
+
+*{
+    --z-kgfes-bg:   linear-gradient(5deg,  transparent 0% 20%,     #fcc 20% 23%,   transparent 23% 100%),
+                    linear-gradient(20deg,  transparent 0% 80%,     #ccf 80% 83%,   transparent 83% 100%),
+                    linear-gradient(25deg,  transparent 0% 50%,     #cfc 50% 53%,   transparent 53% 100%),
+                    linear-gradient(40deg,  transparent 0% 33%,     #ffc 33% 36%,   transparent 36% 100%),
+                    linear-gradient(65deg,  transparent 0% 72%,     #cff 72% 75%,   transparent 75% 100%),
+                    linear-gradient(78deg,  transparent 0% 14%,     #88f 14% 17%,   transparent 17% 100%),
+                    linear-gradient(95deg,  transparent 0% 89%,     #8f8 89% 92%,   transparent 92% 100%),
+                    linear-gradient(125deg,  transparent 0% 27%,     #fcf 27% 30%,   transparent 30% 100%),
+                    linear-gradient(142deg,  transparent 0% 3%,     #f88 3% 6%,   transparent 6% 100%),
+                    linear-gradient(170deg,  transparent 0% 61%,     #fcc 61% 64%,   transparent 64% 100%);
+}
+
+
+/*  標準設定 */
+html,body{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size:  16px;
+    color: var(--z-fontcolor);
+    line-height: 1.5;
+}
+body *{
+    box-sizing: border-box;
+    z-index:    1;
+}
+
+
+body,
+div#container {
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+/*  z-index
+    本文        1
+    .zHead      5
+    ヘッダー    100
+*/
+a{
+    text-decoration: none;
+    border-bottom:  dotted 1px #f00;
+    padding: 0 2px;
+    margin:0 2px;
+}
+a:hover{
+    background: rgba(128,128,255,0.3);
+}
+
+
+div#gridWrapper>section{
+	text-align: left;
+	border: #ffd var(--z-spacing) solid;
+	border-radius: var(--z-spacing);
+    padding: var(--z-spacing);
+    margin: 0;
+	background: rgba(220, 220, 255, 0.9);
+	box-shadow: 3px 3px 5px #002;
+    overflow-x: auto;
+}
+/* MOBレイアウト */
+@media screen and (max-width:599px) {
+	div#gridWrapper {
+		display:    block !important;
+		margin:     0 !important;
+    }
+    div#gridWrapper>section{
+	    border-radius: 0 !important;
+        margin: var(--z-spacing) 0 !important;
+    }
+}
+
+
+
+
+
+#toGoUp{
+    display:    inline-block;
+    position:   fixed;
+    right:  0;
+    bottom: 0;
+    margin: var(--z-spacing);
+    padding:0;
+    color:  rgba(63,63,63,0.8);
+}
+#toGoUp span{
+    margin:0;
+    padding:0;
+    font-size:  5em;
+}
+
+/* カウントダウン */
+table#KGcountdownWrap{
+    margin: calc(4*var(--z-spacing)) auto;
+    padding:    var(--z-spacing);
+    font-family: 'Sriracha', cursive;
+    border-top: var(--z-border-color) 5px solid;
+    border-bottom: var(--z-border-color) 5px solid;
+}
+table#KGcountdownWrap *{
+    margin:0;
+    padding:0;
+    text-align: center;
+    white-space: nowrap;
+    border:none;
+    line-height: 1;
+}
+table#KGcountdownWrap tbody th{
+    font-size:  2.5em;
+}
+table#KGcountdownWrap tbody td{
+    padding:    0 var(--z-spacing);
+}
+table#KGcountdownWrap tfoot tr:first-child{
+    font-size:  0;
+    line-height: 0;
+    height: calc(2 * var(--z-spacing));
+    vertical-align: middle;
+}
+table#KGcountdownWrap tfoot span{
+    box-shadow: 1px 1px 2px rgba(63,63,63,0.8);
+}
+
+/* 変数設定 */
+:root{
+    /* 標準：色 */
+    --z-fontcolor:     #113;
+    --z-bgcolor:       #ccf;
+
+    --z-border-color:   #339;
+
+    --z-ele-bgcolor:    #ccf;
+    
+    --z-ele-bgcolor-alt:    #88f;
+    --z-ele-fontcolor-alt:  #113;
+}
+
+
+
+
+.zClickable:hover{
+    cursor: pointer;
+    animation:  zClickableBlink 0.5s ease-in-out;
+}
+@keyframes zClickableBlink{
+    0%{     background: none;   }
+    25%{    background: rgba(255,255,0,0.2);    }
+    50%{    background: none;   }
+    75%{    background: rgba(255,255,0,0.2);    }
+    100%{   background: none;   }
+}
+
+
+
+
+.zSnapX{
+    display:    flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+}
+.zSnapX > *{
+    max-width:  min(75vw,400px);
+}
+/* スマホのみ横スクロール */
+@media screen and (max-width:599px){
+    .zSnapX-sp{
+
+    }
+}
+
+
+div#zBurgerMenuWrap label img{
+    animation: kgiconRotate 3s linear infinite;
+}
+@keyframes kgiconRotate{
+    0%  {transform: rotate(0deg);}
+    100%  {transform: rotate(360deg)}
+}
+
+.debug{
+    background: var(--z-preset-工事中-bg);
+    /*  display:    none !important; */
+}

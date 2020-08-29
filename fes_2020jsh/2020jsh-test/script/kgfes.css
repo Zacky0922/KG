@@ -1,0 +1,53 @@
+
+/* Google Font */
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
+
+@import "./std.css";
+@import "./countdown.css";
+@import "./header.css";
+@import "./footer.css";
+@import "./menu.css";
+@import "./h.css";
+
+
+/*  z-index
+    1000    debugArea
+    999     menu
+    500     .dw-panel--focus:hover  driveway
+    499     .dw__focus-curtain      driveway暗幕
+    100     header 
+    5       hタグ
+    本文    default
+*/
+
+/* debug */
+*{
+    /*
+    outline: #f88 solid ;
+    */
+    vertical-align: middle;
+}
+
+:root{
+    --z-spacing:    15px;
+    --z-padding:    5px;
+    --z-border-color:   #339;
+    --z-letterspacing: 0.1em;
+    --z-font-size:  16px;
+}
+
+
+nav#zMenu{
+    text-align:center;
+    margin:0;
+    padding:0;
+}
+nav#zMenu ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+nav#zMenu ul li{
+    display:    inline-block;
+    margin:var(--z-spacing);
+}

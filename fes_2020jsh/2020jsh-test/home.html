@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+	<!-- meta設定 -->
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+	<meta name="robots" content="noindex,nofollow" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics by KG-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-116915593-1');
+	</script>
+
+	<!-- 画面設定 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- JS/CSS master -->
+	<script src="loader.js"></script>
+
+	<style>
+		div#gridWrapper {
+			display: grid;
+			grid-gap: 15px;
+			grid-template-columns: minmax(max-content, 3fr) minmax(max-content, 1fr);
+			grid-template-areas:
+				"main	news";
+		}
+
+		@media screen and (max-width:599px) {
+			div#gridWrapper {
+				grid-template-columns: 1fr;
+				grid-template-areas:
+					"news"
+					"main";
+			}
+		}
+	</style>
+
+	<title>Home</title>
+</head>
+
+<body>
+	<section id="header" style="grid-area:header;">
+	</section>
+	<div id="gridWrapper">
+
+
+
+		<section style="grid-area:news">
+			<div class="zCentering">
+				<span id="countdownMsg"></span>
+			</div>
+			<script>
+				(function () {
+					let d = zDate.duration(new Date(2020, 9 - 1, 12))["day"];
+					if (d > 0) {
+						document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）まで、あと" + d + "日です。";
+					} else if (d == 0) {
+						document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）当日です！";
+					} else {
+						document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。";
+					}
+
+				})();
+			</script>
+			<table id="KGcountdownWrap">
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<span id="KGcountdownMs"
+								style="display:inline-block;height:2px;transition:65ms linear"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="5">
+							until Saturday,12th September 2020,10:00
+						</td>
+					</tr>
+				</tfoot>
+				<tbody id="KGcountdown"></tbody>
+			</table>
+			<script>
+				//カウントダウン設定
+				//制限時間以降が未設定……
+				let w_old = 0;
+				let w_diff = 0;
+				window.addEventListener('load', (event) => {
+
+					let zCountdown_ = setInterval(function () {
+						let d = zDate.duration(new Date(2020, 9 - 1, 12, 10, 00, 00));
+						let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
+						document.getElementById("KGcountdown").innerHTML = "" +
+							"<tr>" +
+							"<th>" + d["week"] + "</th>" +
+							"<th>" + d["day"] % 7 + "</th>" +
+							"<th>" + d["hour"] % 24 + "</th>" +
+							"<th>" + d["min"] % 60 + "</th>" +
+							"<th>" + d["sec"] % 60 + "</th>" +
+							"</tr>" +
+							"<tr>" +
+							"<td>" + "week" + (d["week"] <= 1 ? s : "s") + "</td>" +
+							"<td>" + "day" + (d["day"] % 7 <= 1 ? s : "s") + "</td>" +
+							"<td>" + "hour" + (d["hour"] % 24 <= 1 ? s : "s") + "</td>" +
+							"<td>" + "minute" + (d["min"] % 60 <= 1 ? s : "s") + "</td>" +
+							"<td>" + "second" + (d["sec"] % 60 <= 1 ? s : "s") + "</td>" +
+							"</tr>";
+						let w_new = (d["sec"] % 2 == 0 ? d["msec"] % 1000 : 1000 - (d["msec"] % 1000));
+						w_diff = w_new - w_old;
+						document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+						document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+						document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d["msec"] % 2000) / 2000 * 360) + ",100%,50%)";
+						w_old = w_new;
+					}, 66);
+				});
+			</script>
+			<h2 class="zHeadList">NEWS</h2>
+			<ul class="news">
+				<li>
+					<span>08.XX</span>
+					<span>運営</span><br />
+					<span>本サイト公開</span>
+				</li>
+				<li>
+					<span>07.19</span>
+					<span>運営</span><br />
+					<span>ティザーサイト公開</span>
+				</li>
+			</ul>
+		</section>
+
+		<section style="grid-area:main">
+			<div class="debug">更新がしやすいように、内部的なシステムを刷新したので、表示レイアウト等が一度リセットされています。<br />
+				何かご意見・ご要望・ご希望があれば、お気軽にどうぞ。（“できる範囲で”実装します）</div>
+			<div style="text-align:center;font-size:x-large;">
+				国際学院中学校高等学校「第23回 五峯祭」特設サイトへようこそ！
+			</div>
+			<h2 class="zHeadList">概要</h2>
+			<div class="zXscrollable">
+				<table>
+					<tbody>
+						<tr>
+							<th>日時</th>
+							<td>2020年9月12日(土) 10時より（予定）<br />
+								※翌13日(日) アンコール放送</td>
+						</tr>
+						<tr>
+							<th>開催方法</th>
+							<td>オンライン（特設サイト・YouTube）<br />（※高校受験生向け個別相談会のみ、校内にて開催）</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<h2 class="zHeadList">Site Map</h2>
+			<ul>
+				<li>Home<br />
+					本サイトのトップページ（このページ）です。</li>
+				<li>Intro<br />
+					Introduction――ご挨拶です。</li>
+				<li>Events<br />
+					出展イベントのご案内です。</li>
+				<li>Live!!<br />
+					生放送ページのご案内です。</li>
+				<li>Gallery<br />
+					製作物のギャラリーコーナーです。</li>
+				<li>Contest<br />
+					各コンテストのご紹介です。</li>
+				<li>Info<br />
+					Information――その他の各種情報を掲載しています。</li>
+			</ul>
+		</section>
+
+	</div><!-- /container -->
+</body>
+
+</html>

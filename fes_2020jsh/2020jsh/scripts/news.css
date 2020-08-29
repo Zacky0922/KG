@@ -1,0 +1,27 @@
+ul.news{
+    padding:    0;
+    list-style: none;
+    overflow: auto;
+}
+ul.news li{
+    padding:    3px 0;
+    border-bottom:  1px dashed var(--z-border-color);
+}
+ul.news li span:nth-child(1){
+    display:    inline-block;
+    width:  45px;
+}
+ul.news li span:nth-child(2){
+    display:    inline-block;
+    width:  80px;
+    border: 1px solid var(--z-border-color);
+    text-align:center;
+}
+
+@media screen and (min-width:600px){
+    ul.news li > br{
+        /*
+        display:none;
+        */
+    }
+}
