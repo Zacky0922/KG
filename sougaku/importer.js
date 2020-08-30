@@ -36,21 +36,15 @@ if (document.referrer.indexOf("?debug") > -1) {
     https://zacky0922.github.io/exScripts/
     https://exScripts.zacky.ninja-x.jp/
 */
-
-// bootstrap
-$.getScript("../../exScripts/ex/bootstrap/js/bootstrap.min.js");
-
-// 個人ライブラリ
-$.getScript("../../exScripts/tools/date.js");
-$.getScript("../../exScripts/tools/list.js");
-
-$.getScript("../../exScripts/tools/debug/debug.js");
-debugTest();
 /*
-import { * as zDebug } from "http://zacky.ninja-x.jp/exScripts/tools/debug/debug.js";
-import { * as zDate } from  "http://zacky.ninja-x.jp/exScripts/tools/date.js";
-import { * as zList } from  "http://zacky.ninja-x.jp/exScripts/tools/list.js";
-*/
+
+
+/* */
+import * as kgMenu from "./script/menu.js";
+window.addEventListener('load', (event) => {
+    kgMenu.setMenu();
+})
+/**/
 // 基本設定：onloadにしてもよい？
 (function () {
     document.title = document.title + " - KG総学2020（中2）WEBサイトを作ろう！";

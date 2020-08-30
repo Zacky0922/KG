@@ -135,18 +135,15 @@ ul#bg li {
 	animation: float 5s infinite;
 }
 
-	@keyframes float {
-
-		/* 最初の状態 */
-		0% {
-			transform: translateY(0) rotate(0);
-		}
-
-		/* 最後の状態 */
-		100% {
-			/* 元の位置より画面の縦幅120％分だけ上へ移動 ＆ 720度回転 */
-			transform: translateY(-120vh) rotate(720deg);
-		}
+@keyframes float {
+	/* 最初の状態 */
+	0% {
+		transform: translateY(0) rotate(0);
+	}
+	/* 最後の状態 */
+	100% {
+		/* 元の位置より画面の縦幅120％分だけ上へ移動 ＆ 720度回転 */
+		transform: translateY(-120vh) rotate(720deg);
 	}
 }
 			</pre>

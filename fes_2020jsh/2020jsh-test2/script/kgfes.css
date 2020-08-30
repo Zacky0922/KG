@@ -1,0 +1,13 @@
+@import "../../exScripts/common.css";
+@import "./header.css";
+@import "./footer.css";
+@import "./menu.css";
+
+* {
+    outline:#00f solid;
+}
+
+:root{
+    --z-spacing: 20px;
+    --z-padding: 10px;
+}
