@@ -1,9 +1,6 @@
-import { burgerMenu} from "../../exScripts/tools/menu/burger.js";
-import { getGicon} from "../../exScripts/ex/MaterialIcons/googleicon.js";
-import { zDebug} from "../../exScripts/tools/debug/debug.js";
+import {zList,burgerMenu,getGicon,zDebug} from "https://fes.kgef.ac.jp/exScripts/aggregater.js";
 
 export function setMenu(id,root = "./") {
-
 
     // メニュー
     // burgerメニュー：小画面用アイコンlabel_inner要素
@@ -36,14 +33,14 @@ export function setMenu(id,root = "./") {
     } else {
         //事前用
         burger.addLink(
-            getGicon("cast").outerHTML + " Live!!",
+            getGicon("cast").outerHTML + " Live!!<br/>(当日のお楽しみ)",
             null,
             null,
             null,
             "inactive_menu"
         );
         burger.addLink(
-            getGicon("collections_bookmark").outerHTML + " Gallery",
+            getGicon("collections_bookmark").outerHTML + " Gallery<br/>(当日のお楽しみ)",
             null,
             null,
             null,

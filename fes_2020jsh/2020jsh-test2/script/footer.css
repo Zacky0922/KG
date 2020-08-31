@@ -1,8 +1,10 @@
 section#kgFooter{
+    --ft-banner-width: max(min(200px,30vw),100px);
+
     background: #114;
     color:#fff;
     text-align: center;
-    margin-top:var(--z-spacing);
+    margin-top:20vh;
     padding: 0;
 }
 section#kgFooter a{
@@ -11,17 +13,17 @@ section#kgFooter a{
 section#kgFooter div#ft_gototop{
     text-align:right;
     margin: 0;
-    padding: 0;
+    padding: 0 var(--z-padding) 0 0;
 }
 section#kgFooter div#ft_banners{
-    justify-content: center;
     display: grid;
+    justify-content: center;
     gap:var(--z-spacing);
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(auto-fit, var(--ft-banner-width));
     margin:var(--z-spacing) 0;
 }
 section#kgFooter div#ft_banners img{
-    width:200px;
+    width: var(--ft-banner-width);
 }
 section#kgFooter div#ft_kg{
     padding: var(--z-spacing) 0;

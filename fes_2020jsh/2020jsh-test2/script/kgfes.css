@@ -2,12 +2,35 @@
 @import "./header.css";
 @import "./footer.css";
 @import "./menu.css";
+@import "./countdown.css";
+@import "./ele/h.css";
+@import "./bgFloater.css";
 
-* {
-    outline:#00f solid;
-}
+/* Google Font */
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
 
 :root{
     --z-spacing: 20px;
     --z-padding: 10px;
+    --z-border-color:#114;
+    --z-letterspacing: 0.1em;
+}
+
+* {
+    /*
+    outline:#00f solid;
+    /* */
+    font-family: 'Kosugi Maru', sans-serif;
+    font-size:  16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+/* 大枠のデザイン */
+body{
+    background: url("../pict/bgkg.png");
+}
+
+body > div.container > *{
+    background:rgba(255,255,255,0.9);
 }

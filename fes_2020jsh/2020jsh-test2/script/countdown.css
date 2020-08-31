@@ -1,0 +1,45 @@
+/* カウントダウン */
+/*
+    table#KGcountdownWrap
+        tfoot
+            tr
+                td
+                    span#KGcountdownMs  ・・・カラーバー
+            tr
+                td                      ・・・until...
+        tbody#KGcountdown
+            tr  (th * 5)                ・・・Numbers
+            tr  (td * 5)                ・・・units
+*/
+
+table#KGcountdownWrap{
+    margin: var(--z-spacing) auto;
+    border-top: var(--z-border-color) 5px solid;
+    border-bottom: var(--z-border-color) 5px solid;
+    border-collapse: collapse;
+    table-layout: fixed !important;
+    width:min(calc(95vw - 30px),300px);
+}
+table#KGcountdownWrap *{
+    margin:0;
+    padding:0;
+    font-family: 'Sriracha', cursive !important;
+    text-align: center;
+    white-space: nowrap;
+    border:none;
+    line-height: 1;
+}
+table#KGcountdownWrap tbody th{
+    font-size:  2.5em;
+    padding:    var(--z-padding) 0 0;
+}
+table#KGcountdownWrap tfoot tr:first-child{
+    line-height: 0;
+    font-size:0;
+}
+table#KGcountdownWrap tfoot tr:nth-child(2) > *{
+    padding:    0 0 var(--z-padding);
+}
+table#KGcountdownWrap tfoot span{
+    box-shadow: 1px 1px 2px rgba(63,63,63,0.8);
+}

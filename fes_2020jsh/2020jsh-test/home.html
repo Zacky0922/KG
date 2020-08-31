@@ -55,72 +55,7 @@
 
 
 		<section style="grid-area:news">
-			<div class="zCentering">
-				<span id="countdownMsg"></span>
-			</div>
-			<script>
-				(function () {
-					let d = zDate.duration(new Date(2020, 9 - 1, 12))["day"];
-					if (d > 0) {
-						document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）まで、あと" + d + "日です。";
-					} else if (d == 0) {
-						document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）当日です！";
-					} else {
-						document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。";
-					}
-
-				})();
-			</script>
-			<table id="KGcountdownWrap">
-				<tfoot>
-					<tr>
-						<td colspan="5">
-							<span id="KGcountdownMs"
-								style="display:inline-block;height:2px;transition:65ms linear"></span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="5">
-							until Saturday,12th September 2020,10:00
-						</td>
-					</tr>
-				</tfoot>
-				<tbody id="KGcountdown"></tbody>
-			</table>
-			<script>
-				//カウントダウン設定
-				//制限時間以降が未設定……
-				let w_old = 0;
-				let w_diff = 0;
-				window.addEventListener('load', (event) => {
-
-					let zCountdown_ = setInterval(function () {
-						let d = zDate.duration(new Date(2020, 9 - 1, 12, 10, 00, 00));
-						let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
-						document.getElementById("KGcountdown").innerHTML = "" +
-							"<tr>" +
-							"<th>" + d["week"] + "</th>" +
-							"<th>" + d["day"] % 7 + "</th>" +
-							"<th>" + d["hour"] % 24 + "</th>" +
-							"<th>" + d["min"] % 60 + "</th>" +
-							"<th>" + d["sec"] % 60 + "</th>" +
-							"</tr>" +
-							"<tr>" +
-							"<td>" + "week" + (d["week"] <= 1 ? s : "s") + "</td>" +
-							"<td>" + "day" + (d["day"] % 7 <= 1 ? s : "s") + "</td>" +
-							"<td>" + "hour" + (d["hour"] % 24 <= 1 ? s : "s") + "</td>" +
-							"<td>" + "minute" + (d["min"] % 60 <= 1 ? s : "s") + "</td>" +
-							"<td>" + "second" + (d["sec"] % 60 <= 1 ? s : "s") + "</td>" +
-							"</tr>";
-						let w_new = (d["sec"] % 2 == 0 ? d["msec"] % 1000 : 1000 - (d["msec"] % 1000));
-						w_diff = w_new - w_old;
-						document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
-						document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-						document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d["msec"] % 2000) / 2000 * 360) + ",100%,50%)";
-						w_old = w_new;
-					}, 66);
-				});
-			</script>
+			
 			<h2 class="zHeadList">NEWS</h2>
 			<ul class="news">
 				<li>

@@ -9,12 +9,10 @@ h2,h3{
     z-index:5;
 }
 h2{
-    margin: calc(8 * var(--z-spacing)) 0 calc(2 * var(--z-spacing));
+    margin: calc(3 * var(--z-spacing)) 0;
     font-size:130%;
 }
-h2:first-child{
-    margin: calc(2 * var(--z-spacing)) 0;
-}
+
 
 h2::before,
 h2::after{

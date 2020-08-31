@@ -4,18 +4,21 @@ section#kgHeader{
     z-index:    100;
     padding:    10px;
     text-align: left;
+    color:  #fff;
 }
-section#kgHeader div.headTitle{
-    color:  #fff !important;
+section#kgHeader a{
+    color:  #fff;
 }
-section#kgHeader div.headTitle div#KGfesTitle,
-section#kgHeader div.headTitle div#KGfesTitle a{
+section#kgHeader div#KGfesMenuWrap ul li a{
+    color:  #113;
+}
+section#kgHeader div#KGfesTitle,
+section#kgHeader div#KGfesTitle a{
     font-size:  xx-large;
-    color:  #fff !important;
     text-shadow:    2px 2px 3px rgba(0, 0, 192, 0.9) !important;
     text-decoration: none;
 }
-section#kgHeader div.headTitle div#KGfesPeriod{
+section#kgHeader div#KGfesPeriod{
     font-size:  larger;
     text-shadow:    2px 2px 3px rgba(0, 0, 192, 0.9) !important;
 }
