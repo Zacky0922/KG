@@ -27,11 +27,7 @@
     <link rel="stylesheet" type="text/css" href="./script/kgfes.css">
 
     <title>Home</title>
-    <script>
-        setTimeout(function(){
-            location.reload(true);
-        },3000);
-    </script>
+
 </head>
 
 <body>
@@ -86,7 +82,7 @@
                     let w_diff = 0;
                     window.addEventListener('load', (event) => {
                         let zCountdown_ = setInterval(function () {
-                            let d = (new Date(2020, 9 - 1, 12)).getTime() - (new Date()).getTime();
+                            let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
                             let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
                             document.getElementById("KGcountdown").innerHTML = "" +
                                 "<tr>" +

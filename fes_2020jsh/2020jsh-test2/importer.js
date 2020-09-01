@@ -1,18 +1,14 @@
 // デバッグモードからの遷移は、再度デバッグモードへ自動遷移
 import 'https://code.jquery.com/jquery-3.3.1.min.js';
-//import * as z from "https://fes.kgef.ac.jp/exScripts/aggregater.mjs"; //念のため？
-//import { zList, burgerMenu, getGicon, zDebug, zExportTest } from "./script/exScripts/aggregater.js"; //念のため？
-import "./script/exScripts/aggregater.js";
-
+import { zList, burgerMenu, getGicon, zDebug } from "../exScripts/aggregater.js";
 import { setHeader } from "./script/header.js";
 import { setFooter } from "./script/footer.js";
 import { setBGfloater } from "./script/bgFloater.js";
-//import { kgMenu } from "./script/menu.js";
+
 
 // 初期設定
 (function () {
-    document.title = document.title + " - 五峯祭☆国際学院中高" +
-        "ふぁー";
+    document.title = document.title + " - 五峯祭☆国際学院中高";
 })();
 
 window.addEventListener('load', (event) => {
@@ -28,7 +24,7 @@ window.addEventListener('load', (event) => {
     });
     // 背景（色つきふわふわ）
     document.body.appendChild(setBGfloater());
-    /*
+
     // メニュー
     let img = document.createElement("img");
     img.src = "pict/logo.png";
@@ -77,10 +73,6 @@ window.addEventListener('load', (event) => {
     // バーガーメニュー
     burger.setBurger();
 
-    // old
-    //setMenu("KGfesMenuWrap", root);   //最後にやる＝menuを最前面に出すため
 
-    //zExportTest();
-    */
 });
 
