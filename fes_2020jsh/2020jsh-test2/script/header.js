@@ -1,4 +1,3 @@
-
 export function setHeader(id, root = "./") {
     /*  section#header
             div.headTitle

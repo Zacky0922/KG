@@ -1,4 +1,4 @@
-import 'https://code.jquery.com/jquery-3.3.1.min.js';
+
 
 export function setFooter(id, root = "./") {
     let ft = document.getElementById(id);
@@ -32,13 +32,5 @@ export function setFooter(id, root = "./") {
         a.appendChild(img);
         document.getElementById("ft_banners").appendChild(a);
     }
-
-
-    // 先頭に戻る際の
-    var gototop = $('#ft_gototop');
-    gototop.click(function () {
-        $('body, html').animate({ scrollTop: 0 }, 500);
-        return false;
-    });
 }
 

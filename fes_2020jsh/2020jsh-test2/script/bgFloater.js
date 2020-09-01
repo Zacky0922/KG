@@ -6,11 +6,16 @@ export function setBGfloater() {
     for (let i = 0; i < count * 3; i++) {
         let li = document.createElement("li");
         li.setAttribute("style",
+            // floaterサイズ
             "padding:" + Math.round(Math.random() * 60 + 15) + "px;" +
+            // 角丸四角の丸み具合
             "border-radius: " + Math.round(Math.random() * 25 + 20) + "%;" +
+            // 位置
             "left:" + Math.round(100 / (count + 1) * i) + "%;" +
+            // 色
             "background-color:hsl(" + Math.round(Math.random() * 360) + ",100%,80%);" +
-            "animation:floating " + Math.round(Math.random() * 15 + 5) + "s linear " +
+            // 速度・時間差
+            "animation:floating " + Math.round(Math.random() * 15 + 8) + "s linear " +
             + Math.round(Math.random() * 10) + "s infinite;"
         );
         ul.appendChild(li);

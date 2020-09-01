@@ -1,6 +1,6 @@
-import {zList,burgerMenu,getGicon,zDebug} from "https://fes.kgef.ac.jp/exScripts/aggregater.js";
+//import {zList,burgerMenu,getGicon,zDebug} from "https://fes.kgef.ac.jp/exScripts/aggregater.js";
 
-export function setMenu(id,root = "./") {
+function setMenu(id,root = "./") {
 
     // メニュー
     // burgerメニュー：小画面用アイコンlabel_inner要素
@@ -59,5 +59,15 @@ export function setMenu(id,root = "./") {
     
     document.getElementById(id).appendChild(burger.get());
     burger.setBurger();
+}
 
-};
+class kgMenu{
+
+    constructor() {
+    }
+    //ラベルの中身生成
+    getLabel() {
+    }
+}
+
+export {kgMenu};

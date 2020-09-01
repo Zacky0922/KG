@@ -4,6 +4,7 @@
 @import "./menu.css";
 @import "./countdown.css";
 @import "./ele/h.css";
+@import "./ele/table.css";
 @import "./bgFloater.css";
 
 /* Google Font */
@@ -32,5 +33,28 @@ body{
 }
 
 body > div.container > *{
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,0.87);
+}
+
+
+/* スクロールバー設定 */
+body *::-webkit-scrollbar{
+	width:	10px;
+	height:	10px
+}
+
+body *::-webkit-scrollbar-track{
+	background:	    rgba(230,230,230,0.5);
+	border-radius:	10px;
+	box-shadow: inset 0 0 3px #666; 
+}
+body *::-webkit-scrollbar-thumb{
+	background: rgba(180,180,180,0.5);
+	border:			1px solid #333;
+	border-radius: 10px;
+	box-shadow: none;
+}
+
+.noScrollbar::-webkit-scrollbar{
+	display:	none;
 }

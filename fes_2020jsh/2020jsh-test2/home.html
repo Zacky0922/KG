@@ -27,7 +27,11 @@
     <link rel="stylesheet" type="text/css" href="./script/kgfes.css">
 
     <title>Home</title>
-
+    <script>
+        setTimeout(function(){
+            location.reload(true);
+        },3000);
+    </script>
 </head>
 
 <body>
@@ -35,8 +39,9 @@
         <section id="kgHeader" class="row"></section>
         <section class="row">
             <section class="col-xl-8 col-lg-8 col-md-8">
-                <div class="zCentering animate__animated animate__pulse animate__infinite animate__slow" style="font-size:x-large;margin:calc(2 * var(--z-spacing)) auto;">
-                    国際学院中学校高等学校<br/>
+                <div class="zCentering animate__animated animate__pulse animate__infinite animate__slow"
+                    style="font-size:x-large;margin:calc(2 * var(--z-spacing)) auto;">
+                    国際学院中学校高等学校<br />
                     「第23回 五峯祭」特設サイトへようこそ！
                 </div>
                 <div class="zCentering">
@@ -60,12 +65,12 @@
                         <tbody id="KGcountdown"></tbody>
                     </table>
                 </div>
-                <script type="module">
-                    import { zDate } from "https://fes.kgef.ac.jp/exScripts/aggregater.js";
+                <script type="module" crossorigin="use-credentials">
 
                     // 日付のみカウントダウン
                     (function () {
-                        let d = zDate.duration(new Date(2020, 9 - 1, 12))["day"];
+
+                        let d = Math.ceil(((new Date(2020, 9 - 1, 12)).getTime() - (new Date()).getTime()) / (1000 * 60 * 60 * 24));
                         if (d > 0) {
                             document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）まで、あと" + d + "日です。";
                         } else if (d == 0) {
@@ -81,36 +86,36 @@
                     let w_diff = 0;
                     window.addEventListener('load', (event) => {
                         let zCountdown_ = setInterval(function () {
-                            let d = zDate.duration(new Date(2020, 9 - 1, 12, 10, 0, 0));
+                            let d = (new Date(2020, 9 - 1, 12)).getTime() - (new Date()).getTime();
                             let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
                             document.getElementById("KGcountdown").innerHTML = "" +
                                 "<tr>" +
-                                "<th>" + d["day"] + "</th>" +
-                                "<th>" + d["hour"] % 24 + "</th>" +
-                                "<th>" + d["min"] % 60 + "</th>" +
-                                "<th>" + d["sec"] % 60 + "</th>" +
+                                "<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
+                                "<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
+                                "<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
+                                "<th>" + Math.floor(d / 1000) % 60 + "</th>" +
                                 "</tr>" +
                                 "<tr>" +
-                                "<td>" + "day" + (d["day"] % 7 <= 1 ? s : "s") + "</td>" +
-                                "<td>" + "hour" + (d["hour"] % 24 <= 1 ? s : "s") + "</td>" +
-                                "<td>" + "minute" + (d["min"] % 60 <= 1 ? s : "s") + "</td>" +
-                                "<td>" + "second" + (d["sec"] % 60 <= 1 ? s : "s") + "</td>" +
+                                "<td>" + "day" + "</td>" +
+                                "<td>" + "hour" + "</td>" +
+                                "<td>" + "minute" + "</td>" +
+                                "<td>" + "second" + "</td>" +
                                 "</tr>";
-                            let w_new = (d["sec"] % 2 == 0 ? d["msec"] % 1000 : 1000 - (d["msec"] % 1000));
+                            let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
                             w_diff = w_new - w_old;
                             document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
                             document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-                            document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d["msec"] % 2000) / 2000 * 360) + ",100%,50%)";
+                            document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
                             w_old = w_new;
                         }, 66);
                     });
                 </script>
                 <h2>五峯祭チラシ</h2>
                 <style>
-                    .flyerWrap img{
-                        width:300px;
-                        max-width:min(300px,90vw);
-                        margin:var(--z-spacing);
+                    .flyerWrap img {
+                        width: 300px;
+                        max-width: min(300px, 90vw);
+                        margin: var(--z-spacing);
                     }
                 </style>
                 <div class="zCentering flyerWrap">
@@ -124,37 +129,47 @@
                 <h2>Site Map</h2>
                 <ul style="margin:var(--z-spacing) auto;">
                     <li>
-                        <a href="home.html">Home</a><br/>
+                        <a href="home.html">Home</a><br />
                         このページです。
                     </li>
                     <li>
-                        <a href="intro.html">Introduction</a><br/>
+                        <a href="intro.html">Introduction</a><br />
                         校長・実行委員長・生徒会長の挨拶です。
                     </li>
                     <li>
-                        <a href="events.html">Events</a><br/>
+                        <a href="events.html">Events</a><br />
                         有志の出展団体一覧です。
                     </li>
                     <li>
-                        <a href="live.html">Live!!</a><br/>
+                        <a href="live.html">Live!!</a><br />
                         当日の生放送のご案内です。
                     </li>
                     <li>
-                        <a href="gallery.html">Gallery</a><br/>
+                        <a href="gallery.html">Gallery</a><br />
                         出展作品（映像以外）のご紹介です。
                     </li>
                     <li>
-                        <a href="contest.html">Contest</a><br/>
+                        <a href="contest.html">Contest</a><br />
                         各コンテストのご紹介です。
                     </li>
                     <li>
-                        <a href="info.html">Information</a><br/>
+                        <a href="info.html">Information</a><br />
                         その他、各種情報です。
                     </li>
                 </ul>
             </section>
+            <section>
+                <div id="console_log__"></div>
+                <script>
+                    setTimeout(function () {
+                        console.log = function (log) {
+                            document.getElementById('console_log__').innerHTML += log + "<br>";
+                        }
+                    }, 3000);
+                </script>
+            </section>
         </section>
-        <section id="kgFooter" class="row">フッター</section>
+        <section id="kgFooter" class="row"></section>
     </div>
 </body>
 
