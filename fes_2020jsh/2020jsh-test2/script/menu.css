@@ -4,11 +4,12 @@ div#KGfesMenuWrap > ul{
     padding:0;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap:var(--z-spacing);  /* safari用 */
     gap:var(--z-spacing);
 }
 
 div#KGfesMenuWrap > ul > li{
-    display:    inline-block;
+    display: inline-block;
     color:  #114;
     background:rgba(255,255,255,0.8);
     text-align:center;

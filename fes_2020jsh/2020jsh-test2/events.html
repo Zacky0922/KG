@@ -48,6 +48,18 @@
             padding: var(--z-spacing);
         }
 
+        @media (max-width:767px) {
+            div.gpContent {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "gpImg"
+                    "gpName"
+                    "gpTitle"
+                    "gpText";
+
+            }
+        }
+
         div.gpContent>img {
             grid-area: gpImg;
             width: var(--kg-gpImg-width);
@@ -115,6 +127,11 @@
                 column-count: 2;
             }
         }
+
+        .dw__focus-curtain {
+            opacity: .40;
+            background: #113;
+        }
     </style>
     <title>Events</title>
 
@@ -132,7 +149,6 @@
                     ただし、「縦並び」が原則なので、改段での調整を考えると、あまり意味を持たせた整列は、逆に見づらいかも知れません。<br />
                     スマホ版のレイアウトも、縦長になりすぎる気がするので、要検討…（アイディアください）
                 </div>
-
                 <div class="gpList dw">
                     <div class="gpWrap dw-panel dw-panel--focus">
                         <div class="gpContent dw-panel__content">
@@ -343,7 +359,7 @@
                     </div>
                     <div class="gpWrap dw-panel dw-panel--focus">
                         <div class="gpContent dw-panel__content">
-                            <img src="./pict/gp/未提出.png">
+                            <img src="./pict/gp/1hk.png">
                             <div class="gpName">1年H・K組</div>
                             <div class="gpTitle">「終わらないSHR」<br />（リアル脱出ゲーム風ドラマ）</div>
                             <div class="gpText">
@@ -352,8 +368,8 @@
                                 五峯祭のために謎を考えたり、小道具の準備をしたりなど様々なことを頑張りました。<br />
                                 どうぞお楽しみください。
                                 <h5>出展概要</h5>
-                                目が覚めると体が拘束され、教室に閉じ込められていた。<br />
-                                まわりを見ると、同じくらいの年の子たちが、私を合わせて4人いた。<br />
+                                目が覚めると体を拘束され、教室に閉じ込められていた。<br />
+                                4人は謎を解いて、教室から脱出しようとするのだが、、、
                                 <div
                                     style="border-radius: var(--z-spacing);background:#dde;margin:var(--z-spacing);padding:var(--z-spacing);">
                                     あぁそうか。だからあの時“あの子“はそう言ったのか。<br />
@@ -395,7 +411,7 @@
                     </div>
                     <div class="gpWrap dw-panel dw-panel--focus">
                         <div class="gpContent dw-panel__content">
-                            <img src="./pict/gp/未提出.png">
+                            <img src="./pict/gp/js_act.png">
                             <div class="gpName">中学校</div>
                             <div class="gpTitle">合唱・劇</div>
                             <div class="gpText debug">
@@ -455,7 +471,7 @@
                     </div>
                     <div class="gpWrap dw-panel dw-panel--focus">
                         <div class="gpContent dw-panel__content">
-                            <img src="./pict/gp/未提出.png">
+                            <img src="./pict/gp/2k.png">
                             <div class="gpName">2年K組</div>
                             <div class="gpTitle">桃太郎</div>
                             <div class="gpText">
@@ -497,12 +513,25 @@
                             <div class="gpName"></div>
                             <div class="gpTitle">その他、検討中？の団体</div>
                             <div class="gpText">
-                                3年D組<br />OGOs<br />かるた同好会
+                                3年D組<br />OGOs<br />決定版の連絡がなくて、どう扱えばいいのかわかりません…
                             </div>
                         </div>
                     </div>
                     <div class="dw__focus-curtain"></div>
                 </div>
+                <script type="module">
+                    import {zDebug} from "./importer.js";
+                    (function () {
+                        if (zDebug.getOnline() &&
+                            (new Date()).getTime() < (new Date(2020, 9 - 1, 12)).getTime()
+                        ) {
+                            let gpFt = document.getElementsByClassName("gpFt");
+                            for (let i = 0; i < gpFt.length; i++) {
+                                gpFt[i].classList.add("zUndisp");
+                            }
+                        }
+                    })()
+                </script>
             </section>
             <section>
                 <h2 class="zHeadList">コンテンツ一覧</h2>

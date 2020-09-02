@@ -4,7 +4,7 @@ import { zList, burgerMenu, getGicon, zDebug } from "../exScripts/aggregater.js"
 import { setHeader } from "./script/header.js";
 import { setFooter } from "./script/footer.js";
 import { setBGfloater } from "./script/bgFloater.js";
-
+export { zList, burgerMenu, getGicon, zDebug  };
 
 // 初期設定
 (function () {
@@ -65,14 +65,21 @@ window.addEventListener('load', (event) => {
             null,
             "inactive_menu"
         );
-        burger.addLink(getGicon("fact_check").outerHTML + " Contest", root + "contest.html");
-        burger.addLink(getGicon("info").outerHTML + " Info", root + "info.html");
     }
+    burger.addLink(getGicon("fact_check").outerHTML + " Contest", root + "contest.html");
+    burger.addLink(getGicon("info").outerHTML + " Info", root + "info.html");
+
     // headerメニュー
     document.getElementById("KGfesMenuWrap").appendChild(burger.get());
     // バーガーメニュー
     burger.setBurger();
 
-
+    // 読込完了処理
+    if (!zDebug.getOnline() ||
+        (new Date()).getTime() > (new Date(2020, 9 - 1, 12).getTime())
+    ) {
+            zDebug.setDebugEle();    
+    }
+    
 });
 

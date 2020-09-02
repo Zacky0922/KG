@@ -3,6 +3,7 @@ export function setBGfloater() {
     ul.id = "bgWrap";
     //パーティクル設定（画面幅に比例した数を生成。負荷を考慮してmax30）
     let count = Math.min(Math.round(window.innerWidth / 80), 30);
+    let color = Math.round(Math.random() * 360);
     for (let i = 0; i < count * 3; i++) {
         let li = document.createElement("li");
         li.setAttribute("style",
@@ -13,7 +14,7 @@ export function setBGfloater() {
             // 位置
             "left:" + Math.round(100 / (count + 1) * i) + "%;" +
             // 色
-            "background-color:hsl(" + Math.round(Math.random() * 360) + ",100%,80%);" +
+            "background-color:hsl(" + (color = (color + Math.round(Math.random() * 180 + 90)) % 360) + ",100%,80%);" +
             // 速度・時間差
             "animation:floating " + Math.round(Math.random() * 15 + 8) + "s linear " +
             + Math.round(Math.random() * 10) + "s infinite;"

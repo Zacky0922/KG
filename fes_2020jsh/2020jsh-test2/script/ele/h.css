@@ -6,7 +6,6 @@ h2,h3{
     text-align:center;
     padding:var(--z-spacing);
     position: relative;
-    z-index:5;
 }
 h2{
     margin: calc(3 * var(--z-spacing)) 0;
