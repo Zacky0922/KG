@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics by KG-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116915593-1');
+    </script>
+
+    <!-- 画面設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- JS/CSS -->
+    <script type="module" src="./importer.js"></script>
+    <link rel="stylesheet" type="text/css" href="./script/kgfes.css">
+
+    <title>Contest</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <section id="kgHeader" class="row"></section>
+        <section class="row">
+            <section class="col-xl-6 col-lg-6 col-md-6">
+                <h2 class="zHeadList">優秀企画コンテスト</h2>
+                <div class="zCentering">
+                    （準備中）
+                </div>
+
+                <div class="debug">一般投票あり？</div>
+            </section>
+            <section class="col-xl-6 col-lg-6 col-md-6">
+                <h2 class="zHeadList">クラス動画コンテスト</h2>
+                <div class="debug">何か説明文が必要？ or リンク先にあれば、それでよし？</div>
+                <div class="zCentering">
+                    <a href="./classmovie.html" class="preHide">
+                        <img src="./pict/ft/classmovie.png">
+                    </a>
+                    <img src="./pict/ft/classmovie.png" class="proHide">
+
+                </div>
+            </section>
+        </section>
+        <section class="row">
+            <section>
+                <h2 class="zHeadList">ポスターコンテスト</h2>
+                <div class="zCentering">
+                    事前に校内で行われた「五峯祭ポスターコンテスト」の入賞作品です。
+                </div>
+                <style>
+                    div.posterWrap {
+                        display: inline-block;
+                    }
+
+                    .gold,
+                    .silver,
+                    .bronze {
+                        padding: calc(2 * var(--z-spacing));
+                        box-shadow: 0 0 3px 1px #000;
+                    }
+
+                    .gold {
+                        background: var(--z-preset-holo-gold);
+                    }
+
+                    .silver {
+                        background: var(--z-preset-holo-silver);
+                    }
+
+                    .bronze {
+                        background: var(--z-preset-holo-bronze);
+                    }
+
+                    .gold img,
+                    .silver img,
+                    .bronze img {
+                        max-width: min(300px, 75vw);
+                        border: #fff solid var(--z-padding);
+                        background: #fff;
+                    }
+
+                    .posterName {
+                        margin: var(--z-spacing);
+                        padding: var(--z-spacing);
+                        background: #eed;
+                        box-shadow: 0 0 3px 1px #000;
+                    }
+                </style>
+                <h3>最優秀作品</h3>
+                <div class="zCentering">
+                    <div class="posterWrap">
+                        <div class="gold">
+                            <img src="./3d/pict/poster0.jpg">
+                        </div>
+                        <div class="zCentering">
+                            <div class="posterName">
+                                3年K組　大村 俊介<br />（国際学院中学校出身）
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zCentering">
+                        <div
+                            style="margin:var(--z-spacing,10px);padding:var(--z-padding,5px);background:rgba(255,232,232,0.8);">
+                            この度は私の作品が最優秀作品に選ばれて光栄に思っています。<br />
+                            今回の五峯祭は初のオンライン開催。AR技術などを使用した作品も用意されているということで、みんなで創った作品を画面を通して見ることで初めて完成する。というオンラインならではのテーマを意識したデザインになっています。1人ひとりが団結して今までにないこの状況の中で今までにない最高な五峯祭にしましょう！
+                        </div>
+                    </div>
+                </div>
+                <h3>優秀作品</h3>
+                <div class="zCentering">
+                    <div class="posterWrap">
+                        <div class="silver">
+                            <img src="./3d/pict/poster1.jpg">
+                        </div>
+                        <div class="zCentering">
+                            <div class="posterName">
+                                3年H組　片栁 まりも<br />（さいたま市立岩槻中学校出身）
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="posterWrap">
+                        <div class="silver">
+                            <img src="./3d/pict/poster2.jpg">
+                        </div>
+                        <div>
+                            <div class="zCentering">
+                                <div class="posterName">
+                                    2年K組　山﨑 柚奈<br />（国際学院中学校出身）
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>優良作品</h3>
+                <div class="zCentering">
+                    <div class="posterWrap">
+                        <div class="bronze">
+                            <img src="./3d/pict/poster3.jpg">
+                        </div>
+                        <div class="zCentering">
+                            <div class="posterName">
+                                1年A組　熊谷 歩香<br />（伊奈町立小針中学校出身）
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section id="kgFooter" class="row"></section>
+    </div>
+</body>
+
+</html>

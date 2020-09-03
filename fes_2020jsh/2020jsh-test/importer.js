@@ -4,11 +4,12 @@ import { zList, burgerMenu, getGicon, zDebug } from "../exScripts/aggregater.js"
 import { setHeader } from "./script/header.js";
 import { setFooter } from "./script/footer.js";
 import { setBGfloater } from "./script/bgFloater.js";
-export { zList, burgerMenu, getGicon, zDebug  };
+export { zList, burgerMenu, getGicon, zDebug, setBGfloater};
 
 // 初期設定
 (function () {
     document.title = document.title + " - 五峯祭☆国際学院中高";
+
 })();
 
 window.addEventListener('load', (event) => {
@@ -78,8 +79,25 @@ window.addEventListener('load', (event) => {
     if (!zDebug.getOnline() ||
         (new Date()).getTime() > (new Date(2020, 9 - 1, 12).getTime())
     ) {
-            zDebug.setDebugEle();    
+        zDebug.setDebugEle();
     }
-    
+
+   
+    if (
+        !zDebug.getOnline() ||
+        (new Date()).getTime() >= (new Date(2020, 9 - 1, 12)).getTime()
+    ) {
+         // 当日まで非表示 .preHide
+        let ele = document.getElementsByClassName("preHide");
+        while(ele.length != 0) {
+            ele[0].classList.remove("preHide");
+        }
+    } else {
+        // 当日以降非表示 .proHide
+        let ele = document.getElementsByClassName("proHide");
+        while (ele.length != 0) {
+            ele[0].classList.remove("proHide");
+        }
+    }
 });
 

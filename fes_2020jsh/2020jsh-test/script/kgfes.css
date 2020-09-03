@@ -58,3 +58,12 @@ body *::-webkit-scrollbar-thumb{
 .noScrollbar::-webkit-scrollbar{
 	display:	none;
 }
+
+
+/* 事前非表示項目 */
+.preHide{
+    display:none !important;
+}
+.proHide{
+    display:none !important;
+}

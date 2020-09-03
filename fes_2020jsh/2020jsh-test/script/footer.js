@@ -14,19 +14,22 @@ export function setFooter(id, root = "./") {
         "</div>";
 
 
-    // フッターバナー設定[href, target, img.src]
+    // フッターバナー設定[href, target, img.src, a.class]
     let ftBanner = [
         // クラス動画コンテスト
-        [root + "classmovie.html", "_self", root + "pict/ft/classmovie.png"],
+        [root + "classmovie.html", "_self", root + "pict/ft/classmovie.png","preHide"],
         // ARコンテンツバナー
-        [root + "gallery.html#ar_gallery", "_self", root + "pict/ft/ar_banner.png"],
+        [root + "gallery.html#ar_gallery", "_self", root + "pict/ft/ar_banner.png", "preHide"],
         // 0912個別相談
-        ["https://jsh.kgef.ac.jp/news/14865/", "_blank", root + "pict/ft/0912soudan.png"]
+        ["https://jsh.kgef.ac.jp/news/14865/", "_blank", root + "pict/ft/0912soudan.png", null]
     ];
     for (let i = 0; i < ftBanner.length; i++) {
         let a = document.createElement("a");
         a.href = ftBanner[i][0];
         a.target = ftBanner[i][1];
+        if (ftBanner[i][3] != null) {
+            a.classList.add(ftBanner[i][3]);
+        }
         let img = document.createElement("img");
         img.src = ftBanner[i][2];
         a.appendChild(img);
