@@ -17,7 +17,7 @@ export function setBGfloater() {
             "background-color:hsl(" + (color = (color + Math.round(Math.random() * 180 + 90)) % 360) + ",100%,80%);" +
             // 速度・時間差
             "animation:floating " + Math.round(Math.random() * 15 + 8) + "s linear " +
-            + Math.round(Math.random() * 10) + "s infinite;"
+            + Math.round(Math.random() * 20) + "s infinite;"
         );
         ul.appendChild(li);
     }

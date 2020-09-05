@@ -49,10 +49,10 @@
 		.zBtn {
 			display: inline-block;
 			border: #226 1px solid;
-			background:#ccf;
-			padding:10px;
-			margin:10px;
-			color:#113;
+			background: #ccf;
+			padding: 10px;
+			margin: 10px;
+			color: #113;
 		}
 	</style>
 
@@ -72,6 +72,34 @@
 			初のオンライン開催！<br />
 			今までにない五峯祭をご期待ください！
 		</div>
+		<div>
+			<a href="https://youtu.be/xC86rXyoyMw" target="_blank" class="zBtn">
+				五峯祭プレ放送！<br />
+				9月5日(土) 11時～<br />
+				（YouTube Live）
+			</a>
+		</div>
+
+		<div id="preOpen">
+			<a href="./home.html" class="zBtn">
+				五峯祭 特設サイトはこちら
+			</a>
+		</div>
+		<style>
+			#preOpen {
+				display: none;
+			}
+		</style>
+		<script>
+			(function () {
+				if (
+					(new Date()).getTime() > (new Date(2020, 9 - 1, 5, 11, 0, 0).getTime())
+				) {
+					let ele = document.getElementById("preOpen");
+					ele.id = "Opened";
+				}
+			})()
+		</script>
 		<div class="xScrollable">
 			<table id="KGcountdownWrap">
 				<tfoot>
@@ -121,7 +149,6 @@
 				}, 66);
 			});
 		</script>
-
 		<div>
 			<a href="./3d/adAR.html" class="zBtn">
 				AR五峯祭をのぞいてみよう！<br />
@@ -130,7 +157,7 @@
 			<a href="./3d/adVR.html">（カメラ・マーカー不要版）</a>
 		</div>
 		<div>
-			※ARの動作には専用マーカーが必要です。<br/>
+			※ARの動作には専用マーカーが必要です。<br />
 			<a href="./pict/flyer/flyer.pdf" target="_blank">こちらのチラシ</a>をご利用ください。
 		</div>
 		<div id="HowToAR">

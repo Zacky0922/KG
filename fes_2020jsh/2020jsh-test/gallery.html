@@ -7,7 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
     <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
-    <meta name="robots" content="noindex,nofollow" />
 
     <!-- Global site tag (gtag.js) - Google Analytics by KG-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
@@ -38,20 +37,20 @@
             <h2 class="zHeadList">食物調理コースが異文化料理を作ってみた！！</h2>
             <h3>レシピダウンロード</h3>
             <div class="zCentering">
-                    <ul>
-                        <li>
-                            <a target="_blank" href="./gallery/recipe/スリランカ料理.pdf">スリランカ料理</a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="./gallery/recipe/ペルー料理.pdf">ペルー料理</a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="./gallery/recipe/ミャンマー料理.pdf">ミャンマー料理</a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="./gallery/recipe/モンゴル料理.pdf">モンゴル料理</a>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        <a target="_blank" href="./gallery/recipe/スリランカ料理.pdf">スリランカ料理</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="./gallery/recipe/ペルー料理.pdf">ペルー料理</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="./gallery/recipe/ミャンマー料理.pdf">ミャンマー料理</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="./gallery/recipe/モンゴル料理.pdf">モンゴル料理</a>
+                    </li>
+                </ul>
             </div>
 
             <h2 class="zHeadList">文芸同好会</h2>
@@ -145,6 +144,9 @@
                     <div class="bookCover">小説「日常」</div>
                 </div>
             </div>
+            <div class="zCentering">
+                <img src="./gallery/literature_pict.jpg" style="width:300px;max-width: 70vw;">
+            </div>
             <h2 class="zHeadList">かるた同好会</h2>
             <style>
                 .karutaContent {
@@ -181,18 +183,167 @@
                 .libContent {
                     border: 1px #000 solid;
                 }
+
+                .libContent>div>img {
+                    width:100%;
+                    height:140%;
+                }
+
+                /* 縦 */
+                .lib_v img {
+                    width: 100%;
+                    height:140%;
+                }
+
+                /* 横 */
+                .lib_h {
+                    height: calc( calc(100% - 40px) * 0.8 + 40px);
+                }
             </style>
             <div class="libList dw">
-                <div class="libWrap dw-panel dw-flip dw-flip--sm">
+                <div class="libWrap dw-panel dw-flip lib_v">
                     <div class="libContent dw-panel__content dw-flip__content">
                         <div class="dw-flip__panel dw-flip__panel--front">
-                            ポップ
+                            <img src="./gallery/library/54.jpg">
                         </div>
                         <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報（標準状態で表示されないのは、著作人格権的にマズいかも知れない…）
+                            書籍情報
                         </div>
                     </div>
                 </div>
+
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/cake.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/chihaya.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/death.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_v">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/draw.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_v">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/kino.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/kudo.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/omoi.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/oni.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_v">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/pan.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/samurai.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_v">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/shokudo.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/summer.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+                <div class="libWrap dw-panel dw-flip lib_h">
+                    <div class="libContent dw-panel__content dw-flip__content">
+                        <div class="dw-flip__panel dw-flip__panel--front">
+                            <img src="./gallery/library/yokai.jpg">
+                        </div>
+                        <div class="dw-flip__panel dw-flip__panel--back">
+                            書籍情報
+                        </div>
+                    </div>
+                </div>
+
                 <div class="dw__focus-curtain"></div>
             </div>
             <h2 class="zHeadList" id="ar_gallery">ARギャラリー</h2>
