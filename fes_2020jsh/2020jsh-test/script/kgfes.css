@@ -8,13 +8,17 @@
 @import "./bgFloater.css";
 
 /* Google Font */
-@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Sriracha&family=Kosugi+Maru&family=Noto+Serif+JP&display=swap";
 
 :root{
     --z-spacing: 20px;
     --z-padding: 10px;
     --z-border-color:#114;
     --z-letterspacing: 0.1em;
+    --z-ele-bgcolor: #fff;
+    --z-ele-bgcolor-alt: #ecc;
+    --z-ele-border:2px solid #114;
+    --z-font-color:#114;
 }
 
 * {
@@ -36,6 +40,36 @@ body > div.container > *{
     background:rgba(255,255,255,0.87);
 }
 
+/* bootstrap */
+.row > section > div.box{
+    margin-bottom:var(--z-spacing);
+    /*
+    outline:#bbb solid;
+    /* */
+}
+
+/*  */
+.zBtn {
+    padding: var(--z-spacing);
+    text-decoration: none;
+    display: flex;
+    text-align:center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background:var(--z-ele-bgcolor);
+    color:var(--z-font-color);
+    border:var(--z-ele-border);
+}
+.zBtn:hover{
+    background:var(--z-ele-bgcolor-alt);
+}
+.zBtn > div{
+    padding:0;
+    margin:0;
+    display:inline-block;
+    text-align:center;
+}
 
 /* スクロールバー設定 */
 body *::-webkit-scrollbar{

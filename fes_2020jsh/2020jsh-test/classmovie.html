@@ -34,153 +34,156 @@
         <section id="kgHeader" class="row"></section>
         <section class="row">
             <section class="col-xs-12">
-                <h2 class="zHeadList">クラス動画コンテスト</h2>
-                <div class="zCentering">
-                    各クラスで、「SDGs紹介」または「学校紹介」のどちらかを選択し動画を制作します。<br />
-                    選考過程を経て、五峯祭当日に最優秀賞1クラス、優秀賞2クラスが決定します。
-                </div>
+                <div class="box">
+                    <h2 class="zHeadList">クラス動画コンテスト</h2>
+                    <div class="zCentering">
+                        各クラスで、「SDGs紹介」または「学校紹介」のどちらかを選択し動画を制作します。<br />
+                        選考過程を経て、五峯祭当日に最優秀賞1クラス、優秀賞2クラスが決定します。
+                    </div>
 
-                <div class="xScrollable">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>1次選考</th>
-                                <td>生徒会役員と五峯祭実行委員で10本の動画を選出する。<br />
-                                    (自分のクラスには投票不可)</td>
-                            </tr>
-                            <tr>
-                                <th>2次選考</th>
-                                <td>12日に全校投票を行い19本の中から上位3本を決定。<br />
-                                    一般の視聴者も投票可能。<br />
-                                    ※Microsoft Formsを使用します</td>
-                            </tr>
-                            <tr>
-                                <th>景品</th>
-                                <td>入賞した3クラスにはスペシャルな景品が！<br />
-                                    ※当日発表</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <div class="xScrollable">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>1次選考</th>
+                                    <td>生徒会役員と五峯祭実行委員で10本の動画を選出する。<br />
+                                        (自分のクラスには投票不可)</td>
+                                </tr>
+                                <tr>
+                                    <th>2次選考</th>
+                                    <td>12日に全校投票を行い19本の中から上位3本を決定。<br />
+                                        一般の視聴者も投票可能。<br />
+                                        ※Microsoft Formsを使用します</td>
+                                </tr>
+                                <tr>
+                                    <th>景品</th>
+                                    <td>入賞した3クラスにはスペシャルな景品が！<br />
+                                        ※当日発表</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="zCentering">
+                    <div class="zCentering">
 
-                </div>
+                    </div>
 
-                <h3>「SDGs動画」部門</h3>
-                <div class="zCentering">
-                    <img src="./pict/SDGs/logo.png" style="width:min(80vw,500px)">
-                </div>
-                <div id="SDGsIcons" class="zGridFill"></div>
-                <style>
-                    #SDGsIcons {
-                        display: grid;
-                        gap: var(--z-spacing);
-                        grid-template-columns: repeat(auto-fill, 150px);
-                        /* img widthと合わせる */
-                        justify-content: center;
-                        background: #fff;
-                    }
-
-                    #SDGsIcons>img {
-                        width: 150px;
-                    }
-                </style>
-                <script>
-                    (function () {
-                        let wrap = document.getElementById("SDGsIcons");
-                        let SDGsCommand = new Array();
-                        let command = [5, 9, 3, 1];
-                        for (let i = 1; i <= 17; i++) {
-                            let img = document.createElement("img");
-                            img.src = "./pict/SDGs/" + (i < 10 ? "0" : "") + i + ".png";
-                            img.id = "SDGs" + i;
-                            wrap.appendChild(img);
-                            document.getElementById("SDGs" + i).addEventListener("click", function () {
-                                SDGsCommand.push(i);
-                                if (SDGsCommand.length == 4) {
-                                    if (SDGsCommand == "5,9,3,1") {
-                                        alert("◆SDGs隠しコマンド\n入力成功!!\n\n遊びながらSDGsを学びましょう！");
-                                        location.href = "https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/go-goals/";
-                                    } else {
-                                        alert("◆SDGs隠しコマンド\nあなたの入力したコマンドは [" + SDGsCommand + "]\n残念、不正解");
-                                    }
-                                    SDGsCommand = new Array();
-                                }
-                            });
+                    <h3>「SDGs動画」部門</h3>
+                    <div class="zCentering">
+                        <img src="./pict/SDGs/logo.png" style="width:min(80vw,500px)">
+                    </div>
+                    <div id="SDGsIcons" class="zGridFill"></div>
+                    <style>
+                        #SDGsIcons {
+                            display: grid;
+                            gap: var(--z-spacing);
+                            grid-template-columns: repeat(auto-fill, 150px);
+                            /* img widthと合わせる */
+                            justify-content: center;
+                            background: #fff;
                         }
-                        let img = document.createElement("img");
-                        img.src = "./pict/SDGs/wheel.png";
-                        wrap.appendChild(img);
-                    })();
-                </script>
 
-                <div style="margin:var(--z-spacing) 0;border:#000 dashed 1px;text-align:right;">
-                    SDGsロゴは、
-                    <a href="https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/sdgs_logo/"
-                        target="_blank">
-                        SDGsのポスター・ロゴ・アイコンおよびガイドライン - 国連広報センター
-                    </a>
-                    に基づき表示しています。
-                </div>
-                <div class="zCentering">
-                    SDGsとは国連の持続可能な開発のための国際目標であり、17のグローバル目標と169のターゲット（達成基準）からできています。本校は国連グローバルコンパクトに加入しており、SDGs達成に向けて日々努力しています。今回のテーマは17の目標のどれか１つを選択し、その内容を紹介するというものです。
-                </div>
-                <h3>「学校紹介動画」部門</h3>
-                <div class="zCentering">
-                    国際学院の魅力を伝えるべく、クラスの生徒たちで本校の施設・取組その他を選んで紹介するというテーマです。
+                        #SDGsIcons>img {
+                            width: 150px;
+                        }
+                    </style>
+                    <script>
+                        (function () {
+                            let wrap = document.getElementById("SDGsIcons");
+                            let SDGsCommand = new Array();
+                            let command = [5, 9, 3, 1];
+                            for (let i = 1; i <= 17; i++) {
+                                let img = document.createElement("img");
+                                img.src = "./pict/SDGs/" + (i < 10 ? "0" : "") + i + ".png";
+                                img.id = "SDGs" + i;
+                                wrap.appendChild(img);
+                                document.getElementById("SDGs" + i).addEventListener("click", function () {
+                                    SDGsCommand.push(i);
+                                    if (SDGsCommand.length == 4) {
+                                        if (SDGsCommand == "5,9,3,1") {
+                                            alert("◆SDGs隠しコマンド\n入力成功!!\n\n遊びながらSDGsを学びましょう！");
+                                            location.href = "https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/go-goals/";
+                                        } else {
+                                            alert("◆SDGs隠しコマンド\nあなたの入力したコマンドは [" + SDGsCommand + "]\n残念、不正解");
+                                        }
+                                        SDGsCommand = new Array();
+                                    }
+                                });
+                            }
+                            let img = document.createElement("img");
+                            img.src = "./pict/SDGs/wheel.png";
+                            wrap.appendChild(img);
+                        })();
+                    </script>
+
+                    <div style="margin:var(--z-spacing) 0;border:#000 dashed 1px;text-align:right;">
+                        SDGsロゴは、
+                        <a href="https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/sdgs_logo/"
+                            target="_blank">
+                            SDGsのポスター・ロゴ・アイコンおよびガイドライン - 国連広報センター
+                        </a>
+                        に基づき表示しています。
+                    </div>
+                    <div class="zCentering">
+                        SDGsとは国連の持続可能な開発のための国際目標であり、17のグローバル目標と169のターゲット（達成基準）からできています。本校は国連グローバルコンパクトに加入しており、SDGs達成に向けて日々努力しています。今回のテーマは17の目標のどれか１つを選択し、その内容を紹介するというものです。
+                    </div>
+                    <h3>「学校紹介動画」部門</h3>
+                    <div class="zCentering">
+                        国際学院の魅力を伝えるべく、クラスの生徒たちで本校の施設・取組その他を選んで紹介するというテーマです。
+                    </div>
                 </div>
             </section>
         </section>
         <section class="row">
             <section>
-                <h2>ノミネート作品</h2>
-                <div class="zCentering">
-                    1次選考を勝ち抜いた動画作品のご紹介です！
-                </div>
-                <div class="xScrollable">
-                    <table id="tablesorter0" class="tablesoter">
-                        <thead>
-                            <tr>
-                                <th>
-                                    クラス
-                                </th>
-                                <th>
-                                    動画カテゴリ
-                                </th>
-                                <th>
-                                    動画タイトル
-                                </th>
-                                <th>
-                                    順位
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>クラス</td>
-                                <td>内容</td>
-                                <td>
-                                    リンク
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <script type="module">
-                        import 'https://code.jquery.com/jquery-3.3.1.min.js';
-                        import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js";
-                        import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js";
-                        $(document).ready(function () {
-                            $("#tablesorter0").tablesorter({
-                                sortList: [[0, 0]]
+                <div class="box">
+                    <h2>ノミネート作品</h2>
+                    <div class="zCentering">
+                        1次選考を勝ち抜いた動画作品のご紹介です！
+                    </div>
+                    <div class="xScrollable">
+                        <table id="tablesorter0" class="tablesoter">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        クラス
+                                    </th>
+                                    <th>
+                                        動画カテゴリ
+                                    </th>
+                                    <th>
+                                        動画タイトル
+                                    </th>
+                                    <th>
+                                        順位
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>クラス</td>
+                                    <td>内容</td>
+                                    <td>
+                                        リンク
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <script type="module">
+                            import 'https://code.jquery.com/jquery-3.3.1.min.js';
+                            import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js";
+                            import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js";
+                            $(document).ready(function () {
+                                $("#tablesorter0").tablesorter({
+                                    sortList: [[0, 0]]
+                                });
                             });
-                        });
-                    </script>
+                        </script>
+                    </div>
+                    <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIcAkYM4LognE5Mmd9uPzMe6" target="_blank"
+                        style="display:none">再生リスト(YouTube)</a>
                 </div>
-                <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIcAkYM4LognE5Mmd9uPzMe6" target="_blank"
-                    style="display:none">再生リスト(YouTube)</a>
-
             </section>
         </section>
         <section id="kgFooter" class="row"></section>

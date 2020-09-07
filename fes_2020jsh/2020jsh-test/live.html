@@ -34,225 +34,239 @@
         <section id="kgHeader" class="row"></section>
         <section class="row">
 
-            <section>
-                <h2 class="zHeadList">Live!!</h2>
-                <div class="zCentering">
-                    <div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:1em;">
-                        <iframe style="width:500px;height:315px;max-width:95%;"
-                            src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">Live!!</h2>
+                    <div class="zCentering">
+                        <div style="display:inline-block;background: var(--z-preset-stripe-blue);padding:1em;">
+                            <iframe style="width:500px;height:315px;max-width:95%;"
+                                src="https://www.youtube.com/embed/IFPyjCgvYhA" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
+            </section>
+        </section>
+        <section class="row">
+        
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">Schedule</h2>
 
-                <h2 class="zHeadList">Schedule</h2>
+                    <div class="zCentering">（調整中）</div>
+                    <style>
+                        table#timetable tbody tr:hover {
+                            background: rgba(255, 192, 192, 0.5);
+                        }
 
-                <div class="zCentering">（調整中）</div>
-                <style>
-                    table#timetable tbody tr:hover {
-                        background: rgba(255, 192, 192, 0.5);
-                    }
+                        table#timetable tr td:nth-child(4) {
+                            text-align: center;
+                        }
 
-                    table#timetable tr td:nth-child(4) {
-                        text-align: center;
-                    }
+                        table#timetable tr td:nth-child(4)>a {
+                            display: block;
+                        }
 
-                    table#timetable tr td:nth-child(4)>a {
-                        display: block;
-                    }
-
-                    table#timetable tr td:nth-child(4) img {
-                        width: 100px;
-                    }
-                </style>
-                <div class="xScrollable">
-                    <table id="timetable" class="tablesoter">
-                        <thead>
-                            <tr>
-                                <th>予定時刻</th>
-                                <th>団体名</th>
-                                <th>内容</th>
-                                <th>生放送以外の<br />公開コンテンツ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10:00</td>
-                                <td></td>
-                                <td>オープニング</td>
-                                <td>
-                                    <img src="./pict/schedule/常設動画.png">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>保護者会</td>
-                                <td>活動紹介<br />（高等部・一貫部）</td>
-                                <td>
-                                    <a href="https://www.youtube.com/watch?v=6BOoCyMqFw0" target="_blank">
+                        table#timetable tr td:nth-child(4) img {
+                            width: 100px;
+                        }
+                    </style>
+                    <div class="xScrollable">
+                        <table id="timetable" class="tablesoter">
+                            <thead>
+                                <tr>
+                                    <th>予定時刻</th>
+                                    <th>団体名</th>
+                                    <th>内容</th>
+                                    <th>生放送以外の<br />公開コンテンツ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>10:00</td>
+                                    <td></td>
+                                    <td>オープニング</td>
+                                    <td>
                                         <img src="./pict/schedule/常設動画.png">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>生徒会</td>
-                                <td>ドミノ企画</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>2年G組</td>
-                                <td>KGピタゴラス</td>
-                                <td>
-                                    <a href="https://www.youtube.com/watch?v=FGfKRw-bRbQ" target="_blank">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>保護者会</td>
+                                    <td>活動紹介<br />（高等部・一貫部）</td>
+                                    <td>
+                                        <a href="https://www.youtube.com/watch?v=6BOoCyMqFw0" target="_blank">
+                                            <img src="./pict/schedule/常設動画.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>生徒会</td>
+                                    <td>ドミノ企画</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>2年G組</td>
+                                    <td>KGピタゴラス</td>
+                                    <td>
+                                        <a href="https://www.youtube.com/watch?v=FGfKRw-bRbQ" target="_blank">
+                                            <img src="./pict/schedule/常設動画.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>3年G組</td>
+                                    <td>食物調理コースが<br />異文化料理を作ってみた！！</td>
+                                    <td>
                                         <img src="./pict/schedule/常設動画.png">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>3年G組</td>
-                                <td>食物調理コースが<br />異文化料理を作ってみた！！</td>
-                                <td>
-                                    <img src="./pict/schedule/常設動画.png">
-                                    <a href="./gallery.html" target="_self">
-                                        <img src="./pict/schedule/展示.png">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>JRC部</td>
-                                <td>レッドクロス赤ずきん！<br />
-                                    ～命を守ろう！救おう！～</td>
-                                <td>
-                                    <a href="https://www.youtube.com/watch?v=ZQIXE6NRU78" target="_blank">
+                                        <a href="./gallery.html" target="_self">
+                                            <img src="./pict/schedule/展示.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>JRC部</td>
+                                    <td>レッドクロス赤ずきん！<br />
+                                        ～命を守ろう！救おう！～</td>
+                                    <td>
+                                        <a href="https://www.youtube.com/watch?v=ZQIXE6NRU78" target="_blank">
+                                            <img src="./pict/schedule/常設動画.png">
+                                        </a>
+                                        <a href="https://www.youtube.com/watch?v=WXwz6oWnXpk" target="_blank">
+                                            <img src="./pict/schedule/常設動画.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>かわまし</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>文芸同好会</td>
+                                    <td>イラスト＆創作短編</td>
+                                    <td>
+                                        <a href="./gallery.html" target="_self">
+                                            <img src="./pict/schedule/展示.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>数学研究室</td>
+                                    <td>数学研究室</td>
+                                    <td>
                                         <img src="./pict/schedule/常設動画.png">
-                                    </a>
-                                    <a href="https://www.youtube.com/watch?v=WXwz6oWnXpk" target="_blank">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>軽音楽部</td>
+                                    <td>軽音楽WEB録画演奏</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>吹奏楽部</td>
+                                    <td>いわたとゆかいな仲間たち</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>1年H・K組</td>
+                                    <td>「終わらないSHR」<br />
+                                        （リアル脱出ゲーム風ドラマ）</td>
+                                    <td>
                                         <img src="./pict/schedule/常設動画.png">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>かわまし</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>文芸同好会</td>
-                                <td>イラスト＆創作短編</td>
-                                <td>
-                                    <a href="./gallery.html" target="_self">
-                                        <img src="./pict/schedule/展示.png">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>数学研究室</td>
-                                <td>数学研究室</td>
-                                <td>
-                                    <img src="./pict/schedule/常設動画.png">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>軽音楽部</td>
-                                <td>軽音楽WEB録画演奏</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>吹奏楽部</td>
-                                <td>いわたとゆかいな仲間たち</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>1年H・K組</td>
-                                <td>「終わらないSHR」<br />
-                                    （リアル脱出ゲーム風ドラマ）</td>
-                                <td>
-                                    <img src="./pict/schedule/常設動画.png">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>中学校</td>
-                                <td>合唱</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>中学校</td>
-                                <td>劇</td>
-                                <td>
-                                    <img src="./pict/schedule/常設動画.png">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>生徒会</td>
-                                <td>クラス動画コンテスト</td>
-                                <td>
-                                    <a href="./classmovie.html" target="_self">
-                                        <img src="./pict/schedule/特設ページ.png">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>チェリー</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>2年K組</td>
-                                <td>桃太郎</td>
-                                <td>
-                                    <img src="./pict/schedule/常設動画.png">
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>中学校</td>
+                                    <td>合唱</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>中学校</td>
+                                    <td>劇</td>
+                                    <td>
+                                        <img src="./pict/schedule/常設動画.png">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>生徒会</td>
+                                    <td>クラス動画コンテスト</td>
+                                    <td>
+                                        <a href="./classmovie.html" target="_self">
+                                            <img src="./pict/schedule/特設ページ.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>チェリー</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>2年K組</td>
+                                    <td>桃太郎</td>
+                                    <td>
+                                        <img src="./pict/schedule/常設動画.png">
+                                    </td>
+                                </tr>
 
-                        </tbody>
-                    </table>
-                </div>
-                <script type="module">
-                    import 'https://code.jquery.com/jquery-3.3.1.min.js';
-                    import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js";
-                    import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js";
-                    $(document).ready(function () {
-                        $("#timetable").tablesorter({
-                            sortList: [[0, 0]],
-                            headers: {
-                                3: { sorter: false }
-                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="module">
+                        import 'https://code.jquery.com/jquery-3.3.1.min.js';
+                        import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js";
+                        import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js";
+                        $(document).ready(function () {
+                            $("#timetable").tablesorter({
+                                sortList: [[0, 0]],
+                                headers: {
+                                    3: { sorter: false }
+                                }
+                            });
                         });
-                    });
-                </script>
+                    </script>
+                    </div>
+            </section>
+        </section>
+        <section class="row">
+        
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">常設動画プレイリスト(YouTube)</h2>
 
-                <h2 class="zHeadList">常設動画プレイリスト(YouTube)</h2>
-
-                <div class="zGridFit" style="grid-template-columns:repeat(auto-fit, 150px);">
-                    <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIenZrl0_rmw_kR7QMUwjOeI" target="_blank"
-                        class="zBtn">クラス動画<br />コンテスト</a>
-                    <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIfo8iTs_RVJuNe7V5pSIBal" target="_blank"
-                        class="zBtn">食物調理コース</a>
-                    <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIdRcRE9_ScIjFollkX3h5lt" target="_blank"
-                        class="zBtn">演技・演奏系</a>
-                    <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIfD--YGUnKXj6cwj19AXkys" target="_blank"
-                        class="zBtn">その他</a>
-                    <a href="https://www.youtube.com/watch?v=jhSUokTzX3E&list=PLlC86PZhOEIcAkYM4LognE5Mmd9uPzMe6"
-                        target="_blank" class="zBtn" style="display:none">全出展動画</a>
-                </div>
-                <div class="debug">
-                    全出展動画＝確認用リスト<br />
-                    確認し次第、各分類へリスト追加
+                    <div class="zGridFit" style="grid-template-columns:repeat(auto-fit, 150px);">
+                        <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIenZrl0_rmw_kR7QMUwjOeI"
+                            target="_blank" class="zBtn">クラス動画<br />コンテスト</a>
+                        <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIfo8iTs_RVJuNe7V5pSIBal"
+                            target="_blank" class="zBtn">食物調理<br />コース</a>
+                        <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIdRcRE9_ScIjFollkX3h5lt"
+                            target="_blank" class="zBtn">演技・演奏系</a>
+                        <a href="https://www.youtube.com/playlist?list=PLlC86PZhOEIfD--YGUnKXj6cwj19AXkys"
+                            target="_blank" class="zBtn">その他</a>
+                        <a href="https://www.youtube.com/watch?v=jhSUokTzX3E&list=PLlC86PZhOEIcAkYM4LognE5Mmd9uPzMe6"
+                            target="_blank" class="zBtn" style="display:none">全出展動画</a>
+                    </div>
+                    <div class="debug">
+                        全出展動画＝確認用リスト<br />
+                        確認し次第、各分類へリスト追加
+                    </div>
                 </div>
             </section>
 

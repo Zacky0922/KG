@@ -33,337 +33,547 @@
     <div class="container">
         <section id="kgHeader" class="row"></section>
         <section class="row">
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">食物調理コースが異文化料理を作ってみた！！</h2>
+                    <h3>レシピダウンロード</h3>
+                    <div class="zCentering">
+                        <ul>
+                            <li>
+                                <a target="_blank" href="./gallery/recipe/スリランカ料理.pdf">スリランカ料理</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="./gallery/recipe/ペルー料理.pdf">ペルー料理</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="./gallery/recipe/ミャンマー料理.pdf">ミャンマー料理</a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="./gallery/recipe/モンゴル料理.pdf">モンゴル料理</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">文芸同好会</h2>
 
-            <h2 class="zHeadList">食物調理コースが異文化料理を作ってみた！！</h2>
-            <h3>レシピダウンロード</h3>
-            <div class="zCentering">
-                <ul>
-                    <li>
-                        <a target="_blank" href="./gallery/recipe/スリランカ料理.pdf">スリランカ料理</a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="./gallery/recipe/ペルー料理.pdf">ペルー料理</a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="./gallery/recipe/ミャンマー料理.pdf">ミャンマー料理</a>
-                    </li>
-                    <li>
-                        <a target="_blank" href="./gallery/recipe/モンゴル料理.pdf">モンゴル料理</a>
-                    </li>
-                </ul>
-            </div>
+                    <style>
+                        .bookWrap {
+                            position: relative;
+                            width: min(300px, 80vw);
+                            height: min(420px, 112vw);
+                            margin: var(--z-spacing);
+                            -webkit-perspective: 1000px;
+                            perspective: 1000px;
+                            -webkit-perspective-origin: 0 80%;
+                            perspective-origin: 0 80%;
+                            display: inline-block;
+                        }
 
-            <h2 class="zHeadList">文芸同好会</h2>
+                        .bookWrap>* {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            overflow-y: auto;
+                            margin: 0;
+                            display: flex;
+                        }
 
-            <style>
-                .bookWrap {
-                    position: relative;
-                    width: min(300px, 80vw);
-                    height: min(420px, 112vw);
-                    margin: var(--z-spacing);
-                    -webkit-perspective: 1000px;
-                    perspective: 1000px;
-                    -webkit-perspective-origin: 0 80%;
-                    perspective-origin: 0 80%;
-                    display: inline-block;
-                }
+                        .bookWrap>*>* {
+                            display: inline-block;
+                            padding: var(--z-spacing);
+                        }
 
-                .bookWrap>* {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    overflow-y: auto;
-                    margin: 0;
-                    display: flex;
-                }
+                        .bookWrap>.bookText {
+                            background: #eef;
+                            text-align: left;
+                            border: 5px solid #254;
+                        }
 
-                .bookWrap>*>* {
-                    display: inline-block;
-                    padding: var(--z-spacing);
-                }
+                        .bookWrap>.bookCover {
+                            justify-content: center;
+                            align-items: center;
+                            background: #365;
+                            border: 5px solid #254;
+                            transition: all 1s ease;
+                            transform-origin: 0 0;
+                            color: #fff;
+                            font-size: 110%;
+                        }
 
-                .bookWrap>.bookText {
-                    background: #eef;
-                    text-align: left;
-                    border: 5px solid #254;
-                }
+                        .bookWrap:hover>.bookCover {
+                            transform: rotateY(-160deg);
+                        }
+                    </style>
+                    <div class="zCentering">
+                        <div class="bookWrap">
+                            <div class="bookText">
+                                <div>
+                                    <h5>書評：顧問より</h5>
+                                    人生はタイミングで決まるという結論のあいまいさが、不完全燃焼になって私の中でくすぶっている。
+                                    しかし、十代の高校生が書いた作品には、あやうさと結論の不透明さがなくてはむしろおかしいくらいだ。
+                                    「何のために我々は自我を持ち生活しているのだろうか」などと、このような哲学的な悩みを抱えて堂々巡りをしてこそ、高校生なのだから。
+                                    大抵の大人にはこの作品のような純粋な怒りも迷いも神に対する疑念も、批判も、浮かんでこない（と私は思う）。
+                                    浮かぶとすれば、日常にしっかり根を下ろした場所から起こりうるもの、だと思う。
+                                    たとえば、家事の大変さ、残業の不満、育児疲れ、夫婦げんか、どれもこれも大切であると同時に、どれもこれも、非日常の内側に存在する普遍的なきらめきからは遠い。
+                                    ゆえに私は、この作品のような感性がうらやましいのである。
+                                    <div style="text-align:right;padding-top:1em;">
+                                        <a href="./gallery/literature1.pdf" target="_blank">本文 >></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookCover">小説「私の世界」</div>
+                        </div>
+                        <div class="bookWrap">
+                            <div class="bookText">
+                                <div>
+                                    <h5>書評：顧問より</h5>
+                                    姉を心配する弟と、弟を気遣う姉。
+                                    ふたりの軽い会話の応酬の中に、何度も繰り返される優しい空気感がある。
+                                    素直になれないというほどでもなく、適度な距離感もある二人。
+                                    本来なら、両親の死、という心を打ち砕かれる出来事について、姉弟の詳しい心理描写があっていいはずだ。
+                                    が、「死」にまつわる感情は驚くほど伝わってこない。
+                                    あえて書かなかったとすれば、この作者のテーマは、両親の「死」という乗り越えなければならない壁ではなく、残された姉弟ふたりのまだ見ぬ未来なのだろう。
+                                    姉が弟に対して素直に応じて会話が終わるのも、両親の死の記憶を消すのでもなく忘れるのでもなく、これからの日々を生きていこうというメッセージなのかもしれない。
+                                    淡々と描かれるふたりのやりとりから、感情を荒げることのないけなげさがふわっと漂ってくる。
+                                    <div style="text-align:right;padding-top:1em;">
+                                        <a href="./gallery/literature2.pdf" target="_blank">本文 >></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bookCover">小説「日常」</div>
+                        </div>
+                    </div>
+                    <div class="zCentering">
+                        <img src="./gallery/literature_pict.jpg" style="width:300px;max-width: 70vw;">
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">かるた同好会</h2>
+                    <div class="zCentering" style="margin:var(--z-spacing,20px) 0;">
+                        小倉百人一首　会員お気に入りの一首をご紹介します。
+                    </div>
+                    <style>
+                        .karutaContent {
+                            border: 1px #000 solid;
+                            width: 100%;
+                            height: 500px;
+                        }
 
-                .bookWrap>.bookCover {
-                    justify-content: center;
-                    align-items: center;
-                    background: #365;
-                    border: 5px solid #254;
-                    transition: all 1s ease;
-                    transform-origin: 0 0;
-                    color: #fff;
-                    font-size: 110%;
-                }
+                        .karutaContent .dw-flip__panel--front {
+                            background: #050;
+                        }
 
-                .bookWrap:hover>.bookCover {
-                    transform: rotateY(-160deg);
-                }
-            </style>
-            <div class="zCentering">
-                <div class="bookWrap">
-                    <div class="bookText">
-                        <div>
-                            <h5>書評：顧問より</h5>
-                            人生はタイミングで決まるという結論のあいまいさが、不完全燃焼になって私の中でくすぶっている。
-                            しかし、十代の高校生が書いた作品には、あやうさと結論の不透明さがなくてはむしろおかしいくらいだ。
-                            「何のために我々は自我を持ち生活しているのだろうか」などと、このような哲学的な悩みを抱えて堂々巡りをしてこそ、高校生なのだから。
-                            大抵の大人にはこの作品のような純粋な怒りも迷いも神に対する疑念も、批判も、浮かんでこない（と私は思う）。
-                            浮かぶとすれば、日常にしっかり根を下ろした場所から起こりうるもの、だと思う。
-                            たとえば、家事の大変さ、残業の不満、育児疲れ、夫婦げんか、どれもこれも大切であると同時に、どれもこれも、非日常の内側に存在する普遍的なきらめきからは遠い。
-                            ゆえに私は、この作品のような感性がうらやましいのである。
-                            <div style="text-align:right;padding-top:1em;">
-                                <a href="./gallery/literature1.pdf" target="_blank">本文 >></a>
+                        .karutaContent .dw-flip__panel--back {
+                            background: rgb(255, 255, 220);
+                        }
+
+                        .karutaSong {
+                            margin: var(--z-spacing) 0;
+                        }
+
+                        .karutaSinger {
+                            text-align: right;
+                        }
+
+                        .karutaSong,
+                        .karutaSinger {
+                            font-family: 'Noto Serif JP', serif;
+                            font-size: 110%;
+                            margin-left: var(--z-spacing);
+                            margin-right: var(--z-spacing);
+                        }
+
+                        .karutaAudio {
+                            margin: var(--z-spacing);
+                        }
+
+                        .karutaImpression {
+
+                            border-top: 3px dashed #888;
+                            padding-top: var(--z-spacing);
+                            margin-top: var(--z-spacing);
+                        }
+
+                        .karutaStudent {
+                            text-align: right;
+                            margin-top: var(--z-spacing);
+                        }
+                    </style>
+                    <div class="karutaList dw">
+                        <div class="karutaWrap dw-panel dw-flip">
+                            <div class="karutaContent dw-panel__content dw-flip__content">
+                                <img src="./gallery/karuta/asibikino.jpg" class="dw-flip__panel dw-flip__panel--front">
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    <div class="karutaSong">
+                                        あしびきの　山鳥の尾の　しだり尾の<br />
+                                        長々し夜を　ひとりかも寝む
+                                    </div>
+                                    <div class="karutaSinger">
+                                        柿本人麿
+                                    </div>
+                                    <div class="zCentering karutaAudio">
+                                        <audio controls>
+                                            <source src="./gallery/karuta/asibikino.mp3">
+                                        </audio>
+                                    </div>
+                                    <div class="karutaImpression">
+                                        つれない異性を想って一人で明けそうにない夜を過ごしていると思うと、健気だからこそ相手に冷たくされているのが残念だなと思いました
+                                    </div>
+                                    <div class="karutaStudent">
+                                        2-B　蟹
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bookCover">小説「私の世界」</div>
-                </div>
-                <div class="bookWrap">
-                    <div class="bookText">
-                        <div>
-                            <h5>書評：顧問より</h5>
-                            姉を心配する弟と、弟を気遣う姉。
-                            ふたりの軽い会話の応酬の中に、何度も繰り返される優しい空気感がある。
-                            素直になれないというほどでもなく、適度な距離感もある二人。
-                            本来なら、両親の死、という心を打ち砕かれる出来事について、姉弟の詳しい心理描写があっていいはずだ。
-                            が、「死」にまつわる感情は驚くほど伝わってこない。
-                            あえて書かなかったとすれば、この作者のテーマは、両親の「死」という乗り越えなければならない壁ではなく、残された姉弟ふたりのまだ見ぬ未来なのだろう。
-                            姉が弟に対して素直に応じて会話が終わるのも、両親の死の記憶を消すのでもなく忘れるのでもなく、これからの日々を生きていこうというメッセージなのかもしれない。
-                            淡々と描かれるふたりのやりとりから、感情を荒げることのないけなげさがふわっと漂ってくる。
-                            <div style="text-align:right;padding-top:1em;">
-                                <a href="./gallery/literature2.pdf" target="_blank">本文 >></a>
+                        <div class="karutaWrap dw-panel dw-flip">
+                            <div class="karutaContent dw-panel__content dw-flip__content">
+                                <img src="./gallery/karuta/arasifuku.jpg" class="dw-flip__panel dw-flip__panel--front">
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    <div class="karutaSong">
+                                        嵐吹く　三室の山の　もみぢ葉は<br />
+                                        龍田の川の　錦なりけり
+                                    </div>
+                                    <div class="karutaSinger">
+                                        能因法師
+                                    </div>
+                                    <div class="zCentering karutaAudio">
+                                        <audio controls>
+                                            <source src="./gallery/karuta/arasifuku.mp3">
+                                        </audio>
+                                    </div>
+                                    <div class="karutaImpression">
+                                        三室の山から流れてきた紅葉が龍田の川をおおいつくしていく光景はきれいだろうと思い、この句にしました。
+                                    </div>
+                                    <div class="karutaStudent">
+                                        1-H　えりりん
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="bookCover">小説「日常」</div>
-                </div>
-            </div>
-            <div class="zCentering">
-                <img src="./gallery/literature_pict.jpg" style="width:300px;max-width: 70vw;">
-            </div>
-            <h2 class="zHeadList">かるた同好会</h2>
-            <style>
-                .karutaContent {
-                    border: 1px #000 solid;
-                }
-
-                .karutaSinger {
-                    text-align: right;
-                }
-            </style>
-            <div class="karutaList dw">
-                <div class="karutaWrap dw-panel dw-flip dw-flip--sm">
-                    <div class="karutaContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            イラスト
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            <div class="karutaSong">
-                                ちはやぶる　神代も聞かず　竜田川　からくれなゐに　水くくるとは
-                            </div>
-                            <div class="karutaSinger">
-                                在原業平朝臣
-                            </div>
-                            <div class="karutaImpression">
-                                感想コーナー
+                        <div class="karutaWrap dw-panel dw-flip">
+                            <div class="karutaContent dw-panel__content dw-flip__content">
+                                <img src="./gallery/karuta/inisieno.jpg" class="dw-flip__panel dw-flip__panel--front">
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    <div class="karutaSong">
+                                        いにしへの　奈良の都の　八重桜<br />
+                                        けふ九重に匂いぬるかも
+                                    </div>
+                                    <div class="karutaSinger">
+                                        伊勢大輔
+                                    </div>
+                                    <div class="zCentering karutaAudio">
+                                        <audio controls>
+                                            <source src="./gallery/karuta/inisieno.mp3">
+                                        </audio>
+                                    </div>
+                                    <div class="karutaImpression">
+                                    </div>
+                                    <div class="karutaStudent">
+                                        2-F　※ハンドル名未定
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="dw__focus-curtain"></div>
-            </div>
-            <h2 class="zHeadList">図書委員会</h2>
-            <style>
-                .libContent {
-                    border: 1px #000 solid;
-                }
+                        <div class="karutaWrap dw-panel dw-flip">
+                            <div class="karutaContent dw-panel__content dw-flip__content">
+                                <img src="./gallery/karuta/okuyamani.jpg" class="dw-flip__panel dw-flip__panel--front">
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    <div class="karutaSong">
+                                        奥山に　紅葉踏み分け　鳴く鹿の<br />
+                                        声聞く時ぞ　秋は悲しき
+                                    </div>
+                                    <div class="karutaSinger">
+                                        猿丸太夫
+                                    </div>
+                                    <div class="zCentering karutaAudio">
+                                        <audio controls>
+                                            <source src="./gallery/karuta/okuyamani.mp3">
+                                        </audio>
+                                    </div>
+                                    <div class="karutaImpression">
+                                        聞いた時の第一印象は、
+                                        夏が終わり秋が深まって来た時に気分転換へと
+                                        山奥に歩いて行ったら
+                                        あたり一面に紅葉の木が生い茂りそよ風と
+                                        共にはらはらと紅葉が落ちてくる、
+                                        耳を澄ませてみれば自分が落ち葉を踏む音と
+                                        遠くから微かに鹿の声が聞こえてくる。
+                                        そんな風景に感銘し、心にふっと秋の悲しさが浮かび上がってきた。
+                                        そんなことを思いました。
+                                    </div>
+                                    <div class="karutaStudent">
+                                        2-A　鮭
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="karutaWrap dw-panel dw-flip">
+                            <div class="karutaContent dw-panel__content dw-flip__content">
+                                <img src="./gallery/karuta/tigiriokisi.jpg"
+                                    class="dw-flip__panel dw-flip__panel--front">
 
-                .libContent>div>img {
-                    width:100%;
-                    height:140%;
-                }
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    <div class="karutaSong">
+                                        契りおきし させもが露を いのちにて<br />
+                                        あはれ今年の秋もいぬめり
+                                    </div>
+                                    <div class="karutaSinger">
+                                        藤原基俊
+                                    </div>
+                                    <div class="zCentering karutaAudio">
+                                        <audio controls>
+                                            <source src="./gallery/karuta/tigiriokisi.mp3">
+                                        </audio>
+                                    </div>
+                                    <div class="karutaImpression">
+                                        子どもを試験に受からせようとして、親コネを使った挙句さらに落ちるという内容のひどさにあきれ果てるとともに、思わず笑ってしまいます。
+                                    </div>
+                                    <div class="karutaStudent">
+                                        顧問　お汁粉食べたい
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="karutaWrap dw-panel dw-flip">
+                            <div class="karutaContent dw-panel__content dw-flip__content">
+                                <img src="./gallery/karuta/meguriaite.jpg" class="dw-flip__panel dw-flip__panel--front">
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    <div class="karutaSong">
+                                        めぐり逢ひて　見しやそれとも　わかぬ間に<br />
+                                        雲がくれにし　夜半の月かな
+                                    </div>
+                                    <div class="karutaSinger">
+                                        紫式部
+                                    </div>
+                                    <div class="zCentering karutaAudio">
+                                        <audio controls>
+                                            <source src="./gallery/karuta/meguriaite.mp3">
+                                        </audio>
+                                    </div>
+                                    <div class="karutaImpression">
+                                        「久しぶりに逢って、あなたであるかどうかも見分けのつかないうちに急いでお帰りになって本島にあなたは雲にかくれてしまった夜半の月のようですよ」
+                                        という紫式部の歌に共感でき、紫式部にこのようなったがあったことに衝撃を受けました。
+                                    </div>
+                                    <div class="karutaStudent">
+                                        1-A　舞姫
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dw__focus-curtain"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList">図書委員によるおすすめ図書のPOP展示</h2>
+                    <div class="zCentering" style="margin:var(--z-spacing,20px) 0;">
 
-                /* 縦 */
-                .lib_v img {
-                    width: 100%;
-                    height:140%;
-                }
+                    </div>
+                    <style>
+                        .libContent {
+                            border: 1px #000 solid;
+                        }
 
-                /* 横 */
-                .lib_h {
-                    height: calc( calc(100% - 40px) * 0.8 + 40px);
-                }
-            </style>
-            <div class="libList dw">
-                <div class="libWrap dw-panel dw-flip lib_v">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/54.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
+                        .libContent>div>img {
+                            width: 100%;
+                            height: 140%;
+                        }
 
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/cake.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
+                        /* 縦 */
+                        .lib_v img {
+                            width: 100%;
+                            height: 140%;
+                        }
 
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/chihaya.jpg">
+                        /* 横 */
+                        .lib_h {
+                            height: calc(calc(100% - 40px) * 0.8 + 40px);
+                        }
+                    </style>
+                    <div class="libList dw">
+                        <div class="libWrap dw-panel dw-flip lib_v">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/54.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
                         </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/death.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_v">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/draw.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_v">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/kino.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/kudo.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/omoi.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/oni.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_v">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/pan.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/samurai.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_v">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/shokudo.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/summer.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
-                <div class="libWrap dw-panel dw-flip lib_h">
-                    <div class="libContent dw-panel__content dw-flip__content">
-                        <div class="dw-flip__panel dw-flip__panel--front">
-                            <img src="./gallery/library/yokai.jpg">
-                        </div>
-                        <div class="dw-flip__panel dw-flip__panel--back">
-                            書籍情報
-                        </div>
-                    </div>
-                </div>
 
-                <div class="dw__focus-curtain"></div>
-            </div>
-            <h2 class="zHeadList" id="ar_gallery">ARギャラリー</h2>
-            <div class="zCentering">
-                お手元に<a href="./pict/flyer/flyer.pdf" target="_blank">「五峯祭チラシ」</a>をご用意ください。<br />
-                チラシをお持ちでない場合は、「カメラ不要版」からご覧ください。
-            </div>
-            <div class="zCentering">
-                <ul>
-                    <li>
-                        <a href="./3d/adAR.html">五峯祭ポスターコンテスト作品集</a>
-                        ／
-                        <a href="./3d/adVR.html">
-                            [カメラ不要版]
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/cake.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/chihaya.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/death.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_v">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/draw.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_v">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/kino.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/kudo.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/omoi.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/oni.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_v">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/pan.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/samurai.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_v">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/shokudo.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/summer.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
+                        <div class="libWrap dw-panel dw-flip lib_h">
+                            <div class="libContent dw-panel__content dw-flip__content">
+                                <div class="dw-flip__panel dw-flip__panel--front">
+                                    <img src="./gallery/library/yokai.jpg">
+                                </div>
+                                <div class="dw-flip__panel dw-flip__panel--back">
+                                    書籍情報
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="dw__focus-curtain"></div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="row">
+            <section class="col-xs-12">
+                <div class="box">
+                    <h2 class="zHeadList" id="ar_gallery">ARギャラリー</h2>
+                    <div class="zCentering">
+                        お手元に<a href="./pict/flyer/flyer.pdf" target="_blank">「五峯祭チラシ」</a>をご用意ください。<br />
+                        チラシをお持ちでない場合は、「カメラ不要版」からご覧ください。
+                    </div>
+                    <div class="zCentering">
+                        <ul>
+                            <li>
+                                <a href="./3d/adAR.html">五峯祭ポスターコンテスト作品集</a>
+                                ／
+                                <a href="./3d/adVR.html">
+                                    [カメラ不要版]
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </section>
         <section id="kgFooter" class="row"></section>
     </div>

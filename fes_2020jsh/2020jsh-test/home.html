@@ -34,130 +34,255 @@
         <section id="kgHeader" class="row"></section>
         <section class="row">
             <section class="col-md-8">
-                <div class="zCentering animate__animated animate__pulse animate__infinite animate__slow"
-                    style="font-size:x-large;margin:calc(2 * var(--z-spacing)) auto;">
-                    国際学院中学校高等学校<br />
-                    「第23回 五峯祭」特設サイトへようこそ！
-                </div>
-                <div class="zCentering">
-                    <span id="countdownMsg"></span>
-                </div>
-                <div class="xScrollable">
-                    <table id="KGcountdownWrap">
-                        <tfoot>
-                            <tr>
-                                <td colspan="4">
-                                    <span id="KGcountdownMs"
-                                        style="display:inline-block;height:2px;transition:65ms linear"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4">
-                                    until Saturday,12th September 2020,10:00
-                                </td>
-                            </tr>
-                        </tfoot>
-                        <tbody id="KGcountdown"></tbody>
-                    </table>
-                </div>
-                <script type="module" crossorigin="use-credentials">
+                <div class="box">
+                    <div class="zCentering animate__animated animate__pulse animate__infinite animate__slow"
+                        style="font-size:x-large;margin:calc(2 * var(--z-spacing)) auto;">
+                        国際学院中学校高等学校<br />
+                        「第23回 五峯祭」特設サイトへようこそ！
+                    </div>
+                    <div class="zCentering">
+                        <span id="countdownMsg"></span>
+                    </div>
+                    <div class="xScrollable">
+                        <table id="KGcountdownWrap">
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">
+                                        <span id="KGcountdownMs"
+                                            style="display:inline-block;height:2px;transition:65ms linear"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        until Saturday,12th September 2020,10:00
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            <tbody id="KGcountdown"></tbody>
+                        </table>
+                    </div>
+                    <script type="module" crossorigin="use-credentials">
 
-                    // 日付のみカウントダウン
-                    (function () {
+                        // 日付のみカウントダウン
+                        (function () {
 
-                        let d = Math.ceil(((new Date(2020, 9 - 1, 12)).getTime() - (new Date()).getTime()) / (1000 * 60 * 60 * 24));
-                        if (d > 0) {
-                            document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）まで、あと" + d + "日です。";
-                        } else if (d == 0) {
-                            document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）当日です！";
-                        } else {
-                            document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。";
+                            let d = Math.ceil(((new Date(2020, 9 - 1, 12)).getTime() - (new Date()).getTime()) / (1000 * 60 * 60 * 24));
+                            if (d > 0) {
+                                document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）まで、あと" + d + "日です。";
+                            } else if (d == 0) {
+                                document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）当日です！";
+                            } else {
+                                document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。";
+                            }
+                        })();
+
+                        //カウントダウン設定
+                        //制限時間以降が未設定……
+                        let w_old = 0;
+                        let w_diff = 0;
+                        window.addEventListener('load', (event) => {
+                            let zCountdown_ = setInterval(function () {
+                                let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
+                                let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
+                                document.getElementById("KGcountdown").innerHTML = "" +
+                                    "<tr>" +
+                                    "<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
+                                    "<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
+                                    "<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
+                                    "<th>" + Math.floor(d / 1000) % 60 + "</th>" +
+                                    "</tr>" +
+                                    "<tr>" +
+                                    "<td>" + "day" + "</td>" +
+                                    "<td>" + "hour" + "</td>" +
+                                    "<td>" + "minute" + "</td>" +
+                                    "<td>" + "second" + "</td>" +
+                                    "</tr>";
+                                let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
+                                w_diff = w_new - w_old;
+                                document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+                                document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+                                document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
+                                w_old = w_new;
+                            }, 66);
+                        });
+                    </script>
+
+
+                    <div class="zCentering">
+                        様々なコンテンツをお楽しみください！
+                    </div>
+                    <div class="xScrollable">
+                        <table id="contentsClover">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="petal petal0">
+                                            生配信限定<br />
+                                            コンテンツ
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="petal petal1">
+                                            常設動画<br />
+                                            コンテンツ
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="petal petal2">
+                                            常設作品<br />ギャラリー
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="petal petal3" id="petalEaster">
+                                            and more...
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <style>
+                        table#contentsClover * {
+                            border: none;
+                            padding: 0;
+                            margin: 0;
                         }
-                    })();
 
-                    //カウントダウン設定
-                    //制限時間以降が未設定……
-                    let w_old = 0;
-                    let w_diff = 0;
-                    window.addEventListener('load', (event) => {
-                        let zCountdown_ = setInterval(function () {
-                            let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
-                            let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
-                            document.getElementById("KGcountdown").innerHTML = "" +
-                                "<tr>" +
-                                "<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
-                                "<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
-                                "<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
-                                "<th>" + Math.floor(d / 1000) % 60 + "</th>" +
-                                "</tr>" +
-                                "<tr>" +
-                                "<td>" + "day" + "</td>" +
-                                "<td>" + "hour" + "</td>" +
-                                "<td>" + "minute" + "</td>" +
-                                "<td>" + "second" + "</td>" +
-                                "</tr>";
-                            let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
-                            w_diff = w_new - w_old;
-                            document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
-                            document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-                            document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
-                            w_old = w_new;
-                        }, 66);
-                    });
-                </script>
-                <h2>五峯祭チラシ</h2>
-                <style>
-                    .flyerWrap{
-                        margin: var(--z-spacing);
-                    }
-                    .flyerWrap img {
-                        width: 300px;
-                        max-width: min(300px, 90vw);
-                    }
-                </style>
-                <div class="zCentering">
-                    <a href="./pict/flyer/flyer.pdf" target="_blank" class="flyerWrap">
-                        <img src="./pict/flyer/flyer1.png">
-                        <img src="./pict/flyer/flyer2.png">
-                    </a>
+                        table#contentsClover div.petal {
+                            border-radius: 50%;
+                            padding: var(--z-spacing);
+                            margin: 5px;
+                            height: 150px;
+                            width: 150px;
+                            display: flex;
+                            text-align: center;
+                            place-items: center;
+                            align-items: center;
+                            justify-items: center;
+                            flex-direction: column;
+                            /* 子要素をflexboxにより縦方向に揃える */
+                            justify-content: center;
+                            /* 子要素をflexboxにより中央に配置する */
+                            align-items: center;
+                            /* 子要素をflexboxにより中央に配置する */
+                            border: 2px solid transparent;
+                        }
+
+                        table#contentsClover div.petal0 {
+                            border-bottom-right-radius: 0;
+                            background: #fcc;
+                            border-color: #d88;
+                        }
+
+                        table#contentsClover div.petal1 {
+                            border-bottom-left-radius: 0;
+                            background: #ffc;
+                            border-color: #dc8;
+                        }
+
+                        table#contentsClover div.petal2 {
+                            border-top-right-radius: 0;
+                            background: #ccf;
+                            border-color: #88d;
+                        }
+
+                        table#contentsClover div.petal3 {
+                            border-top-left-radius: 0;
+                            background: #cfc;
+                            border-color: #8d8;
+                        }
+                    </style>
+                    <script>
+                        let petalCount = 0;
+                        document.getElementById("petalEaster").addEventListener("click", function () {
+                            petalCount++;
+                            switch (petalCount) {
+                                case 2:
+                                    alert("「and more...」の花びらを2回クリックしたあなた！\n" +
+                                        "「『and more...』のコンテンツって何だろう？」と思ったんですね？\n\n" +
+                                        "それはつまり、このような「イースターエッグ」（＝プログラム上の隠し要素）のことです。\n" +
+                                        "（「どうぶつの○」をプレイしている人は本物の「イースターエッグ」をご存知かと思いますが、あれのウェブサイト版です）\n\n" +
+                                        "サイト作成者が “勝手に” いくつか仕込んでいますので、ぜひ全部見つけて見てください！");
+                                    break;
+                                case 20:
+                                    alert("そんなに叩いても、何もありませんよ……\n" +
+                                        "次の「イースターエッグ」を探しにいきましょう！");
+                                    break;
+                                case 40:
+                                    alert("そんなに何度も叩いて……\n" +
+                                        "本物のお花をそんなに叩いちゃダメですよ！\n\n" +
+                                        "仕方ないのでヒントです。\n" +
+                                        "サイトに隠された「イースターエッグ」は、これを含めて全部で「3個」です。\n" +
+                                        "頑張って探してみてください！");
+                                    break;
+                                case 50:
+                                    alert("50回も叩いて………もう何も出ませんよ………\n" +
+                                        "クリック回数をリセットしますね。");
+                                    petalCount = 0;
+                            }
+                        });
+                    </script>
+
+
+                    <h2>五峯祭チラシ</h2>
+                    <style>
+                        .flyerWrap {
+                            margin: var(--z-spacing);
+                        }
+
+                        .flyerWrap img {
+                            width: 300px;
+                            max-width: min(300px, 90vw);
+                        }
+                    </style>
+                    <div class="zCentering">
+                        <a href="./pict/flyer/flyer.pdf" target="_blank" class="flyerWrap">
+                            <img src="./pict/flyer/flyer1.png">
+                            <img src="./pict/flyer/flyer2.png">
+                        </a>
+                    </div>
                 </div>
             </section>
             <section class="col-md-4">
-                <h2>Site Map</h2>
-                <ul style="margin:var(--z-spacing) auto;">
-                    <li>
-                        <a href="home.html">Home</a><br />
-                        このページです。
-                    </li>
-                    <li>
-                        <a href="intro.html">Introduction</a><br />
-                        校長・実行委員長・生徒会長の挨拶です。
-                    </li>
-                    <li>
-                        <a href="events.html">Events</a><br />
-                        有志の出展団体一覧です。
-                    </li>
-                    <li>
-                        <a href="live.html" class="preHide">Live!!</a>
-                        <span class="proHide">Live!!（当日のお楽しみ）</span>
-                        <br />
-                        当日の生放送のご案内です。
-                    </li>
-                    <li>
-                        <a href="gallery.html" class="preHide">Gallery</a>
-                        <span class="proHide">Gallery（当日のお楽しみ）</span>
-                        <br />
-                        出展作品（映像以外）のご紹介です。
-                    </li>
-                    <li>
-                        <a href="contest.html">Contest</a><br />
-                        各コンテストのご紹介です。
-                    </li>
-                    <li>
-                        <a href="info.html">Information</a><br />
-                        その他、各種情報です。
-                    </li>
-                </ul>
+                <div class="box">
+                    <h2>Site Map</h2>
+                    <ul style="margin:var(--z-spacing) auto;">
+                        <li>
+                            <a href="home.html">Home</a><br />
+                            このページです。
+                        </li>
+                        <li>
+                            <a href="intro.html">Introduction</a><br />
+                            校長・実行委員長・生徒会長の挨拶です。
+                        </li>
+                        <li>
+                            <a href="events.html">Events</a><br />
+                            有志の出展団体一覧です。
+                        </li>
+                        <li>
+                            <a href="live.html" class="preHide">Live!!</a>
+                            <span class="proHide">Live!!（当日のお楽しみ）</span>
+                            <br />
+                            当日の生放送のご案内です。
+                        </li>
+                        <li>
+                            <a href="gallery.html" class="preHide">Gallery</a>
+                            <span class="proHide">Gallery（当日のお楽しみ）</span>
+                            <br />
+                            出展作品（映像以外）のご紹介です。
+                        </li>
+                        <li>
+                            <a href="contest.html">Contest</a><br />
+                            各コンテストのご紹介です。
+                        </li>
+                        <li>
+                            <a href="info.html">Information</a><br />
+                            その他、各種情報です。
+                        </li>
+                    </ul>
+                </div>
             </section>
         </section>
         <section id="kgFooter" class="row"></section>
