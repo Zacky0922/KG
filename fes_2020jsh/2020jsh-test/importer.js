@@ -81,11 +81,10 @@ window.addEventListener('load', (event) => {
     ) {
         zDebug.setDebugEle();
     }
-
    
     if (
         !zDebug.getOnline() ||
-        (new Date()).getTime() >= (new Date(2020, 9 - 1, 12)).getTime()
+        (new Date()).getTime() >= (new Date(2020, 9 - 1, 12,10,0)).getTime()
     ) {
          // 当日まで非表示 .preHide
         let ele = document.getElementsByClassName("preHide");
@@ -101,3 +100,30 @@ window.addEventListener('load', (event) => {
     }
 });
 
+// 573
+let cmd = [""];
+let successCmd = ["",38,38,40,40,37,39,37,39,66,65];
+document.addEventListener('keydown', function () {
+    if (successCmd[cmd.length] == event.keyCode) {
+        cmd[cmd.length] = event.keyCode;
+        if (cmd.length == successCmd.length) {
+            alert("それは「コ○ミ・・・573コマンド」です！\n" +
+                "本校は「5931」学院なのでちょっと違います…\n（そもそも「5931コマンド」はありませんが…）\n\n"+
+                "そもそも、こんなコマンドを知っているなんて、これを見つけた人は中高生ではないのでは…？\n" +
+                "保護者の方でしょうか？\n" +
+                "見つけてくれて嬉しいです！"
+            );
+            cmd = [""];
+        }
+    } else {
+        cmd = [""];
+    }
+});
+
+// 特定時間に動作
+setInterval(function () {
+
+    if ((new Date()).getMinutes == 0) {
+        
+    }
+},60*1000);

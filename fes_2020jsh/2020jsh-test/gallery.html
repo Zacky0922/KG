@@ -176,38 +176,56 @@
 
                         .karutaContent .dw-flip__panel--back {
                             background: rgb(255, 255, 220);
+                            height: 498px;
+                            overflow: auto;
                         }
 
                         .karutaSong {
-                            margin: var(--z-spacing) 0;
+                            -webkit-writing-mode: vertical-rl;
+                            -ms-writing-mode: tb-rl;
+                            writing-mode: vertical-rl;
+                            padding-bottom: var(--z-spacing);
+                            margin: 0 auto var(--z-spacing);
                         }
 
-                        .karutaSinger {
+                        .karutaSong * {
+                            font-family: 'Noto Serif JP', serif;
+                            font-size: 120%;
+                            margin: 0 0.5em;
+                        }
+
+                        .karutaSong>div:nth-child(1),
+                        .karutaSong>div:nth-child(4) {
+                            margin-bottom: var(--z-spacing);
+                            text-align: left;
+                        }
+
+                        .karutaSong>div:nth-child(2) {
+                            text-align: center;
+                            margin-top: var(--z-spacing);
+                            margin-bottom: var(--z-spacing);
+                        }
+
+                        .karutaSong>div:nth-child(3),
+                        .karutaSong>div:nth-child(5) {
+                            margin-top: var(--z-spacing);
                             text-align: right;
                         }
 
-                        .karutaSong,
-                        .karutaSinger {
-                            font-family: 'Noto Serif JP', serif;
-                            font-size: 110%;
-                            margin-left: var(--z-spacing);
-                            margin-right: var(--z-spacing);
+                        .karutaSong>.karutaSinger {
+                            text-align: right;
+                            margin-right: 1.5em;
+                            margin-bottom: calc(-1 * var(--z-spacing));
                         }
 
                         .karutaAudio {
-                            margin: var(--z-spacing);
+                            margin: 0 var(--z-spacing);
                         }
 
-                        .karutaImpression {
-
-                            border-top: 3px dashed #888;
-                            padding-top: var(--z-spacing);
-                            margin-top: var(--z-spacing);
-                        }
+                        .karutaImpression {}
 
                         .karutaStudent {
                             text-align: right;
-                            margin-top: var(--z-spacing);
                         }
                     </style>
                     <div class="karutaList dw">
@@ -216,11 +234,14 @@
                                 <img src="./gallery/karuta/asibikino.jpg" class="dw-flip__panel dw-flip__panel--front">
                                 <div class="dw-flip__panel dw-flip__panel--back">
                                     <div class="karutaSong">
-                                        あしびきの　山鳥の尾の　しだり尾の<br />
-                                        長々し夜を　ひとりかも寝む
-                                    </div>
-                                    <div class="karutaSinger">
-                                        柿本人麿
+                                        <div>あしびきの</div>
+                                        <div>山鳥の尾の</div>
+                                        <div>しだり尾の</div>
+                                        <div>長々し夜を</div>
+                                        <div>ひとりかも寝む</div>
+                                        <div class="karutaSinger">
+                                            柿本人麿
+                                        </div>
                                     </div>
                                     <div class="zCentering karutaAudio">
                                         <audio controls>
@@ -241,11 +262,14 @@
                                 <img src="./gallery/karuta/arasifuku.jpg" class="dw-flip__panel dw-flip__panel--front">
                                 <div class="dw-flip__panel dw-flip__panel--back">
                                     <div class="karutaSong">
-                                        嵐吹く　三室の山の　もみぢ葉は<br />
-                                        龍田の川の　錦なりけり
-                                    </div>
-                                    <div class="karutaSinger">
-                                        能因法師
+                                        <div>嵐吹く</div>
+                                        <div>三室の山の</div>
+                                        <div>もみぢ葉は</div>
+                                        <div>龍田の川の</div>
+                                        <div>錦なりけり</div>
+                                        <div class="karutaSinger">
+                                            能因法師
+                                        </div>
                                     </div>
                                     <div class="zCentering karutaAudio">
                                         <audio controls>
@@ -266,11 +290,14 @@
                                 <img src="./gallery/karuta/inisieno.jpg" class="dw-flip__panel dw-flip__panel--front">
                                 <div class="dw-flip__panel dw-flip__panel--back">
                                     <div class="karutaSong">
-                                        いにしへの　奈良の都の　八重桜<br />
-                                        けふ九重に匂いぬるかも
-                                    </div>
-                                    <div class="karutaSinger">
-                                        伊勢大輔
+                                        <div>いにしへの</div>
+                                        <div>奈良の都の</div>
+                                        <div>八重桜</div>
+                                        <div>けふ九重に</div>
+                                        <div>匂いぬるかも</div>
+                                        <div class="karutaSinger">
+                                            伊勢大輔
+                                        </div>
                                     </div>
                                     <div class="zCentering karutaAudio">
                                         <audio controls>
@@ -278,9 +305,10 @@
                                         </audio>
                                     </div>
                                     <div class="karutaImpression">
+                                        この歌はさくしゃである伊勢大輔が藤原道長から急に「歌を即興で詠め」と言われたときに詠んだ歌です。私はこれを調べたとき、即興でこのような歌を詠めるのはすごいと思いました。
                                     </div>
                                     <div class="karutaStudent">
-                                        2-F　※ハンドル名未定
+                                        2-F　ひめかわ なつは
                                     </div>
                                 </div>
                             </div>
@@ -290,11 +318,14 @@
                                 <img src="./gallery/karuta/okuyamani.jpg" class="dw-flip__panel dw-flip__panel--front">
                                 <div class="dw-flip__panel dw-flip__panel--back">
                                     <div class="karutaSong">
-                                        奥山に　紅葉踏み分け　鳴く鹿の<br />
-                                        声聞く時ぞ　秋は悲しき
-                                    </div>
-                                    <div class="karutaSinger">
-                                        猿丸太夫
+                                        <div>奥山に</div>
+                                        <div>紅葉踏み分け</div>
+                                        <div>鳴く鹿の</div>
+                                        <div>声聞く時ぞ</div>
+                                        <div>秋は悲しき</div>
+                                        <div class="karutaSinger">
+                                            猿丸太夫
+                                        </div>
                                     </div>
                                     <div class="zCentering karutaAudio">
                                         <audio controls>
@@ -325,11 +356,14 @@
 
                                 <div class="dw-flip__panel dw-flip__panel--back">
                                     <div class="karutaSong">
-                                        契りおきし させもが露を いのちにて<br />
-                                        あはれ今年の秋もいぬめり
-                                    </div>
-                                    <div class="karutaSinger">
-                                        藤原基俊
+                                        <div>契りおきし</div>
+                                        <div>させもが露を</div>
+                                        <div>いのちにて</div>
+                                        <div>あはれ今年の</div>
+                                        <div>秋もいぬめり</div>
+                                        <div class="karutaSinger">
+                                            藤原基俊
+                                        </div>
                                     </div>
                                     <div class="zCentering karutaAudio">
                                         <audio controls>
@@ -350,11 +384,14 @@
                                 <img src="./gallery/karuta/meguriaite.jpg" class="dw-flip__panel dw-flip__panel--front">
                                 <div class="dw-flip__panel dw-flip__panel--back">
                                     <div class="karutaSong">
-                                        めぐり逢ひて　見しやそれとも　わかぬ間に<br />
-                                        雲がくれにし　夜半の月かな
-                                    </div>
-                                    <div class="karutaSinger">
-                                        紫式部
+                                        <div>めぐり逢ひて</div>
+                                        <div>見しやそれとも</div>
+                                        <div>わかぬ間に</div>
+                                        <div>雲がくれにし</div>
+                                        <div>夜半の月かな</div>
+                                        <div class="karutaSinger">
+                                            紫式部
+                                        </div>
                                     </div>
                                     <div class="zCentering karutaAudio">
                                         <audio controls>

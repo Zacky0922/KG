@@ -18,6 +18,8 @@ export function setFooter(id, root = "./") {
     let ftBanner = [
         // クラス動画コンテスト
         [root + "classmovie.html", "_self", root + "pict/ft/classmovie.png","preHide"],
+        // 数学研究室
+        ["../math-lab/", "_blank", root + "pict/ft/suken.png", "preHide"],
         // ARコンテンツバナー
         [root + "gallery.html#ar_gallery", "_self", root + "pict/ft/ar_banner.png", "preHide"],
         // 0912個別相談

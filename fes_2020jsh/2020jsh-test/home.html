@@ -152,12 +152,13 @@
 
                         table#contentsClover div.petal {
                             border-radius: 50%;
-                            padding: var(--z-spacing);
-                            margin: 5px;
+                            padding: calc(var(--z-spacing) / 2);
+                            margin: 3px;
                             height: 150px;
                             width: 150px;
                             display: flex;
                             text-align: center;
+                            white-space: nowrap;
                             place-items: center;
                             align-items: center;
                             justify-items: center;
@@ -214,7 +215,8 @@
                                     alert("そんなに何度も叩いて……\n" +
                                         "本物のお花をそんなに叩いちゃダメですよ！\n\n" +
                                         "仕方ないのでヒントです。\n" +
-                                        "サイトに隠された「イースターエッグ」は、これを含めて全部で「3個」です。\n" +
+                                        "サイトに隠された「イースターエッグ」は、これを含めて全部で「4個」です。\n" +
+                                        "PC環境でしか見つけられないものもあります。\n"+
                                         "頑張って探してみてください！");
                                     break;
                                 case 50:
@@ -224,7 +226,6 @@
                             }
                         });
                     </script>
-
 
                     <h2>五峯祭チラシ</h2>
                     <style>
@@ -237,8 +238,8 @@
                             max-width: min(300px, 90vw);
                         }
                     </style>
-                    <div class="zCentering">
-                        <a href="./pict/flyer/flyer.pdf" target="_blank" class="flyerWrap">
+                    <div class="zCentering flyerWrap">
+                        <a href="./pict/flyer/flyer.pdf" target="_blank">
                             <img src="./pict/flyer/flyer1.png">
                             <img src="./pict/flyer/flyer2.png">
                         </a>

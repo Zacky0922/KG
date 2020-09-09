@@ -64,15 +64,13 @@
                         </table>
                     </div>
 
-                    <div class="zCentering">
-
-                    </div>
-
                     <h3>「SDGs動画」部門</h3>
+                    <div style="padding:5px;background:#fff;">
                     <div class="zCentering">
                         <img src="./pict/SDGs/logo.png" style="width:min(80vw,500px)">
                     </div>
                     <div id="SDGsIcons" class="zGridFill"></div>
+                    </div>
                     <style>
                         #SDGsIcons {
                             display: grid;
@@ -80,7 +78,6 @@
                             grid-template-columns: repeat(auto-fill, 150px);
                             /* img widthと合わせる */
                             justify-content: center;
-                            background: #fff;
                         }
 
                         #SDGsIcons>img {
@@ -95,13 +92,12 @@
                             for (let i = 1; i <= 17; i++) {
                                 let img = document.createElement("img");
                                 img.src = "./pict/SDGs/" + (i < 10 ? "0" : "") + i + ".png";
-                                img.id = "SDGs" + i;
                                 wrap.appendChild(img);
-                                document.getElementById("SDGs" + i).addEventListener("click", function () {
+                                img.addEventListener("click", function () {
                                     SDGsCommand.push(i);
                                     if (SDGsCommand.length == 4) {
                                         if (SDGsCommand == "5,9,3,1") {
-                                            alert("◆SDGs隠しコマンド\n入力成功!!\n\n遊びながらSDGsを学びましょう！");
+                                            alert("◆SDGs隠しコマンド\n入力成功!!\n（国際学院ですからね、やっぱり「5931」ですよね）\n\n遊びながらSDGsを学びましょう！");
                                             location.href = "https://www.unic.or.jp/activities/economic_social_development/sustainable_development/2030agenda/go-goals/";
                                         } else {
                                             alert("◆SDGs隠しコマンド\nあなたの入力したコマンドは [" + SDGsCommand + "]\n残念、不正解");
