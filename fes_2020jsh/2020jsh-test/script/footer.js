@@ -17,7 +17,9 @@ export function setFooter(id, root = "./") {
     // フッターバナー設定[href, target, img.src, a.class]
     let ftBanner = [
         // クラス動画コンテスト
-        [root + "classmovie.html", "_self", root + "pict/ft/classmovie.png","preHide"],
+        [root + "classmovie.html", "_self", root + "pict/ft/classmovie.png", "preHide"],
+        // 中学劇
+        [root + "js/festival.html", "_blank", root + "pict/ft/js_act.png","preHide"],
         // 数学研究室
         ["../math-lab/", "_blank", root + "pict/ft/suken.png", "preHide"],
         // ARコンテンツバナー

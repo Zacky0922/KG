@@ -1,10 +1,10 @@
 // デバッグモードからの遷移は、再度デバッグモードへ自動遷移
 import 'https://code.jquery.com/jquery-3.3.1.min.js';
-import { zList, burgerMenu, getGicon, zDebug } from "../exScripts/aggregater.js";
+import { zList, burgerMenu, getGicon, zDebug,zCSV } from "../exScripts/aggregater.js";
 import { setHeader } from "./script/header.js";
 import { setFooter } from "./script/footer.js";
 import { setBGfloater } from "./script/bgFloater.js";
-export { zList, burgerMenu, getGicon, zDebug, setBGfloater};
+export { zList, burgerMenu, getGicon, zDebug, zCSV, setBGfloater};
 
 // 初期設定
 (function () {
@@ -100,25 +100,7 @@ window.addEventListener('load', (event) => {
     }
 });
 
-// 573
-let cmd = [""];
-let successCmd = ["",38,38,40,40,37,39,37,39,66,65];
-document.addEventListener('keydown', function () {
-    if (successCmd[cmd.length] == event.keyCode) {
-        cmd[cmd.length] = event.keyCode;
-        if (cmd.length == successCmd.length) {
-            alert("それは「コ○ミ・・・573コマンド」です！\n" +
-                "本校は「5931」学院なのでちょっと違います…\n（そもそも「5931コマンド」はありませんが…）\n\n"+
-                "そもそも、こんなコマンドを知っているなんて、これを見つけた人は中高生ではないのでは…？\n" +
-                "保護者の方でしょうか？\n" +
-                "見つけてくれて嬉しいです！"
-            );
-            cmd = [""];
-        }
-    } else {
-        cmd = [""];
-    }
-});
+
 
 // 特定時間に動作
 setInterval(function () {

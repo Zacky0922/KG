@@ -45,11 +45,22 @@
                                 allowfullscreen></iframe>
                         </div>
                     </div>
+                    <div class="zCentering preHide">
+                        <a href="" target="_blank" class="zBtn"
+                            style="width:50%;height:20vh;margin:10px auto;">生放送はコチラから！</a>
+                    </div>
+                    <div class="zCentering preHide">
+                        <div style="display: inline-block;">
+                            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURTgzQVBSSTBQOVc5TUg1UFUyVUFPSVROVCQlQCN0PWcu"
+                                target="_blank" class="zBtn">生放送メッセージフォーム</a><br />
+                            あなたのコメントが放送中に読まれるかも！？
+                        </div>
+                    </div>
                 </div>
             </section>
         </section>
         <section class="row">
-        
+
             <section class="col-xs-12">
                 <div class="box">
                     <h2 class="zHeadList">Schedule</h2>
@@ -72,6 +83,59 @@
                             width: 100px;
                         }
                     </style>
+                    <div class="xScrollable" id="timetableCSV"></div>
+                    <script type="module">
+                        import 'https://code.jquery.com/jquery-3.3.1.min.js';
+                        import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js";
+                        import "https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/extras/jquery.metadata.min.js";
+                        // データ格納変数
+                        let data = new Array();
+                        // データ表示部
+                        let wrap = document.getElementById("timetableCSV");
+                        let tbl = document.createElement("table");
+                        let thead = document.createElement("thead");
+                        let tbody = document.createElement("tbody");
+                        tbl.appendChild(thead);
+                        tbl.appendChild(tbody);
+                        // CSV取得用HTTPリクエスト
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("GET", "./timetable.csv", true);    // 第3引数false＝同期処理（読込完了までwait）
+                        xhr.send(null);
+                        xhr.onload = function () {
+                            data = xhr.responseText.split("\n");
+                            for (let i = 0; i < data.length; ++i) {
+                                data[i] = data[i].split(",");
+                                // 表示設定
+                                let tr = document.createElement("tr");
+                                let td = new Array();
+                                td[0] = (i == 0 ? document.createElement("th") : document.createElement("td"));
+                                td[0].innerHTML = data[i][2];
+                                td[1] = (i == 0 ? document.createElement("th") : document.createElement("td"));
+                                if (i == 0) {
+                                    td[1].innerHTML = data[i][0] + "／" +
+                                        data[i][1];
+                                } else {
+                                    td[1].innerHTML = "<a href='" + data[i][4] + "' target='_blank'>" +
+                                        data[i][0] + "<br/>" +
+                                        data[i][1] + "</a>";
+                                }
+                                td[2] = (i == 0 ? document.createElement("th") : document.createElement("td"));
+                                td[2].innerHTML = data[i][3];
+                                tr.appendChild(td[0]);
+                                tr.appendChild(td[1]);
+                                tr.appendChild(td[2]);
+                                if (i == 0) {
+                                    thead.appendChild(tr);
+                                } else {
+                                    tbody.appendChild(tr);
+                                }
+                                wrap.appendChild(tbl);
+                            }
+                            $("#timetableCSV").tablesorter({
+                                sortList: [[0, 0]]
+                            });
+                        }
+                    </script>
                     <div class="xScrollable">
                         <table id="timetable" class="tablesoter">
                             <thead>
@@ -102,13 +166,13 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>12:40</td>
                                     <td>生徒会</td>
                                     <td>ドミノ企画</td>
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>10:34</td>
                                     <td>2年G組</td>
                                     <td>KGピタゴラス</td>
                                     <td>
@@ -118,9 +182,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>11:39</td>
                                     <td>3年G組</td>
-                                    <td>食物調理コースが<br />異文化料理を作ってみた！！</td>
+                                    <td>食物調理コースが<br />異文化料理を作ってみた！！<br />
+                                        「ペルー」料理編</td>
                                     <td>
                                         <img src="./pict/schedule/常設動画.png">
                                         <a href="./gallery.html" target="_self">
@@ -130,6 +195,30 @@
                                 </tr>
                                 <tr>
                                     <td></td>
+                                    <td>3年G組</td>
+                                    <td>食物調理コースが<br />異文化料理を作ってみた！！<br />
+                                        「モンゴル」料理編</td>
+                                    <td>
+                                        <img src="./pict/schedule/常設動画.png">
+                                        <a href="./gallery.html" target="_self">
+                                            <img src="./pict/schedule/展示.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>12:56</td>
+                                    <td>3年G組</td>
+                                    <td>食物調理コースが<br />異文化料理を作ってみた！！<br />
+                                        「ミャンマー」料理編</td>
+                                    <td>
+                                        <img src="./pict/schedule/常設動画.png">
+                                        <a href="./gallery.html" target="_self">
+                                            <img src="./pict/schedule/展示.png">
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10:37</td>
                                     <td>JRC部</td>
                                     <td>レッドクロス赤ずきん！<br />
                                         ～命を守ろう！救おう！～</td>
@@ -143,7 +232,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>10:23</td>
                                     <td>かわまし</td>
                                     <td></td>
                                     <td></td>
@@ -167,22 +256,37 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>10:54</td>
                                     <td>軽音楽部</td>
-                                    <td>軽音楽WEB録画演奏</td>
+                                    <td>軽音楽WEB録画演奏<br />（前編）</td>
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td>13:10</td>
+                                    <td>軽音楽部</td>
+                                    <td>軽音楽WEB録画演奏<br />（後編）</td>
                                     <td></td>
+                                </tr>
+                                <tr>
+                                    <td>11:35</td>
                                     <td>吹奏楽部</td>
                                     <td>いわたとゆかいな仲間たち</td>
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td>10:08</td>
+                                    <td>1年H・K組</td>
+                                    <td>「終わらないSHR」<br />
+                                        （リアル脱出ゲーム風ドラマ）<br />（前編）</td>
+                                    <td>
+                                        <img src="./pict/schedule/常設動画.png">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td></td>
                                     <td>1年H・K組</td>
                                     <td>「終わらないSHR」<br />
-                                        （リアル脱出ゲーム風ドラマ）</td>
+                                        （リアル脱出ゲーム風ドラマ）<br />（後編）</td>
                                     <td>
                                         <img src="./pict/schedule/常設動画.png">
                                     </td>
@@ -194,17 +298,25 @@
                                     <td></td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>11:12</td>
                                     <td>中学校</td>
-                                    <td>劇</td>
+                                    <td>劇「ロミオとジュリエット」</td>
                                     <td>
                                         <img src="./pict/schedule/常設動画.png">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>11:22</td>
+                                    <td>中学校</td>
+                                    <td>劇「汝の名は。」</td>
+                                    <td>
+                                        <img src="./pict/schedule/常設動画.png">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>10:51</td>
                                     <td>生徒会</td>
-                                    <td>クラス動画コンテスト</td>
+                                    <td>クラス動画コンテスト<br />（前編）</td>
                                     <td>
                                         <a href="./classmovie.html" target="_self">
                                             <img src="./pict/schedule/特設ページ.png">
@@ -212,20 +324,29 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td>チェリー</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>11:55</td>
+                                    <td>生徒会</td>
+                                    <td>クラス動画コンテスト<br />（後編）</td>
+                                    <td>
+                                        <a href="./classmovie.html" target="_self">
+                                            <img src="./pict/schedule/特設ページ.png">
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td>13:04</td>
                                     <td>2年K組</td>
                                     <td>桃太郎</td>
                                     <td>
                                         <img src="./pict/schedule/常設動画.png">
                                     </td>
                                 </tr>
-
+                                <tr>
+                                    <td>12:00</td>
+                                    <td></td>
+                                    <td>昼休憩</td>
+                                    <td></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -242,11 +363,11 @@
                             });
                         });
                     </script>
-                    </div>
+                </div>
             </section>
         </section>
         <section class="row">
-        
+
             <section class="col-xs-12">
                 <div class="box">
                     <h2 class="zHeadList">常設動画プレイリスト(YouTube)</h2>

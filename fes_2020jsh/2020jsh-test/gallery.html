@@ -19,7 +19,8 @@
 
     <!-- 画面設定 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,
+ initial-scale=1.0">
 
     <!-- JS/CSS -->
     <script type="module" src="./importer.js"></script>
@@ -64,8 +65,10 @@
                     <style>
                         .bookWrap {
                             position: relative;
-                            width: min(300px, 80vw);
-                            height: min(420px, 112vw);
+                            width: min(300px,
+                                    80vw);
+                            height: min(420px,
+                                    112vw);
                             margin: var(--z-spacing);
                             -webkit-perspective: 1000px;
                             perspective: 1000px;
@@ -152,6 +155,7 @@
                     </div>
                     <div class="zCentering">
                         <img src="./gallery/literature_pict.jpg" style="width:300px;max-width: 70vw;">
+                        <img src="./gallery/literature_pict1.png" style="width:300px;max-width: 70vw;">
                     </div>
                 </div>
             </section>
@@ -175,7 +179,9 @@
                         }
 
                         .karutaContent .dw-flip__panel--back {
-                            background: rgb(255, 255, 220);
+                            background: rgb(255,
+                                    255,
+                                    220);
                             height: 498px;
                             overflow: auto;
                         }
@@ -189,12 +195,14 @@
                         }
 
                         .karutaSong * {
-                            font-family: 'Noto Serif JP', serif;
+                            font-family: 'Noto Serif JP',
+                                serif;
                             font-size: 120%;
                             margin: 0 0.5em;
                         }
 
                         .karutaSong>div:nth-child(1),
+
                         .karutaSong>div:nth-child(4) {
                             margin-bottom: var(--z-spacing);
                             text-align: left;
@@ -207,6 +215,7 @@
                         }
 
                         .karutaSong>div:nth-child(3),
+
                         .karutaSong>div:nth-child(5) {
                             margin-top: var(--z-spacing);
                             text-align: right;
@@ -294,7 +303,7 @@
                                         <div>奈良の都の</div>
                                         <div>八重桜</div>
                                         <div>けふ九重に</div>
-                                        <div>匂いぬるかも</div>
+                                        <div>匂ひぬるかも</div>
                                         <div class="karutaSinger">
                                             伊勢大輔
                                         </div>
@@ -417,176 +426,65 @@
             <section class="col-xs-12">
                 <div class="box">
                     <h2 class="zHeadList">図書委員によるおすすめ図書のPOP展示</h2>
-                    <div class="zCentering" style="margin:var(--z-spacing,20px) 0;">
-
+                    <div id="libPOPs" class="libWrap" style="overflow-x:scroll;overflow:scroll hidden;"></div>
+                    <div class="zCentering">
+                        <div id="libBookInfo">（気になったPOPをクリック／タップしてください）</div>
                     </div>
+
                     <style>
-                        .libContent {
-                            border: 1px #000 solid;
+                        #libPOPs {
+                            white-space: nowrap;
                         }
 
-                        .libContent>div>img {
-                            width: 100%;
-                            height: 140%;
+                        #libPOPs>div {
+                            display: inline-block;
+                            border:#449 5px solid;
+                            margin:var(--z-spacing);
                         }
 
-                        /* 縦 */
-                        .lib_v img {
-                            width: 100%;
-                            height: 140%;
+                        #libPOPs>div>img {
+                            width: 80vw;
+                            max-width:500px;
+                            height: auto;
                         }
 
-                        /* 横 */
-                        .lib_h {
-                            height: calc(calc(100% - 40px) * 0.8 + 40px);
+                        #libBookInfo {
+                            display: inline-block;
+                            text-align:left;
+                            padding:var(--z-spacing);
+                            margin:var(--z-spacing);
+                            background: #fcc;
                         }
                     </style>
-                    <div class="libList dw">
-                        <div class="libWrap dw-panel dw-flip lib_v">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/54.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/cake.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/chihaya.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/death.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_v">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/draw.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_v">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/kino.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/kudo.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/omoi.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/oni.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_v">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/pan.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/samurai.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_v">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/shokudo.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/summer.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-                        <div class="libWrap dw-panel dw-flip lib_h">
-                            <div class="libContent dw-panel__content dw-flip__content">
-                                <div class="dw-flip__panel dw-flip__panel--front">
-                                    <img src="./gallery/library/yokai.jpg">
-                                </div>
-                                <div class="dw-flip__panel dw-flip__panel--back">
-                                    書籍情報
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="dw__focus-curtain"></div>
-                    </div>
+                    <script>
+                        // データ格納変数
+                        let libData = new Array();
+                        // データ表示部
+                        let wrap = document.getElementById("libPOPs");
+                        // 書籍情報表示部
+                        let info = document.getElementById("libBookInfo");
+                        // CSV取得用HTTPリクエスト
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("GET", "./gallery/library/lib.csv", true);    // 第3引数false＝同期処理（読込完了までwait）
+                        xhr.send(null);
+                        xhr.onload = function () {
+                            libData = xhr.responseText.split("\n");
+                            for (let i = 1; i < libData.length; ++i) {
+                                libData[i] = libData[i].split(",");
+                                let ele = document.createElement("div");
+                                let img = document.createElement("img");
+                                img.src = "./gallery/library/" + libData[i][0] + ".jpg";
+                                ele.appendChild(img);
+                                wrap.appendChild(ele);
+                                ele.addEventListener('click', function () {
+                                    info.innerHTML = "書 籍 名 ： " + libData[i][1] + "<br/>" +
+                                        "著　　者 ： " + libData[i][2] + "<br/>" +
+                                        "出 版 社 ： " + libData[i][3] + "<br/>" +
+                                        "推薦生徒 ： " + libData[i][4] + "　" + libData[i][5];
+                                });
+                            }
+                        }
+                    </script>
                 </div>
             </section>
         </section>
