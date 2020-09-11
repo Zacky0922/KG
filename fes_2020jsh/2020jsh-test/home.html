@@ -41,7 +41,15 @@
                         「第23回 五峯祭」特設サイトへようこそ！
                     </div>
                     <div class="zCentering">
+                        <video src="./pict/title.mp4" autoplay muted loop style="width:80%;height:auto;border:1px #000 solid;"></video>
+                    </div>
+
+                    <div class="zCentering">
                         <span id="countdownMsg"></span>
+                    </div>
+                    <div class="zCentering preHide">
+                        <a href="https://youtu.be/01LHwK2jUIE" target="_blank" class="zBtn"
+                            style="width:50%;height:20vh;margin:10px auto;">生放送はコチラから！</a>
                     </div>
                     <div class="xScrollable">
                         <table id="KGcountdownWrap">
@@ -82,27 +90,36 @@
                         let w_diff = 0;
                         window.addEventListener('load', (event) => {
                             let zCountdown_ = setInterval(function () {
-                                let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
-                                let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
-                                document.getElementById("KGcountdown").innerHTML = "" +
-                                    "<tr>" +
-                                    "<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
-                                    "<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
-                                    "<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
-                                    "<th>" + Math.floor(d / 1000) % 60 + "</th>" +
-                                    "</tr>" +
-                                    "<tr>" +
-                                    "<td>" + "day" + "</td>" +
-                                    "<td>" + "hour" + "</td>" +
-                                    "<td>" + "minute" + "</td>" +
-                                    "<td>" + "second" + "</td>" +
-                                    "</tr>";
-                                let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
-                                w_diff = w_new - w_old;
-                                document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
-                                document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-                                document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
-                                w_old = w_new;
+                                if (
+                                    (new Date(2020, 9 - 1, 12, 10, 0)).getTime() < (new Date()).getTime()
+                                ) {
+                                    // オンタイム処理
+                                    document.getElementById("KGcountdownWrapWrap").innerHTML = "";
+                                    clearInterval(zCountdown_);
+                                } else {
+                                    // カウントダウン処理
+                                    let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
+                                    let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
+                                    document.getElementById("KGcountdown").innerHTML = "" +
+                                        "<tr>" +
+                                        "<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
+                                        "<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
+                                        "<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
+                                        "<th>" + Math.floor(d / 1000) % 60 + "</th>" +
+                                        "</tr>" +
+                                        "<tr>" +
+                                        "<td>" + "day" + "</td>" +
+                                        "<td>" + "hour" + "</td>" +
+                                        "<td>" + "minute" + "</td>" +
+                                        "<td>" + "second" + "</td>" +
+                                        "</tr>";
+                                    let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
+                                    w_diff = w_new - w_old;
+                                    document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+                                    document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+                                    document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
+                                    w_old = w_new;
+                                }
                             }, 66);
                         });
                     </script>
@@ -215,7 +232,7 @@
                                         "本物のお花をそんなに叩いちゃダメですよ！\n\n" +
                                         "仕方ないのでヒントです。\n" +
                                         "サイトに隠された「イースターエッグ」は、これを含めて全部で「4個」です。\n" +
-                                        "PC環境でしか見つけられないものもあります。\n"+
+                                        "PC環境でしか見つけられないものもあります。\n" +
                                         "頑張って探してみてください！");
                                     break;
                                 case 50:
@@ -225,7 +242,16 @@
                             }
                         });
                     </script>
-
+                    <div class="zCentering preHide">
+                        <div style="display:inline-block">
+                            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUOFNBMTdPMFZJWk1DR0FIQURPN0pVOTNBNiQlQCN0PWcu"
+                                target="_blank" class="zBtn">
+                                優秀企画投票<br />
+                                （来場者アンケート）
+                            </a>
+                        </div><br />
+                        （在校生の皆さんはTeamsで配信した専用フォームから投票してください）
+                    </div>
                     <h2>五峯祭チラシ</h2>
                     <style>
                         .flyerWrap {

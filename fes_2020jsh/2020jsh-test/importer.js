@@ -34,7 +34,7 @@ window.addEventListener('load', (event) => {
     burger.addLink(getGicon("tag_faces").outerHTML + " Intro", root + "intro.html");
     burger.addLink(getGicon("event_note").outerHTML + " Events", root + "events.html");
     if (
-        (new Date(2020, 9 - 1, 12)).getTime() < (new Date()).getTime() ||
+        (new Date(2020, 9 - 1, 12,9,30)).getTime() < (new Date()).getTime() ||
         !zDebug.getOnline()
     ) {
         //当日用・デバッグ
@@ -77,14 +77,14 @@ window.addEventListener('load', (event) => {
 
     // 読込完了処理
     if (!zDebug.getOnline() ||
-        (new Date()).getTime() > (new Date(2020, 9 - 1, 12).getTime())
+        (new Date()).getTime() > (new Date(2020, 9 - 1, 12, 9, 30).getTime())
     ) {
         zDebug.setDebugEle();
     }
    
     if (
         !zDebug.getOnline() ||
-        (new Date()).getTime() >= (new Date(2020, 9 - 1, 12,10,0)).getTime()
+        (new Date()).getTime() >= (new Date(2020, 9 - 1, 12, 9, 30)).getTime()
     ) {
          // 当日まで非表示 .preHide
         let ele = document.getElementsByClassName("preHide");

@@ -38,21 +38,56 @@
                 <div class="box">
                     <h2 class="zHeadList">食物調理コースが異文化料理を作ってみた！！</h2>
                     <h3>レシピダウンロード</h3>
-                    <div class="zCentering">
-                        <ul>
-                            <li>
-                                <a target="_blank" href="./gallery/recipe/スリランカ料理.pdf">スリランカ料理</a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./gallery/recipe/ペルー料理.pdf">ペルー料理</a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./gallery/recipe/ミャンマー料理.pdf">ミャンマー料理</a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="./gallery/recipe/モンゴル料理.pdf">モンゴル料理</a>
-                            </li>
-                        </ul>
+                    <style>
+                        table.調理tbl td{
+                            text-align:center;
+                        }
+                    </style>
+                    <div class="xScrollable">
+                        <table class="調理tbl">
+                            <thead>
+                                <tr>
+                                    <th>レシピPDF</th>
+                                    <th>動画</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a target="_blank" href="./gallery/recipe/ペルー料理.pdf">ペルー料理</a></td>
+                                    <td>
+                                        <a href="https://youtu.be/U6k3pqTM5bo" target="_blank">
+                                            <span class="material-icons">videocam</span>動画
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="./gallery/recipe/ミャンマー料理.pdf">ミャンマー料理</a>
+                                    </td>
+                                    <td>
+                                        <a href="https://youtu.be/I0_LuVpCf3Y" target="_blank">
+                                            <span class="material-icons">videocam</span>動画
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="./gallery/recipe/モンゴル料理.pdf">モンゴル料理</a>
+                                    </td>
+                                    <td>
+                                        <a href="https://youtu.be/YxfhbE3zfCk" target="_blank">
+                                            <span class="material-icons">videocam</span>動画
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a target="_blank" href="./gallery/recipe/スリランカ料理.pdf">スリランカ料理</a>
+                                    </td>
+                                    <td>五峯祭終了後に公開！</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
@@ -438,21 +473,21 @@
 
                         #libPOPs>div {
                             display: inline-block;
-                            border:#449 5px solid;
-                            margin:var(--z-spacing);
+                            border: #449 5px solid;
+                            margin: var(--z-spacing);
                         }
 
                         #libPOPs>div>img {
                             width: 80vw;
-                            max-width:500px;
+                            max-width: 500px;
                             height: auto;
                         }
 
                         #libBookInfo {
                             display: inline-block;
-                            text-align:left;
-                            padding:var(--z-spacing);
-                            margin:var(--z-spacing);
+                            text-align: left;
+                            padding: var(--z-spacing);
+                            margin: var(--z-spacing);
                             background: #fcc;
                         }
                     </style>

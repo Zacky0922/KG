@@ -79,14 +79,13 @@
 				（YouTube Live）
 			</a>
 		</div>
-
 		<div>
 			<a href="./home.html" class="zBtn">
 				五峯祭 特設サイトはこちら
 			</a>
 		</div>
 
-		<div class="xScrollable">
+		<div class="xScrollable" id="KGcountdownWrapWrap">
 			<table id="KGcountdownWrap">
 				<tfoot>
 					<tr>
@@ -111,27 +110,36 @@
 			let w_diff = 0;
 			window.addEventListener('load', (event) => {
 				let zCountdown_ = setInterval(function () {
-					let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
-					let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
-					document.getElementById("KGcountdown").innerHTML = "" +
-						"<tr>" +
-						"<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
-						"<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
-						"<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
-						"<th>" + Math.floor(d / 1000) % 60 + "</th>" +
-						"</tr>" +
-						"<tr>" +
-						"<td>" + "day" + "</td>" +
-						"<td>" + "hour" + "</td>" +
-						"<td>" + "minute" + "</td>" +
-						"<td>" + "second" + "</td>" +
-						"</tr>";
-					let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
-					w_diff = w_new - w_old;
-					document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
-					document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
-					document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
-					w_old = w_new;
+					if (
+						(new Date(2020, 9 - 1, 12, 10, 0)).getTime() < (new Date()).getTime()
+					) {
+						// オンタイム処理
+						document.getElementById("KGcountdownWrapWrap").innerHTML = "";
+						clearInterval(zCountdown_);
+					} else {
+						// カウントダウン処理
+						let d = (new Date(2020, 9 - 1, 12, 10, 0, 0)).getTime() - (new Date()).getTime();
+						let s = "<span style='color:transparent;padding:0;margin:0;border:none;'>s</span>";
+						document.getElementById("KGcountdown").innerHTML = "" +
+							"<tr>" +
+							"<th>" + Math.floor(d / (1000 * 60 * 60 * 24)) + "</th>" +
+							"<th>" + Math.floor(d / (1000 * 60 * 60)) % 24 + "</th>" +
+							"<th>" + Math.floor(d / (1000 * 60)) % 60 + "</th>" +
+							"<th>" + Math.floor(d / 1000) % 60 + "</th>" +
+							"</tr>" +
+							"<tr>" +
+							"<td>" + "day" + "</td>" +
+							"<td>" + "hour" + "</td>" +
+							"<td>" + "minute" + "</td>" +
+							"<td>" + "second" + "</td>" +
+							"</tr>";
+						let w_new = (d % 2000 < 1000 ? d % 1000 : 1000 - (d % 1000));
+						w_diff = w_new - w_old;
+						document.getElementById("KGcountdownMs").parentElement.style.textAlign = (w_diff > 0 ? "left" : "right");
+						document.getElementById("KGcountdownMs").style.width = (w_new / 10) + "%";
+						document.getElementById("KGcountdownMs").style.background = "hsl(" + ((d % 2000) / 2000 * 360) + ",100%,50%)";
+						w_old = w_new;
+					}
 				}, 66);
 			});
 		</script>

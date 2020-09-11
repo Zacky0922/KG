@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--HTML5-->
+<html lang="ja">
+
+<head>
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics by KG-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116915593-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-116915593-1');
+    </script>
+
+
+    <!-- JS/CSS master -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.js"></script>
+    <title>五峯祭TitleVR</title>
+</head>
+
+<body>
+    <a-scene id="myGallery" gltf-model="dracoDecoderPath: path/to/decoder/;" renderer="colorManagement: true;">
+
+        <a-entity id="posterWrap"></a-entity>
+        <a-entity gltf-model="./obj/jumpingTitle.glb" position="0 0 0" scale="1 1 1"
+            animation-mixer="clip:*">
+        </a-entity>
+        <a-entity id="z-camera-wrap" position="0 0 10" rotation="0 0 0">
+            <a-entity id="z-camera" camera look-controls>
+                <!--<a-cursor color="#114" opacity="0.5"></a-cursor>-->
+            </a-entity>
+        </a-entity>
+
+    </a-scene>
+</body>
+
+</html>
