@@ -1,6 +1,3 @@
-<!--
-	こんなところ見たって、なにもありませんよ！
--->
 <!DOCTYPE html>
 <!--HTML5-->
 <html lang="ja">
@@ -32,9 +29,7 @@
         /* */
 
         body {
-            /*
             background: #888;
-            /* */
             position: relative;
             margin: 0;
             padding: 0;
@@ -64,7 +59,7 @@
 
         div#wrap>* {
             position: absolute;
-            width: calc(1920px - 2 * var(--z-spacing));
+            width: 1920px;
             margin: 0;
             padding: 0;
             text-align: center;
@@ -123,7 +118,7 @@
         div#wrap>*>* {
             display: inline-block;
             /* 全般設定 */
-            font-size: 38px;
+            font-size: 50px;
         }
 
         /* text設定 */
@@ -171,67 +166,63 @@
             border-right: 5px #00f solid;
             padding: 0 var(--z-spacing);
         }
-        .comment>div{
-            display:block !important;
-        }
-        /* コメント本文 */
-        .comment>div>div:nth-child(1) {}
-
-        /* 氏名（在住） */
-        .comment>div>div:nth-child(2) {
-            text-align: right;
-        }
     </style>
 </head>
-
-<!--
-    生放送コメントExcel
-https://kgefac.sharepoint.com/:x:/r/sites/msteams_1d13d1/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B7F43800F-4D5D-4320-97AF-A841DD9E4ECA%7D
-
--->
 
 <body>
     <div id="wrap">
         <!-- 左上 -->
-        <div class="left top comment">
-            <!-- コメント添付エリア：ここから -->
-			
-			<div>
-<div>ドミノはとてもすばらしいです。わたしがとてもすきです。</div>
-<div>Norhaziq Shahmi（Sekolah Sultan Alam Shah）</div>
-</div>
-			
-			
-			<!--
-			
-			
-			
-			-->
+        <div class="left top">
+            <div>
 
-            <!-- ここまで -->
+            </div>
         </div>
 
         <!-- 右上 -->
         <div class="right top">
-
+            <div class="live animate__animated animate__infinite animate__pulse" style="text-align:center;">
+                五峯祭<br />
+                リピート放送!!
+            </div>
         </div>
 
         <!-- 上中央 -->
         <div class="top center">
             <div>
-			
+
             </div>
         </div>
 
+        <!-- 左下 -->
+        <div class="left0 bottom">
+            <div class="frame_h tx_c ">
+                昨日放送のオンライン五峯祭<br />
+                完全版の放送です！
+            </div>
+        </div>
+
+        <!-- 右下 -->
+        <div class="right0 bottom0">
+            <div>
+
+            </div>
+        </div>
+
+        <!-- 下中央 -->
+        <div class="bottom center">
+            <div>
+            </div>
+        </div>
+
+        <!-- 中央 -->
+        <div class="middle">
+            <div>
+                <span id=""></span>
+            </div>
+        </div>
     </div>
 </body>
 <script>
-    // 本番：リロード＝コメントアウト
-    setTimeout(function () {
-        location.reload();
-    }, 3 * 1000);
-
-
 </script>
 
 </html>

@@ -41,17 +41,18 @@
                         「第23回 五峯祭」特設サイトへようこそ！
                     </div>
                     <div class="zCentering">
-                        <video src="./pict/title.mp4" autoplay muted loop style="width:80%;height:auto;border:1px #000 solid;"></video>
+                        <video src="./pict/title.mp4" autoplay muted loop
+                            style="width:80%;height:auto;border:1px #000 solid;"></video>
                     </div>
 
                     <div class="zCentering">
                         <span id="countdownMsg"></span>
                     </div>
-                    <div class="zCentering preHide">
-                        <a href="https://youtu.be/01LHwK2jUIE" target="_blank" class="zBtn"
-                            style="width:50%;height:20vh;margin:10px auto;">生放送はコチラから！</a>
+                    <div class="zCentering preHide zUndisp">
+                        <a href="https://www.youtube.com/watch?v=zYH_HLlWRrI&feature=youtu.be" target="_blank" class="zBtn"
+                            style="width:50%;height:20vh;margin:10px auto;">9月13日(日)13時～<br/>リピート放送！</a>
                     </div>
-                    <div class="xScrollable">
+                    <div class="xScrollable" style="display:none;">
                         <table id="KGcountdownWrap">
                             <tfoot>
                                 <tr>
@@ -83,7 +84,7 @@
                                 document.getElementById("countdownMsg").innerText = "五峯祭（2020.9.12）は、" + (-d) + "日前に終了しました。";
                             }
                         })();
-
+                        /*
                         //カウントダウン設定
                         //制限時間以降が未設定……
                         let w_old = 0;
@@ -122,6 +123,7 @@
                                 }
                             }, 66);
                         });
+                        */
                     </script>
 
                     <div class="zCentering">

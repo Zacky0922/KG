@@ -64,7 +64,7 @@
 
         div#wrap>* {
             position: absolute;
-            width: calc(1920px - 2 * var(--z-spacing));
+            width: 1920px;
             margin: 0;
             padding: 0;
             text-align: center;
@@ -123,7 +123,7 @@
         div#wrap>*>* {
             display: inline-block;
             /* 全般設定 */
-            font-size: 38px;
+            font-size: 50px;
         }
 
         /* text設定 */
@@ -171,58 +171,58 @@
             border-right: 5px #00f solid;
             padding: 0 var(--z-spacing);
         }
-        .comment>div{
-            display:block !important;
-        }
-        /* コメント本文 */
-        .comment>div>div:nth-child(1) {}
-
-        /* 氏名（在住） */
-        .comment>div>div:nth-child(2) {
-            text-align: right;
-        }
     </style>
 </head>
-
-<!--
-    生放送コメントExcel
-https://kgefac.sharepoint.com/:x:/r/sites/msteams_1d13d1/_layouts/15/Doc.aspx?action=edit&sourcedoc=%7B7F43800F-4D5D-4320-97AF-A841DD9E4ECA%7D
-
--->
 
 <body>
     <div id="wrap">
         <!-- 左上 -->
-        <div class="left top comment">
-            <!-- コメント添付エリア：ここから -->
-			
-			<div>
-<div>ドミノはとてもすばらしいです。わたしがとてもすきです。</div>
-<div>Norhaziq Shahmi（Sekolah Sultan Alam Shah）</div>
-</div>
-			
-			
-			<!--
-			
-			
-			
-			-->
-
-            <!-- ここまで -->
+        <div class="left top">
+            <!--
+                <span class="box">Next...<br/>〇〇〇！</span>
+                <span id="countdown" style="">カウントダウン表示</span>
+                <span class="box tx_c">オープニング<br/>＊ご挨拶＊</span>
+                <span class="frame_v">縦線枠見出し</span>
+                <span class="frame_h">横線枠見出し</span>
+            -->
         </div>
 
         <!-- 右上 -->
         <div class="right top">
-
+            <div class="live animate__animated animate__infinite animate__pulse" style="text-align:center;">
+                五峯祭2020<br/>生放送!!
+            </div>
         </div>
 
         <!-- 上中央 -->
         <div class="top center">
             <div>
-			
+                
             </div>
         </div>
 
+        <!-- 左下 -->
+        <div class="left0 bottom">
+            <div class="frame_h tx_l">
+                生放送でドミノは<br/>
+                すべて倒れるか！？
+            </div>
+        </div>
+
+        <!-- 右下 -->
+        <div class="right0 bottom0">
+            <img src="./pict/コックサイ.png" style="width:400px;margin:0;padding:0;border:0;display: none;">
+        </div>
+
+        <!-- 下中央 -->
+        <div class="bottom center">
+
+        </div>
+
+        <!-- 中央 -->
+        <div class="middle">
+
+        </div>
     </div>
 </body>
 <script>
@@ -231,7 +231,25 @@ https://kgefac.sharepoint.com/:x:/r/sites/msteams_1d13d1/_layouts/15/Doc.aspx?ac
         location.reload();
     }, 3 * 1000);
 
+    // カウントダウン
 
+    setInterval(function () {
+        let d = new Array();
+        d["sec"] = Math.floor(((new Date(2020, 9 - 1, 12, 10, 00, 00)).getTime() - (new Date()).getTime()) / 1000);
+        d["min"] = Math.floor(d["sec"] / 60);
+        d["hour"] = Math.floor(d["min"] / 60);
+        document.getElementById("countdown").innerHTML = (
+            "五峯祭まで<br/>あと " +
+            d["hour"] + "時間" +
+            (" " + d["min"] % 60).slice(-2) + "分" +
+            (" " + d["sec"] % 60).slice(-2) + "秒"
+        );
+    }, 66);
+
+    // 時刻表示
+    setInterval(function () {
+        document.getElementById("nowTime").innerText = (new Date()).toLocaleTimeString();
+    }, 66);
 </script>
 
 </html>
