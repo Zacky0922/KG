@@ -3,213 +3,638 @@
 <html lang="ja">
 
 <head>
-	<!-- meta設定 -->
-	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-	<meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
-	<meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
-	<meta name="robots" content="noindex,nofollow" />
+    <!-- meta設定 -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" charset="UTF-8" />
+    <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
+    <meta name="robots" content="noindex,nofollow" />
 
-	<!-- Global site tag (gtag.js) - Google Analytics by Zacky -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'UA-163335381-1');
-	</script>
+    <!-- jQuery/UI -->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <!-- Bootstrap 5.0.0 alpha -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+    <!-- ScrollHint -->
+    <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
+    <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
 
-	<!-- PWA設定 -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--<link rel="manifest" href="./manifest.json">-->
+    <script>
+        window.addEventListener("load", function () {
+            /* jQuery @onload */
+            $(".jq_accordion").accordion({
+                active: false,
+                collapsible: true,
+                heightStyle: "content"
+            });
+        });
+    </script>
 
-	<!-- JS/CSS master -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML"></script>
-	<!-- for local
-	<script type="module" src="../Zacky0922.github.io/exScripts/aggregater.js"></script>
-	-->
-	<script type="module" src="./importer.js"></script>
-	<!-- online -->
-	<link rel="stylesheet" href="../Zacky0922.github.io/exScripts/master.css">
-	<!-- local -->
-	<link rel="stylesheet" href="../exScripts/master.css">
+    <style>
+        @import "../zScript/common.css";
 
-	<title>KG</title>
+        .jq_accordion>a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .jq_accordion:nth-child(2n) {
+            margin-left: 0.2em;
+        }
+
+        .chkbx_disptoggle {
+            display: none;
+        }
+
+        .chkbx_disptoggle:checked+* {
+            display: none;
+        }
+    </style>
+    <base target="_blank">
+    <title>KG Dashboard</title>
 </head>
 
 <body>
-	<p style="text-align:left;">（教職員用便利リンク集）<br />
-		Last Update：9/23　項目整理</p>
+    <nav class="navbar navbar-dark bg-dark  sticky-top">
+        <div class="container-fluid d-flex justify-content-between">
+            <span class="navbar-brand">
+                KG Dashboard
+            </span>
+            <div>
+                <div>
+                    <span class="btn disabled text-light">Microsoft Apps</span>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-outline-light" href="https://teams.microsoft.com/">Teams</a>
+                        <a class="btn btn-outline-light" href="https://outlook.office.com/mail/">Outlook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-	<section class="container">
-		<section class="row">
-			<section class="col-lg-8">
-				<div class="box">
-					<div id="linkTab" class="zTabWrap">
-						<div id="生徒健康観察">
-							<h3>生徒健康観察</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank"
-									href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
-								<a class="zBtn" target="_blank"
-									href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教職員閲覧用</a>
-								<a class="zBtn" target="_blank"
-									href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
-							</div>
-							<div>
-								※もし、「閲覧用」が開かない場合は、以下の手順をお試しください。
-								<ol>
-									<li>一度、<a href="https://kgefac.sharepoint.com">『コチラ』</a>を開く。<br/>
-									（アクセス権を要求されますが、無視してください）</li>
-									<li>前のウィンドウを閉じて、本来のページを開く。<br/>
-									※本来のページがダメな場合は「<a href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True">コチラ</a>」を試してください…</li>
-								</ol>
-							</div>
-						</div>
-						<div id="生徒出欠確認">
-							<h3>生徒出欠確認</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
+    <div class="container-fluid">
+        <div class="row">
+            <section class="col-md-2 sidebar mt-2">
+                <div class="jq_accordion">
+                    <a class="h4">News</a>
+                    <dl>
+                        <dt>11.19thu</dt>
+                        <dd>ページリニューアル</dd>
+                    </dl>
+                    <a class="h4">Tools</a>
+                    <ul>
+                        <li><a href="https://trello.com/">Trello</a></li>
+                        <li><a href="https://feedly.com/">Feedly</a></li>
+                        <li><a href="https://discordapp.com/activity">discord</a></li>
+                        <li><a href="https://slack.com/">slack</a></li>
+                        <li><a href="https://www.evernote.com/client/web">Evernote</a></li>
+                        <li><a href="https://archive.org/">Internet Archive</a></li>
+                        <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
+                        <li><a href="https://app.diagrams.net/">diagrams.net</a><br />(draw.io)</li>
+                        <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
+                        <li><a href="https://www.geogebra.org/?lang=ja">Geogebra</a></li>
+                        <li><a href="https://grapes-light.app/">GRAPES-light</a></li>
+                        <li><a href="https://picky-pics.com/">Picky-Pics</a></li>
+                    </ul>
+                </div>
+                <div style="display: none;">
+                    <a class="h4">Leisure</a>
+                    <ul>
+                        <li><a href="https://www.smt-cinema.com/site/saitama/index.html">MOVIXさいたま</a></li>
+                        <li><a href="https://www.aeoncinema.com/cinema/ohmiya/">イオンシネマ大宮</a></li>
+                        <li><a href="https://www.unicus-sc.jp/minamifuruya/movie/">UNITED
+                                CINEMAS</a><br />(ウニクス南古谷)
+                        </li>
+                    </ul>
+                    <a class="h4">KG</a>
+                    <ul>
+                        <li><a href="https://teams.microsoft.com/">MS Teams</a></li>
+                        <li><a href="https://outlook.office.com/mail/">MS Outlook</a></li>
+                    </ul>
+                </div>
+            </section>
 
-								<a class="zBtn" target="_blank"
-									href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKrrQV_Ds3nlPm9dRr6u4IARUMFVPUlhEWk04MFFBVVkxVEUwVEIxTExZRSQlQCN0PWcu">生徒入力用</a>
-								<a class="zBtn" target="_blank"
-									href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">教職員閲覧用</a>
-							</div>
-						</div>
-						<div id="入試イベント関連">
-							<h3>入試イベント関連</h3>
-							<div> （個別相談・部活動体験等：必要なページが時系列順に並んでいます）</div>
-							<div class="zGridFit" style="grid-template-columns:repeat(2, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank"
-									href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUOE5EMUxNWlRDNDNRSVk4NVJTSjlPMVYxRyQlQCN0PWcu">教職員用<br />イベント登録申請フォーム</a>
-								<div>予約したいイベントを登録してください。</div>
-								<a class="zBtn" target="_blank"
-									href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">受験生用<br />申込フォーム</a>
-								<div>受験生が登録するフォームです。<br />教員用テストアカウント　kghs@kgef.ac.jp／210040／kokusai</div>
-								<a class="zBtn" target="_blank"
-									href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={44753E55-03A6-4562-8AAF-339B64CDEB75}">教職員用<br />イベント申込状況確認</a>
-								<div>イベント登録状況の確認シートです。<br />手動更新なので、最新版が欲しい場合はお声がけください。</div>
-								<a class="zBtn" target="_blank"
-									href="https://kbs.kgef.ac.jp/seiseki/">教職員用<br />個別相談入力</a>
-								<div>個別相談の入力フォームです。</div>
-								<a class="zBtn debug" target="_blank"
-									href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">管理用<br /></a>
-							</div>
+            <section class="col mt-2">
 
-						</div>
-						<div id="保健情報">
-							<h3>熱中症</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank"
-									href="https://www.wbgt.env.go.jp/graph_ref_td.php?region=03&prefecture=43&point=43241">環境省
-									熱中症予防情報サイト<br />
-									暑さ指数(WBGT)：さいたま</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.pref.saitama.lg.jp/a0704/netsuchusyo/maitamabo-sai.html">埼玉県公式
-									防災アプリ
-									<br />
-									「まいたま防災」<br />
-									※熱中症予防情報等が配信されます</a>
-							</div>
+                <div class="row g-2">
+                    <div class="col-12">
+                        <div class="card border-info h-100">
+                            <div class="card-header">Information</div>
+                            <div class="card-body">
+                                <p class="card-text text-center">
+                                    <small>
+                                        サイトをリニューアルしてみました。<br />
+                                        使い勝手について、ご意見・ご要望等あれば、お気軽にご連絡ください。
+                                    </small>
+                                </p>
+                                <p class="card-text text-right">
+                                    <small>
+                                        念のため、
+                                        <a href="./index1118.html">旧型ポータルサイトはコチラ</a>
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-							<h3>COVID-19</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank"
-									href="https://extranet.who.int/kobe_centre/ja/covid">WHO公式</a>
-								<a class="zBtn" target="_blank" href="https://corona.go.jp/">内閣官房</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000164708_00001.html">厚生労働省</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/cocoa_00138.html">厚生労働省<br />
-									COCOA</a>
-								<a class="zBtn" target="_blank"
-									href="https://stopcovid19.metro.tokyo.lg.jp/">東京都（公式）</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.pref.saitama.lg.jp/a0301/covid19_sougousite.html">埼玉県（公式）</a>
-								<a class="zBtn" target="_blank"
-									href="https://saitama.stopcovid19.jp/">埼玉県<br />（有志作成：非公式）</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.town.saitama-ina.lg.jp/category/15-8-8-0-0.html">伊奈町（公式）</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.city.ageo.lg.jp/page/coronavirus.html">上尾市（公式）</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.city.saitama.jp/002/001/008/006/index.html">さいたま市（公式）</a>
-								<a class="zBtn" target="_blank"
-									href="https://toyokeizai.net/sp/visual/tko/covid19/">東洋経済</a>
-								<a class="zBtn" target="_blank"
-									href="https://gis.jag-japan.com/covid19jp/">マップ（民間作成）</a>
-							</div>
-						</div>
-						<div id="外部サイト">
-							<h3>外部サイト</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank" href="http://bhso.benesse.ne.jp/">Benesse High School
-									Online</a>
-								<a class="zBtn" target="_blank"
-									href="https://learn.studysapuri.jp/ja/login">スタディサプリ<br />生徒用login）</a>
-								<a class="zBtn" target="_blank"
-									href="https://link.studysapuri.jp/ja/login">スタディサプリ<br />for
-									TEACHERS</a>
-								<a class="zBtn" target="_blank"
-									href="https://machicomi.jp/admin/login.html">マチコミ<br />(管理画面)</a>
-							</div>
-						</div>
-						<div id="校内">
-							<h3>校内</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kg/">学校サイト</a>
-								<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a>
-								<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/khs/">高校TOP</a>
-								<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/news/14196/">KGコロナまとめ</a>
-								<a class="zBtn" target="_blank" href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a>
-								<a class="zBtn" target="_blank"
-									href="https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ/">YouTube<br />広報用チャンネル</a>
-								<a class="zBtn debug" target="_blank"
-									href="https://jsh.kgef.ac.jp/wp-admin/">wp-admin</a>
-							</div>
-							<h3>教員用</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank"
-									href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">学校サイト
-									アクセス解析<br />Google DataPortal/Analytics</a>
-							</div>
-							<h3>intranet限定</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank" href="http://192.168.20.41/iraimenu.HTM">支払依頼</a>
-								<a class="zBtn" target="_blank" href="http://192.168.20.100/hs/">旧・相談システム</a>
-								<a class="zBtn" target="_blank" href="./KG_doc/KobetsuSoudanIkkatsu.html">一括印刷ツール
-									<br />(旧・相談システム用)</a>
-							</div>
-							<h3>五峯祭</h3>
-							<div class="zGridFit" style="grid-template-columns:repeat(auto-fit, minmax(200px,1fr));">
-								<a class="zBtn" target="_blank"
-									href="https://fes.kgef.ac.jp/2020jsh/index.html">本番サイト</a>
-								<a class="zBtn" target="_blank"
-									href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">デバッグモード</a>
-							</div>
-						</div>
-					</div>
-					<script type="module">
-						import { zTab } from "./importer.js";
-						new zTab("linkTab");
-					</script>
-					Microsoft関係のサービスは、所定のアカウントでログインをお願いします。
-				</div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header">健康観察</div>
+                            <div class="card-body">
+                                <h5 class="card-title">生徒健康観察</h5>
+                                <p class="card-text">
+                                    1か月毎に、データを「月例レポート」に移動しています。古いデータの確認は、そちらをご参照ください。
+                                </p>
+                                <div class="text-center m-2">
+                                    <a class="btn btn-primary" role="button"
+                                        href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
+                                    <a class="btn btn-primary" role="button"
+                                        href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
+                                    <a class="btn btn-primary" role="button"
+                                        href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
+                                </div>
 
-			</section>
-			<section class="col-lg-4">
-				<div class="box">
-					<h2 class="zHead">Microsoft</h2>
-					<div class="zGridFit" style="grid-template-columns: 1fr;">
-						<a class="zBtn" target="_blank" href="msteams:/">Teams<br />Winアプリ版</a>
-						<a class="zBtn" target="_blank" href="https://teams.microsoft.com/">Teams<br />ブラウザ版</a>
-						<a class="zBtn" target="_blank" href="https://outlook.office.com/mail/">Outlook</a>
-					</div>
-				</div>
-			</section>
-		</section>
-	</section>
 
+                                <label class="btn btn-warning" for="教員確認用error">「教員確認用」が開けないとき</label>
+                                <input type="checkbox" id="教員確認用error" class="chkbx_disptoggle" checked>
+                                <div class="alert alert-warning" role="alert">
+                                    <ol>
+                                        <li>
+                                            一度、<a href="https://kgefac.sharepoint.com/">『コチラ』</a>を開く。</br>
+                                            （アクセス権を要求されますが、無視してください）
+                                        </li>
+                                        <li>前のウィンドウを閉じて、本来のページを開く。</br>
+                                            ※本来のページがダメな場合は
+                                            <a
+                                                href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True">「コチラ」</a>を試してください…
+                                        </li>
+                                    </ol>
+                                </div>
+                                <hr>
+                                <h5 class="card-title">教職員健康観察</h5>
+                                <h6 class="card-subtitle text-muted">11/23(月祝)より使用開始</h6>
+                                <p class="card-text">
+                                <div class="text-center">
+                                    <a class="btn btn-primary" role="button"
+                                        href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu">教職員入力用</a>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header">受験生向けイベント</div>
+                            <div class="card-body">
+                                <h5 class="card-title">教職員向けフォーム</h5>
+                                <h6 class="card-subtitle text-muted">個別相談・部活動体験等の登録・確認はコチラから</h6>
+                                <p class="card-text">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        まずはココから登録。<br />
+                                        <a class="btn btn-primary" role="button"
+                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUOE5EMUxNWlRDNDNRSVk4NVJTSjlPMVYxRyQlQCN0PWcu">イベント登録申請</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        登録イベントの参加者一覧はコチラ。<br />
+                                        <a class="btn btn-primary" role="button"
+                                            href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={44753E55-03A6-4562-8AAF-339B64CDEB75}">イベント申込状況確認</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        個別相談の教員用フォームはコチラ。<br />
+                                        <a class="btn btn-primary" role="button"
+                                            href="https://kbs.kgef.ac.jp/seiseki/">個別相談入力フォーム</a>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <h5 class="card-title">受験生向けフォーム</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a class="btn btn-primary" role="button"
+                                            href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">◆管理用</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="card h-100">
+                            <div class="card-header">授業アンケート</div>
+                            <div class="card-body">
+                                <a class="btn btn-info" role="button"
+                                    href="https://teams.microsoft.com/l/message/19:0938ec52fc9d45728405629b4428ef03@thread.tacv2/1605677343219?tenantId=7cbb7dcf-3364-41cd-9976-48bbc48bd82a&groupId=5df0b8bb-ffcc-4b00-95df-f3c501e1f37f&parentMessageId=1605677343219&teamName=%E6%95%99%E8%81%B7%E5%93%A1&channelName=%E4%B8%80%E8%88%AC&createdTime=1605677343219">アンケートを実施する授業の事前登録について</a>
+                                <hr />
+                                <h5 class="card-title">生徒入力フォーム</h5>
+                                <h6 class="card-subtitle text-muted">すべての授業で共通のフォームを使用します</h6>
+                                <p class="card-text text-center">
+                                    <a class="btn btn-primary disabled" role="button">入力フォーム（準備中）</a>
+                                </p>
+                                <hr>
+                                <h5 class="card-title">教員用サンプル</h5>
+                                <h6 class="card-subtitle text-muted">本番用ではありません</h6>
+                                <p class="card-text text-center">
+                                    <a class="btn btn-primary disabled" role="button" disabled>入力フォームサンプル（準備中）</a>
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">実施期間 12月上旬予定</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card h-100">
+                            <div class="card-header">健康観察Overview</div>
+                            <div class="card-body text-center">
+                                <iframe width="700" height="320" frameborder="0" scrolling="no"
+                                    src="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&wdAllowInteractivity=False&Item=%E7%B0%A1%E6%98%93%E6%97%A5%E5%A0%B1!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Teamsログイン状態でないと表示されません</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6" style="display: none;">
+                        <div class="card h-100">
+                            <div class="card-header">COVID-19 Overview</div>
+                            <div class="card-body">
+                                <div class="js-scrollable">
+                                    <table class="table table-bordered border-secondary">
+                                        <tbody>
+                                            <tr>
+                                                <th>国内陽性者数</th>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>(東京都内)</th>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <th>(埼玉県内)</th>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="card-text text-center">
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                        <div class="col-12 col-lg-6 col-xxl-8">
+                    -->
+                    <div class="col-12">
+                        <div class="card h-100">
+                            <div class="card-header">Links</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="list-group" id="list-tab" role="tablist">
+                                            <a class="list-group-item list-group-item-action active" id="list-KG-list"
+                                                data-toggle="list" href="#list-KG" role="tab" aria-controls="KG">KG</a>
+                                            <a class="list-group-item list-group-item-action" id="list-Forms-list"
+                                                data-toggle="list" href="#list-Forms" role="tab"
+                                                aria-controls="profile">Forms</a>
+                                            <a class="list-group-item list-group-item-action" id="list-learning-list"
+                                                data-toggle="list" href="#list-learning" role="tab"
+                                                aria-controls="learning">学習・大学入試</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="list-KG" role="tabpanel"
+                                                aria-labelledby="list-KG-list">
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">学校サイト</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a href="https://jsh.kgef.ac.jp/">INDEX</a><br />
+                                                        <a href="https://jsh.kgef.ac.jp/kg/">総合TOP</a> ／
+                                                        <a href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a> ／
+                                                        <a href="https://jsh.kgef.ac.jp/khs/">高校TOP</a><br />
+                                                        <a href="https://jsh.kgef.ac.jp/wp-admin/">◆wp-admin</a>
+                                                    </dd>
+                                                    <dt class="col-sm-3">YouTube</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a
+                                                            href="https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ">広報</a>
+                                                        ／
+                                                        <a
+                                                            href="https://www.youtube.com/channel/UCpYFKgCIpJGbCrj8U8ZXaNQ">生徒会</a>
+                                                        ／
+                                                        <a
+                                                            href="https://www.youtube.com/channel/UC1sOiMc9ufHSjkIERjVRtKg">学内向け</a>
+                                                    </dd>
+                                                    <dt class="col-sm-3">WEBアクセス解析</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a
+                                                            href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">Google
+                                                            DataPortal/Analytics</a>
+                                                    </dd>
+
+                                                    <dt class="col-sm-3">五峯祭2020</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>　
+                                                        <a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">(debug
+                                                            mode)</a>
+                                                    </dd>
+                                                    <dt class="col-sm-3">校内限定</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a href="http://192.168.20.41/iraimenu.HTM">支払依頼</a><br />
+                                                        <a href="http://192.168.20.100/hs/">旧・相談システム</a> ／
+                                                        <a
+                                                            href="./KG_doc/KobetsuSoudanIkkatsu.html">一括印刷ツール(旧・相談システム用)</a>
+                                                    </dd>
+                                                    <dt class="col-sm-3"></dt>
+                                                    <dd class="col-sm-9"></dd>
+                                                </dl>
+                                            </div>
+                                            <div class="tab-pane fade" id="list-Forms" role="tabpanel"
+                                                aria-labelledby="list-Forms-list">
+                                                <p>過去のアンケート類ストックです。</p>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">出欠確認</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKrrQV_Ds3nlPm9dRr6u4IARUMFVPUlhEWk04MFFBVVkxVEUwVEIxTExZRSQlQCN0PWcu">生徒入力用</a>
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="tab-pane fade" id="list-learning" role="tabpanel"
+                                                aria-labelledby="list-learning-list">
+                                                <p>
+                                                    <a href="http://www.dnc.ac.jp/">独立行政法人 大学入試センター</a>
+                                                </p>
+
+                                                <div class="js-scrollable">
+                                                    <table class="table table-bordered border-secondary">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>事業者</th>
+                                                                <th>模試</th>
+                                                                <th>進学情報・過去問</th>
+                                                                <th>教員用</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th><a href="http://www.benesse.co.jp/"
+                                                                        target="_blank">Benesse</a></th>
+                                                                <td><a href="http://manabi.benesse.ne.jp/assess/moshi/"
+                                                                        target="_blank">進研模試</a><br>
+                                                                    <a href="http://manabi.benesse.ne.jp/assess/ss/"
+                                                                        target="_blank">スタディーサポート</a><br>
+                                                                    <a href="http://gtec.for-students.jp/"
+                                                                        target="_blank">GTEC for
+                                                                        STUDENTS</a>
+                                                                </td>
+                                                                <td><a href="https://manabi.benesse.ne.jp/wi/jsp/gy1_toroku/login_failure_digi.jsp"
+                                                                        target="_blank">進研模試デジタルサービス</a><br>
+                                                                    <a href="http://manabi.benesse.ne.jp/"
+                                                                        target="_blank">マナビジョン</a><br>
+                                                                    <a href="http://manabi.benesse.ne.jp/nyushi/kakomon/"
+                                                                        target="_blank">大学入試過去問ダウンロードサービス</a>
+                                                                </td>
+                                                                <td><a href="http://bhso.benesse.ne.jp/"
+                                                                        target="_blank">Benesse High School
+                                                                        Online</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www.yozemi.ac.jp"
+                                                                        target="_blank">代々木ゼミナール</a></th>
+                                                                <td><a href="http://www.yozemi.ac.jp/test/index.html"
+                                                                        target="_blank">代ゼミ模試</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www.kawai-juku.ac.jp/"
+                                                                        target="_blank">河合塾</a></th>
+                                                                <td><a href="http://www.kawai-juku.ac.jp/trial-exam/zento/"
+                                                                        target="_blank">全統模試</a>
+                                                                </td>
+                                                                <td><a href="http://www.keinet.ne.jp/"
+                                                                        target="_blank">Kei-Net</a></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www2.sundai.ac.jp/yobi/sv/index.html"
+                                                                        target="_blank">駿台予備校</a>
+                                                                </th>
+                                                                <td><a href="http://www2.sundai.ac.jp/yobi/sv/moshi/index.html"
+                                                                        target="_blank">駿台模試</a>
+                                                                </td>
+                                                                <td><a href="http://www2.sundai.ac.jp/yobi/sv/news/index.html"
+                                                                        target="_blank">大学入試情報</a>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www.toshin.com/"
+                                                                        target="_blank">東進ハイスクール</a></th>
+                                                                <td><a href="http://www.toshin.com/hs/event/exam/"
+                                                                        target="_blank">東進模試</a><br>
+                                                                    <a href="http://www.toitsutest.com/"
+                                                                        target="_blank">全国統一テスト</a></td>
+                                                                <td><a href="http://www.toshin.com/nyushi/index_niji.php"
+                                                                        target="_blank">大学入試問題
+                                                                        過去問データベース</a><br>
+                                                                    <a href="http://www.toshin.com/univ/"
+                                                                        target="_blank">大学案内</a></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>リクルート</th>
+                                                                <td></td>
+                                                                <td><a href="https://studysapuri.jp/"
+                                                                        target="_blank">スタディサプリ</a></td>
+                                                                <td><a href="https://link.studysapuri.jp/ja/login"
+                                                                        target="_blank">スタディサプリ
+                                                                        for Teachers</a></td>
+                                                            </tr>
+                                                            <tr style="display:none">
+                                                                <th><a href="http://www.zkai.co.jp/"
+                                                                        target="_blank">Z会</a></th>
+                                                                <td>会員のみ申込可。<br>
+                                                                    ただし、河合塾共催なので<br>
+                                                                    事実上会員外も申込可</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>その他</th>
+                                                                <td></td>
+                                                                <td>
+                                                                    <a href="http://www.cybercollege.jp/"
+                                                                        target="_blank">サイバーカレッジ</a><br>
+                                                                    <a href="http://passnavi.evidus.com/"
+                                                                        target="_blank">大学受験パスナビ：旺文社</a>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <script>
+                                                    new ScrollHint('.js-scrollable');
+                                                </script>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カードテンプレ
+                    <div class="col-12">
+                    <div class="col-12 col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header">Links</div>
+                            <div class="card-body">
+                                <p class="card-text text-center">
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+-->
+
+                </div>
+
+            </section>
+
+            <section style="width:180px" class="mt-2 text-center g-0">
+
+                <!-- weather widget start -->
+                <div id="m-booked-bl-simple-week-vertical-93237">
+                    <div class="booked-wzs-160-275 weather-customize" style="background-color:#137AE9; width:160px;"
+                        id="width1 ">
+                        <a target="_blank" class="booked-wzs-top-160-275" href="https://www.booked.net/"><img
+                                src="//s.bookcdn.com/images/letter/s5.gif" alt="booked.net" /></a>
+                        <div class="booked-wzs-160-275_in">
+                            <div class="booked-wzs-160-275-data">
+                                <div class="booked-wzs-160-275-left-img wrz-03"></div>
+                                <div class="booked-wzs-160-275-right">
+                                    <div class="booked-wzs-day-deck">
+                                        <div class="booked-wzs-day-val">
+                                            <div class="booked-wzs-day-number"><span class="plus">+</span>19</div>
+                                            <div class="booked-wzs-day-dergee">
+                                                <div class="booked-wzs-day-dergee-val">&deg;</div>
+                                                <div class="booked-wzs-day-dergee-name">C</div>
+                                            </div>
+                                        </div>
+                                        <div class="booked-wzs-day">
+                                            <div class="booked-wzs-day-d"><span class="plus">+</span>21&deg;</div>
+                                            <div class="booked-wzs-day-n"><span class="plus">+</span>14&deg;</div>
+                                        </div>
+                                    </div>
+                                    <div class="booked-wzs-160-275-info">
+                                        <div class="booked-wzs-160-275-city">上尾市</div>
+                                        <div class="booked-wzs-160-275-date">水曜日, 18</div>
+                                    </div>
+                                </div>
+                            </div> <a target="_blank" href="https://booked.jp/weather/ageoshimo-w101722"
+                                class="booked-wzs-bottom-160-275">
+                                <table cellpadding="0" cellspacing="0" class="booked-wzs-table-160">
+                                    <tr>
+                                        <td class="week-day"> <span class="week-day-txt">木曜日</span></td>
+                                        <td class="week-day-ico">
+                                            <div class="wrz-sml wrzs-03"></div>
+                                        </td>
+                                        <td class="week-day-val"><span class="plus">+</span>24&deg;</td>
+                                        <td class="week-day-val"><span class="plus">+</span>17&deg;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="week-day"> <span class="week-day-txt">金曜日</span></td>
+                                        <td class="week-day-ico">
+                                            <div class="wrz-sml wrzs-18"></div>
+                                        </td>
+                                        <td class="week-day-val"><span class="plus">+</span>23&deg;</td>
+                                        <td class="week-day-val"><span class="plus">+</span>19&deg;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="week-day"> <span class="week-day-txt">土曜日</span></td>
+                                        <td class="week-day-ico">
+                                            <div class="wrz-sml wrzs-01"></div>
+                                        </td>
+                                        <td class="week-day-val"><span class="plus">+</span>19&deg;</td>
+                                        <td class="week-day-val"><span class="plus">+</span>14&deg;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="week-day"> <span class="week-day-txt">日曜日</span></td>
+                                        <td class="week-day-ico">
+                                            <div class="wrz-sml wrzs-03"></div>
+                                        </td>
+                                        <td class="week-day-val"><span class="plus">+</span>18&deg;</td>
+                                        <td class="week-day-val"><span class="plus">+</span>12&deg;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="week-day"> <span class="week-day-txt">月曜日</span></td>
+                                        <td class="week-day-ico">
+                                            <div class="wrz-sml wrzs-03"></div>
+                                        </td>
+                                        <td class="week-day-val"><span class="plus">+</span>15&deg;</td>
+                                        <td class="week-day-val"><span class="plus">+</span>10&deg;</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="week-day"> <span class="week-day-txt">火曜日</span></td>
+                                        <td class="week-day-ico">
+                                            <div class="wrz-sml wrzs-18"></div>
+                                        </td>
+                                        <td class="week-day-val"><span class="plus">+</span>14&deg;</td>
+                                        <td class="week-day-val"><span class="plus">+</span>8&deg;</td>
+                                    </tr>
+                                </table>
+                                <div class="booked-wzs-center"> <span class="booked-wzs-bottom-l">週間天気予報を見る</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <script
+                        type="text/javascript"> var css_file = document.createElement("link"); css_file.setAttribute("rel", "stylesheet"); css_file.setAttribute("type", "text/css"); css_file.setAttribute("href", 'https://s.bookcdn.com/css/w/booked-wzs-widget-160x275.css?v=0.0.1'); document.getElementsByTagName("head")[0].appendChild(css_file); function setWidgetData(data) { if (typeof (data) != 'undefined' && data.results.length > 0) { for (var i = 0; i < data.results.length; ++i) { var objMainBlock = document.getElementById('m-booked-bl-simple-week-vertical-93237'); if (objMainBlock !== null) { var copyBlock = document.getElementById('m-bookew-weather-copy-' + data.results[i].widget_type); objMainBlock.innerHTML = data.results[i].html_code; if (copyBlock !== null) objMainBlock.appendChild(copyBlock); } } } else { alert('data=undefined||data.results is empty'); } } </script>
+                    <script type="text/javascript" charset="UTF-8"
+                        src="https://widgets.booked.net/weather/info?action=get_weather_info&ver=6&cityID=w101722&type=4&scode=124&ltid=3457&domid=587&anc_id=51270&cmetric=1&wlangID=16&color=137AE9&wwidth=160&header_color=ffffff&text_color=333333&link_color=08488D&border_form=1&footer_color=ffffff&footer_text_color=333333&transparent=0"></script>
+                    <!-- weather widget end -->
+                    <small class="text-muted">※通信環境が悪い時は古いデータが表示される場合があります</small>
+                </div>
+
+            </section>
+        </div>
+    </div>
 </body>
 
 </html>
