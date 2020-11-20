@@ -9,6 +9,20 @@
     <meta http-equiv="Content-Style-Type" content="text/ccs" charset="UTF-8" />
     <meta name="robots" content="noindex,nofollow" />
 
+    <!-- Global site tag (gtag.js) - Google Analytics by Zacky -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163335381-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-163335381-1');
+    </script>
+
+    <!-- PWA設定 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <!-- jQuery/UI -->
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -71,7 +85,7 @@
             </span>
             <div>
                 <div>
-                    <span class="btn disabled text-light">Microsoft Apps</span>
+                    <span class="btn disabled text-light d-none d-lg-inline">Microsoft Apps</span>
                     <div class="btn-group" role="group">
                         <a class="btn btn-outline-light" href="https://teams.microsoft.com/">Teams</a>
                         <a class="btn btn-outline-light" href="https://outlook.office.com/mail/">Outlook</a>
@@ -105,6 +119,7 @@
                     <div>
                         <dl>
                             <dt>11.20fri</dt>
+                            <dd>スマホ表示最適化</dd>
                             <dd>天気予報ウィジェットを<br />自作版に変更</dd>
                             <dd>Timerウィジェット追加</dd>
                             <dt>11.19thu</dt>
@@ -268,7 +283,7 @@
                         <div class="card h-100">
                             <div class="card-header">健康観察Overview</div>
                             <div class="card-body text-center">
-                                <iframe width="700" height="320" frameborder="0" scrolling="no"
+                                <iframe style="width:100%;max-width:700px;height:320px;" frameborder="0" scrolling="no"
                                     src="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&wdAllowInteractivity=False&Item=%E7%B0%A1%E6%98%93%E6%97%A5%E5%A0%B1!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
                             </div>
                             <div class="card-footer">
@@ -285,7 +300,7 @@
                             <div class="card-header">Links</div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-lg-3">
                                         <div class="list-group" id="list-tab" role="tablist">
                                             <a class="list-group-item list-group-item-action active" id="list-KG-list"
                                                 data-toggle="list" href="#list-KG" role="tab" aria-controls="KG">KG</a>
@@ -297,7 +312,7 @@
                                                 aria-controls="learning">学習・大学入試</a>
                                         </div>
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-lg-9">
                                         <div class="tab-content" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="list-KG" role="tabpanel"
                                                 aria-labelledby="list-KG-list">
@@ -308,6 +323,7 @@
                                                         <a href="https://jsh.kgef.ac.jp/kg/">総合TOP</a> ／
                                                         <a href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a> ／
                                                         <a href="https://jsh.kgef.ac.jp/khs/">高校TOP</a><br />
+                                                        <a href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a><br />
                                                         <a href="https://jsh.kgef.ac.jp/wp-admin/">◆wp-admin</a>
                                                     </dd>
                                                     <dt class="col-sm-3">YouTube</dt>
@@ -523,7 +539,7 @@
                                     <div class="progress">
                                         <div id="授業タイマー"
                                             class="progress-bar progress-bar-striped bg-success progress-bar-animated"
-                                            role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+                                            role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
                                             aria-valuemax="100">
                                         </div>
                                     </div>
@@ -593,14 +609,17 @@
                                     */
                                 </script>
                             </div>
+                            <div class="card-footer">
+                                <small class="text-muted">(注) 常に平日基準で表示</small>
+                            </div>
                         </div>
                     </div>
 
 
-                    <!-- お天気widget ver2 -->
+                    <!-- お天気widget -->
                     <div class="col-12">
                         <div class="card border-info ">
-                            <div class="card-header text-center">Weather Forecast</div>
+                            <div class="card-header">Weather Forecast</div>
                             <div class="card-body">
                                 <div class="card-text" id="WeatherForecast1"></div>
                                 <div class="text-right">
@@ -669,7 +688,8 @@
                                     date = new Date(date[0], date[1] - 1, date[2]);
                                     // 表示設定
                                     document.getElementById("WeatherForecast2").innerHTML += "" +
-                                        '<div class="col-4 col-lg-12">' +
+                                        (i == 0 ? '<div class="col-12">' :
+                                            '<div class="col-6 col-lg-12">') +
                                         '<div class="card h-100">' +
                                         '<div class="card-header text-center">' +
                                         data.forecasts[i].dateLabel +
@@ -677,13 +697,16 @@
                                         '</div>' +
                                         '<div class="card-body">' +
                                         '<div class="row mb-2">' +
-                                        '<div class="col text-center align-self-center">' +
+                                        (i == 0 ?
+                                            '<div class="text-center align-self-center" style="width:' + data.forecasts[i].image.width + 'px;">' :
+                                            '<div class="col-12 text-center align-self-center">'
+                                        ) +
                                         '<img src="' + data.forecasts[i].image.url + '"' +
                                         'width="' + data.forecasts[i].image.width + '" ' +
                                         'height="' + data.forecasts[i].image.height + '" />' +
                                         '</div>' +
                                         '<div class="col text-center align-self-center">' +
-                                        data.forecasts[i].telop +
+                                        (data.forecasts[i].telop == null ? "未配信" : data.forecasts[i].telop) +
                                         // 明後日の最低・最高気温は取得できない
                                         (data.forecasts[i].temperature.max == null ? "" :
                                             '<br/>' + data.forecasts[i].temperature.max.celsius +
@@ -695,7 +718,7 @@
                                         // 明後日の降水確率は取得できない
                                         (i == 2 ? "" :
                                             '<ul class="list-group card-text">' +
-                                            '<li class="list-group-item text-right">降水確率</li>' +
+                                            '<li class="list-group-item text-center">降水確率</li>' +
                                             '<li class="list-group-item d-flex justify-content-between">' +
                                             '<span>00-06</span>' +
                                             '<span>' + data.forecasts[i].chanceOfRain["00-06"] + '</span>' +
@@ -737,7 +760,7 @@
                                 </div>
 
                                 <div class="card-text" id="XMLSampleRequest"></div>
-                                
+
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">特に何がある訳でもありません。<br />調整用のエリアです…</small>
