@@ -26,6 +26,9 @@
     <!-- jQuery/UI -->
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <!-- jQuery依存 -->
+    <script src="./script/japan.map/jquery.japan-map.js"></script>
+
     <!-- Bootstrap 5.0.0 alpha -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
         integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
@@ -41,7 +44,11 @@
     <!-- ScrollHint -->
     <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
     <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
-
+    <!--
+    <script type="module" src="./script/js.cookie.min.mjs"></script>
+    <script nomodule defer src="./script/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    -->
     <script>
         window.addEventListener("load", function () {
             /* jQuery @onload */
@@ -50,6 +57,7 @@
                 collapsible: true,
                 heightStyle: "content"
             });
+
         });
     </script>
 
@@ -78,7 +86,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-dark  sticky-top mb-2">
+    <nav class="navbar navbar-dark bg-dark sticky-top mb-2">
         <div class="container-fluid d-flex justify-content-between">
             <span class="navbar-brand">
                 KG Dashboard
@@ -98,66 +106,82 @@
     <div class="container-fluid">
         <div class="row g-2">
             <section class="col-md-2 sidebar">
-
-                <div class="jq_accordion">
-                    <a class="h4">Tools</a>
-                    <ul>
-                        <li><a href="https://trello.com/">Trello</a></li>
-                        <li><a href="https://feedly.com/">Feedly</a></li>
-                        <li><a href="https://discordapp.com/activity">discord</a></li>
-                        <li><a href="https://slack.com/">slack</a></li>
-                        <li><a href="https://www.evernote.com/client/web">Evernote</a></li>
-                        <li><a href="https://archive.org/">Internet Archive</a></li>
-                        <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
-                        <li><a href="https://app.diagrams.net/">diagrams.net</a><br />(draw.io)</li>
-                        <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
-                        <li><a href="https://www.geogebra.org/?lang=ja">Geogebra</a></li>
-                        <li><a href="https://grapes-light.app/">GRAPES-light</a></li>
-                        <li><a href="https://picky-pics.com/">Picky-Pics</a></li>
-                    </ul>
-                    <a class="h4">Log</a>
-                    <div>
-                        <dl>
-                            <dt>11.20fri</dt>
-                            <dd>スマホ表示最適化</dd>
-                            <dd>天気予報ウィジェットを<br />自作版に変更</dd>
-                            <dd>Timerウィジェット追加</dd>
-                            <dt>11.19thu</dt>
-                            <dd>ページリニューアル</dd>
-                        </dl>
-                    </div>
-                </div>
-
-                <div>
-                    <!--  trigger modal -->
-                    <p>
-                        <a role="button" class="btn btn-primary" data-toggle="modal" data-target="#RenewInfo">更新メモ</a>
-                        <a role="button" class="btn btn-secondary" href="./index1118.html">旧サイト</a>
-                    </p>
-                    <!-- Modal -->
-                    <div class="modal fade" id="RenewInfo" tabindex="-1" aria-labelledby="RenewInfoLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="RenewInfoLabel">更新情報</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                <div class="card">
+                    <div class="card-header">Menu</div>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="jq_accordion">
+                                <a class="h4">Tools</a>
+                                <ul>
+                                    <li><a href="https://trello.com/">Trello</a></li>
+                                    <li><a href="https://feedly.com/">Feedly</a></li>
+                                    <li><a href="https://discordapp.com/activity">discord</a></li>
+                                    <li><a href="https://slack.com/">slack</a></li>
+                                    <li><a href="https://www.evernote.com/client/web">Evernote</a></li>
+                                    <li><a href="https://archive.org/">Internet Archive</a></li>
+                                    <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
+                                    <li><a href="https://app.diagrams.net/">diagrams.net</a><br />(draw.io)</li>
+                                    <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
+                                    <li><a href="https://www.geogebra.org/?lang=ja">Geogebra</a></li>
+                                    <li><a href="https://grapes-light.app/">GRAPES-light</a></li>
+                                    <li><a href="https://picky-pics.com/">Picky-Pics</a></li>
+                                </ul>
+                                <a class="h4">Log</a>
+                                <div>
+                                    <dl>
+                                        <dt>11.21sun</dt>
+                                        <dd>COVID-19info追加</dd>
+                                        <dd>背景機能追加</dd>
+                                        <dt>11.20fri</dt>
+                                        <dd>スマホ表示最適化</dd>
+                                        <dd>天気予報ウィジェットを<br />自作版に変更</dd>
+                                        <dd>Timerウィジェット追加</dd>
+                                        <dt>11.19thu</dt>
+                                        <dd>ページリニューアル</dd>
+                                    </dl>
                                 </div>
-                                <div class="modal-body">
-                                    天気予報ウィジェットの動作が怪しかったので、自作版に変更しました。<br />
-                                    気象庁からのデータを利用しているので、精度は上がるはずです。<br />
-                                    （デザインはイマイチですが…）
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                            <div class="text-center">
+                                <!--  trigger modal -->
+                                <p>
+                                    <a role="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#RenewInfo">更新メモ</a>
+                                    <a role="button" class="btn btn-secondary" href="./index1118.html">旧サイト</a>
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="RenewInfo" tabindex="-1" aria-labelledby="RenewInfoLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="RenewInfoLabel">更新情報</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                天気予報ウィジェットの動作が怪しかったので、自作版に変更しました。<br />
+                                                気象庁からのデータを利用しているので、精度は上がるはずです。<br />
+                                                （デザインはイマイチですが…）
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+
+                <div style="background:rgba(255,255,255,0.8)">
+
+                </div>
             </section>
 
             <section class="col">
@@ -165,7 +189,7 @@
                 <div class="row g-2">
 
                     <div class="col-12 col-lg-6">
-                        <div class="card h-100">
+                        <div class="card">
                             <div class="card-header">健康観察</div>
                             <div class="card-body">
                                 <h5 class="card-title">生徒健康観察</h5>
@@ -212,8 +236,115 @@
                         </div>
                     </div>
 
+
+                    <!-- COVID-19 widget -->
                     <div class="col-12 col-lg-6">
-                        <div class="card h-100">
+                        <div class="card">
+                            <div class="card-header">COVID-19 Info</div>
+                            <div class="card-body">
+                                <div class="js-scrollable">
+                                    <table class="table table-bordered border-secondary" id="COVID19infoTbl">
+                                        <thead></thead>
+                                        <tfoot></tfoot>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="https://covid19japan.com/">Data Resource</a>
+                                </small>
+                            </div>
+                        </div>
+                        <script>
+                            function addCOVID19tbl(title, content) {
+                                document.getElementById("COVID19infoTbl").children[2].innerHTML += "<tr><th>" +
+                                    title + "</th><td class='text-center'>" + content + "</td></tr>";
+                            }
+
+
+
+                            $.getJSON("https://data.covid19japan.com/summary/latest.json", (data) => {
+
+                                let yesterday = new Date();
+                                yesterday = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 1);
+                                let youbi = ("日,月,火,水,木,金,土").split(",");
+
+                                // thead
+                                document.getElementById("COVID19infoTbl").children[0].innerHTML += "" +
+                                    "<tr><td colspan='2' class='text-center'>" +
+                                    yesterday.getFullYear() + "/" +
+                                    (yesterday.getMonth() + 1) + "/" +
+                                    yesterday.getDate() + "(" +
+                                    youbi[yesterday.getDay()] + ")のデータ" +
+                                    "</td></tr>";
+
+                                // tfoot
+                                let tfootTx = data.updated;
+                                tfootTx = tfootTx.replace("T", "(").replace("+09:00", "JST)");
+                                document.getElementById("COVID19infoTbl").children[1].innerHTML += "" +
+                                    "<tr><td colspan='2' class='text-right'>Last Update：" +
+                                    tfootTx + "</td></tr>";
+
+
+                                for (let key in data.prefectures[4]) {
+                                    //addCOVID19tbl(key, data.prefectures[4][key]);
+                                }
+                                //
+
+                                // 都道府県別データ取得
+                                let tbl = { "陽性者": { "埼玉県": 0, "東京都": 0, "全国": 0 } };
+                                for (let pref in data.prefectures) {
+                                    let ConfirmedStartDate = data.prefectures[pref].dailyConfirmedStartDate.split("-");
+                                    ConfirmedStartDate = new Date(Number(ConfirmedStartDate[0]),
+                                        Number(ConfirmedStartDate[1]) - 1,
+                                        Number(ConfirmedStartDate[2]));
+                                    switch (data.prefectures[pref].name_ja) {
+                                        case "埼玉県":
+                                            tbl["陽性者"]["埼玉県"] = data.prefectures[pref].dailyConfirmedCount[
+                                                (yesterday.getTime() - ConfirmedStartDate.getTime()) / (1000 * 60 * 60 * 24)
+                                            ];
+                                            break;
+                                        case "東京都":
+                                            tbl["陽性者"]["東京都"] = data.prefectures[pref].dailyConfirmedCount[
+                                                (yesterday.getTime() - ConfirmedStartDate.getTime()) / (1000 * 60 * 60 * 24)
+                                            ];
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    tbl["陽性者"]["全国"] += data.prefectures[pref].dailyConfirmedCount[
+                                        (yesterday.getTime() - ConfirmedStartDate.getTime()) / (1000 * 60 * 60 * 24)
+                                    ];
+
+                                }
+                                // table生成
+                                addCOVID19tbl("埼玉県", tbl["陽性者"]["埼玉県"]);
+                                addCOVID19tbl("東京都", tbl["陽性者"]["東京都"]);
+                                addCOVID19tbl("全国", tbl["陽性者"]["全国"]);
+
+
+                                //for(let key in data.prefectures){addCOVID19tbl(key,data.prefectures);}
+
+                                for (let key in data.daily) {
+                                    // addCOVID19tbl(key,data.daily[key]);
+                                }
+                                //addCOVID19tbl("",data[]);
+                                /*
+                                for(let key in data.prefectures){
+                                    addCOVID19tbl(key, 
+                                    data.prefectures[key].newlyConfirmed + ":"+
+                                    data.prefectures[key].name_ja);
+                                }
+                                */
+                            });
+
+
+                        </script>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="card">
                             <div class="card-header">受験生向けイベント</div>
                             <div class="card-body">
                                 <h5 class="card-title">教職員向けフォーム</h5>
@@ -248,17 +379,20 @@
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">
-                                    <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">◆管理用</a>
+                                    <a
+                                        href="https://teams.microsoft.com/_#/school/files/WEB%E3%82%B5%E3%82%A4%E3%83%88%E9%96%A2%E4%BF%82?threadId=19%3Af7977620b7234abf8ccc2a9972d71e3f%40thread.tacv2&ctx=channel&context=%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FWEB%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%25E9%2596%25A2%25E4%25BF%2582%252F%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020">OKlist</a>
+                                    ／
+                                    <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">◆個別相談MST管理用</a>
                                 </small>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-lg-6">
-                        <div class="card h-100">
+                        <div class="card">
                             <div class="card-header">授業アンケート</div>
                             <div class="card-body">
-                                <a class="btn btn-info" role="button"
+                                <a class="btn btn-info text-wrap" role="button"
                                     href="https://teams.microsoft.com/l/message/19:0938ec52fc9d45728405629b4428ef03@thread.tacv2/1605677343219?tenantId=7cbb7dcf-3364-41cd-9976-48bbc48bd82a&groupId=5df0b8bb-ffcc-4b00-95df-f3c501e1f37f&parentMessageId=1605677343219&teamName=%E6%95%99%E8%81%B7%E5%93%A1&channelName=%E4%B8%80%E8%88%AC&createdTime=1605677343219">アンケートを実施する授業の事前登録について</a>
                                 <hr />
                                 <h5 class="card-title">生徒入力フォーム</h5>
@@ -280,7 +414,7 @@
                     </div>
 
                     <div class="col-12">
-                        <div class="card h-100">
+                        <div class="card">
                             <div class="card-header">健康観察Overview</div>
                             <div class="card-body text-center">
                                 <iframe style="width:100%;max-width:700px;height:320px;" frameborder="0" scrolling="no"
@@ -296,7 +430,7 @@
                         <div class="col-12 col-lg-6 col-xxl-8">
                     -->
                     <div class="col-12">
-                        <div class="card h-100">
+                        <div class="card">
                             <div class="card-header">Links</div>
                             <div class="card-body">
                                 <div class="row">
@@ -553,7 +687,7 @@
                                         ["2限", 9, 55],
                                         ["2限終わり", 10, 45],
                                         ["3限", 10, 55],
-                                        ["3限終わ3", 11, 45],
+                                        ["3限終わり", 11, 45],
                                         ["4限", 11, 55],
                                         ["4限終わり", 12, 45],
                                         ["5限", 13, 30],
@@ -618,7 +752,7 @@
 
                     <!-- お天気widget -->
                     <div class="col-12">
-                        <div class="card border-info ">
+                        <div class="card border-info">
                             <div class="card-header">Weather Forecast</div>
                             <div class="card-body">
                                 <div class="card-text" id="WeatherForecast1"></div>
@@ -745,11 +879,6 @@
                     </div>
 
 
-                    <!-- COVID-19 widget -->
-                    <div class="col-12">
-
-
-                    </div>
 
                     <!-- debug -->
                     <div class="col-12 d-none">
@@ -773,6 +902,160 @@
             </section>
         </div>
     </div>
+    <nav class="navbar navbar-dark bg-dark text-white" style="margin-top: 95vh;">
+        <div class="container-fluid">
+            <div class="jq_accordion">
+                <span>Setting</span>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card bg-dark h-100">
+                            <div class="card-header">Wallpaper</div>
+                            <div class="card-body">
+                                <p class="card-text">お好きな都道府県の壁紙で、旅行気分だけでもどうぞ。</p>
+                                <select class="form-select" id="wallpaperPrefSector"></select>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wallpaperAuto">
+                                    <label class="form-check-label" for="wallpaperAuto">Auto(30秒毎に自動変更)</label>
+                                    <a role="button" class="btn btn-primary" onclick='
+                                    document.getElementById("wallpaperAuto").checked=false;
+                                    document.body.style = "background:#bbb;";
+                                    document.getElementById("wallpaperCopyright").innerHTML = "";
+                                    '>Reset</a>
+                                </div>
+                                <div>
+                                    <div id="wallpaperCopyright"></div>
+                                    <div>
+                                        <a href="https://find47.jp">FIND47.JP</a>
+                                        <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
+                                            <img src="./pict/by.png" width="80px" alt="CC BY 4.0">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- map機能に直したいなぁ…
+                                    <div class="js-scrollable">
+                                        <div id="map-container"></div>
+                                    </div>
+                                -->
+                                <!--
+                                <script type="module">
+                                    
+                                </script>
+                                -->
+                                <script type="module">
+                                    import Cookie from './script/js.cookie.min.js';
+                                    // 都道府県名、作品名、著作権者名、url
+                                    // //find47.jp/ja/i/5AbuL/image_file
+                                    let bg = [
+                                        ["北海道", "夕べの運河…", "Charlie_or_Y-N", "5AbuL"],
+                                        ["青森県", "奥入瀬渓流", "SQZ", "B3vNk"],
+                                        ["岩手県", "めがね橋を走るSL銀河ナイトクルーズ", "SQZ", "2HOIJ"],
+                                        ["宮城県", "気仙沼港 内湾", "平田 智幸", "gBvVl"],
+                                        ["秋田県", "秋田　田沢湖畔", "T-KIMURA", "lFNN0"],
+                                        ["山形県", "銀山温泉", "Koichi_Hayakawa", "WcMzR"],
+                                        ["福島県", "毘沙門沼（五色沼湖沼群）の秋", "Koichi_Hayakawa", "XAl8I"],
+                                        ["茨城県", "ひたち海浜公園　ネモフィラと菜の花畑", "SQZ", "Ph1XF"],
+                                        ["栃木県", "華厳の滝", "taka14", "cGhsA"],
+                                        ["群馬県", "一ノ倉沢　モルゲンロート", "iwashi", "w50bl"],
+                                        ["埼玉県", "川越祭り", "MitsunoriEgawa", "pNzeU"],
+                                        ["千葉県", "春のいすみ鉄道", "Akiko_Kubosawa", "K1oB0"],
+                                        ["東京都", "東京タワー", "tunafish", "WM44j"],
+                                        ["神奈川県", "湘南の朝活", "Makoto_Lab", "CKK7d"],
+                                        ["新潟県", "新潟市街地と佐渡島の夕景", "Koichi_Hayakawa", "w4KRg"],
+                                        ["富山県", "冬の立山より", "1sFp8", "1sFp8"],
+                                        ["石川県", "金沢市 兼六園夜景", "char", "MSwaP"],
+                                        ["福井県", "東尋坊", "SHori", "CO4Nv"],
+                                        ["山梨県", "日暮れの光景(富士山と河口湖)", "Koichi_Hayakawa", "3Zn46"],
+                                        ["長野県", "白糸の滝", "MitsunoriEgawa", "PwPYc"],
+                                        ["岐阜県", "モネの池", "SHori", "Y18Xw"],
+                                        ["静岡県", "修善寺温泉街", "伊豆市", "4Rb4E"],
+                                        ["愛知県", "９尺藤", "江南市", "sFLH2"],
+                                        ["三重県", "照らし出される", "Kenichi_Inagaki", "InPit"],
+                                        ["滋賀県", "彦根城", "tanaka", "qCDAx"],
+                                        ["京都府", "瑠璃光院", "Suganu0405", "LeA39"],
+                                        ["大阪府", "桜と天守閣…", "Charlie_or_Y-N", "5N8g8"],
+                                        ["兵庫県", "朝来市　竹田城跡　天空の城", "rikky_photography", "CAXbA"],
+                                        ["奈良県", "奈良公園", "SHori", "VhMAU"],
+                                        ["和歌山県", "有田みかんの山", "有田市", "aHs1x"],
+                                        ["鳥取県", "鳥取砂丘　雨上がりの朝", "rikky_photography", "xMEQL"],
+                                        ["島根県", "宍道湖 湖畔での夕景", "yogiyogi", "OqRSn"],
+                                        ["岡山県", "倉敷美観地区の夜景", "Yudai_photography", "s8i1I"],
+                                        ["広島県", "雪の広島城", "Tomato_249", "t9XMo"],
+                                        ["山口県", "錦帯橋", "tanaka", "vv7FQ"],
+                                        ["徳島県", "鳴門海峡の渦潮", "panpanzupan", "JQkmW"],
+                                        ["香川県", "金刀比羅宮", "日本観光振興協会", "Y7I3H"],
+                                        ["愛媛県", "亀老山から望む来島海峡大橋", "今治地方観光協会", "MOHWD"],
+                                        ["高知県", "朝霧の沈下橋", "K_Oda", "5AGSW"],
+                                        ["福岡県", "福岡の夜景", "Yudai_photography", "JSwdQ"],
+                                        ["佐賀県", "浜野浦の棚田", "TsuruSho7", "yZwz5"],
+                                        ["長崎県", "雲仙温泉", "長崎県", "kfJJN"],
+                                        ["熊本県", "市電のある風景", "Kohji_Asakawa", "ux6ZV"],
+                                        ["大分県", "別府の湯けむり", "別府市", "Vr5ws"],
+                                        ["宮崎県", "高千穂の秋", "Shiro_KUROGI", "6fW6E"],
+                                        ["鹿児島県", "佐多岬", "鹿児島県", "CfTFK"],
+                                        ["沖縄県", "平久保崎", "石垣市", "cQQMQ"]
+                                    ];
+                                    // リストセット
+                                    for (let i = 0; i < bg.length; i++) {
+                                        let opt = document.createElement("option");
+                                        opt.value = i;
+                                        opt.innerText = bg[i][0] + "：" + bg[i][1];
+                                        document.getElementById("wallpaperPrefSector").appendChild(opt);
+                                    }
+                                    function setWallpaper(i) {
+                                        document.body.style = 'background:#bbb url("' +
+                                            '//find47.jp/ja/i/' + bg[i][3] + '/image_file' + '");' +
+                                            "background-size:cover;" +
+                                            "background-repeat: no-repeat; " +
+                                            "background-attachment: fixed; " +
+                                            "background-position: center;";
+                                        document.getElementById("wallpaperCopyright").innerHTML = "" +
+                                            "【現在の設定】<br/>" + bg[i][0] + "：" + bg[i][1] + "／" + bg[i][2];
+                                    }
+                                    // イベントハンドラ
+                                    document.getElementById("wallpaperPrefSector").addEventListener('change',
+                                        (event) => {
+                                            Cookie.set("wallpaperIndex", document.getElementById("wallpaperPrefSector").value);
+                                            setWallpaper(Cookie.get("wallpaperIndex"));
+                                            document.getElementById("wallpaperAuto").checked = false;
+                                        }
+                                    );
+                                    // 初期設定（前回設定値を復元）
+                                    window.addEventListener("load", function () {
+                                        let i = Cookie.get("wallpaperIndex");
+                                        if (i != undefined) {
+                                            setWallpaper(i);
+                                        }
+                                        if (Cookie.get("wallpaperAuto") == 1) {
+                                            document.getElementById("wallpaperAuto").checked = true;
+                                        }
+                                    });
+
+                                    let wpAuto = setInterval(function () {
+                                        if (document.getElementById("wallpaperAuto").checked) {
+                                            setWallpaper(Math.round(Math.random() * (bg.length - 1)))
+                                        }
+                                    }, 30 * 1000);
+
+                                    document.getElementById("wallpaperAuto").addEventListener('change',
+                                        (event) => {
+                                            if (document.getElementById("wallpaperAuto").checked) {
+                                                Cookie.set("wallpaperAuto", 1);
+                                            } else {
+                                                Cookie.set("wallpaperAuto", 0);
+                                            }
+                                        }
+                                    );
+                                </script>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">本機能はCookieを使用します</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </body>
 
 </html>
