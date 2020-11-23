@@ -264,7 +264,7 @@
                                     yesterday.getFullYear() + "/" +
                                     (yesterday.getMonth() + 1) + "/" +
                                     yesterday.getDate() + "(" +
-                                    youbi[yesterday.getDay()] + ")のデータ" +
+                                    youbi[yesterday.getDay()] + ")の陽性者数" +
                                     "</td></tr>";
 
                                 // tfoot
@@ -990,8 +990,10 @@
                                     // 画像選択イベント
                                     document.getElementById("wallpaperSector").addEventListener('change',
                                         (event) => {
-                                            document.getElementById("wallpaperAuto").checked = false;
-                                            setWallpaper(document.getElementById("wallpaperSector").value);
+                                            if (bg[document.getElementById("wallpaperSector").value][0] != false) {
+                                                document.getElementById("wallpaperAuto").checked = false;
+                                                setWallpaper(document.getElementById("wallpaperSector").value);
+                                            }
                                         }
                                     );
 
@@ -1033,12 +1035,14 @@
                                         }
                                     });
                                 </script>
-                                <p class="card-text">お好きな都道府県（＋α）の壁紙で、旅行気分だけでもどうぞ。</p>
+                                <p class="card-text">お好きな都道府県の壁紙で、旅行気分だけでもどうぞ。</p>
                                 <select class="form-select" id="wallpaperSector"></select>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="wallpaperAuto">
-                                    <label class="form-check-label" for="wallpaperAuto">Auto(30秒毎に自動変更)</label>
-                                    <a role="button" class="btn btn-primary" onclick='
+                                <div class="form-check form-switch d-flex flex-row">
+                                    <input class="form-check-input align-self-center" type="checkbox"
+                                        id="wallpaperAuto">
+                                    <label class="form-check-label align-self-center"
+                                        for="wallpaperAuto">Auto(30秒毎に自動変更)</label>　
+                                    <a role="button" class="btn btn-primary align-self-center" onclick='
                                     document.getElementById("wallpaperAuto").checked=false;
                                     document.body.style="background:#bbb;";
                                     document.getElementById("wallpaperCopyright").innerHTML="";
