@@ -27,7 +27,6 @@
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <!-- jQuery依存 -->
-    <script src="./script/japan.map/jquery.japan-map.js"></script>
 
     <!-- Bootstrap 5.0.0 alpha -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
@@ -44,11 +43,7 @@
     <!-- ScrollHint -->
     <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
     <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
-    <!--
-    <script type="module" src="./script/js.cookie.min.mjs"></script>
-    <script nomodule defer src="./script/js.cookie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    -->
+    
     <script>
         window.addEventListener("load", function () {
             /* jQuery @onload */
@@ -113,6 +108,8 @@
                             <div class="jq_accordion">
                                 <a class="h4">Tools</a>
                                 <ul>
+                                    <li><a href="https://mail.google.com/">Gmail</a></li>
+                                    <li><a href="http://mail.yahoo.co.jp/">Yahoo!メール</a></li>
                                     <li><a href="https://trello.com/">Trello</a></li>
                                     <li><a href="https://feedly.com/">Feedly</a></li>
                                     <li><a href="https://discordapp.com/activity">discord</a></li>
@@ -252,7 +249,7 @@
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">
-                                    <a href="https://covid19japan.com/">Data Resource</a>
+                                    <a href="https://covid19japan.com/">Data Source</a>
                                 </small>
                             </div>
                         </div>
@@ -261,9 +258,6 @@
                                 document.getElementById("COVID19infoTbl").children[2].innerHTML += "<tr><th>" +
                                     title + "</th><td class='text-center'>" + content + "</td></tr>";
                             }
-
-
-
                             $.getJSON("https://data.covid19japan.com/summary/latest.json", (data) => {
 
                                 let yesterday = new Date();
@@ -285,12 +279,9 @@
                                 document.getElementById("COVID19infoTbl").children[1].innerHTML += "" +
                                     "<tr><td colspan='2' class='text-right'>Last Update：" +
                                     tfootTx + "</td></tr>";
-
-
                                 for (let key in data.prefectures[4]) {
                                     //addCOVID19tbl(key, data.prefectures[4][key]);
                                 }
-                                //
 
                                 // 都道府県別データ取得
                                 let tbl = { "陽性者": { "埼玉県": 0, "東京都": 0, "全国": 0 } };
@@ -322,24 +313,7 @@
                                 addCOVID19tbl("埼玉県", tbl["陽性者"]["埼玉県"]);
                                 addCOVID19tbl("東京都", tbl["陽性者"]["東京都"]);
                                 addCOVID19tbl("全国", tbl["陽性者"]["全国"]);
-
-
-                                //for(let key in data.prefectures){addCOVID19tbl(key,data.prefectures);}
-
-                                for (let key in data.daily) {
-                                    // addCOVID19tbl(key,data.daily[key]);
-                                }
-                                //addCOVID19tbl("",data[]);
-                                /*
-                                for(let key in data.prefectures){
-                                    addCOVID19tbl(key, 
-                                    data.prefectures[key].newlyConfirmed + ":"+
-                                    data.prefectures[key].name_ja);
-                                }
-                                */
                             });
-
-
                         </script>
                     </div>
 
@@ -353,6 +327,7 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         まずはココから登録。<br />
+                                        <small>登録の手間削減のため、紙ではなくWEB登録にご協力ください。</small><br />
                                         <a class="btn btn-primary" role="button"
                                             href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUOE5EMUxNWlRDNDNRSVk4NVJTSjlPMVYxRyQlQCN0PWcu">イベント登録申請</a>
                                     </li>
@@ -380,7 +355,7 @@
                             <div class="card-footer">
                                 <small class="text-muted">
                                     <a
-                                        href="https://teams.microsoft.com/_#/school/files/WEB%E3%82%B5%E3%82%A4%E3%83%88%E9%96%A2%E4%BF%82?threadId=19%3Af7977620b7234abf8ccc2a9972d71e3f%40thread.tacv2&ctx=channel&context=%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FWEB%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%25E9%2596%25A2%25E4%25BF%2582%252F%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020">OKlist</a>
+                                        href="https://teams.microsoft.com/_#/school/files/WEB%E3%82%B5%E3%82%A4%E3%83%88%E9%96%A2%E4%BF%82?threadId=19%3Af7977620b7234abf8ccc2a9972d71e3f%40thread.tacv2&ctx=channel&context=%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FWEB%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%25E9%2596%25A2%25E4%25BF%2582%252F%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020">相談関連files</a>
                                     ／
                                     <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">◆個別相談MST管理用</a>
                                 </small>
@@ -653,7 +628,7 @@
                             </div>
                         </div>
                     </div>
--->
+                    -->
 
                 </div>
 
@@ -749,7 +724,6 @@
                         </div>
                     </div>
 
-
                     <!-- お天気widget -->
                     <div class="col-12">
                         <div class="card border-info">
@@ -771,8 +745,6 @@
                                 </small>
                             </div>
                         </div>
-
-
                         <!-- Modal -->
                         <div class="modal fade" id="WeatherForecastDetail" tabindex="-1"
                             aria-labelledby="WeatherForecastDetailLabel" aria-hidden="true">
@@ -878,8 +850,6 @@
                         </script>
                     </div>
 
-
-
                     <!-- debug -->
                     <div class="col-12 d-none">
                         <div class="card text-white bg-dark">
@@ -887,9 +857,7 @@
                             <div class="card-body">
                                 <div class="card-text">
                                 </div>
-
                                 <div class="card-text" id="XMLSampleRequest"></div>
-
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">特に何がある訳でもありません。<br />調整用のエリアです…</small>
@@ -897,7 +865,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </section>
         </div>
@@ -911,7 +878,7 @@
                         <div class="card bg-dark h-100">
                             <div class="card-header">Wallpaper</div>
                             <div class="card-body">
-                                <p class="card-text">お好きな都道府県の壁紙で、旅行気分だけでもどうぞ。</p>
+                                <p class="card-text">お好きな都道府県（＋α）の壁紙で、旅行気分だけでもどうぞ。</p>
                                 <select class="form-select" id="wallpaperPrefSector"></select>
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" id="wallpaperAuto">
@@ -922,129 +889,163 @@
                                     document.getElementById("wallpaperCopyright").innerHTML = "";
                                     '>Reset</a>
                                 </div>
-                                <div>
-                                    <div id="wallpaperCopyright"></div>
-                                    <div>
-                                        <a href="https://find47.jp">FIND47.JP</a>
-                                        <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
-                                            <img src="./pict/by.png" width="80px" alt="CC BY 4.0">
-                                        </a>
-                                    </div>
+                                <div class="card">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info" id="wallpaperCopyright"></li>
+                                        <li class="list-group-item">
+                                            <a href="https://find47.jp">FIND47.JP</a>
+                                            <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
+                                                <img src="./pict/by.png" width="80px" alt="CC BY 4.0">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="http://www.ghibli.jp/">© Studio Ghibli</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <!-- map機能に直したいなぁ…
-                                    <div class="js-scrollable">
-                                        <div id="map-container"></div>
-                                    </div>
-                                -->
-                                <!--
-                                <script type="module">
-                                    
-                                </script>
-                                -->
                                 <script type="module">
                                     import Cookie from './script/js.cookie.min.js';
                                     // 都道府県名、作品名、著作権者名、url
                                     // //find47.jp/ja/i/5AbuL/image_file
                                     let bg = [
-                                        ["北海道", "夕べの運河…", "Charlie_or_Y-N", "5AbuL"],
-                                        ["青森県", "奥入瀬渓流", "SQZ", "B3vNk"],
-                                        ["岩手県", "めがね橋を走るSL銀河ナイトクルーズ", "SQZ", "2HOIJ"],
-                                        ["宮城県", "気仙沼港 内湾", "平田 智幸", "gBvVl"],
-                                        ["秋田県", "秋田　田沢湖畔", "T-KIMURA", "lFNN0"],
-                                        ["山形県", "銀山温泉", "Koichi_Hayakawa", "WcMzR"],
-                                        ["福島県", "毘沙門沼（五色沼湖沼群）の秋", "Koichi_Hayakawa", "XAl8I"],
-                                        ["茨城県", "ひたち海浜公園　ネモフィラと菜の花畑", "SQZ", "Ph1XF"],
-                                        ["栃木県", "華厳の滝", "taka14", "cGhsA"],
-                                        ["群馬県", "一ノ倉沢　モルゲンロート", "iwashi", "w50bl"],
-                                        ["埼玉県", "川越祭り", "MitsunoriEgawa", "pNzeU"],
-                                        ["千葉県", "春のいすみ鉄道", "Akiko_Kubosawa", "K1oB0"],
-                                        ["東京都", "東京タワー", "tunafish", "WM44j"],
-                                        ["神奈川県", "湘南の朝活", "Makoto_Lab", "CKK7d"],
-                                        ["新潟県", "新潟市街地と佐渡島の夕景", "Koichi_Hayakawa", "w4KRg"],
-                                        ["富山県", "冬の立山より", "1sFp8", "1sFp8"],
-                                        ["石川県", "金沢市 兼六園夜景", "char", "MSwaP"],
-                                        ["福井県", "東尋坊", "SHori", "CO4Nv"],
-                                        ["山梨県", "日暮れの光景(富士山と河口湖)", "Koichi_Hayakawa", "3Zn46"],
-                                        ["長野県", "白糸の滝", "MitsunoriEgawa", "PwPYc"],
-                                        ["岐阜県", "モネの池", "SHori", "Y18Xw"],
-                                        ["静岡県", "修善寺温泉街", "伊豆市", "4Rb4E"],
-                                        ["愛知県", "９尺藤", "江南市", "sFLH2"],
-                                        ["三重県", "照らし出される", "Kenichi_Inagaki", "InPit"],
-                                        ["滋賀県", "彦根城", "tanaka", "qCDAx"],
-                                        ["京都府", "瑠璃光院", "Suganu0405", "LeA39"],
-                                        ["大阪府", "桜と天守閣…", "Charlie_or_Y-N", "5N8g8"],
-                                        ["兵庫県", "朝来市　竹田城跡　天空の城", "rikky_photography", "CAXbA"],
-                                        ["奈良県", "奈良公園", "SHori", "VhMAU"],
-                                        ["和歌山県", "有田みかんの山", "有田市", "aHs1x"],
-                                        ["鳥取県", "鳥取砂丘　雨上がりの朝", "rikky_photography", "xMEQL"],
-                                        ["島根県", "宍道湖 湖畔での夕景", "yogiyogi", "OqRSn"],
-                                        ["岡山県", "倉敷美観地区の夜景", "Yudai_photography", "s8i1I"],
-                                        ["広島県", "雪の広島城", "Tomato_249", "t9XMo"],
-                                        ["山口県", "錦帯橋", "tanaka", "vv7FQ"],
-                                        ["徳島県", "鳴門海峡の渦潮", "panpanzupan", "JQkmW"],
-                                        ["香川県", "金刀比羅宮", "日本観光振興協会", "Y7I3H"],
-                                        ["愛媛県", "亀老山から望む来島海峡大橋", "今治地方観光協会", "MOHWD"],
-                                        ["高知県", "朝霧の沈下橋", "K_Oda", "5AGSW"],
-                                        ["福岡県", "福岡の夜景", "Yudai_photography", "JSwdQ"],
-                                        ["佐賀県", "浜野浦の棚田", "TsuruSho7", "yZwz5"],
-                                        ["長崎県", "雲仙温泉", "長崎県", "kfJJN"],
-                                        ["熊本県", "市電のある風景", "Kohji_Asakawa", "ux6ZV"],
-                                        ["大分県", "別府の湯けむり", "別府市", "Vr5ws"],
-                                        ["宮崎県", "高千穂の秋", "Shiro_KUROGI", "6fW6E"],
-                                        ["鹿児島県", "佐多岬", "鹿児島県", "CfTFK"],
-                                        ["沖縄県", "平久保崎", "石垣市", "cQQMQ"]
+                                        ["id", "find47", "北海道", "夕べの運河…", "Charlie_or_Y-N", "5AbuL"],
+                                        ["id", "find47", "青森県", "奥入瀬渓流", "SQZ", "B3vNk"],
+                                        ["id", "find47", "岩手県", "めがね橋を走るSL銀河ナイトクルーズ", "SQZ", "2HOIJ"],
+                                        ["id", "find47", "宮城県", "気仙沼港 内湾", "平田 智幸", "gBvVl"],
+                                        ["id", "find47", "秋田県", "秋田　田沢湖畔", "T-KIMURA", "lFNN0"],
+                                        ["id", "find47", "山形県", "銀山温泉", "Koichi_Hayakawa", "WcMzR"],
+                                        ["id", "find47", "福島県", "毘沙門沼（五色沼湖沼群）の秋", "Koichi_Hayakawa", "XAl8I"],
+                                        ["id", "find47", "茨城県", "ひたち海浜公園　ネモフィラと菜の花畑", "SQZ", "Ph1XF"],
+                                        ["id", "find47", "栃木県", "華厳の滝", "taka14", "cGhsA"],
+                                        ["id", "find47", "群馬県", "一ノ倉沢　モルゲンロート", "iwashi", "w50bl"],
+                                        ["id", "find47", "埼玉県", "川越祭り", "MitsunoriEgawa", "pNzeU"],
+                                        ["id", "find47", "千葉県", "春のいすみ鉄道", "Akiko_Kubosawa", "K1oB0"],
+                                        ["id", "find47", "東京都", "東京タワー", "tunafish", "WM44j"],
+                                        ["id", "find47", "神奈川県", "湘南の朝活", "Makoto_Lab", "CKK7d"],
+                                        ["id", "find47", "新潟県", "新潟市街地と佐渡島の夕景", "Koichi_Hayakawa", "w4KRg"],
+                                        ["id", "find47", "富山県", "冬の立山より", "1sFp8", "1sFp8"],
+                                        ["id", "find47", "石川県", "金沢市 兼六園夜景", "char", "MSwaP"],
+                                        ["id", "find47", "福井県", "東尋坊", "SHori", "CO4Nv"],
+                                        ["id", "find47", "山梨県", "日暮れの光景(富士山と河口湖)", "Koichi_Hayakawa", "3Zn46"],
+                                        ["id", "find47", "長野県", "白糸の滝", "MitsunoriEgawa", "PwPYc"],
+                                        ["id", "find47", "岐阜県", "モネの池", "SHori", "Y18Xw"],
+                                        ["id", "find47", "静岡県", "修善寺温泉街", "伊豆市", "4Rb4E"],
+                                        ["id", "find47", "愛知県", "９尺藤", "江南市", "sFLH2"],
+                                        ["id", "find47", "三重県", "照らし出される", "Kenichi_Inagaki", "InPit"],
+                                        ["id", "find47", "滋賀県", "彦根城", "tanaka", "qCDAx"],
+                                        ["id", "find47", "京都府", "瑠璃光院", "Suganu0405", "LeA39"],
+                                        ["id", "find47", "大阪府", "桜と天守閣…", "Charlie_or_Y-N", "5N8g8"],
+                                        ["id", "find47", "兵庫県", "朝来市　竹田城跡　天空の城", "rikky_photography", "CAXbA"],
+                                        ["id", "find47", "奈良県", "奈良公園", "SHori", "VhMAU"],
+                                        ["id", "find47", "和歌山県", "有田みかんの山", "有田市", "aHs1x"],
+                                        ["id", "find47", "鳥取県", "鳥取砂丘　雨上がりの朝", "rikky_photography", "xMEQL"],
+                                        ["id", "find47", "島根県", "宍道湖 湖畔での夕景", "yogiyogi", "OqRSn"],
+                                        ["id", "find47", "岡山県", "倉敷美観地区の夜景", "Yudai_photography", "s8i1I"],
+                                        ["id", "find47", "広島県", "雪の広島城", "Tomato_249", "t9XMo"],
+                                        ["id", "find47", "山口県", "錦帯橋", "tanaka", "vv7FQ"],
+                                        ["id", "find47", "徳島県", "鳴門海峡の渦潮", "panpanzupan", "JQkmW"],
+                                        ["id", "find47", "香川県", "金刀比羅宮", "日本観光振興協会", "Y7I3H"],
+                                        ["id", "find47", "愛媛県", "亀老山から望む来島海峡大橋", "今治地方観光協会", "MOHWD"],
+                                        ["id", "find47", "高知県", "朝霧の沈下橋", "K_Oda", "5AGSW"],
+                                        ["id", "find47", "福岡県", "福岡の夜景", "Yudai_photography", "JSwdQ"],
+                                        ["id", "find47", "佐賀県", "浜野浦の棚田", "TsuruSho7", "yZwz5"],
+                                        ["id", "find47", "長崎県", "雲仙温泉", "長崎県", "kfJJN"],
+                                        ["id", "find47", "熊本県", "市電のある風景", "Kohji_Asakawa", "ux6ZV"],
+                                        ["id", "find47", "大分県", "別府の湯けむり", "別府市", "Vr5ws"],
+                                        ["id", "find47", "宮崎県", "高千穂の秋", "Shiro_KUROGI", "6fW6E"],
+                                        ["id", "find47", "鹿児島県", "佐多岬", "鹿児島県", "CfTFK"],
+                                        ["id", "find47", "沖縄県", "平久保崎", "石垣市", "cQQMQ"],
+                                        ["id", "ジブリ", "テスト", "テスト", "© 1989 角野栄子・Studio Ghibli・N", "https://www.ghibli.jp/gallery/majo002.jpg"],
+                                        /*
+                                        ["id", "ジブリ", "思い出のマーニー", "船の上で", "© 2014 Studio Ghibli・NDHDMTK", "https://www.ghibli.jp/gallery/marnie021.jpg"],
+                                        ["id", "ジブリ", "風立ちぬ", "飛行機", "© 2013 Studio Ghibli・NDHDMTK", "https://www.ghibli.jp/gallery/kazetachinu044.jpg"],
+                                        ["id", "ジブリ", "コクリコ坂から", "カルチェラタン", "© 2011 高橋千鶴・佐山哲郎・Studio Ghibli・NDHDMT", "https://www.ghibli.jp/gallery/kokurikozaka012.jpg"],
+                                        ["id", "ジブリ", "借りぐらしのアリエッティ", "カルチェラタン", "© 2010 Studio Ghibli・NDHDMTW", "https://www.ghibli.jp/gallery/karigurashi021.jpg"],
+                                        ["id", "ジブリ", "崖の上のポニョ", "海の中", "© 2008 Studio Ghibli・NDHDMT", "https://www.ghibli.jp/gallery/ponyo001.jpg"],
+                                        ["id", "ジブリ", "ハウルの動く城", "城", "© 2004 Studio Ghibli・NDDMT", "https://www.ghibli.jp/gallery/howl011.jpg"],
+                                        ["id", "ジブリ", "猫の恩返し", "ねこの行列", "© 2002 猫乃手堂・Studio Ghibli・NDHMT", "https://www.ghibli.jp/gallery/baron005.jpg"],
+                                        ["id", "ジブリ", "千と千尋の神隠し", "湯屋", "© 2001 Studio Ghibli・NDDTM", "https://www.ghibli.jp/gallery/chihiro015.jpg"],
+                                        ["id", "ジブリ", "耳をすませば", "ムーン", "© 1995 柊あおい/集英社・Studio Ghibli・NH", "https://www.ghibli.jp/gallery/mimi008.jpg"],
+                                        ["id", "ジブリ", "平成狸合戦ぽんぽこ", "戦タヌキ", "© 1994 畑事務所・Studio Ghibli・NH", "https://www.ghibli.jp/gallery/tanuki001.jpg"],
+                                        ["id", "ジブリ", "紅の豚", "サボイアS.21試作戦闘飛行艇", "© 1992 Studio Ghibli・NN", "https://www.ghibli.jp/gallery/porco002.jpg"],
+                                        ["id", "ジブリ", "魔女の宅急便", "キキの家", "© 1989 角野栄子・Studio Ghibli・N", "https://www.ghibli.jp/gallery/majo002.jpg"],
+                                        ["id", "ジブリ", "となりのトトロ", "おやすみトトロ", "© 1988 Studio Ghibli", "https://www.ghibli.jp/gallery/totoro022.jpg"],
+                                        /*
+                                        */
                                     ];
+
                                     // リストセット
                                     for (let i = 0; i < bg.length; i++) {
                                         let opt = document.createElement("option");
                                         opt.value = i;
-                                        opt.innerText = bg[i][0] + "：" + bg[i][1];
+                                        opt.innerText = bg[i][2] + "：" + bg[i][3];
                                         document.getElementById("wallpaperPrefSector").appendChild(opt);
+                                        // id付番
+                                        bg[i][0] = bg[i][1] + bg[i][2] + bg[i][3];
                                     }
+
+                                    // wallpaperの設定
                                     function setWallpaper(i) {
                                         document.body.style = 'background:#bbb url("' +
-                                            '//find47.jp/ja/i/' + bg[i][3] + '/image_file' + '");' +
+                                            (bg[i][1] == "find47" ?
+                                                '//find47.jp/ja/i/' + bg[i][5] + '/image_file' :
+                                                bg[i][5]
+                                            ) + '");' +
                                             "background-size:cover;" +
                                             "background-repeat: no-repeat; " +
                                             "background-attachment: fixed; " +
-                                            "background-position: center;";
+                                            "background-position: center center;";
                                         document.getElementById("wallpaperCopyright").innerHTML = "" +
-                                            "【現在の設定】<br/>" + bg[i][0] + "：" + bg[i][1] + "／" + bg[i][2];
+                                            "【現在の設定】<br/>" + bg[i][2] + "：" + bg[i][3] + "<br/>" + bg[i][4];
+                                        document.getElementById("wallpaperPrefSector").value = i;
+                                        Cookie.set("wallpaperId", bg[i][0], { expires: 14 });
                                     }
-                                    // イベントハンドラ
+
+                                    // 画像選択イベント
                                     document.getElementById("wallpaperPrefSector").addEventListener('change',
                                         (event) => {
-                                            Cookie.set("wallpaperIndex", document.getElementById("wallpaperPrefSector").value);
-                                            setWallpaper(Cookie.get("wallpaperIndex"));
+                                            setWallpaper(document.getElementById("wallpaperPrefSector").value);
                                             document.getElementById("wallpaperAuto").checked = false;
                                         }
                                     );
-                                    // 初期設定（前回設定値を復元）
-                                    window.addEventListener("load", function () {
-                                        let i = Cookie.get("wallpaperIndex");
-                                        if (i != undefined) {
-                                            setWallpaper(i);
-                                        }
-                                        if (Cookie.get("wallpaperAuto") == 1) {
-                                            document.getElementById("wallpaperAuto").checked = true;
-                                        }
-                                    });
 
+                                    // Auto用interval関数
                                     let wpAuto = setInterval(function () {
                                         if (document.getElementById("wallpaperAuto").checked) {
-                                            setWallpaper(Math.round(Math.random() * (bg.length - 1)))
+                                            setWallpaper(Math.round(Math.random() * (bg.length - 1)));
                                         }
                                     }, 30 * 1000);
 
+                                    // Autoスイッチ操作イベント
                                     document.getElementById("wallpaperAuto").addEventListener('change',
                                         (event) => {
                                             if (document.getElementById("wallpaperAuto").checked) {
-                                                Cookie.set("wallpaperAuto", 1);
+                                                Cookie.set("wallpaperAuto", 1, { expires: 14 });
+                                                setWallpaper(Math.round(Math.random() * (bg.length - 1)));
                                             } else {
                                                 Cookie.set("wallpaperAuto", 0);
                                             }
                                         }
                                     );
+
+                                    // 初期設定（前回値を復元）
+                                    window.addEventListener("load", function () {
+                                        Cookie.remove("wallpaperIndex");    //古いクッキーさようなら（気が付いたときに消す：20201123）
+                                        let id = Cookie.get("wallpaperId");
+                                        if (id != undefined) {
+                                            // 壁紙復元
+                                            for (let i = 0; i < bg.length; i++) {
+                                                if (bg[i][0] == id) {
+                                                    setWallpaper(i);
+                                                    break;
+                                                }
+                                            }
+                                            // Autoモード復元
+                                            if (Cookie.get("wallpaperAuto") == 1) {
+                                                document.getElementById("wallpaperAuto").checked = true;
+                                            }
+                                        }
+                                    });
                                 </script>
                             </div>
                             <div class="card-footer">
