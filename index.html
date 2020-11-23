@@ -43,7 +43,7 @@
     <!-- ScrollHint -->
     <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
     <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
-    
+
     <script>
         window.addEventListener("load", function () {
             /* jQuery @onload */
@@ -126,7 +126,9 @@
                                 <a class="h4">Log</a>
                                 <div>
                                     <dl>
-                                        <dt>11.21sun</dt>
+                                        <dt>11.23mon</dt>
+                                        <dd>壁紙(ジブリ)追加</dd>
+                                        <dt>11.22sun</dt>
                                         <dd>COVID-19info追加</dd>
                                         <dd>背景機能追加</dd>
                                         <dt>11.20fri</dt>
@@ -172,12 +174,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-
-                <div style="background:rgba(255,255,255,0.8)">
-
                 </div>
             </section>
 
@@ -878,36 +874,12 @@
                         <div class="card bg-dark h-100">
                             <div class="card-header">Wallpaper</div>
                             <div class="card-body">
-                                <p class="card-text">お好きな都道府県（＋α）の壁紙で、旅行気分だけでもどうぞ。</p>
-                                <select class="form-select" id="wallpaperPrefSector"></select>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="wallpaperAuto">
-                                    <label class="form-check-label" for="wallpaperAuto">Auto(30秒毎に自動変更)</label>
-                                    <a role="button" class="btn btn-primary" onclick='
-                                    document.getElementById("wallpaperAuto").checked=false;
-                                    document.body.style = "background:#bbb;";
-                                    document.getElementById("wallpaperCopyright").innerHTML = "";
-                                    '>Reset</a>
-                                </div>
-                                <div class="card">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item bg-info" id="wallpaperCopyright"></li>
-                                        <li class="list-group-item">
-                                            <a href="https://find47.jp">FIND47.JP</a>
-                                            <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
-                                                <img src="./pict/by.png" width="80px" alt="CC BY 4.0">
-                                            </a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <a href="http://www.ghibli.jp/">© Studio Ghibli</a>
-                                        </li>
-                                    </ul>
-                                </div>
                                 <script type="module">
                                     import Cookie from './script/js.cookie.min.js';
-                                    // 都道府県名、作品名、著作権者名、url
-                                    // //find47.jp/ja/i/5AbuL/image_file
+                                    // id,カテゴリ,分類,タイトル,著作権者,url
+                                    // 見出し項目は、id=false を設定
                                     let bg = [
+                                        [false, "◆都道府県の風景"],
                                         ["id", "find47", "北海道", "夕べの運河…", "Charlie_or_Y-N", "5AbuL"],
                                         ["id", "find47", "青森県", "奥入瀬渓流", "SQZ", "B3vNk"],
                                         ["id", "find47", "岩手県", "めがね橋を走るSL銀河ナイトクルーズ", "SQZ", "2HOIJ"],
@@ -955,37 +927,51 @@
                                         ["id", "find47", "宮崎県", "高千穂の秋", "Shiro_KUROGI", "6fW6E"],
                                         ["id", "find47", "鹿児島県", "佐多岬", "鹿児島県", "CfTFK"],
                                         ["id", "find47", "沖縄県", "平久保崎", "石垣市", "cQQMQ"],
-                                        ["id", "ジブリ", "テスト", "テスト", "© 1989 角野栄子・Studio Ghibli・N", "https://www.ghibli.jp/gallery/majo002.jpg"],
-                                        /*
-                                        ["id", "ジブリ", "思い出のマーニー", "船の上で", "© 2014 Studio Ghibli・NDHDMTK", "https://www.ghibli.jp/gallery/marnie021.jpg"],
-                                        ["id", "ジブリ", "風立ちぬ", "飛行機", "© 2013 Studio Ghibli・NDHDMTK", "https://www.ghibli.jp/gallery/kazetachinu044.jpg"],
-                                        ["id", "ジブリ", "コクリコ坂から", "カルチェラタン", "© 2011 高橋千鶴・佐山哲郎・Studio Ghibli・NDHDMT", "https://www.ghibli.jp/gallery/kokurikozaka012.jpg"],
-                                        ["id", "ジブリ", "借りぐらしのアリエッティ", "カルチェラタン", "© 2010 Studio Ghibli・NDHDMTW", "https://www.ghibli.jp/gallery/karigurashi021.jpg"],
-                                        ["id", "ジブリ", "崖の上のポニョ", "海の中", "© 2008 Studio Ghibli・NDHDMT", "https://www.ghibli.jp/gallery/ponyo001.jpg"],
-                                        ["id", "ジブリ", "ハウルの動く城", "城", "© 2004 Studio Ghibli・NDDMT", "https://www.ghibli.jp/gallery/howl011.jpg"],
-                                        ["id", "ジブリ", "猫の恩返し", "ねこの行列", "© 2002 猫乃手堂・Studio Ghibli・NDHMT", "https://www.ghibli.jp/gallery/baron005.jpg"],
-                                        ["id", "ジブリ", "千と千尋の神隠し", "湯屋", "© 2001 Studio Ghibli・NDDTM", "https://www.ghibli.jp/gallery/chihiro015.jpg"],
-                                        ["id", "ジブリ", "耳をすませば", "ムーン", "© 1995 柊あおい/集英社・Studio Ghibli・NH", "https://www.ghibli.jp/gallery/mimi008.jpg"],
-                                        ["id", "ジブリ", "平成狸合戦ぽんぽこ", "戦タヌキ", "© 1994 畑事務所・Studio Ghibli・NH", "https://www.ghibli.jp/gallery/tanuki001.jpg"],
-                                        ["id", "ジブリ", "紅の豚", "サボイアS.21試作戦闘飛行艇", "© 1992 Studio Ghibli・NN", "https://www.ghibli.jp/gallery/porco002.jpg"],
-                                        ["id", "ジブリ", "魔女の宅急便", "キキの家", "© 1989 角野栄子・Studio Ghibli・N", "https://www.ghibli.jp/gallery/majo002.jpg"],
-                                        ["id", "ジブリ", "となりのトトロ", "おやすみトトロ", "© 1988 Studio Ghibli", "https://www.ghibli.jp/gallery/totoro022.jpg"],
-                                        /*
-                                        */
+                                        [false, "◆スタジオジブリコレクション"],
+                                        ["id", "ジブリ", "思い出のマーニー", "船の上で", "© 2014 Studio Ghibli・NDHDMTK", "http://www.ghibli.jp/gallery/marnie021.jpg"],
+                                        ["id", "ジブリ", "風立ちぬ", "飛行機", "© 2013 Studio Ghibli・NDHDMTK", "http://www.ghibli.jp/gallery/kazetachinu044.jpg"],
+                                        ["id", "ジブリ", "コクリコ坂から", "カルチェラタン", "© 2011 高橋千鶴・佐山哲郎・Studio Ghibli・NDHDMT", "http://www.ghibli.jp/gallery/kokurikozaka012.jpg"],
+                                        ["id", "ジブリ", "借りぐらしのアリエッティ", "カルチェラタン", "© 2010 Studio Ghibli・NDHDMTW", "http://www.ghibli.jp/gallery/karigurashi021.jpg"],
+                                        ["id", "ジブリ", "崖の上のポニョ", "海の中", "© 2008 Studio Ghibli・NDHDMT", "http://www.ghibli.jp/gallery/ponyo001.jpg"],
+                                        ["id", "ジブリ", "ハウルの動く城", "城", "© 2004 Studio Ghibli・NDDMT", "http://www.ghibli.jp/gallery/howl011.jpg"],
+                                        ["id", "ジブリ", "猫の恩返し", "ねこの行列", "© 2002 猫乃手堂・Studio Ghibli・NDHMT", "http://www.ghibli.jp/gallery/baron005.jpg"],
+                                        ["id", "ジブリ", "千と千尋の神隠し", "湯屋", "© 2001 Studio Ghibli・NDDTM", "http://www.ghibli.jp/gallery/chihiro015.jpg"],
+                                        ["id", "ジブリ", "耳をすませば", "ムーン", "© 1995 柊あおい/集英社・Studio Ghibli・NH", "http://www.ghibli.jp/gallery/mimi008.jpg"],
+                                        ["id", "ジブリ", "平成狸合戦ぽんぽこ", "戦うタヌキ", "© 1994 畑事務所・Studio Ghibli・NH", "http://www.ghibli.jp/gallery/tanuki001.jpg"],
+                                        ["id", "ジブリ", "紅の豚", "サボイアS.21試作戦闘飛行艇", "© 1992 Studio Ghibli・NN", "http://www.ghibli.jp/gallery/porco002.jpg"],
+                                        ["id", "ジブリ", "魔女の宅急便", "キキの家", "© 1989 角野栄子・Studio Ghibli・N", "http://www.ghibli.jp/gallery/majo002.jpg"],
+                                        ["id", "ジブリ", "となりのトトロ", "おやすみトトロ", "© 1988 Studio Ghibli", "http://www.ghibli.jp/gallery/totoro022.jpg"],
                                     ];
 
                                     // リストセット
                                     for (let i = 0; i < bg.length; i++) {
                                         let opt = document.createElement("option");
                                         opt.value = i;
-                                        opt.innerText = bg[i][2] + "：" + bg[i][3];
-                                        document.getElementById("wallpaperPrefSector").appendChild(opt);
-                                        // id付番
-                                        bg[i][0] = bg[i][1] + bg[i][2] + bg[i][3];
+                                        if (bg[i][0] == false) {
+                                            // 表示項目設定
+                                            opt.innerText = bg[i][1];
+                                        } else {
+                                            // 表示項目設定
+                                            opt.innerText = bg[i][2] + "：" + bg[i][3];
+                                            // id付番
+                                            bg[i][0] = bg[i][1] + bg[i][2] + bg[i][3];
+                                        }
+                                        document.getElementById("wallpaperSector").appendChild(opt);
                                     }
 
                                     // wallpaperの設定
+                                    // 引数：i＝select form option value
                                     function setWallpaper(i) {
+                                        // 見出し行選択時
+                                        while (bg[i][0] == false) {
+                                            if (document.getElementById("wallpaperAuto").checked) {
+                                                // Autoモードなら、次項目を選択
+                                                i = (i + 1) % bg.length;
+                                            } else {
+                                                // Autoモードでなければ、処理中止
+                                                return;
+                                            }
+                                        }
                                         document.body.style = 'background:#bbb url("' +
                                             (bg[i][1] == "find47" ?
                                                 '//find47.jp/ja/i/' + bg[i][5] + '/image_file' :
@@ -997,15 +983,15 @@
                                             "background-position: center center;";
                                         document.getElementById("wallpaperCopyright").innerHTML = "" +
                                             "【現在の設定】<br/>" + bg[i][2] + "：" + bg[i][3] + "<br/>" + bg[i][4];
-                                        document.getElementById("wallpaperPrefSector").value = i;
+                                        document.getElementById("wallpaperSector").value = i;
                                         Cookie.set("wallpaperId", bg[i][0], { expires: 14 });
                                     }
 
                                     // 画像選択イベント
-                                    document.getElementById("wallpaperPrefSector").addEventListener('change',
+                                    document.getElementById("wallpaperSector").addEventListener('change',
                                         (event) => {
-                                            setWallpaper(document.getElementById("wallpaperPrefSector").value);
                                             document.getElementById("wallpaperAuto").checked = false;
+                                            setWallpaper(document.getElementById("wallpaperSector").value);
                                         }
                                     );
 
@@ -1047,6 +1033,35 @@
                                         }
                                     });
                                 </script>
+                                <p class="card-text">お好きな都道府県（＋α）の壁紙で、旅行気分だけでもどうぞ。</p>
+                                <select class="form-select" id="wallpaperSector"></select>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wallpaperAuto">
+                                    <label class="form-check-label" for="wallpaperAuto">Auto(30秒毎に自動変更)</label>
+                                    <a role="button" class="btn btn-primary" onclick='
+                                    document.getElementById("wallpaperAuto").checked=false;
+                                    document.body.style="background:#bbb;";
+                                    document.getElementById("wallpaperCopyright").innerHTML="";
+                                    '>Reset</a>
+                                </div>
+                                <div class="card">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item bg-info" id="wallpaperCopyright"></li>
+                                        <li class="list-group-item">
+                                            <a href="https://find47.jp">FIND47.JP</a>
+                                            <a href="https://creativecommons.org/licenses/by/4.0/deed.ja">
+                                                <img src="./pict/by.png" width="80px" alt="CC BY 4.0">
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="http://www.ghibli.jp/">© Studio Ghibli</a>
+                                        </li>
+                                        <li class="list-group-item bg-secondary">
+                                            <small>※ジブリ壁紙はHTTP接続になります</small>
+                                        </li>
+                                    </ul>
+                                </div>
+
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">本機能はCookieを使用します</small>
