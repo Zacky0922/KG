@@ -128,7 +128,6 @@
                                     <dl>
                                         <dt>11.24tue</dt>
                                         <dd>クラス別健康観察fix</dd>
-                                        <dd>鉄道遅延情報追加</dd>
                                         <dt>11.22sun</dt>
                                         <dd>COVID-19info追加</dd>
                                         <dd>背景機能追加</dd>
@@ -204,7 +203,8 @@
                                     レイアウトが多少変更されていますが、「日付の選択が不要（＝自動で当日のデータを表示）」になりました。<br />
                                     また、
                                     <a href="#クラス別健康観察" target="_self">本ページ下部</a>
-                                    に、クラス別データのプレビューを設置しました。こちらもご利用ください。
+                                    に、クラス別データのプレビューを設置しました。こちらもご利用ください。<br/>
+                                    （直接データを参照するより、本ページ埋込み版の方が早く読込むはずです…たぶん）
                                 </div>
 
                                 <label class="btn btn-warning" for="教員確認用error">「教員確認用」が開けないとき</label>
@@ -877,7 +877,7 @@
 
 
             <!-- 遅延情報 -->
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 d-none">
                 <div class="card">
                     <div class="card-header">Train Info</div>
                     <div class="card-body">
