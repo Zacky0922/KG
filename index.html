@@ -22,7 +22,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <!-- jQuery/UI -->
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -106,6 +105,50 @@
                     <div class="card-body">
                         <div class="card-text">
                             <div class="jq_accordion">
+                                <a class="h4">KG</a>
+                                <ul>
+                                    <li>
+                                        <a href="https://jsh.kgef.ac.jp/">学校サイト</a>
+                                        <ul>
+                                            <li><a href="https://jsh.kgef.ac.jp/kg/">総合TOP</a></li>
+                                            <li><a href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a></li>
+                                            <li><a href="https://jsh.kgef.ac.jp/khs/">高校TOP</a></li>
+                                            <li><a href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a></li>
+                                            <li><a href="https://jsh.kgef.ac.jp/wp-admin/">◆wp-admin</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>YouTube関連
+                                        <ul>
+                                            <li><a
+                                                    href="https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ">広報ch</a>
+                                            </li>
+                                            <li><a
+                                                    href="https://www.youtube.com/channel/UCpYFKgCIpJGbCrj8U8ZXaNQ">生徒会ch</a>
+                                            </li>
+                                            <li><a
+                                                    href="https://www.youtube.com/channel/UC1sOiMc9ufHSjkIERjVRtKg">学内向けch</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        WEBアクセス解析<br />
+                                        <a href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">
+                                            Google DataPortal/Analytics</a>
+                                    </li>
+                                    <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>
+                                        <ul>
+                                            <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        校内限定(intra)
+                                        <ul>
+                                            <li><a href="http://192.168.20.41/iraimenu.HTM">支払依頼</a></li>
+                                            <li><a href="http://192.168.20.100/hs/">旧・相談システム</a></li>
+                                            <li><a href="./KG_doc/KobetsuSoudanIkkatsu.html">一括印刷ツール(旧システム用)</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                                 <a class="h4">Tools</a>
                                 <ul>
                                     <li><a href="https://mail.google.com/">Gmail</a></li>
@@ -203,7 +246,7 @@
                                     レイアウトが多少変更されていますが、「日付の選択が不要（＝自動で当日のデータを表示）」になりました。<br />
                                     また、
                                     <a href="#クラス別健康観察" target="_self">本ページ下部</a>
-                                    に、クラス別データのプレビューを設置しました。こちらもご利用ください。<br/>
+                                    に、クラス別データのプレビューを設置しました。こちらもご利用ください。<br />
                                     （直接データを参照するより、本ページ埋込み版の方が早く読込むはずです…たぶん）
                                 </div>
 
@@ -385,15 +428,55 @@
                                 <h5 class="card-title">生徒入力フォーム</h5>
                                 <h6 class="card-subtitle text-muted">すべての授業で共通のフォームを使用します</h6>
                                 <p class="card-text text-center">
-                                    <a class="btn btn-primary disabled" role="button">入力フォーム（準備中）</a>
+                                    <a class="btn btn-outline-primary disabled" role="button">入力フォーム（準備中）</a>
                                 </p>
                                 <hr>
                                 <h5 class="card-title">教員用サンプル</h5>
                                 <h6 class="card-subtitle text-muted">本番用ではありません</h6>
                                 <p class="card-text text-center">
-                                    <a class="btn btn-outline-primary disabled" role="button"
-                                        disabled>入力フォームサンプル（準備中）</a>
+                                    <a class="btn btn-primary disabled" role="button"
+                                        href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQ0NXRFZJSkVRU1NENUFDVkxFVFRBWDBKTiQlQCN0PWcu">
+                                        入力フォームサンプル（準備中）<br/>
+                                        11/26(夕方)open予定
+                                    </a>
                                 </p>
+                                <p class="card-text">
+                                    お手数をお掛けしますが、以下のチェックをお願いします。<br />
+                                    <small class="text-muted">※チェックボックスは便宜上のもので、何か情報が送信されることはありません。</small><br />
+                                    また、確認で入力したものは、試しに「送信」まで行ってください。<br />
+                                    <small class="text-muted">※具体的なデータサンプルがないと、デバッグが難しいのです。</small>
+                                </p>
+                                <ul class="list-group">
+                                    <li class="list-group-item list-group-item-warning">担任の先生
+                                        <div class="list-group">
+                                            <label class="list-group-item list-group-item-info">
+                                                <input class="form-check-input mr-1" type="checkbox">
+                                                担任クラスの授業について、正しい項目があるか？
+                                            </label><label class="list-group-item list-group-item-light">
+                                                (例) 「学年選択・HRの授業・授業担当者」が表示されるか？
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-warning">授業担当の先生
+                                        <div class="list-group">
+                                            <label class="list-group-item list-group-item-info">
+                                                <input class="form-check-input mr-1" type="checkbox">
+                                                ご自身の担当授業について、正しい項目があるか？
+                                            </label>
+                                            <label class="list-group-item list-group-item-light">
+                                                (例) 「学年選択・担当授業・授業担当者」が表示されるか？
+                                            </label>
+                                            <label class="list-group-item list-group-item-light">
+                                                (例) クラスをまたぐ際、適切なグループが存在するか？<br />
+                                                <small
+                                                    class="text-muted">これが無いと、「体育）帯展開なのにクラス別集計のみ」・「数学）αβなのにクラス内mix集計」などになり、集計が煩雑になってしまいます</small>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item list-group-item-danger">
+                                        エラーがある場合、至急システム担当までお声掛けください。</li>
+                                </ul>
+
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">実施期間 12月上旬予定</small>
@@ -408,17 +491,187 @@
                                 <iframe style="width:100%;max-width:700px;height:350px;" frameborder="0" scrolling="no"
                                     src="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&ActiveCell='%E7%B0%A1%E6%98%93%E6%97%A5%E5%A0%B1'!S2&Item=%E7%B0%A1%E6%98%93%E6%97%A5%E5%A0%B1!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
                             </div>
-
-
-
-
                             <div class="card-footer">
                                 <small class="text-muted">Teamsログイン状態でないと表示されません</small>
                             </div>
                         </div>
                     </div>
 
-                </div>
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header" id="クラス別健康観察">クラス別健康観察</div>
+                            <div class="card-body">
+                                <iframe style="width:100%;height:900px;" frameborder="0" scrolling="no"
+                                    src="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&ActiveCell='%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5'!H2&Item=%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">Links</div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="list-group" id="list-tab" role="tablist">
+                                            <a class="list-group-item list-group-item-action active" id="list-learning-list" data-toggle="list" href="#list-learning"
+                                            role="tab" aria-controls="learning">学習・大学入試</a>
+                                            <a class="list-group-item list-group-item-action" id="list-Forms-list"
+                                                data-toggle="list" href="#list-Forms" role="tab"
+                                                aria-controls="profile">Forms</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade active show" id="list-learning" role="tabpanel"
+                                                aria-labelledby="list-learning-list">
+                                                <p>
+                                                    <a href="http://www.dnc.ac.jp/">独立行政法人 大学入試センター</a>
+                                                </p>
+
+                                                <div class="js-scrollable">
+                                                    <table class="table table-bordered border-secondary">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>事業者</th>
+                                                                <th>模試</th>
+                                                                <th>進学情報・過去問</th>
+                                                                <th>教員用</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th><a href="http://www.benesse.co.jp/"
+                                                                        target="_blank">Benesse</a></th>
+                                                                <td><a href="http://manabi.benesse.ne.jp/assess/moshi/"
+                                                                        target="_blank">進研模試</a><br>
+                                                                    <a href="http://manabi.benesse.ne.jp/assess/ss/"
+                                                                        target="_blank">スタディーサポート</a><br>
+                                                                    <a href="http://gtec.for-students.jp/"
+                                                                        target="_blank">GTEC
+                                                                        for
+                                                                        STUDENTS</a>
+                                                                </td>
+                                                                <td><a href="https://manabi.benesse.ne.jp/wi/jsp/gy1_toroku/login_failure_digi.jsp"
+                                                                        target="_blank">進研模試デジタルサービス</a><br>
+                                                                    <a href="http://manabi.benesse.ne.jp/"
+                                                                        target="_blank">マナビジョン</a><br>
+                                                                    <a href="http://manabi.benesse.ne.jp/nyushi/kakomon/"
+                                                                        target="_blank">大学入試過去問ダウンロードサービス</a>
+                                                                </td>
+                                                                <td><a href="http://bhso.benesse.ne.jp/"
+                                                                        target="_blank">Benesse
+                                                                        High School
+                                                                        Online</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www.yozemi.ac.jp"
+                                                                        target="_blank">代々木ゼミナール</a></th>
+                                                                <td><a href="http://www.yozemi.ac.jp/test/index.html"
+                                                                        target="_blank">代ゼミ模試</a>
+                                                                </td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www.kawai-juku.ac.jp/"
+                                                                        target="_blank">河合塾</a></th>
+                                                                <td><a href="http://www.kawai-juku.ac.jp/trial-exam/zento/"
+                                                                        target="_blank">全統模試</a>
+                                                                </td>
+                                                                <td><a href="http://www.keinet.ne.jp/"
+                                                                        target="_blank">Kei-Net</a></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www2.sundai.ac.jp/yobi/sv/index.html"
+                                                                        target="_blank">駿台予備校</a>
+                                                                </th>
+                                                                <td><a href="http://www2.sundai.ac.jp/yobi/sv/moshi/index.html"
+                                                                        target="_blank">駿台模試</a>
+                                                                </td>
+                                                                <td><a href="http://www2.sundai.ac.jp/yobi/sv/news/index.html"
+                                                                        target="_blank">大学入試情報</a>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th><a href="http://www.toshin.com/"
+                                                                        target="_blank">東進ハイスクール</a></th>
+                                                                <td><a href="http://www.toshin.com/hs/event/exam/"
+                                                                        target="_blank">東進模試</a><br>
+                                                                    <a href="http://www.toitsutest.com/"
+                                                                        target="_blank">全国統一テスト</a></td>
+                                                                <td><a href="http://www.toshin.com/nyushi/index_niji.php"
+                                                                        target="_blank">大学入試問題
+                                                                        過去問データベース</a><br>
+                                                                    <a href="http://www.toshin.com/univ/"
+                                                                        target="_blank">大学案内</a></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>リクルート</th>
+                                                                <td></td>
+                                                                <td><a href="https://studysapuri.jp/"
+                                                                        target="_blank">スタディサプリ</a></td>
+                                                                <td><a href="https://link.studysapuri.jp/ja/login"
+                                                                        target="_blank">スタディサプリ
+                                                                        for Teachers</a></td>
+                                                            </tr>
+                                                            <tr style="display:none">
+                                                                <th><a href="http://www.zkai.co.jp/"
+                                                                        target="_blank">Z会</a></th>
+                                                                <td>会員のみ申込可。<br>
+                                                                    ただし、河合塾共催なので<br>
+                                                                    事実上会員外も申込可</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>その他</th>
+                                                                <td></td>
+                                                                <td>
+                                                                    <a href="http://www.cybercollege.jp/"
+                                                                        target="_blank">サイバーカレッジ</a><br>
+                                                                    <a href="http://passnavi.evidus.com/"
+                                                                        target="_blank">大学受験パスナビ：旺文社</a>
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <script>
+                                                    new ScrollHint('.js-scrollable');
+                                                </script>
+
+                                            </div>
+                                            <div class="tab-pane fade" id="list-Forms" role="tabpanel" aria-labelledby="list-Forms-list">
+                                                <p>過去のアンケート類ストックです。</p>
+                                                <dl class="row">
+                                                    <dt class="col-sm-3">出欠確認</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKrrQV_Ds3nlPm9dRr6u4IARUMFVPUlhEWk04MFFBVVkxVEUwVEIxTExZRSQlQCN0PWcu">生徒入力用</a>
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"></small>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div><!-- row -->
 
             </section>
 
@@ -657,224 +910,6 @@
             </section>
         </div>
         <div class="row mt-2 g-2">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header" id="クラス別健康観察">クラス別健康観察</div>
-                    <div class="card-body">
-                        <iframe style="width:100%;height:900px;" frameborder="0" scrolling="no"
-                            src="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&ActiveCell='%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5'!H2&Item=%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">Links</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="list-group" id="list-tab" role="tablist">
-                                    <a class="list-group-item list-group-item-action active" id="list-KG-list"
-                                        data-toggle="list" href="#list-KG" role="tab" aria-controls="KG">KG</a>
-                                    <a class="list-group-item list-group-item-action" id="list-Forms-list"
-                                        data-toggle="list" href="#list-Forms" role="tab"
-                                        aria-controls="profile">Forms</a>
-                                    <a class="list-group-item list-group-item-action" id="list-learning-list"
-                                        data-toggle="list" href="#list-learning" role="tab"
-                                        aria-controls="learning">学習・大学入試</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <div class="tab-content" id="nav-tabContent">
-                                    <div class="tab-pane fade show active" id="list-KG" role="tabpanel"
-                                        aria-labelledby="list-KG-list">
-                                        <dl class="row">
-                                            <dt class="col-sm-3">学校サイト</dt>
-                                            <dd class="col-sm-9">
-                                                <a href="https://jsh.kgef.ac.jp/">INDEX</a><br />
-                                                <a href="https://jsh.kgef.ac.jp/kg/">総合TOP</a> ／
-                                                <a href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a> ／
-                                                <a href="https://jsh.kgef.ac.jp/khs/">高校TOP</a><br />
-                                                <a href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a><br />
-                                                <a href="https://jsh.kgef.ac.jp/wp-admin/">◆wp-admin</a>
-                                            </dd>
-                                            <dt class="col-sm-3">YouTube</dt>
-                                            <dd class="col-sm-9">
-                                                <a
-                                                    href="https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ">広報</a>
-                                                ／
-                                                <a
-                                                    href="https://www.youtube.com/channel/UCpYFKgCIpJGbCrj8U8ZXaNQ">生徒会</a>
-                                                ／
-                                                <a
-                                                    href="https://www.youtube.com/channel/UC1sOiMc9ufHSjkIERjVRtKg">学内向け</a>
-                                            </dd>
-                                            <dt class="col-sm-3">WEBアクセス解析</dt>
-                                            <dd class="col-sm-9">
-                                                <a
-                                                    href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">Google
-                                                    DataPortal/Analytics</a>
-                                            </dd>
-
-                                            <dt class="col-sm-3">五峯祭2020</dt>
-                                            <dd class="col-sm-9">
-                                                <a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>　
-                                                <a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">(debug
-                                                    mode)</a>
-                                            </dd>
-                                            <dt class="col-sm-3">校内限定</dt>
-                                            <dd class="col-sm-9">
-                                                <a href="http://192.168.20.41/iraimenu.HTM">支払依頼</a><br />
-                                                <a href="http://192.168.20.100/hs/">旧・相談システム</a> ／
-                                                <a href="./KG_doc/KobetsuSoudanIkkatsu.html">一括印刷ツール(旧・相談システム用)</a>
-                                            </dd>
-                                            <dt class="col-sm-3"></dt>
-                                            <dd class="col-sm-9"></dd>
-                                        </dl>
-                                    </div>
-                                    <div class="tab-pane fade" id="list-Forms" role="tabpanel"
-                                        aria-labelledby="list-Forms-list">
-                                        <p>過去のアンケート類ストックです。</p>
-                                        <dl class="row">
-                                            <dt class="col-sm-3">出欠確認</dt>
-                                            <dd class="col-sm-9">
-                                                <a class="btn btn-primary" role="button"
-                                                    href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKrrQV_Ds3nlPm9dRr6u4IARUMFVPUlhEWk04MFFBVVkxVEUwVEIxTExZRSQlQCN0PWcu">生徒入力用</a>
-                                                <a class="btn btn-primary" role="button"
-                                                    href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                    <div class="tab-pane fade" id="list-learning" role="tabpanel"
-                                        aria-labelledby="list-learning-list">
-                                        <p>
-                                            <a href="http://www.dnc.ac.jp/">独立行政法人 大学入試センター</a>
-                                        </p>
-
-                                        <div class="js-scrollable">
-                                            <table class="table table-bordered border-secondary">
-                                                <thead>
-                                                    <tr>
-                                                        <th>事業者</th>
-                                                        <th>模試</th>
-                                                        <th>進学情報・過去問</th>
-                                                        <th>教員用</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th><a href="http://www.benesse.co.jp/"
-                                                                target="_blank">Benesse</a></th>
-                                                        <td><a href="http://manabi.benesse.ne.jp/assess/moshi/"
-                                                                target="_blank">進研模試</a><br>
-                                                            <a href="http://manabi.benesse.ne.jp/assess/ss/"
-                                                                target="_blank">スタディーサポート</a><br>
-                                                            <a href="http://gtec.for-students.jp/" target="_blank">GTEC
-                                                                for
-                                                                STUDENTS</a>
-                                                        </td>
-                                                        <td><a href="https://manabi.benesse.ne.jp/wi/jsp/gy1_toroku/login_failure_digi.jsp"
-                                                                target="_blank">進研模試デジタルサービス</a><br>
-                                                            <a href="http://manabi.benesse.ne.jp/"
-                                                                target="_blank">マナビジョン</a><br>
-                                                            <a href="http://manabi.benesse.ne.jp/nyushi/kakomon/"
-                                                                target="_blank">大学入試過去問ダウンロードサービス</a>
-                                                        </td>
-                                                        <td><a href="http://bhso.benesse.ne.jp/" target="_blank">Benesse
-                                                                High School
-                                                                Online</a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th><a href="http://www.yozemi.ac.jp"
-                                                                target="_blank">代々木ゼミナール</a></th>
-                                                        <td><a href="http://www.yozemi.ac.jp/test/index.html"
-                                                                target="_blank">代ゼミ模試</a>
-                                                        </td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th><a href="http://www.kawai-juku.ac.jp/"
-                                                                target="_blank">河合塾</a></th>
-                                                        <td><a href="http://www.kawai-juku.ac.jp/trial-exam/zento/"
-                                                                target="_blank">全統模試</a>
-                                                        </td>
-                                                        <td><a href="http://www.keinet.ne.jp/"
-                                                                target="_blank">Kei-Net</a></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th><a href="http://www2.sundai.ac.jp/yobi/sv/index.html"
-                                                                target="_blank">駿台予備校</a>
-                                                        </th>
-                                                        <td><a href="http://www2.sundai.ac.jp/yobi/sv/moshi/index.html"
-                                                                target="_blank">駿台模試</a>
-                                                        </td>
-                                                        <td><a href="http://www2.sundai.ac.jp/yobi/sv/news/index.html"
-                                                                target="_blank">大学入試情報</a>
-                                                        </td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th><a href="http://www.toshin.com/"
-                                                                target="_blank">東進ハイスクール</a></th>
-                                                        <td><a href="http://www.toshin.com/hs/event/exam/"
-                                                                target="_blank">東進模試</a><br>
-                                                            <a href="http://www.toitsutest.com/"
-                                                                target="_blank">全国統一テスト</a></td>
-                                                        <td><a href="http://www.toshin.com/nyushi/index_niji.php"
-                                                                target="_blank">大学入試問題
-                                                                過去問データベース</a><br>
-                                                            <a href="http://www.toshin.com/univ/"
-                                                                target="_blank">大学案内</a></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>リクルート</th>
-                                                        <td></td>
-                                                        <td><a href="https://studysapuri.jp/"
-                                                                target="_blank">スタディサプリ</a></td>
-                                                        <td><a href="https://link.studysapuri.jp/ja/login"
-                                                                target="_blank">スタディサプリ
-                                                                for Teachers</a></td>
-                                                    </tr>
-                                                    <tr style="display:none">
-                                                        <th><a href="http://www.zkai.co.jp/" target="_blank">Z会</a></th>
-                                                        <td>会員のみ申込可。<br>
-                                                            ただし、河合塾共催なので<br>
-                                                            事実上会員外も申込可</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>その他</th>
-                                                        <td></td>
-                                                        <td>
-                                                            <a href="http://www.cybercollege.jp/"
-                                                                target="_blank">サイバーカレッジ</a><br>
-                                                            <a href="http://passnavi.evidus.com/"
-                                                                target="_blank">大学受験パスナビ：旺文社</a>
-                                                        </td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <script>
-                                            new ScrollHint('.js-scrollable');
-                                        </script>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted"></small>
-                    </div>
-                </div>
-            </div>
-
 
             <!-- 遅延情報 -->
             <div class="col-12 col-lg-6 d-none">
