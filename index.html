@@ -132,12 +132,14 @@
                                     </li>
                                     <li>
                                         WEBアクセス解析<br />
-                                        <a href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">
+                                        <a
+                                            href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">
                                             Google DataPortal/Analytics</a>
                                     </li>
                                     <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>
                                         <ul>
-                                            <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a></li>
+                                            <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>
@@ -431,65 +433,67 @@
                                     <a class="btn btn-outline-primary disabled" role="button">入力フォーム（準備中）</a>
                                 </p>
                                 <hr>
-                                <h5 class="card-title">教員用サンプル</h5>
-                                <h6 class="card-subtitle text-muted">【デバッグにご協力ください！】<br/>本番は別URLになります</h6>
-                                <p class="card-text text-center">
-                                    <a class="btn btn-primary" role="button"
-                                        href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQ0NXRFZJSkVRU1NENUFDVkxFVFRBWDBKTiQlQCN0PWcu">
-                                        入力フォームサンプル
-                                    </a>
-                                </p>
-                                <ul class="list-group">
-                                    <li class="list-group-item list-group-item-warning">授業アンケート動作確認のお願い
-                                        <div class="list-group">
-                                            <div class="list-group-item list-group-item-info">
-                                                お手数をお掛けしますが、以下のチェックをお願いします。<br />
-                                                <small class="text-muted">※チェックボックスは便宜上のもので、何か情報が送信されることはありません。</small>
+                                <label class="btn btn-outline-primary" role="button"
+                                    for="教員用サンプル">教員用サンプル</label>
+                                <input type="checkbox" id="教員用サンプル" class="chkbx_disptoggle" checked>
+                                <div>
+                                    <h5 class="card-title">教員用サンプル</h5>
+                                    <h6 class="card-subtitle text-muted">
+                                        【使用するのか知りませんが、もしものためにデバッグにご協力ください】<br />本番は別URLになります</h6>
+                                    <p class="card-text text-center">
+                                        <a class="btn btn-primary" role="button"
+                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQ0NXRFZJSkVRU1NENUFDVkxFVFRBWDBKTiQlQCN0PWcu">
+                                            入力フォームサンプル
+                                        </a>
+                                    </p>
+                                    <ul class="list-group">
+                                        <li class="list-group-item list-group-item-warning">授業アンケート動作確認のお願い
+                                            <div class="list-group">
+                                                <div class="list-group-item list-group-item-info">
+                                                    お手数をお掛けしますが、以下のチェックをお願いします。<br />
+                                                    <small
+                                                        class="text-muted">※チェックボックスは便宜上のもので、何か情報が送信されることはありません。</small>
+                                                </div>
+                                                <div class="list-group-item list-group-item-info">
+                                                    確認で入力したものは、試しに「送信」まで行ってください。<br />
+                                                    <small class="text-muted">※具体的なデータサンプルがないと、デバッグが難しいのです。</small>
+                                                </div>
                                             </div>
-                                            <div class="list-group-item list-group-item-info">
-                                                確認で入力したものは、試しに「送信」まで行ってください。<br />
-                                                <small class="text-muted">※具体的なデータサンプルがないと、デバッグが難しいのです。</small>
+                                            なお、本番のアンケートは担当者のみが閲覧できる状態にします。<br />
+                                            システム担当も内容を見ることができないため、事前のデバッグ作業にご協力をお願いします。
+                                        </li>
+                                        <li class="list-group-item">担任の先生
+                                            <div class="list-group">
+                                                <label class="list-group-item list-group-item-info">
+                                                    <input class="form-check-input mr-1" type="checkbox">
+                                                    担任クラスの授業について、正しい項目があるか？
+                                                </label><label class="list-group-item list-group-item-light">
+                                                    (例) 「学年選択・HRの授業・授業担当者」が表示されるか？
+                                                </label>
                                             </div>
-                                        </div>
-                                        なお、本番のアンケートは担当者のみが閲覧できる状態にします。<br/>
-                                        システム担当も内容を見ることができないため、事前のデバッグ作業にご協力をお願いします。
-                                    </li>
-                                    <li class="list-group-item">担任の先生
-                                        <div class="list-group">
-                                            <label class="list-group-item list-group-item-info">
-                                                <input class="form-check-input mr-1" type="checkbox">
-                                                担任クラスの授業について、正しい項目があるか？
-                                            </label><label class="list-group-item list-group-item-light">
-                                                (例) 「学年選択・HRの授業・授業担当者」が表示されるか？
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">授業担当の先生
-                                        <div class="list-group">
-                                            <label class="list-group-item list-group-item-info">
-                                                <input class="form-check-input mr-1" type="checkbox">
-                                                ご自身の担当授業について、正しい項目があるか？
-                                            </label>
-                                            <label class="list-group-item list-group-item-light">
-                                                (例) 「学年選択・担当授業・授業担当者」が表示されるか？
-                                            </label>
-                                            <label class="list-group-item list-group-item-light">
-                                                (例) クラスをまたぐ際、適切なグループが存在するか？<br />
-                                                <small
-                                                    class="text-muted">これが無いと、「体育）帯展開なのにクラス別集計のみ」・「数学）αβなのにクラス内mix集計」などになり、集計が煩雑になってしまいます</small>
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item list-group-item-danger">
-                                        エラーがある場合、システム担当まで至急お声掛けください。
-                                    </li>
-                                </ul>
-                                <p class="card-text">
-                                参考：<a class="btn btn-outline-primary" role="button" href="./data/授業アンケート.pdf">システム概要</a>
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">実施期間 12月上旬予定</small>
+                                        </li>
+                                        <li class="list-group-item">授業担当の先生
+                                            <div class="list-group">
+                                                <label class="list-group-item list-group-item-info">
+                                                    <input class="form-check-input mr-1" type="checkbox">
+                                                    ご自身の担当授業について、正しい項目があるか？
+                                                </label>
+                                                <label class="list-group-item list-group-item-light">
+                                                    (例) 「学年選択・担当授業・授業担当者」が表示されるか？
+                                                </label>
+                                                <label class="list-group-item list-group-item-light">
+                                                    (例) クラスをまたぐ際、適切なグループが存在するか？<br />
+                                                    <small
+                                                        class="text-muted">これが無いと、「体育）帯展開なのにクラス別集計のみ」・「数学）αβなのにクラス内mix集計」などになり、集計が煩雑になってしまいます</small>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <p class="card-text">
+                                        参考：<a class="btn btn-outline-primary" role="button"
+                                            href="./data/授業アンケート.pdf">システム概要</a>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -525,8 +529,9 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <div class="list-group" id="list-tab" role="tablist">
-                                            <a class="list-group-item list-group-item-action active" id="list-learning-list" data-toggle="list" href="#list-learning"
-                                            role="tab" aria-controls="learning">学習・大学入試</a>
+                                            <a class="list-group-item list-group-item-action active"
+                                                id="list-learning-list" data-toggle="list" href="#list-learning"
+                                                role="tab" aria-controls="learning">学習・大学入試</a>
                                             <a class="list-group-item list-group-item-action" id="list-Forms-list"
                                                 data-toggle="list" href="#list-Forms" role="tab"
                                                 aria-controls="profile">Forms</a>
@@ -657,7 +662,8 @@
                                                 </script>
 
                                             </div>
-                                            <div class="tab-pane fade" id="list-Forms" role="tabpanel" aria-labelledby="list-Forms-list">
+                                            <div class="tab-pane fade" id="list-Forms" role="tabpanel"
+                                                aria-labelledby="list-Forms-list">
                                                 <p>過去のアンケート類ストックです。</p>
                                                 <dl class="row">
                                                     <dt class="col-sm-3">出欠確認</dt>
