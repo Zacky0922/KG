@@ -43,6 +43,9 @@
     <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
     <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
 
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
     <script>
         window.addEventListener("load", function () {
             /* jQuery @onload */
@@ -57,7 +60,9 @@
 
     <style>
         @import "../zScript/common.css";
-
+        *{
+            vertical-align: middle;
+        }
         .jq_accordion>a {
             display: block;
             text-decoration: none;
@@ -99,9 +104,11 @@
 
     <div class="container-fluid">
         <div class="row g-2">
-            <section class="col-md-2 sidebar">
+            <section class="col-12 col-md-3 sidebar">
                 <div class="card">
-                    <div class="card-header">Menu</div>
+                    <div class="card-header"><span class="material-icons">
+                        list
+                    </span>Menu</div>
                     <div class="card-body">
                         <div class="card-text">
                             <div class="jq_accordion">
@@ -171,6 +178,8 @@
                                 <a class="h4">Log</a>
                                 <div>
                                     <dl>
+                                        <dt>12.12sat</dt>
+                                        <dd>レイアウトfix</dd>
                                         <dt>11.24tue</dt>
                                         <dd>クラス別健康観察fix</dd>
                                         <dt>11.22sun</dt>
@@ -222,13 +231,15 @@
                 </div>
             </section>
 
-            <section class="col">
+            <section class="col-12 col-md-9 col-xl-6">
 
                 <div class="row g-2">
 
                     <div class="col-12 col-lg-6">
                         <div class="card">
-                            <div class="card-header">健康観察</div>
+                            <div class="card-header"><span class="material-icons">
+                                health_and_safety
+                            </span>健康観察</div>
                             <div class="card-body">
                                 <h5 class="card-title">生徒健康観察</h5>
                                 <p class="card-text">
@@ -269,7 +280,6 @@
                                 </div>
                                 <hr>
                                 <h5 class="card-title">教職員健康観察</h5>
-                                <h6 class="card-subtitle text-muted">11/23(月祝)より使用開始</h6>
                                 <p class="card-text">
                                 <div class="text-center">
                                     <a class="btn btn-primary" role="button"
@@ -286,7 +296,9 @@
                     <!-- COVID-19 widget -->
                     <div class="col-12 col-lg-6">
                         <div class="card">
-                            <div class="card-header">COVID-19 Info</div>
+                            <div class="card-header"><span class="material-icons">
+                                coronavirus
+                            </span>COVID-19 Info</div>
                             <div class="card-body">
                                 <div class="js-scrollable">
                                     <table class="table table-bordered border-secondary" id="COVID19infoTbl">
@@ -376,7 +388,9 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="card">
-                            <div class="card-header">受験生向けイベント</div>
+                            <div class="card-header"><span class="material-icons">
+                                event_available
+                            </span>受験生向けイベント</div>
                             <div class="card-body">
                                 <h5 class="card-title">教職員向けフォーム</h5>
                                 <h6 class="card-subtitle text-muted">個別相談・部活動体験等の登録・確認はコチラから</h6>
@@ -422,7 +436,9 @@
 
                     <div class="col-12 col-lg-6">
                         <div class="card">
-                            <div class="card-header">授業アンケート</div>
+                            <div class="card-header"><span class="material-icons">
+                                list_alt
+                            </span>授業アンケート</div>
                             <div class="card-body">
                                 <a class="btn btn-info text-wrap" role="button"
                                     href="https://teams.microsoft.com/l/message/19:0938ec52fc9d45728405629b4428ef03@thread.tacv2/1605677343219?tenantId=7cbb7dcf-3364-41cd-9976-48bbc48bd82a&groupId=5df0b8bb-ffcc-4b00-95df-f3c501e1f37f&parentMessageId=1605677343219&teamName=%E6%95%99%E8%81%B7%E5%93%A1&channelName=%E4%B8%80%E8%88%AC&createdTime=1605677343219">アンケートを実施する授業の事前登録について</a>
@@ -511,7 +527,6 @@
                         </div>
                     </div>
 
-
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header" id="クラス別健康観察">クラス別健康観察</div>
@@ -524,7 +539,9 @@
 
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">Links</div>
+                            <div class="card-header"><span class="material-icons">
+                                link
+                            </span>Links</div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-3">
@@ -685,20 +702,20 @@
                         </div>
                     </div>
 
-
-
                 </div><!-- row -->
 
             </section>
 
-            <section class="col-lg-2">
+            <section class="col-12 col-xl-3">
 
                 <div class="row g-2">
 
                     <!-- 授業タイマー -->
                     <div class="col-12">
                         <div class="card border-info ">
-                            <div class="card-header">Timer</div>
+                            <div class="card-header"><span class="material-icons">
+                                alarm_on
+                            </span>Timer</div>
                             <div class="card-body">
                                 <div class="card-text">
                                     <div id="授業タイマー見出し"></div>
@@ -784,7 +801,9 @@
                     <!-- お天気widget -->
                     <div class="col-12">
                         <div class="card border-info">
-                            <div class="card-header">Weather Forecast</div>
+                            <div class="card-header"><span class="material-icons">
+                                wb_sunny
+                            </span>Weather Forecast</div>
                             <div class="card-body">
                                 <div class="card-text" id="WeatherForecast1"></div>
                                 <div class="text-right">
@@ -847,6 +866,7 @@
 
                                 for (let i = 0; i < 3; i++) {
                                     // 表示日の日付処理
+                                    console.log(data.forecasts[i].date);
                                     let date = data.forecasts[i].date.split("-");
                                     date = new Date(date[0], date[1] - 1, date[2]);
                                     // 表示設定
@@ -1030,7 +1050,9 @@
     <nav class="navbar navbar-dark bg-dark text-white" style="margin-top: 95vh;">
         <div class="container-fluid">
             <div class="jq_accordion">
-                <span>Setting</span>
+                <span><span class="material-icons">
+                    settings
+                </span>Setting</span>
                 <div class="row">
                     <div class="col-12">
                         <div class="card bg-dark h-100">
