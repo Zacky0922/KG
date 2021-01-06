@@ -54,7 +54,6 @@
                 collapsible: true,
                 heightStyle: "content"
             });
-
         });
     </script>
 
@@ -89,9 +88,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark sticky-top mb-2">
         <div class="container-fluid d-flex justify-content-between">
-            <span class="navbar-brand">
-                KG Dashboard
-            </span>
+                <a href="#" target="_self" class="navbar-brand">KG Dashboard</a>
             <div>
                 <div>
                     <span class="btn disabled text-light d-none d-lg-inline">Microsoft Apps</span>
@@ -106,123 +103,131 @@
 
     <div class="container-fluid">
         <div class="row g-2">
-            <section class="col-12 col-md-3 col-lg-2 sidebar">
-                <div class="card">
-                    <div class="card-header"><span class="material-icons">
-                            list
-                        </span>Menu</div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <div class="jq_accordion">
-                                <a class="h4">KG links</a>
-                                <ul>
-                                    <li>
-                                        <a href="https://jsh.kgef.ac.jp/">学校サイト</a>
+            <section class="col-12 col-md-3 col-lg-2 sidebar g-2">
+                <div class="row g-2">
+                    <!-- menu -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header"><span class="material-icons">
+                                    list
+                                </span>Menu</div>
+                            <div class="card-body">
+                                <div class="card-text">
+                                    <div class="jq_accordion">
+                                        <a class="h4">KG links</a>
                                         <ul>
-                                            <li><a href="https://jsh.kgef.ac.jp/kg/">総合TOP</a></li>
-                                            <li><a href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a></li>
-                                            <li><a href="https://jsh.kgef.ac.jp/khs/">高校TOP</a></li>
-                                            <li><a href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a></li>
-                                            <li><a href="https://jsh.kgef.ac.jp/wp-admin/">◆wp-admin</a></li>
+                                            <li>
+                                                <a href="https://jsh.kgef.ac.jp/">学校サイト</a>
+                                                <ul>
+                                                    <li><a href="https://jsh.kgef.ac.jp/kg/">総合TOP</a></li>
+                                                    <li><a href="https://jsh.kgef.ac.jp/kjs/">中学TOP</a></li>
+                                                    <li><a href="https://jsh.kgef.ac.jp/khs/">高校TOP</a></li>
+                                                    <li><a href="https://jsh.kgef.ac.jp/schoolbus/">スクールバス</a></li>
+                                                    <li><a href="https://jsh.kgef.ac.jp/wp-admin/">◆wp-admin</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>YouTube関連
+                                                <ul>
+                                                    <li><a
+                                                            href="https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ">広報ch</a>
+                                                    </li>
+                                                    <li><a
+                                                            href="https://www.youtube.com/channel/UCpYFKgCIpJGbCrj8U8ZXaNQ">生徒会ch</a>
+                                                    </li>
+                                                    <li><a
+                                                            href="https://www.youtube.com/channel/UC1sOiMc9ufHSjkIERjVRtKg">学内向けch</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                WEBアクセス解析<br />
+                                                <a
+                                                    href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">
+                                                    Google DataPortal/Analytics</a>
+                                            </li>
+                                            <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>
+                                                <ul>
+                                                    <li><a
+                                                            href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                校内限定(intra)
+                                                <ul>
+                                                    <li><a href="http://192.168.20.41/iraimenu.HTM">支払依頼</a></li>
+                                                    <li><a href="http://192.168.20.100/hs/">旧・相談システム</a></li>
+                                                    <li><a href="./KG_doc/KobetsuSoudanIkkatsu.html">一括印刷ツール(旧システム用)</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
                                         </ul>
-                                    </li>
-                                    <li>YouTube関連
+                                        <a class="h4">Tools</a>
                                         <ul>
-                                            <li><a
-                                                    href="https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ">広報ch</a>
-                                            </li>
-                                            <li><a
-                                                    href="https://www.youtube.com/channel/UCpYFKgCIpJGbCrj8U8ZXaNQ">生徒会ch</a>
-                                            </li>
-                                            <li><a
-                                                    href="https://www.youtube.com/channel/UC1sOiMc9ufHSjkIERjVRtKg">学内向けch</a>
-                                            </li>
+                                            <li><a href="https://mail.google.com/">Gmail</a></li>
+                                            <li><a href="http://mail.yahoo.co.jp/">Yahoo!メール</a></li>
+                                            <li><a href="https://trello.com/">Trello</a></li>
+                                            <li><a href="https://feedly.com/">Feedly</a></li>
+                                            <li><a href="https://discordapp.com/activity">discord</a></li>
+                                            <li><a href="https://slack.com/">slack</a></li>
+                                            <li><a href="https://www.evernote.com/client/web">Evernote</a></li>
+                                            <li><a href="https://archive.org/">Internet Archive</a></li>
+                                            <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
+                                            <li><a href="https://app.diagrams.net/">diagrams.net</a><br />(draw.io)</li>
+                                            <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
+                                            <li><a href="https://www.geogebra.org/?lang=ja">Geogebra</a></li>
+                                            <li><a href="https://grapes-light.app/">GRAPES-light</a></li>
+                                            <li><a href="https://picky-pics.com/">Picky-Pics</a></li>
                                         </ul>
-                                    </li>
-                                    <li>
-                                        WEBアクセス解析<br />
-                                        <a
-                                            href="https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP">
-                                            Google DataPortal/Analytics</a>
-                                    </li>
-                                    <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>
-                                        <ul>
-                                            <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        校内限定(intra)
-                                        <ul>
-                                            <li><a href="http://192.168.20.41/iraimenu.HTM">支払依頼</a></li>
-                                            <li><a href="http://192.168.20.100/hs/">旧・相談システム</a></li>
-                                            <li><a href="./KG_doc/KobetsuSoudanIkkatsu.html">一括印刷ツール(旧システム用)</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <a class="h4">Tools</a>
-                                <ul>
-                                    <li><a href="https://mail.google.com/">Gmail</a></li>
-                                    <li><a href="http://mail.yahoo.co.jp/">Yahoo!メール</a></li>
-                                    <li><a href="https://trello.com/">Trello</a></li>
-                                    <li><a href="https://feedly.com/">Feedly</a></li>
-                                    <li><a href="https://discordapp.com/activity">discord</a></li>
-                                    <li><a href="https://slack.com/">slack</a></li>
-                                    <li><a href="https://www.evernote.com/client/web">Evernote</a></li>
-                                    <li><a href="https://archive.org/">Internet Archive</a></li>
-                                    <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
-                                    <li><a href="https://app.diagrams.net/">diagrams.net</a><br />(draw.io)</li>
-                                    <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
-                                    <li><a href="https://www.geogebra.org/?lang=ja">Geogebra</a></li>
-                                    <li><a href="https://grapes-light.app/">GRAPES-light</a></li>
-                                    <li><a href="https://picky-pics.com/">Picky-Pics</a></li>
-                                </ul>
-                                <a class="h4">Log</a>
-                                <div>
-                                    <dl>
-                                        <dt>12.12sat</dt>
-                                        <dd>レイアウトfix</dd>
-                                        <dt>11.24tue</dt>
-                                        <dd>クラス別健康観察fix</dd>
-                                        <dt>11.22sun</dt>
-                                        <dd>COVID-19info追加</dd>
-                                        <dd>背景機能追加</dd>
-                                        <dt>11.20fri</dt>
-                                        <dd>スマホ表示最適化</dd>
-                                        <dd>天気予報ウィジェットを<br />自作版に変更</dd>
-                                        <dd>Timerウィジェット追加</dd>
-                                        <dt>11.19thu</dt>
-                                        <dd>ページリニューアル</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <!--  trigger modal -->
-                                <p>
-                                    <a role="button" class="btn btn-outline-primary" data-toggle="modal"
-                                        data-target="#RenewInfo">更新メモ</a>
-                                    <a role="button" class="btn btn-outline-secondary" href="./index1118.html">旧サイト</a>
-                                </p>
-                                <!-- Modal -->
-                                <div class="modal fade" id="RenewInfo" tabindex="-1" aria-labelledby="RenewInfoLabel"
-                                    aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="RenewInfoLabel">更新情報</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                天気予報ウィジェットの動作が怪しかったので、自作版に変更しました。<br />
-                                                気象庁からのデータを利用しているので、精度は上がるはずです。<br />
-                                                （デザインはイマイチですが…）
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary"
-                                                    data-dismiss="modal">Close</button>
+                                        <a class="h4">Log</a>
+                                        <div>
+                                            <dl>
+                                                <dt>12.12sat</dt>
+                                                <dd>レイアウトfix</dd>
+                                                <dt>11.24tue</dt>
+                                                <dd>クラス別健康観察fix</dd>
+                                                <dt>11.22sun</dt>
+                                                <dd>COVID-19info追加</dd>
+                                                <dd>背景機能追加</dd>
+                                                <dt>11.20fri</dt>
+                                                <dd>スマホ表示最適化</dd>
+                                                <dd>天気予報ウィジェットを<br />自作版に変更</dd>
+                                                <dd>Timerウィジェット追加</dd>
+                                                <dt>11.19thu</dt>
+                                                <dd>ページリニューアル</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <!--  trigger modal -->
+                                        <p>
+                                            <a role="button" class="btn btn-outline-primary" data-toggle="modal"
+                                                data-target="#RenewInfo">更新メモ</a>
+                                            <a role="button" class="btn btn-outline-secondary"
+                                                href="./index1118.html">旧サイト</a>
+                                        </p>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="RenewInfo" tabindex="-1"
+                                            aria-labelledby="RenewInfoLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="RenewInfoLabel">更新情報</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        天気予報ウィジェットの動作が怪しかったので、自作版に変更しました。<br />
+                                                        気象庁からのデータを利用しているので、精度は上がるはずです。<br />
+                                                        （デザインはイマイチですが…）
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary"
+                                                            data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -230,13 +235,32 @@
                             </div>
                         </div>
                     </div>
+                    <!-- お知らせ -->
+                    <div class="col-12">
+                        <div class="card col-12">
+                            <div class="card-header"><span class="material-icons">
+                                    info
+                                </span>Info</div>
+                            <div class="card-body">
+                                <h5 class="card-title">2021年の祝日移動</h5>
+                                <p>
+                                    2020年12月に制定されたので、ほとんどのカレンダーは未反映のはずです。ご注意ください。
+                                    なお、対象は「海の日・スポーツの日・山の日」です。<br />
+                                    <a
+                                        href="https://www.kantei.go.jp/jp/headline/tokyo2020/shukujitsu.html">2021年の祝日移動について(内閣官房)</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </section>
 
             <section class="col-12 col-md-9 col-lg-10 col-xl-8">
 
                 <div class="row g-2">
 
+                    <!-- 健康観察 -->
                     <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="card-header"><span class="material-icons">
@@ -382,6 +406,7 @@
                         </script>
                     </div>
 
+                    <!-- イベント管理 -->
                     <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="card-header"><span class="material-icons">
@@ -430,6 +455,7 @@
                         </div>
                     </div>
 
+                    <!-- 授業アンケート -->
                     <div class="col-12 col-lg-6">
                         <div class="card">
                             <div class="card-header"><span class="material-icons">
@@ -509,6 +535,7 @@
                         </div>
                     </div>
 
+                    <!-- 健康観察Overview -->
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">健康観察Overview</div>
@@ -522,6 +549,7 @@
                         </div>
                     </div>
 
+                    <!-- クラス別健康観察 -->
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header" id="クラス別健康観察">クラス別健康観察</div>
@@ -532,6 +560,7 @@
                         </div>
                     </div>
 
+                    <!-- links -->
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header"><span class="material-icons">
@@ -539,11 +568,14 @@
                                 </span>Links</div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-3 mb-2">
                                         <div class="list-group" id="list-tab" role="tablist">
                                             <a class="list-group-item list-group-item-action active"
                                                 id="list-learning-list" data-toggle="list" href="#list-learning"
                                                 role="tab" aria-controls="learning">学習・大学入試</a>
+                                            <a class="list-group-item list-group-item-action" id="list-COVID-list"
+                                                data-toggle="list" href="#list-COVID" role="tab"
+                                                aria-controls="COVID">COVID-19</a>
                                             <a class="list-group-item list-group-item-action" id="list-Forms-list"
                                                 data-toggle="list" href="#list-Forms" role="tab"
                                                 aria-controls="profile">Forms</a>
@@ -629,12 +661,14 @@
                                                                 <td><a href="http://www.toshin.com/hs/event/exam/"
                                                                         target="_blank">東進模試</a><br>
                                                                     <a href="http://www.toitsutest.com/"
-                                                                        target="_blank">全国統一テスト</a></td>
+                                                                        target="_blank">全国統一テスト</a>
+                                                                </td>
                                                                 <td><a href="http://www.toshin.com/nyushi/index_niji.php"
                                                                         target="_blank">大学入試問題
                                                                         過去問データベース</a><br>
                                                                     <a href="http://www.toshin.com/univ/"
-                                                                        target="_blank">大学案内</a></td>
+                                                                        target="_blank">大学案内</a>
+                                                                </td>
                                                                 <td></td>
                                                             </tr>
                                                             <tr>
@@ -674,6 +708,96 @@
                                                 </script>
 
                                             </div>
+                                            <div class="tab-pane fade" id="list-COVID" role="tabpanel"
+                                                aria-labelledby="list-COVID-list">
+                                                <div id="COVIDlinks" class="row g-2"></div>
+                                                <script>
+                                                    let ele = document.getElementById("COVIDlinks");
+                                                    let data = [
+                                                        {
+                                                            "name": "WHO公式",
+                                                            "href": "https://extranet.who.int/kobe_centre/ja/covid"
+                                                        },
+                                                        {
+                                                            "name": "内閣官房",
+                                                            "href": "https://corona.go.jp/"
+                                                        },
+                                                        {
+                                                            "name": "厚生労働省",
+                                                            "href": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000164708_00001.html"
+                                                        },
+                                                        {
+                                                            "name": "厚生労働省COCOA",
+                                                            "href": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/cocoa_00138.html"
+                                                        },
+                                                        {
+                                                            "name": "国立感染症研究所",
+                                                            "href": "https://www.niid.go.jp/niid/ja/diseases/ka/corona-virus/2019-ncov.html"
+                                                        },
+                                                        {
+                                                            "name": "東京都",
+                                                            "href": "https://stopcovid19.metro.tokyo.lg.jp/"
+                                                        },
+                                                        {
+                                                            "name": "埼玉県",
+                                                            "href": "https://www.pref.saitama.lg.jp/a0301/covid19_sougousite.html"
+                                                        },
+                                                        {
+                                                            "name": "埼玉県(非公式)",
+                                                            "href": "https://saitama.stopcovid19.jp/"
+                                                        },
+                                                        {
+                                                            "name": "伊奈町",
+                                                            "href": "https://www.town.saitama-ina.lg.jp/category/15-8-8-0-0.html"
+                                                        },
+                                                        {
+                                                            "name": "上尾市",
+                                                            "href": "https://www.city.ageo.lg.jp/page/coronavirus.html"
+                                                        },
+                                                        {
+                                                            "name": "さいたま市",
+                                                            "href": "https://www.city.saitama.jp/002/001/008/006/index.html"
+                                                        },
+                                                        {
+                                                            "name": "Google",
+                                                            "href": "https://datastudio.google.com/reporting/8224d512-a76e-4d38-91c1-935ba119eb8f/page/ncZpB?s=nXbF2P6La2M"
+                                                        },
+                                                        {
+                                                            "name": "NHK",
+                                                            "href": "https://www3.nhk.or.jp/news/special/coronavirus/"
+                                                        },
+                                                        {
+                                                            "name": "Japan Tracker",
+                                                            "href": "https://covid19japan.com/"
+                                                        },
+                                                        {
+                                                            "name": "東洋経済",
+                                                            "href": "https://toyokeizai.net/sp/visual/tko/covid19/"
+                                                        },
+                                                        {
+                                                            "name": "J.A.G JAPAN",
+                                                            "href": "https://gis.jag-japan.com/covid19jp/"
+                                                        },
+                                                        {
+                                                            "name": "Johns Hopkins Univ.",
+                                                            "href": "https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6"
+                                                        },
+                                                        {
+                                                            "name": "splunk hub",
+                                                            "href": "https://covid-19.splunkforgood.com/hub"
+                                                        }
+                                                    ];
+                                                    for (let i = 0; i < data.length; i++) {
+                                                        let a = document.createElement("a");
+                                                        a.classList.add("text-center", "col-12", "col-sm-6", "col-lg-4");
+                                                        a.href = data[i].href;
+                                                        a.appendChild(
+                                                            document.createTextNode(data[i].name)
+                                                        );
+                                                        ele.appendChild(a);
+                                                    }
+                                                </script>
+                                            </div>
                                             <div class="tab-pane fade" id="list-Forms" role="tabpanel"
                                                 aria-labelledby="list-Forms-list">
                                                 <p>過去のアンケート類ストックです。</p>
@@ -707,7 +831,7 @@
 
                     <!-- 授業タイマー -->
                     <div class="col-12">
-                        <div class="card border-info ">
+                        <div class="card">
                             <div class="card-header"><span class="material-icons">
                                     alarm_on
                                 </span>Timer</div>
@@ -795,10 +919,10 @@
 
                     <!-- お天気widget -->
                     <div class="col-12">
-                        <div class="card border-info">
+                        <div class="card">
                             <div class="card-header"><span class="material-icons">
                                     wb_sunny
-                                </span>Weather Forecast</div>
+                                </span>Weather</div>
                             <div class="card-body">
                                 <div class="card-text" id="WeatherForecast1"></div>
                                 <div class="text-right">
@@ -861,7 +985,6 @@
 
                                 for (let i = 0; i < 3; i++) {
                                     // 表示日の日付処理
-                                    console.log(data.forecasts[i].date);
                                     let date = data.forecasts[i].date.split("-");
                                     date = new Date(date[0], date[1] - 1, date[2]);
                                     // 表示設定
@@ -929,7 +1052,12 @@
                             <div class="card-body">
                                 <div class="card-text">
                                 </div>
-                                <div class="card-text" id="XMLSampleRequest"></div>
+                                <div class="card-text" id="debugJson"></div>
+                                <script>
+                                    $.getJSON("https://zacky.ninja-x.jp/db/test.json", (data) => {
+                                        console.log(data)
+                                    });
+                                </script>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">特に何がある訳でもありません。<br />調整用のエリアです…</small>
