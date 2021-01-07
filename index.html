@@ -88,7 +88,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark sticky-top mb-2">
         <div class="container-fluid d-flex justify-content-between">
-                <a href="#" target="_self" class="navbar-brand">KG Dashboard</a>
+            <a href="#" target="_self" class="navbar-brand">KG Dashboard</a>
             <div>
                 <div>
                     <span class="btn disabled text-light d-none d-lg-inline">Microsoft Apps</span>
@@ -845,10 +845,13 @@
                                             aria-valuemax="100">
                                         </div>
                                     </div>
+                                    <small class="text-muted" onclick="getTimeList()">(2021年1月～)40分授業対応済み</small>
                                 </div>
                                 <script>
+                                    // 項目名,h,m
+                                    /*  平常
                                     let timetbl = [
-                                        ["", 0, 0],
+                                        ["-", 0, 0],
                                         ["SHR", 8, 40],
                                         ["1限", 8, 55],
                                         ["1限終わり", 9, 45],
@@ -864,7 +867,30 @@
                                         ["6限終わり", 15, 20],
                                         ["7限", 15, 30],
                                         ["7限終わり", 16, 20],
+                                        ["完全下校", 19, 00],
                                         ["閉門", 20, 30]
+                                    ];
+                                    */
+                                    // 40分短縮（2020/01/08～）
+                                    let timetbl = [
+                                        ["--", 0, 0],
+                                        ["SHR", 8, 45],
+                                        ["1限開始", 9, 00],
+                                        ["1限終わり", 9, 40],
+                                        ["2限開始", 9, 50],
+                                        ["2限終わり", 10, 30],
+                                        ["3限開始", 10, 40],
+                                        ["3限終わり", 11, 20],
+                                        ["4限開始", 11, 30],
+                                        ["4限終わり", 12, 10],
+                                        ["5限開始", 13, 00],
+                                        ["5限終わり", 13, 40],
+                                        ["6限開始", 13, 50],
+                                        ["6限終わり", 14, 30],
+                                        ["7限開始", 14, 40],
+                                        ["7限終わり", 15, 20],
+                                        ["完全下校", 17, 00],
+                                        ["閉門(？)", 20, 30]
                                     ];
                                     setInterval(function () {
                                         let now = new Date();
@@ -892,6 +918,14 @@
                                             }
                                         }
                                     }, 1000);
+
+                                    function getTimeList() {
+                                        let tx = "";
+                                        for (let i = 0; i < timetbl.length; i++) {
+                                            tx += timetbl[i][0] + "　" + timetbl[i][1] + ":" + ('0' + timetbl[i][2]).slice(-2) + "\n";
+                                        }
+                                        alert(tx);
+                                    }
                                 </script>
 
                                 <div class="card-text" id="XMLSampleRequest"></div>
