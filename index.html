@@ -961,18 +961,21 @@
                                 <div class="card-text">
                                     <table id="schoolBusTbl"></table>
                                     <style>
-                                        #schoolBusTbl{
-                                            margin:auto;
+                                        #schoolBusTbl {
+                                            margin: auto;
                                         }
-                                        #schoolBusTbl th{
-                                            border:1px solid #000;
+
+                                        #schoolBusTbl th {
+                                            border: 1px solid #000;
                                         }
-                                        #schoolBusTbl *{
+
+                                        #schoolBusTbl * {
                                             text-align: center;
                                         }
                                     </style>
                                     <hr>
-                                    <small class="text-muted">2月から（本来の学校サイト上の）スクールバス時刻表データ更新方法を変更したため、こちらでも引用できるようになりました。
+                                    <small
+                                        class="text-muted">2月から（本来の学校サイト上の）スクールバス時刻表データ更新方法を変更したため、こちらでも引用できるようになりました。
                                         IEや古いスマホなど、特定の環境で閲覧できない場合や、何かお困り・お気付きの際はご連絡ください。</small>
                                 </div>
                                 <script>
@@ -990,9 +993,18 @@
                                             tbody.appendChild(tr1);
                                         }
                                     }
-
+                                    function fixBusTime(time) {
+                                        for(let i = 1 ; i < time.length ; i++){
+                                            for(let j in time[i]){
+                                                if(time[i][j] == "〃"){
+                                                    time[i][j] = time[i-1][j];
+                                                }
+                                            }
+                                        }
+                                        return time;
+                                    }
                                     $.ajax({
-                                        "type": "GET", "async": false,
+                                        "type": "GET", "async": true,
                                         "url": "https://script.google.com/macros/s/AKfycbygYn92oqaOVmzjdtv9Tug4jGebaOq9oYW6mKIM2Foiasqbd_hTJdVnuw/exec"
                                         // exec or dev
                                     }).then(
@@ -1001,6 +1013,7 @@
                                             console.log("Ajax通信success");
                                             console.log(data);
                                             let timeTbl = data.time;
+                                            timeTbl = fixBusTime(timeTbl);
                                             // let passTbl = data.pass;
                                             // 時刻表処理
                                             let tbl = document.getElementById("schoolBusTbl");
@@ -1012,7 +1025,7 @@
                                             for (; d < timeTbl.length; d++) {
                                                 if (timeTbl[d].month == (today.getMonth() + 1) &&
                                                     timeTbl[d].day == today.getDate()) {
-                                                    setBusRow(tbody, timeTbl[d].month +"月"+ timeTbl[d].day+"日("+ timeTbl[d].yobi+")",timeTbl[d].remark);
+                                                    setBusRow(tbody, timeTbl[d].month + "月" + timeTbl[d].day + "日(" + timeTbl[d].yobi + ")", timeTbl[d].remark);
                                                     setBusRow(tbody, timeTbl[0].ageo0, timeTbl[d].ageo0);
                                                     setBusRow(tbody, timeTbl[0].hasuda0, timeTbl[d].hasuda0);
                                                     setBusRow(tbody, timeTbl[0].ageo1, timeTbl[d].ageo1);
