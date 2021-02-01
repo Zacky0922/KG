@@ -1,0 +1,22 @@
+@import "https://fonts.googleapis.com/css2?family=Material+Icons";
+
+#busTime{
+    text-align:center;
+}
+
+.main{
+    margin-bottom:4rem;
+}
+.navbar{
+    padding:0;
+}
+.navbar #pills-tab{
+    padding:0;
+}
+.navbar .nav-link{
+    text-align:center;
+    color:#fff;
+}
+.navbar .nav-link *{
+    vertical-align: middle;
+}
