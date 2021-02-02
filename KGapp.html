@@ -47,6 +47,51 @@
 
     <div class="tab-content main" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">home
+            <!-- 健康観察 -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"><span class="material-icons">
+                            health_and_safety
+                        </span>健康観察</div>
+                    <div class="card-body">
+                        <h5 class="card-title">生徒健康観察</h5>
+                        <div class="text-center m-2">
+                            <a class="btn btn-outline-primary" role="button" target="_blank"
+                                href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
+                            <a class="btn btn-primary" role="button" target="_blank"
+                                href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
+                            <a class="btn btn-outline-primary" role="button" target="_blank"
+                                href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
+                        </div>
+
+                        <label class="btn btn-warning btn-sm" for="教員確認用error">「教員確認用」が開けないとき</label>
+                        <input type="checkbox" id="教員確認用error" class="chkbx_disptoggle" checked>
+                        <div class="alert alert-warning" role="alert">
+                            <ol>
+                                <li>
+                                    一度、<a href="https://kgefac.sharepoint.com/" target="_blank">『コチラ』</a>を開く。</br>
+                                    （アクセス権を要求されますが、無視してください）
+                                </li>
+                                <li>前のウィンドウを閉じて、本来のページを開く。</br>
+                                    ※本来のページがダメな場合は
+                                    <a
+                                        href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True" target="_blank">「コチラ」</a>を試してください…
+                                </li>
+                            </ol>
+                        </div>
+                        <hr>
+                        <h5 class="card-title">教職員健康観察</h5>
+                        <p class="card-text">
+                        <div class="text-center">
+                            <a class="btn btn-primary" role="button"
+                                href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu" target="_blank">教職員入力用</a>
+                        </div>
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
             <!-- スクールバス -->
             <div class="col-12">
                 <div class="card">
@@ -55,22 +100,18 @@
                         </span>School Bus</div>
                     <div class="card-body">
                         <div class="card-text">
-                            <div class="container text-center">
-                                <div id="busTime" class="row">
+                            <div id="busTime">
+                                <div class="text-center">
                                     <div class="spinner-border text-secondary" role="status">
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
                                 </div>
                             </div>
-
-                            <table id="schoolBusTbl"></table>
-                            <hr>
-                            <small class="text-muted">2月から（本来の学校サイト上の）スクールバス時刻表データ更新方法を変更したため、こちらでも引用できるようになりました。
-                                IEや古いスマホなど、特定の環境で閲覧できない場合や、何かお困り・お気付きの際はご連絡ください。</small>
+                            <script src="app_src/bus.js"></script>
                         </div>
 
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer text-end">
                         <small class="text-muted">
                             <a href="https://jsh.kgef.ac.jp/schoolbus/">運行予定表</a>
                         </small>
@@ -80,8 +121,155 @@
         </div>
         <div class="tab-pane fade" id="pills-coronavirus" role="tabpanel" aria-labelledby="pills-coronavirus-tab">
             coronavirus</div>
-        <div class="tab-pane fade" id="pills-links" role="tabpanel" aria-labelledby="pills-links-tab">Links</div>
-        <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">settings
+        <div class="tab-pane fade" id="pills-Tools" role="tabpanel" aria-labelledby="pills-Tools-tab">Tools
+
+
+
+
+
+        </div>
+        <div class="tab-pane fade" id="pills-Links" role="tabpanel" aria-labelledby="pills-Links-tab">Links
+            <div class="accordion accordion-flush" id="accordionFlush-Links">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-KG" aria-expanded="false" aria-controls="flush-KG">
+                            KG
+                        </button>
+                    </h2>
+                    <div id="flush-KG" class="accordion-collapse collapse show" data-bs-parent="#accordionFlush-Links">
+                        <div class="accordion-body">KG
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-大学入試情報" aria-controls="flush-大学入試情報">
+                            大学入試情報
+                        </button>
+                    </h2>
+                    <div id="flush-大学入試情報" class="accordion-collapse collapse" data-bs-parent="#accordionFlush-Links">
+                        <div class="accordion-body">
+                            <p>
+                                <a href="http://www.dnc.ac.jp/" target="_blank">独立行政法人 大学入試センター</a>
+                            </p>
+                            <div class="js-scrollable">
+                                <table class="table table-bordered border-secondary text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>事業者</th>
+                                            <th>模試</th>
+                                            <th>進学情報・過去問</th>
+                                            <th>教員用</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th><a href="http://www.benesse.co.jp/" target="_blank">Benesse</a></th>
+                                            <td><a href="http://manabi.benesse.ne.jp/assess/moshi/"
+                                                    target="_blank">進研模試</a><br>
+                                                <a href="http://manabi.benesse.ne.jp/assess/ss/"
+                                                    target="_blank">スタディーサポート</a><br>
+                                                <a href="http://gtec.for-students.jp/" target="_blank">GTEC
+                                                    for
+                                                    STUDENTS</a>
+                                            </td>
+                                            <td><a href="https://manabi.benesse.ne.jp/wi/jsp/gy1_toroku/login_failure_digi.jsp"
+                                                    target="_blank">進研模試デジタルサービス</a><br>
+                                                <a href="http://manabi.benesse.ne.jp/" target="_blank">マナビジョン</a><br>
+                                                <a href="http://manabi.benesse.ne.jp/nyushi/kakomon/"
+                                                    target="_blank">大学入試過去問ダウンロードサービス</a>
+                                            </td>
+                                            <td><a href="http://bhso.benesse.ne.jp/" target="_blank">Benesse
+                                                    High School
+                                                    Online</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th><a href="http://www.yozemi.ac.jp" target="_blank">代々木ゼミナール</a></th>
+                                            <td><a href="http://www.yozemi.ac.jp/test/index.html"
+                                                    target="_blank">代ゼミ模試</a>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th><a href="http://www.kawai-juku.ac.jp/" target="_blank">河合塾</a></th>
+                                            <td><a href="http://www.kawai-juku.ac.jp/trial-exam/zento/"
+                                                    target="_blank">全統模試</a>
+                                            </td>
+                                            <td><a href="http://www.keinet.ne.jp/" target="_blank">Kei-Net</a></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th><a href="http://www2.sundai.ac.jp/yobi/sv/index.html"
+                                                    target="_blank">駿台予備校</a>
+                                            </th>
+                                            <td><a href="http://www2.sundai.ac.jp/yobi/sv/moshi/index.html"
+                                                    target="_blank">駿台模試</a>
+                                            </td>
+                                            <td><a href="http://www2.sundai.ac.jp/yobi/sv/news/index.html"
+                                                    target="_blank">大学入試情報</a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th><a href="http://www.toshin.com/" target="_blank">東進ハイスクール</a></th>
+                                            <td><a href="http://www.toshin.com/hs/event/exam/"
+                                                    target="_blank">東進模試</a><br>
+                                                <a href="http://www.toitsutest.com/" target="_blank">全国統一テスト</a>
+                                            </td>
+                                            <td><a href="http://www.toshin.com/nyushi/index_niji.php"
+                                                    target="_blank">大学入試問題
+                                                    過去問データベース</a><br>
+                                                <a href="http://www.toshin.com/univ/" target="_blank">大学案内</a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>リクルート</th>
+                                            <td></td>
+                                            <td><a href="https://studysapuri.jp/" target="_blank">スタディサプリ</a></td>
+                                            <td><a href="https://link.studysapuri.jp/ja/login" target="_blank">スタディサプリ
+                                                    for Teachers</a></td>
+                                        </tr>
+                                        <tr style="display:none">
+                                            <th><a href="http://www.zkai.co.jp/" target="_blank">Z会</a></th>
+                                            <td>会員のみ申込可。<br>
+                                                ただし、河合塾共催なので<br>
+                                                事実上会員外も申込可</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>その他</th>
+                                            <td></td>
+                                            <td>
+                                                <a href="http://www.cybercollege.jp/" target="_blank">サイバーカレッジ</a><br>
+                                                <a href="http://passnavi.evidus.com/" target="_blank">大学受験パスナビ：旺文社</a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
+            <h2>本サイト／アプリについて</h2>
+            <p>
+                修正依頼はPull Requestしてください。
+            </p>
+            <p class="text-right">
+                <a href="https://github.com/Zacky0922/KG" target="_blank">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+            </p>
         </div>
         <div class="tab-pane fade" id="pills-test" role="tabpanel" aria-labelledby="pills-test-tab">test
             <div class="d-none d-sm-block">sm</div>
@@ -89,12 +277,12 @@
             <div class="d-none d-lg-block">lg</div>
             <div class="d-none d-xl-block">xl</div>
             <div class="d-none d-xxl-block">xxl</div>
-
+            <div id="test"></div>
         </div>
     </div>
 
-
-    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <nav class="navbar fixed-bottom navbar-dark bg-dark" id="navMenu">
+        <!--
         <ul class="nav nav-pills container-fluid d-flex" id="pills-tab" role="tablist">
             <li class="nav-item flex-fill" role="presentation">
                 <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab"
@@ -103,135 +291,75 @@
                     <span class="d-none d-sm-block d-md-inline">HOME</span>
                 </a>
             </li>
-            <li class="nav-item flex-fill" role="presentation">
-                <a class="nav-link" id="pills-coronavirus-tab" data-bs-toggle="pill" href="#pills-coronavirus"
-                    role="tab" aria-controls="pills-coronavirus" aria-selected="false">
-                    <span class="material-icons">coronavirus</span>
-                    <span class="d-none d-sm-block d-md-inline">健康観察</span>
-                </a>
-            </li>
-            <li class="nav-item flex-fill" role="presentation">
-                <a class="nav-link" id="pills-links-tab" data-bs-toggle="pill" href="#pills-links" role="tab"
-                    aria-controls="pills-links" aria-selected="false">
-                    <span class="material-icons">link</span>
-                    <span class="d-none d-sm-block d-md-inline">Links</span>
-                </a>
-            </li>
-            <li class="nav-item flex-fill" role="presentation">
-                <a class="nav-link" id="pills-settings-tab" data-bs-toggle="pill" href="#pills-settings" role="tab"
-                    aria-controls="pills-settings" aria-selected="false">
-                    <span class="material-icons">settings</span>
-                    <span class="d-none d-sm-block d-md-inline">設定</span>
-                </a>
-            </li>
-            <li class="nav-item flex-fill d-none" role="presentation">
-                <a class="nav-link" id="pills-test-tab" data-bs-toggle="pill" href="#pills-test" role="tab"
-                    aria-controls="pills-test" aria-selected="false">
-                    <span class="d-none d-sm-block d-md-inline">test</span></a>
-            </li>
         </ul>
+        -->
     </nav>
-
+    <script src="./app_src/menu.js"></script>
     <script>
-        function setBusRow(tbody, th_tx, td_tx = null) {
-            let tr0 = document.createElement("tr");
-            let th = document.createElement("th");
-            th.innerText = th_tx;
-            tr0.appendChild(th);
-            tbody.appendChild(tr0);
-            if (td_tx != null) {
-                let tr1 = document.createElement("tr");
-                let td = document.createElement("td");
-                td.innerText = td_tx;
-                tr1.appendChild(td);
-                tbody.appendChild(tr1);
+        setMenu("navMenu", [
+            { "id": "home", "text": "HOME", "icon": "home" },
+            { "id": "coronavirus", "text": "健康観察", "icon": "coronavirus" },
+            { "id": "Tools", "text": "Tools", "icon": "build" },
+            { "id": "Links", "text": "Links", "icon": "link" },
+            { "id": "settings", "text": "Config", "icon": "settings" },
+            { "id": "test", "text": "debug", "icon": "bug_report", "ex_class": ["debug", "d-none"] }
+        ]);
+
+
+
+        function fixTimetable(json) {
+            alert(json[0]["yobi"]);
+            for (let i = 1; i < json.length; i++) {
+                if (json[i].yobi == undefined)
+                    json[i].yobi = json[i - 1].yobi;
+                if (json[i].grade == undefined)
+                    json[i].grade = json[i - 1].grade;
+                if (json[i].class == undefined)
+                    json[i].class = json[i - 1].class;
+
             }
-        }
-        function setBusTime(json, m = null, d = null) {
-            if (m == null || d == null) {
-                let today = new Date();
-                m = today.getMonth() + 1;
-                d = today.getDate();
-            }
-            let ele = document.getElementById("busTime");
-            ele.innerHTML = "";
-            // 該当日の行を検索
-            let i = 0;
-            for (; i < json.length; i++) {
-                if (json[i].month == m &&
-                    json[i].day == d) {
-                    break;
-                }
-            }
-            let tx = [
-                m + "月" + d + "日(" + json[i].yobi + ")",
-                json[i].remark,
-                json[0].ageo0,
-                json[i].ageo0,
-                json[0].ageo1,
-                json[i].ageo1,
-                json[0].hasuda0,
-                json[i].hasuda0,
-                json[0].hasuda1,
-                json[i].hasuda1,
-            ];
-            for (let i = 0; i < tx.length; i++) {
-                if (tx[i] == "") { continue }
-                let div = document.createElement("div");
-                switch (i) {
-                    case 0:
-                    case 1:
-                        div.classList.add("col-12");
-                        break;
-                    default:
-                        div.classList.add("col-6");
-                }
-                div.innerText = tx[i];
-                ele.appendChild(div);
-            }
+            return json;
         }
         window.addEventListener("load", function () {
-
+            // スプレッドシート：KG
             $.ajax({
-                "type": "GET", "async": false,
-                "url": "https://script.google.com/macros/s/AKfycbygYn92oqaOVmzjdtv9Tug4jGebaOq9oYW6mKIM2Foiasqbd_hTJdVnuw/exec"
-                // exec or dev
+                "type": "GET", "async": true,
+                "url": "https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec" +
+                    "?id=14BX9qfQpcd_7n6guECelxJxdWLWE_ebu3A6-ktijrUk" +
+                    "&name=timetable"
+                //"&mode=all"
             }).then(
                 // 通信success
                 data => {
-                    console.log("Ajax通信success");
-                    console.log(data);
-                    let timeTbl = data.time;
-                    // let passTbl = data.pass;
-                    // 時刻表処理
-                    setBusTime(data.time);
-
-
-                    let tbl = document.getElementById("schoolBusTbl");
-                    tbl.innerHTML = ""; // 初期化
-                    let tbody = document.createElement("tbody");
-                    // 今日の日付行取得
-                    let d = 0;
-                    let today = new Date();
-                    for (; d < timeTbl.length; d++) {
-                        if (timeTbl[d].month == (today.getMonth() + 1) &&
-                            timeTbl[d].day == today.getDate()) {
-                            setBusRow(tbody, timeTbl[d].month + "月" + timeTbl[d].day + "日(" + timeTbl[d].yobi + ")", timeTbl[d].remark);
-                            setBusRow(tbody, timeTbl[0].ageo0, timeTbl[d].ageo0);
-                            setBusRow(tbody, timeTbl[0].hasuda0, timeTbl[d].hasuda0);
-                            setBusRow(tbody, timeTbl[0].ageo1, timeTbl[d].ageo1);
-                            setBusRow(tbody, timeTbl[0].hasuda1, timeTbl[d].hasuda1);
-                            break;
-                        }
-                    }
-                    tbl.appendChild(tbody);
+                    console.log("Ajax通信success - KG");
+                    //console.log(data);
+                    //console.log(fixTimetable(data))
                 },
                 // 通信error
                 error => {
-                    console.log("Ajax通信error");
+                    console.log("Ajax通信error - KG");
                     console.log(error);
                 }
             );
+        });
+
+        // scroll table
+
+        new ScrollHint('.js-scrollable', {
+            suggestiveShadow: true,
+            i18n: {
+                scrollable: 'スクロールできます'
+            }
+        });
+
+        // debug modeは非表示要素を見せる
+        window.addEventListener("load", function () {
+            if (location.href.indexOf("?debug") > 0) {
+                let e = document.getElementsByClassName("debug");
+                for (let i = 0; i < e.length; i++) {
+                    e[i].classList.remove("d-none");
+                }
+            }
         });
     </script>
 
