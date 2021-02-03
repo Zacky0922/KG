@@ -21,6 +21,17 @@
     <!-- PWA設定 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./pict/icon192.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#004896">
+    <meta name="theme-color" content="#004896">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js')
+                .then(reg => console.log('service worker registered'))
+                .catch(err => console.log('service worker not registered', err));
+        }
+    </script>
 
     <!-- jQuery/UI -->
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
@@ -50,6 +61,14 @@
 
             <!-- 健康観察 -->
             <div class="col-12 col-md-6">
+                <section>
+                    <h3>健康観察</h3>
+                    <div class="text-center">
+                        <a class="btn btn-primary" role="button"
+                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu"
+                            target="_blank">教職員入力用</a>
+                    </div>
+                </section>
             </div>
             <!-- スクールバス -->
             <div class="col-12 col-md-6">
@@ -232,8 +251,6 @@
         </div>
         <div class="tab-pane fade" id="pills-Tools" role="tabpanel" aria-labelledby="pills-Tools-tab">
             <h2>Tools</h2>
-
-
 
             <div class="accordion accordion-flush" id="accordionFlush-Tools">
                 <div class="accordion-item">
@@ -451,7 +468,7 @@
                         <div class="accordion-body">
                             <dl>
                                 <dt>Version</dt>
-                                <dd>0.1β</dd>
+                                <dd>0.1.1β</dd>
                             </dl>
                             <p>
                                 修正依頼はPull Requestしてください。
