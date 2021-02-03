@@ -1,7 +1,8 @@
 {
     "name": "KG Dashboard fot Teachers",
     "short_name": "KGapp",
-    "start_url": "https://zacky.xxxxxxxx.jp/test/KG/KGapp.html",
+    //"start_url": "https://zacky.xxxxxxxx.jp/test/KG/KGapp.html",
+    "start_url": "https://zacky0922.github.io/KG/KGapp.html",
     "display": "standalone",
     "background_color": "#004896",
     "theme_color": "#004896",
