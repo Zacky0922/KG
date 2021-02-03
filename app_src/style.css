@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Icons");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
-
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Courgette&display=swap');
+*{
+    font-family: 'Noto Sans JP', sans-serif;
+    /* font-family: 'Courgette', cursive; */
+}
 #busTime{
     text-align:center;
 }
@@ -34,9 +37,17 @@
 
 }
 
+/* 見出し */
+.tab-pane > h2{
+    text-align:right;
+    font-family: 'Courgette', cursive;
+}
 /* accordion */
 .accordion-item > .accordion-header{
     background: #e7f1ff;
+}
+.accordion-item .accordion-body{
+    padding:1rem 0.25rem;
 }
 /* チェックボックスによる表示制御 */
 .chkbx_disptoggle{
@@ -44,4 +55,8 @@
 }
 .chkbx_disptoggle:checked + *{
     display: none;
+}
+
+.btn{
+    margin-bottom:3px;
 }

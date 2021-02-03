@@ -40,60 +40,19 @@
     <!-- style -->
     <link href="./app_src/style.css" rel="stylesheet">
 
-    <title>KG Dashboard</title>
+    <title>KG Dashboard for Teachers</title>
 </head>
 
 <body>
 
     <div class="tab-content main" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">home
-            <!-- 健康観察 -->
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header"><span class="material-icons">
-                            health_and_safety
-                        </span>健康観察</div>
-                    <div class="card-body">
-                        <h5 class="card-title">生徒健康観察</h5>
-                        <div class="text-center m-2">
-                            <a class="btn btn-outline-primary" role="button" target="_blank"
-                                href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
-                            <a class="btn btn-primary" role="button" target="_blank"
-                                href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
-                            <a class="btn btn-outline-primary" role="button" target="_blank"
-                                href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
-                        </div>
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 
-                        <label class="btn btn-warning btn-sm" for="教員確認用error">「教員確認用」が開けないとき</label>
-                        <input type="checkbox" id="教員確認用error" class="chkbx_disptoggle" checked>
-                        <div class="alert alert-warning" role="alert">
-                            <ol>
-                                <li>
-                                    一度、<a href="https://kgefac.sharepoint.com/" target="_blank">『コチラ』</a>を開く。</br>
-                                    （アクセス権を要求されますが、無視してください）
-                                </li>
-                                <li>前のウィンドウを閉じて、本来のページを開く。</br>
-                                    ※本来のページがダメな場合は
-                                    <a
-                                        href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True" target="_blank">「コチラ」</a>を試してください…
-                                </li>
-                            </ol>
-                        </div>
-                        <hr>
-                        <h5 class="card-title">教職員健康観察</h5>
-                        <p class="card-text">
-                        <div class="text-center">
-                            <a class="btn btn-primary" role="button"
-                                href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu" target="_blank">教職員入力用</a>
-                        </div>
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                    </div>
-                </div>
+            <!-- 健康観察 -->
+            <div class="col-12 col-md-6">
             </div>
             <!-- スクールバス -->
-            <div class="col-12">
+            <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-header"><span class="material-icons">
                             departure_board
@@ -113,26 +72,230 @@
                     </div>
                     <div class="card-footer text-end">
                         <small class="text-muted">
-                            <a href="https://jsh.kgef.ac.jp/schoolbus/">運行予定表</a>
+                            <a href="https://jsh.kgef.ac.jp/schoolbus/" target="_blank">運行予定表</a>
                         </small>
                     </div>
                 </div>
             </div>
+            <div class="row"></div>
         </div>
-        <div class="tab-pane fade" id="pills-coronavirus" role="tabpanel" aria-labelledby="pills-coronavirus-tab">
-            coronavirus</div>
-        <div class="tab-pane fade" id="pills-Tools" role="tabpanel" aria-labelledby="pills-Tools-tab">Tools
+        <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
+            <h2>Health</h2>
+            <div class="accordion accordion-flush" id="accordionFlush-health">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-健康観察Form" aria-expanded="true" aria-controls="flush-健康観察Form">
+                            健康観察Form
+                        </button>
+                    </h2>
+                    <div id="flush-健康観察Form" class="accordion-collapse collapse show"
+                        data-bs-parent="#accordionFlush-health">
+                        <div class="accordion-body">
+                            <div class="card">
+                                <div class="card-header"><span class="material-icons">
+                                        health_and_safety
+                                    </span>健康観察Form</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">生徒健康観察</h5>
+                                    <div class="text-center m-2">
+                                        <a class="btn btn-outline-primary" role="button" target="_blank"
+                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
+                                        <a class="btn btn-primary" role="button" target="_blank"
+                                            href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
+                                        <a class="btn btn-outline-primary" role="button" target="_blank"
+                                            href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
+                                    </div>
 
-
-
-
-
-        </div>
-        <div class="tab-pane fade" id="pills-Links" role="tabpanel" aria-labelledby="pills-Links-tab">Links
-            <div class="accordion accordion-flush" id="accordionFlush-Links">
+                                    <label class="btn btn-warning btn-sm" for="教員確認用error">「教員確認用」が開けないとき</label>
+                                    <input type="checkbox" id="教員確認用error" class="chkbx_disptoggle" checked>
+                                    <div class="alert alert-warning" role="alert">
+                                        <ol>
+                                            <li>
+                                                一度、<a href="https://kgefac.sharepoint.com/"
+                                                    target="_blank">『コチラ』</a>を開く。</br>
+                                                （アクセス権を要求されますが、無視してください）
+                                            </li>
+                                            <li>前のウィンドウを閉じて、本来のページを開く。</br>
+                                                ※本来のページがダメな場合は
+                                                <a href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True"
+                                                    target="_blank">「コチラ」</a>を試してください…
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <hr>
+                                    <h5 class="card-title">教職員健康観察</h5>
+                                    <p class="card-text">
+                                    <div class="text-center">
+                                        <a class="btn btn-primary" role="button"
+                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu"
+                                            target="_blank">教職員入力用</a>
+                                    </div>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-coronavirus" aria-expanded="false" aria-controls="flush-coronavirus">
+                            新型コロナウイルス感染症情報
+                        </button>
+                    </h2>
+                    <div id="flush-coronavirus" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlush-health">
+                        <div class="accordion-body">
+                            <div class="js-scrollable">
+                                <table class="table table-bordered border-secondary" id="COVID19infoTbl">
+                                    <thead></thead>
+                                    <tfoot></tfoot>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <script>
+                                function addCOVID19tbl(title, content) {
+                                    document.getElementById("COVID19infoTbl").children[2].innerHTML += "<tr><th class='text-center'>" +
+                                        title + "</th><td class='text-center'>" + content + "</td></tr>";
+                                }
+                                $.getJSON("https://data.covid19japan.com/summary/latest.json", (data) => {
+                                    // 昨日基準で処理：今日のデータはまだない可能性がある
+                                    let yesterday = new Date();
+                                    yesterday = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 1);
+                                    let youbi = ("日,月,火,水,木,金,土").split(",");
+
+                                    // thead
+                                    document.getElementById("COVID19infoTbl").children[0].innerHTML += "" +
+                                        "<tr><td colspan='2' class='text-center'>" +
+                                        yesterday.getFullYear() + "/" +
+                                        (yesterday.getMonth() + 1) + "/" +
+                                        yesterday.getDate() + "(" + youbi[yesterday.getDay()] + ")の陽性者数" +
+                                        "</td></tr>";
+
+                                    // tfoot
+                                    let tfootTx = data.updated;
+                                    tfootTx = tfootTx.replace("T", "(").replace("+09:00", "JST)");
+                                    document.getElementById("COVID19infoTbl").children[1].innerHTML += "" +
+                                        "<tr><td colspan='2' class='text-end'>Update：" +
+                                        tfootTx + "</td></tr>";
+                                    for (let key in data.prefectures[4]) {
+                                        //addCOVID19tbl(key, data.prefectures[4][key]);
+                                    }
+
+
+                                    // 特定抽出市町村（表示名、検索文字列）・・・患者データの分析が必要かも
+                                    let city = [
+                                        { "伊奈町": ["Ina"] },
+                                        { "上尾市": ["Ageo"] },
+                                        { "さいたま市": ["Saitama", "Saitama city", "Saitama City"] }
+                                    ];
+
+                                    // 都道府県別データ取得
+                                    let tbl = { "陽性者": { "埼玉県": 0, "東京都": 0, "全国": 0 } };
+                                    for (let pref in data.prefectures) {
+                                        // 陽性者記録開始日取得
+                                        let ConfirmedStartDate = data.prefectures[pref].dailyConfirmedStartDate.split("-");
+                                        ConfirmedStartDate = new Date(Number(ConfirmedStartDate[0]),
+                                            Number(ConfirmedStartDate[1]) - 1,
+                                            Number(ConfirmedStartDate[2])
+                                        );
+                                        // 処理対象日のデータ配列番号取得
+                                        let i = (yesterday.getTime() - ConfirmedStartDate.getTime()) / (1000 * 60 * 60 * 24);
+                                        switch (data.prefectures[pref].name_ja) {
+                                            case "埼玉県":
+                                                tbl["陽性者"]["埼玉県"] = data.prefectures[pref].dailyConfirmedCount[i];
+                                                break;
+                                            case "東京都":
+                                                tbl["陽性者"]["東京都"] = data.prefectures[pref].dailyConfirmedCount[i];
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        tbl["陽性者"]["全国"] += data.prefectures[pref].dailyConfirmedCount[i];
+                                    }
+                                    // table生成
+                                    addCOVID19tbl("埼玉県", tbl["陽性者"]["埼玉県"]);
+                                    addCOVID19tbl("東京都", tbl["陽性者"]["東京都"]);
+                                    addCOVID19tbl("全国", tbl["陽性者"]["全国"]);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="tab-pane fade" id="pills-Tools" role="tabpanel" aria-labelledby="pills-Tools-tab">
+            <h2>Tools</h2>
+
+
+
+            <div class="accordion accordion-flush" id="accordionFlush-Tools">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-examinee" aria-expanded="false" aria-controls="flush-examinee">
+                            受験生対象行事
+                        </button>
+                    </h2>
+                    <div id="flush-examinee" class="accordion-collapse collapse" data-bs-parent="#accordionFlush-Tools">
+                        <div class="accordion-body">
+                            <p class="text-muted">個別相談・部活動体験等の登録・確認はコチラから</p>
+                            <h5>教職員向けフォーム</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    まずはココから登録。<br />
+                                    <small>登録の手間削減のため、紙ではなくWEB登録にご協力ください。</small><br />
+                                    <a class="btn btn-outline-primary" role="button"
+                                        href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUOE5EMUxNWlRDNDNRSVk4NVJTSjlPMVYxRyQlQCN0PWcu">イベント登録申請</a>
+                                </li>
+                                <li class="list-group-item">
+                                    登録イベントの参加者一覧はコチラ。<br />
+                                    <a class="btn btn-outline-primary" role="button"
+                                        href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?OR=teams&action=edit&sourcedoc={44753E55-03A6-4562-8AAF-339B64CDEB75}">イベント申込状況確認</a>
+                                </li>
+                                <li class="list-group-item">
+                                    個別相談の教員用フォームはコチラ。<br />
+                                    <a class="btn btn-primary" role="button"
+                                        href="https://kbs.kgef.ac.jp/seiseki/">個別相談入力フォーム</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <h5>受験生向けフォーム</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a class="btn btn-outline-primary" role="button"
+                                        href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a>
+                                </li>
+                            </ul>
+                            <hr>
+                            <p class="text-end">
+                                <small class="text-muted">
+                                    <a
+                                        href="https://teams.microsoft.com/_#/school/files/WEB%E3%82%B5%E3%82%A4%E3%83%88%E9%96%A2%E4%BF%82?threadId=19%3Af7977620b7234abf8ccc2a9972d71e3f%40thread.tacv2&ctx=channel&context=%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FWEB%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%25E9%2596%25A2%25E4%25BF%2582%252F%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020">相談関連files</a>
+                                    ／
+                                    <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/">◆個別相談MST管理用</a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="tab-pane fade" id="pills-Links" role="tabpanel" aria-labelledby="pills-Links-tab">
+            <h2>Links</h2>
+            <div class="accordion accordion-flush" id="accordionFlush-Links">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-KG" aria-expanded="false" aria-controls="flush-KG">
                             KG
                         </button>
@@ -261,23 +424,79 @@
 
         </div>
         <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
-            <h2>本サイト／アプリについて</h2>
-            <p>
-                修正依頼はPull Requestしてください。
-            </p>
-            <p class="text-right">
-                <a href="https://github.com/Zacky0922/KG" target="_blank">
-                    <i class="bi bi-github"></i> GitHub
-                </a>
-            </p>
+            <h2>Config</h2>
+            <div class="accordion accordion-flush" id="accordionFlush-Config">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-YourConfig" aria-controls="flush-YourConfig">
+                            YourConfig（調整中）
+                        </button>
+                    </h2>
+                    <div id="flush-YourConfig" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlush-Config">
+                        <div class="accordion-body">YourConfig（調整中）
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-about" aria-expanded="true" aria-controls="flush-about">
+                            about
+                        </button>
+                    </h2>
+                    <div id="flush-about" class="accordion-collapse collapse show"
+                        data-bs-parent="#accordionFlush-Config">
+                        <div class="accordion-body">
+                            <dl>
+                                <dt>Version</dt>
+                                <dd>0.1β</dd>
+                            </dl>
+                            <p>
+                                修正依頼はPull Requestしてください。
+                            </p>
+                            <p class="text-end">
+                                <a href="https://github.com/Zacky0922/KG" target="_blank"
+                                    class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-今後の更新予定" aria-expanded="false" aria-controls="flush-今後の更新予定">
+                            今後の更新予定
+                        </button>
+                    </h2>
+                    <div id="flush-今後の更新予定" class="accordion-collapse collapse" data-bs-parent="#accordionFlush-Config">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>PWA化</li>
+                                <li>行事情報の表示</li>
+                                <li>Cookie利用によるユーザー個人の設定保存</li>
+                                <li>PC/スマホのI/F共通化</li>
+                                <li>その他、便利情報の表示</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="tab-pane fade" id="pills-test" role="tabpanel" aria-labelledby="pills-test-tab">test
-            <div class="d-none d-sm-block">sm</div>
-            <div class="d-none d-md-block">md</div>
-            <div class="d-none d-lg-block">lg</div>
-            <div class="d-none d-xl-block">xl</div>
-            <div class="d-none d-xxl-block">xxl</div>
-            <div id="test"></div>
+        <div class="tab-pane fade" id="pills-test" role="tabpanel" aria-labelledby="pills-test-tab">
+            <h2>test:debug</h2>
+            <div>
+                <span class="d-none d-sm-block">sm</span>
+                <span class="d-none d-md-block">md</span>
+                <span class="d-none d-lg-block">lg</span>
+                <span class="d-none d-xl-block">xl</span>
+                <span class="d-none d-xxl-block">xxl</span>
+            </div>
+
         </div>
     </div>
 
@@ -298,7 +517,7 @@
     <script>
         setMenu("navMenu", [
             { "id": "home", "text": "HOME", "icon": "home" },
-            { "id": "coronavirus", "text": "健康観察", "icon": "coronavirus" },
+            { "id": "health", "text": "<span>健康</span><span class='d-none d-sm-inline'>観察</span>", "icon": "coronavirus" },
             { "id": "Tools", "text": "Tools", "icon": "build" },
             { "id": "Links", "text": "Links", "icon": "link" },
             { "id": "settings", "text": "Config", "icon": "settings" },

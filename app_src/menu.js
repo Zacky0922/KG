@@ -33,7 +33,8 @@ function setMenu(id, contents) {
         a.appendChild(icon);
 
         let tx = document.createElement("span");
-        tx.classList.add("d-none", "d-sm-block", "d-md-inline");
+        //tx.classList.add("d-none", "d-sm-block", "d-md-inline");
+        tx.classList.add("d-block", "d-sm-block", "d-md-inline");
         tx.innerHTML = contents[i].text;
         a.appendChild(tx);
     }
