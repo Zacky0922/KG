@@ -105,6 +105,7 @@
         <div class="row g-2">
             <section class="col-12 col-md-3 col-lg-2 sidebar g-2">
                 <div class="row g-2">
+
                     <!-- menu -->
                     <div class="col-12">
                         <div class="card">
@@ -242,12 +243,16 @@
                                     info
                                 </span>Info</div>
                             <div class="card-body">
+                                <h5 class="card-title">アプリ版KG Dashboard</h5>
+                                <p>簡易的なアプリ機能を実験中です。下記リンク先でブラウザから「ホーム画面に追加」をすると、簡易的なアプリ(PWA)として動作するはずです。（端末により必要な操作が異なるかも？）<br />
+                                    <a href="./KGapp.html">KG Dashboard for Teachers</a>
+                                </p>
+                                <hr>
                                 <h5 class="card-title">2021年の祝日移動</h5>
                                 <p>
                                     2020年12月に制定されたので、ほとんどのカレンダーは未反映のはずです。ご注意ください。
                                     なお、対象は「海の日・スポーツの日・山の日」です。<br />
-                                    <a
-                                        href="https://www.kantei.go.jp/jp/headline/tokyo2020/shukujitsu.html">2021年の祝日移動について(内閣官房)</a>
+                                    <a href="https://www.kantei.go.jp/jp/headline/tokyo2020/shukujitsu.html">2021年の祝日移動について(内閣官房)</a>
                                 </p>
                             </div>
                         </div>
@@ -994,10 +999,10 @@
                                         }
                                     }
                                     function fixBusTime(time) {
-                                        for(let i = 1 ; i < time.length ; i++){
-                                            for(let j in time[i]){
-                                                if(time[i][j] == "〃"){
-                                                    time[i][j] = time[i-1][j];
+                                        for (let i = 1; i < time.length; i++) {
+                                            for (let j in time[i]) {
+                                                if (time[i][j] == "〃") {
+                                                    time[i][j] = time[i - 1][j];
                                                 }
                                             }
                                         }
