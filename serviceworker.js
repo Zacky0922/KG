@@ -35,3 +35,19 @@ self.addEventListener('fetch', evt => {
         })
     );
 });
+// cashe update
+self.addEventListener('message', function (event) {
+    switch (event.data) {
+        case 'updateCache':
+            console.log("updating...");
+            event.waitUntil(
+                caches
+                    .open(CACHE_NAME)
+                    .then(function (cache) {
+                        return cache.addAll(urlsToCache);
+                    })
+            );
+            break;
+        default:
+    }
+});

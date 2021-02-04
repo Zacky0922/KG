@@ -436,6 +436,62 @@
                         </div>
                     </div>
                 </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-ToolLinks" aria-expanded="false" aria-controls="flush-ToolLinks">
+                            便利ツール
+                        </button>
+                    </h2>
+                    <div id="flush-ToolLinks" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlush-Links">
+                        <div class="accordion-body">
+                            <ul id="ToolLinksUl" class="d-flex flex-wrap"></ul>
+                            <script>
+                                (function () {
+                                    let ul = document.getElementById("ToolLinksUl");
+                                    let links = [
+                                        { "text": "Gmail", "href": "https://mail.google.com/", "desc": "" },
+                                        { "text": "Yahoo!メール", "href": "http://mail.yahoo.co.jp/", "desc": "" },
+                                        { "text": "Trello", "href": "https://trello.com/", "desc": "" },
+                                        { "text": "Feedly", "href": "https://feedly.com/", "desc": "" },
+                                        { "text": "discord", "href": "https://discordapp.com/activity", "desc": "" },
+                                        { "text": "Evernote", "href": "https://www.evernote.com/client/web", "desc": "" },
+                                        { "text": "Picky-Pics", "href": "https://picky-pics.com/", "desc": "" },
+                                        { "text": "Internet Archive", "href": "https://archive.org/", "desc": "" },
+                                        { "text": "WolframAlpha", "href": "https://www.wolframalpha.com/", "desc": "" },
+                                        { "text": "diagrams.net<br/>(draw.io)", "href": "https://app.diagrams.net/", "desc": "" },
+                                        { "text": "Mathcha", "href": "https://www.mathcha.io/editor", "desc": "" },
+                                        { "text": "Geogebra", "href": "https://www.geogebra.org/?lang=ja", "desc": "" },
+                                        { "text": "GRAPES-light", "href": "https://grapes-light.app/", "desc": "" }
+                                    ];
+                                    for (let i = 0; i < links.length; i++) {
+                                        let li = document.createElement("li");
+                                        //li.classList.add("col-12","col-sm-6","col-md-4","col-lg-3","col-xl-2", "border", "border-primary", "border-2");
+                                        li.classList.add("flex-fill", "p-2");
+                                        li.classList.add("d-flex");    // 子要素のために
+                                        let a = document.createElement("a");
+                                        a.classList.add("btn", "btn-outline-primary");   // ボタン設定
+                                        a.classList.add("flex-fill");   // レイアウト（左右一杯、）
+                                        a.classList.add("d-flex", "align-items-center", "justify-content-center");     // テキスト：左右・上下中央
+                                        a.innerHTML = links[i].text;
+                                        li.appendChild(a);
+                                        ul.appendChild(li);
+                                    }
+                                })();
+                            </script>
+                            <style>
+                                #ToolLinksUl {
+                                    padding: 0;
+                                }
+
+                                #ToolLinksUl>li {
+                                    list-style-type: none;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -467,23 +523,40 @@
                         data-bs-parent="#accordionFlush-Config">
                         <div class="accordion-body">
                             <dl>
-                                <dt>v0.2β - 2021/02/03</dt>
-                                <dd>PWA manifest fix</dd>
-                                <dt><label class="btn btn-outline-primary" for="更新履歴">過去の更新履歴</label></dt>
-                                <input type="checkbox" id="更新履歴" class="chkbx_disptoggle" checked>
-                                <dd>
-                                    <dl style="font-size:small;">
-                                        <dt>v0.1.4β - 2021/02/03</dt>
-                                        <dd>PWA service worker fix</dd>
-                                        <dt>v0.1.3β - 2021/02/03</dt>
-                                        <dd>PWA化</dd>
-                                        <dt>v0.1.1～0.1.2</dt>
-                                        <dd>形だけRelease</dd>
-                                    </dl>
-                                </dd>
+                                <!-- newest update -->
+                                <dt>v0.2.1β - 2021/02/04</dt>
+                                <dd>add update button</dd>
                             </dl>
                             <p>
-                                修正依頼はPull Requestしてください。
+                                <a class="btn btn-primary" id="PWAupdateBtn">UPDATE</a>
+                                <small class="text-muted">定期的に実行してください</small>
+                            </p>
+                            <script>
+                                $("#PWAupdateBtn").click(function () {
+                                    console.log("update btn");
+                                    navigator.serviceWorker.controller.postMessage('updateCache');
+                                    setTimeout(function () {
+                                        location.reload();
+                                    });
+                                });
+                            </script>
+                            <label class="btn btn-outline-primary btn-sm" for="更新履歴">過去の更新履歴</label>
+                            <input type="checkbox" id="更新履歴" class="chkbx_disptoggle" checked>
+                            <dl style="font-size:small;">
+                                <!-- old updates -->
+                                <dt>v0.2β - 2021/02/03</dt>
+                                <dd>PWA manifest fix</dd>
+                                <dt>v0.1.4β - 2021/02/03</dt>
+                                <dd>PWA service worker fix</dd>
+                                <dt>v0.1.3β - 2021/02/03</dt>
+                                <dd>PWA化</dd>
+                                <dt>v0.1.1～0.1.2</dt>
+                                <dd>形だけRelease</dd>
+                            </dl>
+                            <p>
+                                <small class="text-muted">
+                                    修正依頼はPull Requestしてください。
+                                </small>
                             </p>
                             <p class="text-end">
                                 <a href="https://github.com/Zacky0922/KG" target="_blank"

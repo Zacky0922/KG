@@ -39,7 +39,7 @@
 
 /* 見出し */
 .tab-pane > h2{
-    text-align:right;
+    text-align: right;
     font-family: 'Courgette', cursive;
 }
 /* accordion */
@@ -47,7 +47,7 @@
     background: #e7f1ff;
 }
 .accordion-item .accordion-body{
-    padding:1rem 0.25rem;
+    /* padding:1rem 0.25rem; */
 }
 /* チェックボックスによる表示制御 */
 .chkbx_disptoggle{
