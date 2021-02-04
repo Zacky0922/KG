@@ -318,7 +318,11 @@
                         </button>
                     </h2>
                     <div id="flush-KG" class="accordion-collapse collapse show" data-bs-parent="#accordionFlush-Links">
-                        <div class="accordion-body">KG
+                        <div class="accordion-body">
+                            <ul id="LinksUl-KG"></ul>
+                            <p class="text-end">
+                                <small class="text-muted">[*]印は校内限定</small>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -446,54 +450,56 @@
                     <div id="flush-ToolLinks" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlush-Links">
                         <div class="accordion-body">
-                            <ul id="ToolLinksUl" class="d-flex flex-wrap"></ul>
-                            <script>
-                                (function () {
-                                    let ul = document.getElementById("ToolLinksUl");
-                                    let links = [
-                                        { "text": "Gmail", "href": "https://mail.google.com/", "desc": "" },
-                                        { "text": "Yahoo!メール", "href": "http://mail.yahoo.co.jp/", "desc": "" },
-                                        { "text": "Trello", "href": "https://trello.com/", "desc": "" },
-                                        { "text": "Feedly", "href": "https://feedly.com/", "desc": "" },
-                                        { "text": "discord", "href": "https://discordapp.com/activity", "desc": "" },
-                                        { "text": "Evernote", "href": "https://www.evernote.com/client/web", "desc": "" },
-                                        { "text": "Picky-Pics", "href": "https://picky-pics.com/", "desc": "" },
-                                        { "text": "Internet Archive", "href": "https://archive.org/", "desc": "" },
-                                        { "text": "WolframAlpha", "href": "https://www.wolframalpha.com/", "desc": "" },
-                                        { "text": "diagrams.net<br/>(draw.io)", "href": "https://app.diagrams.net/", "desc": "" },
-                                        { "text": "Mathcha", "href": "https://www.mathcha.io/editor", "desc": "" },
-                                        { "text": "Geogebra", "href": "https://www.geogebra.org/?lang=ja", "desc": "" },
-                                        { "text": "GRAPES-light", "href": "https://grapes-light.app/", "desc": "" }
-                                    ];
-                                    for (let i = 0; i < links.length; i++) {
-                                        let li = document.createElement("li");
-                                        //li.classList.add("col-12","col-sm-6","col-md-4","col-lg-3","col-xl-2", "border", "border-primary", "border-2");
-                                        li.classList.add("flex-fill", "p-2");
-                                        li.classList.add("d-flex");    // 子要素のために
-                                        let a = document.createElement("a");
-                                        a.classList.add("btn", "btn-outline-primary");   // ボタン設定
-                                        a.classList.add("flex-fill");   // レイアウト（左右一杯、）
-                                        a.classList.add("d-flex", "align-items-center", "justify-content-center");     // テキスト：左右・上下中央
-                                        a.innerHTML = links[i].text;
-                                        li.appendChild(a);
-                                        ul.appendChild(li);
-                                    }
-                                })();
-                            </script>
-                            <style>
-                                #ToolLinksUl {
-                                    padding: 0;
-                                }
-
-                                #ToolLinksUl>li {
-                                    list-style-type: none;
-                                }
-                            </style>
+                            <ul id="linksUl-Tools"></ul>
                         </div>
                     </div>
                 </div>
             </div>
+            <script src="./app_src/links.js"></script>
+            <script>
 
+                // KG
+                setLinks("LinksUl-KG", [
+                    { "text": "学校サイト", "href": "https://jsh.kgef.ac.jp/", "desc": "" },
+                    { "text": "総合TOP", "href": "https://jsh.kgef.ac.jp/kg/", "desc": "" },
+                    { "text": "中学TOP", "href": "https://jsh.kgef.ac.jp/kjs/", "desc": "" },
+                    { "text": "高校TOP", "href": "https://jsh.kgef.ac.jp/khs/", "desc": "" },
+                    { "text": "スクールバス", "href": "https://jsh.kgef.ac.jp/schoolbus/", "desc": "" },
+                    { "text": "◆wp-admin", "href": "https://jsh.kgef.ac.jp/wp-admin/", "desc": "" },
+                    { "text": "YouTube[広報ch]", "href": "https://www.youtube.com/channel/UCZs_H9a6xIilg4v49m0l7UQ", "desc": "" },
+                    { "text": "YouTube[生徒会ch]", "href": "https://www.youtube.com/channel/UCpYFKgCIpJGbCrj8U8ZXaNQ", "desc": "" },
+                    { "text": "YouTube[学内向けch]", "href": "https://www.youtube.com/channel/UC1sOiMc9ufHSjkIERjVRtKg", "desc": "" },
+                    { "text": "アクセス解析<br/>Google DataPortal", "href": "https://datastudio.google.com/reporting/1WBv4jjidJR__pI82WWIl5bPumkks4CPP", "desc": "" },
+                    { "text": "支払依頼*", "href": "http://192.168.20.41/iraimenu.HTM", "desc": "" },
+                    { "text": "旧 相談システム*", "href": "http://192.168.20.100/hs/", "desc": "" },
+                    { "text": "一括印刷ツール*<br/>(旧システム用)", "href": "https://zacky0922.github.io/KG/KG_doc/KobetsuSoudanIkkatsu.html", "desc": "" },
+                ]);
+                // 便利ツール
+                setLinks("linksUl-Tools", [
+                    { "text": "Gmail", "href": "https://mail.google.com/", "desc": "" },
+                    { "text": "Yahoo!メール", "href": "http://mail.yahoo.co.jp/", "desc": "" },
+                    { "text": "Trello", "href": "https://trello.com/", "desc": "" },
+                    { "text": "Feedly", "href": "https://feedly.com/", "desc": "" },
+                    { "text": "discord", "href": "https://discordapp.com/activity", "desc": "" },
+                    { "text": "Evernote", "href": "https://www.evernote.com/client/web", "desc": "" },
+                    { "text": "Picky-Pics", "href": "https://picky-pics.com/", "desc": "" },
+                    { "text": "Internet Archive", "href": "https://archive.org/", "desc": "" },
+                    { "text": "WolframAlpha", "href": "https://www.wolframalpha.com/", "desc": "" },
+                    { "text": "diagrams.net<br/>(draw.io)", "href": "https://app.diagrams.net/", "desc": "" },
+                    { "text": "Mathcha", "href": "https://www.mathcha.io/editor", "desc": "" },
+                    { "text": "Geogebra", "href": "https://www.geogebra.org/?lang=ja", "desc": "" },
+                    { "text": "GRAPES-light", "href": "https://grapes-light.app/", "desc": "" }
+                ]);
+            </script>
+            <style>
+                #ToolLinksUl {
+                    padding: 0;
+                }
+
+                #ToolLinksUl>li {
+                    list-style-type: none;
+                }
+            </style>
 
         </div>
         <div class="tab-pane fade" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">
@@ -508,7 +514,9 @@
                     </h2>
                     <div id="flush-YourConfig" class="accordion-collapse collapse"
                         data-bs-parent="#accordionFlush-Config">
-                        <div class="accordion-body">YourConfig（調整中）
+                        <div class="accordion-body">
+                            <h5>Cookie情報</h5>
+                            <p>Coolieの利用許可：<span id="cookieAllow">No</span></p>
                         </div>
                     </div>
                 </div>
@@ -524,8 +532,8 @@
                         <div class="accordion-body">
                             <dl>
                                 <!-- newest update -->
-                                <dt>v0.2.1β - 2021/02/04</dt>
-                                <dd>add update button</dd>
+                                <dt>v0.2.2 - 2021/02/04</dt>
+                                <dd>fix Links(add KG)</dd>
                             </dl>
                             <p>
                                 <a class="btn btn-primary" id="PWAupdateBtn">UPDATE</a>
@@ -544,6 +552,8 @@
                             <input type="checkbox" id="更新履歴" class="chkbx_disptoggle" checked>
                             <dl style="font-size:small;">
                                 <!-- old updates -->
+                                <dt>v0.2.1β - 2021/02/04</dt>
+                                <dd>add update button</dd>
                                 <dt>v0.2β - 2021/02/03</dt>
                                 <dd>PWA manifest fix</dd>
                                 <dt>v0.1.4β - 2021/02/03</dt>
@@ -553,12 +563,11 @@
                                 <dt>v0.1.1～0.1.2</dt>
                                 <dd>形だけRelease</dd>
                             </dl>
+                            <hr>
                             <p>
                                 <small class="text-muted">
                                     修正依頼はPull Requestしてください。
-                                </small>
-                            </p>
-                            <p class="text-end">
+                                </small><br />
                                 <a href="https://github.com/Zacky0922/KG" target="_blank"
                                     class="btn btn-outline-primary btn-sm">
                                     <i class="bi bi-github"></i>
