@@ -1,6 +1,6 @@
 {
     "name": "KG Dashboard for Teachers",
-    "short_name": "KGapp_dev",
+    "short_name": "KGapp",
     "description": "担任の先生向けに情報をまとめたダッシュボードです。",
     "scope": "./",
     "start_url": "./index.html",

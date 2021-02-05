@@ -1,4 +1,4 @@
-const staticCacheName = 'site-static-v2';
+const staticCacheName = 'site-static-v3';
 const assets = [
     './index.html',
     './src/icon192.png',
@@ -6,7 +6,6 @@ const assets = [
     './src/links.js',
     './src/menu.js',
     './src/style.css',
-    './src/timetable.js',
     './src/user.js',
 ];
 // install event
@@ -14,7 +13,7 @@ self.addEventListener('install', evt => {
     evt.waitUntil(
         caches.open(staticCacheName).then((cache) => {
             console.log('caching shell assets');
-            cache.addAll(assets);
+            //cache.addAll(assets);
         })
     );
 });
