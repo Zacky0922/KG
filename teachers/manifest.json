@@ -3,7 +3,7 @@
     "short_name": "KGapp_dev",
     "description": "担任の先生向けに情報をまとめたダッシュボードです。",
     "scope": "./",
-    "start_url": "./KGapp.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#004896",
     "theme_color": "#004896",

@@ -1,11 +1,13 @@
-const staticCacheName = 'site-static-v1';
+const staticCacheName = 'site-static-v2';
 const assets = [
-    '/KG/KGapp.html',
-    '/KG/pict/icon192.png',
-    '/KG/app_src/bus.js',
-    '/KG/app_src/menu.js',
-    '/KG/app_src/style.css',
-    '/KG/app_src/timetable.js',
+    './index.html',
+    './src/icon192.png',
+    './src/bus.js',
+    './src/links.js',
+    './src/menu.js',
+    './src/style.css',
+    './src/timetable.js',
+    './src/user.js',
 ];
 // install event
 self.addEventListener('install', evt => {
