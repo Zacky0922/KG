@@ -93,7 +93,37 @@
                     </div>
                 </div>
             </div>
-            <div class="row"></div>
+            <!-- インストール -->
+            <div class="col-12 col-md-6 d-none noPWAonly">
+                <div class="card">
+                    <div class="card-header">PWAインストール</div>
+                    <div class="card-body">
+                        <div class="card-text text-center">
+                            <h5>Windows Chrome版</h5>
+                            <figure>
+                                <img src="./src/install/win_chrome.png" alt="Windows Chrome版">
+                            </figure>
+
+                            <h5>Android版</h5>
+                            <figure>
+                                <img src="./src/install/android.png" alt="Android版">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                (function () {
+                    import("https://zacky0922.github.io/z-jscss/z.js").then(z => {
+                        if (!z.zDebug.hasUrlQuery("pwa")) {
+                            let ele = document.getElementsByClassName("noPWAonly");
+                            for (let i = 0; i < ele.length; i++) {
+                                ele[i].classList.remove("d-none");
+                            }
+                        }
+                    })
+                })();
+            </script>
         </div>
         <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
             <h2>Health</h2>
@@ -252,12 +282,13 @@
             <div class="accordion accordion-flush" id="accordionFlush-Tools">
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-examinee" aria-expanded="false" aria-controls="flush-examinee">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-examinee" aria-expanded="true" aria-controls="flush-examinee">
                             受験生対象行事
                         </button>
                     </h2>
-                    <div id="flush-examinee" class="accordion-collapse collapse" data-bs-parent="#accordionFlush-Tools">
+                    <div id="flush-examinee" class="accordion-collapse collapse show"
+                        data-bs-parent="#accordionFlush-Tools">
                         <div class="accordion-body">
                             <p class="text-muted">個別相談・部活動体験等の登録・確認はコチラから</p>
                             <h5>教職員向けフォーム</h5>
@@ -560,20 +591,42 @@
                     <div id="flush-about" class="accordion-collapse collapse show"
                         data-bs-parent="#accordionFlush-Config">
                         <div class="accordion-body">
-                            <dl>
+                            <dl id="update">
                                 <!-- newest update -->
-                                <dt>v0.3.1 - 2021/02/05</dt>
-                                <dd>add PWA access URL query</dd>
+                                <dt>v0.3.2 - 2021/02/06</dt>
+                                <dd>add Developer Mode<br />
+                                    remove update button<br />
+                                    add install guide for win,android</dd>
                             </dl>
-                            <p>
+                            <p class="d-none">
                                 <a class="btn btn-primary" id="PWAupdateBtn">UPDATE</a>
                                 <small class="text-muted">定期的に実行してください</small>
                             </p>
+
+                            <p id="debugBtn" class="d-none debug">
+                                <a id="setDebugMode" class="btn btn-warning">Developer Mode</a>
+                            </p>
+
                             <script>
+                                // updateボタン設定（未使用）
                                 $("#PWAupdateBtn").click(function () {
                                     navigator.serviceWorker.controller.postMessage('updateCache');
                                     setTimeout(function () {
                                         location.reload(true);  // super reload
+                                    });
+                                });
+
+                                // 開発者モードの設定
+                                let debugMode = 0;
+                                $("#update").click(function () {
+                                    debugMode++;
+                                    if (debugMode >= 20) {
+                                        document.getElementById("debugBtn").classList.remove("d-none");
+                                    }
+                                });
+                                $("#setDebugMode").click(function () {
+                                    import("https://zacky0922.github.io/z-jscss/z.js").then(z => {
+                                        z.zDebug.setUrlQuery({ "debug": null }, true);
                                     });
                                 });
                             </script>
@@ -581,6 +634,8 @@
                             <input type="checkbox" id="更新履歴" class="chkbx_disptoggle" checked>
                             <dl style="font-size:small; max-height:90vh !important; overflow:auto;">
                                 <!-- old updates -->
+                                <dt>v0.3.1 - 2021/02/05</dt>
+                                <dd>add PWA access URL query</dd>
                                 <dt>v0.3 - 2021/02/05</dt>
                                 <dd>fix serviceworker(no cache...)</dd>
                                 <dt>v0.2.2 - 2021/02/04</dt>
@@ -640,7 +695,13 @@
                 <span class="d-none d-xl-block">xl</span>
                 <span class="d-none d-xxl-block">xxl</span>
             </div>
-            <a href="../">../</a>
+            <p>
+                <a href="../" class="btn btn-outline-primary">../</a>
+            </p>
+            <textarea id="debugLog" cols="30" rows="10"></textarea>
+            <script>
+                document.getElementById("debugLog").innerText = window.location.href;
+            </script>
         </div>
     </div>
 
@@ -714,20 +775,22 @@
         // scroll table
 
         new ScrollHint('.js-scrollable', {
-            suggestiveShadow: true,
-            i18n: {
-                scrollable: 'スクロールできます'
+            "suggestiveShadow": true,
+            "i18n": {
+                "scrollable": 'スクロールできます'
             }
         });
 
         // debug modeは非表示要素を見せる
         window.addEventListener("load", function () {
-            if (location.href.indexOf("?debug") > 0) {
-                let e = document.getElementsByClassName("debug");
-                for (let i = 0; i < e.length; i++) {
-                    e[i].classList.remove("d-none");
+            import("https://zacky0922.github.io/z-jscss/z.js").then(z => {
+                if (z.zDebug.hasUrlQuery("debug")) {
+                    let ele = document.getElementsByClassName("debug");
+                    for (let i = 0; i < ele.length; i++) {
+                        ele[i].classList.remove("d-none");
+                    }
                 }
-            }
+            })
         });
     </script>
 

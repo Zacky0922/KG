@@ -60,3 +60,8 @@
 .btn{
     margin-bottom:3px;
 }
+
+figure img{
+    max-width: 100%;
+    object-fit: contain;
+}
