@@ -55,75 +55,76 @@
 
     <div class="tab-content main-container" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-            <!-- 健康観察 -->
-            <div class="col-12 col-md-6">
-                <section>
-                    <h3>健康観察</h3>
-                    <div class="text-center">
-                        <a class="btn btn-primary" role="button"
-                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu"
-                            target="_blank">教職員入力用</a>
-                    </div>
-                </section>
-            </div>
-            <!-- スクールバス -->
-            <div class="col-12 col-md-6">
-                <div class="card">
-                    <div class="card-header"><span class="material-icons">
-                            departure_board
-                        </span>School Bus</div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <div id="busTime">
-                                <div class="text-center">
-                                    <div class="spinner-border text-secondary" role="status">
-                                        <span class="visually-hidden">Loading...</span>
+            <div class="row">
+                <!-- 健康観察 -->
+                <div class="col-12 col-md-6">
+                    <section>
+                        <h3>健康観察</h3>
+                        <div class="text-center">
+                            <a class="btn btn-primary" role="button"
+                                href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURFozWkJTS0pLUlpLSU5GS1VHQVVUSVZSRCQlQCN0PWcu"
+                                target="_blank">教職員入力用</a>
+                        </div>
+                    </section>
+                </div>
+                <!-- スクールバス -->
+                <div class="col-12 col-md-6">
+                    <div class="card">
+                        <div class="card-header"><span class="material-icons">
+                                departure_board
+                            </span>School Bus</div>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <div id="busTime">
+                                    <div class="text-center">
+                                        <div class="spinner-border text-secondary" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
                                     </div>
                                 </div>
+                                <script src="src/bus.js"></script>
                             </div>
-                            <script src="src/bus.js"></script>
+
                         </div>
-
-                    </div>
-                    <div class="card-footer text-end">
-                        <small class="text-muted">
-                            <a href="https://jsh.kgef.ac.jp/schoolbus/" target="_blank">運行予定表</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
-            <!-- インストール -->
-            <div class="col-12 col-md-6 d-none noPWAonly">
-                <div class="card">
-                    <div class="card-header">PWAインストール</div>
-                    <div class="card-body">
-                        <div class="card-text text-center">
-                            <h5>Windows Chrome版</h5>
-                            <figure>
-                                <img src="./src/install/win_chrome.png" alt="Windows Chrome版">
-                            </figure>
-
-                            <h5>Android版</h5>
-                            <figure>
-                                <img src="./src/install/android.png" alt="Android版">
-                            </figure>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">
+                                <a href="https://jsh.kgef.ac.jp/schoolbus/" target="_blank">運行予定表</a>
+                            </small>
                         </div>
                     </div>
                 </div>
-            </div>
-            <script>
-                (function () {
-                    import("https://zacky0922.github.io/z-jscss/z.js").then(z => {
-                        if (!z.zDebug.hasUrlQuery("pwa")) {
-                            let ele = document.getElementsByClassName("noPWAonly");
-                            for (let i = 0; i < ele.length; i++) {
-                                ele[i].classList.remove("d-none");
+                <!-- インストール -->
+                <div class="col-12 col-md-6 d-none noPWAonly">
+                    <div class="card">
+                        <div class="card-header">PWAインストール</div>
+                        <div class="card-body">
+                            <div class="card-text text-center">
+                                <h5>Windows Chrome版</h5>
+                                <figure>
+                                    <img src="./src/install/win_chrome.png" alt="Windows Chrome版">
+                                </figure>
+
+                                <h5>Android版</h5>
+                                <figure>
+                                    <img src="./src/install/android.png" alt="Android版">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    (function () {
+                        import("https://zacky0922.github.io/z-jscss/z.js").then(z => {
+                            if (!z.zDebug.hasUrlQuery("pwa")) {
+                                let ele = document.getElementsByClassName("noPWAonly");
+                                for (let i = 0; i < ele.length; i++) {
+                                    ele[i].classList.remove("d-none");
+                                }
                             }
-                        }
-                    })
-                })();
-            </script>
+                        })
+                    })();
+                </script>
+            </div>
         </div>
         <div class="tab-pane fade" id="pills-health" role="tabpanel" aria-labelledby="pills-health-tab">
             <h2>Health</h2>
