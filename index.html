@@ -244,17 +244,18 @@
                                 </span>Info</div>
                             <div class="card-body">
                                 <div>
-                                <h5 class="card-title">アプリ版KG Dashboard</h5>
-                                <p>下記リンク先から簡易的なアプリ機能(PWA)を実験中です。<br />
-                                    <a href="./teachers/">KG Dashboard for Teachers</a>
-                                </p>
-                                <hr>
+                                    <h5 class="card-title">アプリ版KG Dashboard</h5>
+                                    <p>下記リンク先から簡易的なアプリ機能(PWA)を実験中です。<br />
+                                        <a href="./teachers/">KG Dashboard for Teachers</a>
+                                    </p>
+                                    <hr>
                                 </div>
                                 <h5 class="card-title">2021年の祝日移動</h5>
                                 <p>
                                     2020年12月に制定されたので、ほとんどのカレンダーは未反映のはずです。ご注意ください。
                                     なお、対象は「海の日・スポーツの日・山の日」です。<br />
-                                    <a href="https://www.kantei.go.jp/jp/headline/tokyo2020/shukujitsu.html">2021年の祝日移動について(内閣官房)</a>
+                                    <a
+                                        href="https://www.kantei.go.jp/jp/headline/tokyo2020/shukujitsu.html">2021年の祝日移動について(内閣官房)</a>
                                 </p>
                             </div>
                         </div>
@@ -1058,6 +1059,101 @@
                         </div>
                     </div>
 
+                    <!-- 鉄道遅延 -->
+                    <div class="card">
+                        <div class="card-header"><span class="material-icons">
+                            train
+                        </span>Train Info</div>
+                        <div class="card-body">
+                            <div class="js-scrollable">
+                                <table class="table table-bordered border-secondary" id="TrainInfo">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>路線種</th>
+                                            <th>遅延路線</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2" class="text-right"></td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <!--  trigger modal -->
+                            <p>
+                                <a role="button" class="btn btn-outline-primary" data-toggle="modal"
+                                    data-target="#TrainModal">その他</a>
+                            </p>
+                            <!-- Modal -->
+                            <div class="modal fade" id="TrainModal" tabindex="-1" aria-labelledby="TrainModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="TrainModalLabel">遅延情報</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" id="TrainModalText">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary"
+                                                data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            let trainList = [
+                                { name: "ニューシャトル", line: ["ニューシャトル"] },
+                                { name: "最寄りJR線<br/>(高/宇/SS/UT)", line: ("宇都宮,高崎,湘南新宿,上野東京").split(",") },
+                                { name: "近隣JR<br/>(京浜,埼京,川越)", line: ("京浜東北,埼京,川越").split(",") },
+                                { name: "東武線<br/>(STL/UPL)", line: ("アーバンパーク,スカイツリー,野田,伊勢崎線").split(",") }
+                            ];
+                            let tbody = document.getElementById("TrainInfo");
+                            $.getJSON("https://tetsudo.rti-giken.jp/free/delay.json", (data) => {
+                                let tbody = document.getElementById("TrainInfo").children[2];
+                                for (let i = 0; i < trainList.length; i++) {
+                                    let html = "<tr><th>" + trainList[i].name + "</th><td>";
+                                    let delayFlag = false;
+                                    for (let j = 0; j < trainList[i].line.length; j++) {
+                                        for (let k in data) {
+                                            if (data[k]["name"].indexOf(trainList[i].line[j]) > -1) {
+                                                html += (delayFlag ? "<br/>" : "") + data[k].name;
+                                                delayFlag = true;
+                                            }
+                                        }
+                                    }
+                                    tbody.innerHTML += html + (delayFlag ? "" : "-") + "</td></tr>";
+                                }
+                                // 全運行情報（UNIXタイム＝1970/1/1からの秒数なので注意）
+                                let update = 0;
+                                for (let k in data) {
+                                    document.getElementById("TrainModalText").innerHTML += data[k].name + "／" + data[k].company +
+                                        " (" + (new Date(data[k].lastupdate_gmt * 1000)).toLocaleTimeString() + ")<br/>";
+                                    update = (update < data[k].lastupdate_gmt ? data[k].lastupdate_gmt : update);
+                                }
+                                update = new Date(update * 1000);
+                                document.getElementById("TrainInfo").children[1].children[0].children[0].innerHTML = "Update：" +
+                                    update.getFullYear() + "/" +
+                                    (update.getMonth() + 1) + "/" +
+                                    update.getDate() + " " +
+                                    update.getHours() + ":" +
+                                    update.getMinutes();
+                            })
+                        </script>
+                        <div class="card-footer">
+                            <small class="text-muted">
+                                <a href="https://www.tetsudo.com/traffic/">鉄道com(運行情報まとめ)</a>
+                                /
+                                <a href="https://rti-giken.jp/fhc/api/train_tetsudo/">API</a>
+                            </small>
+                        </div>
+                    </div>
 
                     <!-- お天気widget -->
                     <div class="col-12">
@@ -1211,102 +1307,6 @@
             </section>
         </div>
         <div class="row mt-2 g-2">
-
-            <!-- 遅延情報 -->
-            <div class="col-12 col-lg-6 d-none">
-                <div class="card">
-                    <div class="card-header">Train Info</div>
-                    <div class="card-body">
-                        <div class="js-scrollable">
-                            <table class="table table-bordered border-secondary" id="TrainInfo">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>路線種</th>
-                                        <th>遅延路線</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="2" class="text-right"></td>
-                                    </tr>
-                                </tfoot>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <!--  trigger modal -->
-                        <p>
-                            <a role="button" class="btn btn-outline-primary" data-toggle="modal"
-                                data-target="#TrainModal">その他</a>
-                        </p>
-                        <!-- Modal -->
-                        <div class="modal fade" id="TrainModal" tabindex="-1" aria-labelledby="TrainModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="TrainModalLabel">遅延情報</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" id="TrainModalText">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary"
-                                            data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        let trainList = [
-                            { name: "ニューシャトル", line: ["ニューシャトル"] },
-                            { name: "最寄りJR線<br/>(高/宇/SS/UT)", line: ("宇都宮,高崎,湘南新宿,上野東京").split(",") },
-                            { name: "近隣JR<br/>(京浜,埼京,川越)", line: ("京浜東北,埼京,川越").split(",") },
-                            { name: "東武線<br/>(STL/UPL)", line: ("アーバンパーク,スカイツリー,野田,伊勢崎線").split(",") }
-                        ];
-                        let tbody = document.getElementById("TrainInfo");
-                        $.getJSON("https://tetsudo.rti-giken.jp/free/delay.json", (data) => {
-                            let tbody = document.getElementById("TrainInfo").children[2];
-                            for (let i = 0; i < trainList.length; i++) {
-                                let html = "<tr><th>" + trainList[i].name + "</th><td>";
-                                let delayFlag = false;
-                                for (let j = 0; j < trainList[i].line.length; j++) {
-                                    for (let k in data) {
-                                        if (data[k]["name"].indexOf(trainList[i].line[j]) > -1) {
-                                            html += (delayFlag ? "<br/>" : "") + data[k].name;
-                                            delayFlag = true;
-                                        }
-                                    }
-                                }
-                                tbody.innerHTML += html + (delayFlag ? "" : "-") + "</td></tr>";
-                            }
-                            // 全運行情報（UNIXタイム＝1970/1/1からの秒数なので注意）
-                            let update = 0;
-                            for (let k in data) {
-                                document.getElementById("TrainModalText").innerHTML += data[k].name + "／" + data[k].company +
-                                    " (" + (new Date(data[k].lastupdate_gmt * 1000)).toLocaleTimeString() + ")<br/>";
-                                update = (update < data[k].lastupdate_gmt ? data[k].lastupdate_gmt : update);
-                            }
-                            update = new Date(update * 1000);
-                            document.getElementById("TrainInfo").children[1].children[0].children[0].innerHTML = "Update：" +
-                                update.getFullYear() + "/" +
-                                (update.getMonth() + 1) + "/" +
-                                update.getDate() + " " +
-                                update.getHours() + ":" +
-                                update.getMinutes();
-                        })
-                    </script>
-                    <div class="card-footer">
-                        <small class="text-muted">
-                            <a href="https://www.tetsudo.com/traffic/">鉄道com(運行情報まとめ)</a>
-                            /
-                            <a href="https://rti-giken.jp/fhc/api/train_tetsudo/">API</a>
-                        </small>
-                    </div>
-                </div>
-            </div>
 
             <!-- template -->
             <div class="col-12 col-lg-6 d-none">
