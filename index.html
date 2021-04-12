@@ -295,7 +295,8 @@
                                     <div class="text-center">
                                         <a class="btn btn-outline-primary"
                                             href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E9%2585%258D%25E5%25B8%2583%25E8%25B3%2587%25E6%2596%2599&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E5%2585%25A8%25E6%25A0%25A1%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%252F%25E9%2585%258D%25E5%25B8%2583%25E8%25B3%2587%25E6%2596%2599"
-                                            role="button">カスタム名票登録2021</a>
+                                            role="button">カスタム名票登録2021</a><br/>
+                                            職員会議 ＞ Teams
                                     </div>
                                 </div>
 
@@ -602,7 +603,7 @@
                     </div>
 
                     <!-- クラス別健康観察 -->
-                    <div class="col-12">
+                    <div class="col-12 d-none">
                         <div class="card">
                             <div class="card-header" id="クラス別健康観察">旧 健康観察</div>
                             <h6 class="card-subtitle text-muted">2021.04.04まで（以降は新フォームに切替え）</h6>
@@ -900,11 +901,11 @@
                                             aria-valuemax="100">
                                         </div>
                                     </div>
-                                    <small class="text-muted" onclick="getTimeList()">(2021年1月～)40分授業対応済み</small>
+                                    <small class="text-muted" onclick="getTimeList()">(2021年4月～)50分授業版</small>
                                 </div>
                                 <script>
                                     // 項目名,h,m
-                                    /*  平常
+                                    //  平常
                                     let timetbl = [
                                         ["-", 0, 0],
                                         ["SHR", 8, 40],
@@ -923,10 +924,10 @@
                                         ["7限", 15, 30],
                                         ["7限終わり", 16, 20],
                                         ["完全下校", 19, 00],
-                                        ["閉門", 20, 30]
+                                        ["閉門", 20, 00]
                                     ];
-                                    */
-                                    // 40分短縮（2020/01/08～）
+                                    
+                                    /* 40分短縮（2020/01/08～）
                                     let timetbl = [
                                         ["--", 0, 0],
                                         ["SHR", 8, 45],
@@ -947,6 +948,7 @@
                                         ["完全下校", 17, 00],
                                         ["閉門", 20, 00]
                                     ];
+                                    */
                                     setInterval(function () {
                                         let now = new Date();
                                         let time = new Date();
