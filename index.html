@@ -12,151 +12,37 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/a5c7d26532.js" crossorigin="anonymous"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- ?? plugin doughnutlabel v2.0.3
+    <script src="script/chartjs-plugin-doughnutlabel.min.js"></script>
+    -->
+
+    <!-- myLibrary -->
+    <script src="./script/std_ui.js"></script>
+    <script src="./script/array.js"></script>
 
     <!-- XP.css -->
-    <link id="themeCSS" rel="stylesheet" href="https://unpkg.com/7.css">
+    <link id="themeCSS" rel="stylesheet" href="https://unpkg.com/7.css" type="text/css">
     <style>
 
     </style>
     <script>
         // XMLコントロール
-        function getXML(dataPath, f) {
+        function getXML(dataPath, f, credentials = true) {
             const request = new XMLHttpRequest(); // HTTPでファイルを読み込む
-            request.open('GET', dataPath, true); // csvのパスを指定
+            request.open('GET', dataPath, true); // csvのパスを指定,非同期設定
+            request.withCredentials = credentials;  // 
             request.send();
             request.addEventListener('load', (event) => { // ロードさせ実行
                 const response = event.target.responseText; // 受け取ったテキストを返す
                 f(response);  // コールバック関数
             });
         }
-
-        // CSV to array
-        // http://kentayamamoto.github.io/CSV-parse/
-        function CSV2array(strData, strDelimiter) {
-            strDelimiter = (strDelimiter || ",");
-            var objPattern = new RegExp(
-                (
-                    "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
-                    "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-                    "([^\"\\" + strDelimiter + "\\r\\n]*))"
-                ),
-                "gi"
-            );
-            var arrData = [[]];
-            var arrMatches = null;
-            while (arrMatches = objPattern.exec(strData)) {
-                var strMatchedDelimiter = arrMatches[1];
-                if (
-                    strMatchedDelimiter.length &&
-                    (strMatchedDelimiter != strDelimiter)
-                ) {
-                    arrData.push([]);
-                }
-                if (arrMatches[2]) {
-                    var strMatchedValue = arrMatches[2].replace(
-                        new RegExp("\"\"", "g"),
-                        "\""
-                    );
-                } else {
-                    var strMatchedValue = arrMatches[3];
-                }
-                arrData[arrData.length - 1].push(strMatchedValue);
-            }
-            return (arrData);
-        }
-
-        // CSV to json
-        /*  <変換精度が悪い>
-            原因は、
-            テキストブロック内のカンマを区切りに使わない　" *** , *** "
-            この際、
-            テキストブロック内のダブルクォーテーションを適切に処理する
-            いろいろ面倒だから、
-            http://kentayamamoto.github.io/CSV-parse/
-            を実装する
-        */
-        function CSV2json(csv) {
-            let json = [];
-            // 1行目から「項目名」の配列を生成する
-            let data = CSV2array(csv,",");
-            let key = data[0];
-            // 各行処理
-            for (let i = 1; i < data.length; i++) {
-                let row = new Object();
-                for (let j = 0; j < key.length; j++) {
-                    row[key[j]] = data[i][j];
-                }
-                json.push(row);
-            }
-            return json;
-        }
-
-        // tabコントロール
-        // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/Tab_Role
-        window.addEventListener("DOMContentLoaded", () => {
-            const tabs = document.querySelectorAll('[role="tab"]');
-            const tabList = document.querySelector('[role="tablist"]');
-
-            // Add a click event handler to each tab
-            tabs.forEach(tab => {
-                tab.addEventListener("click", changeTabs);
-            });
-
-            // Enable arrow navigation between tabs in the tab list
-            let tabFocus = 0;
-
-            tabList.addEventListener("keydown", e => {
-                // Move right
-                if (e.keyCode === 39 || e.keyCode === 37) {
-                    tabs[tabFocus].setAttribute("tabindex", -1);
-                    if (e.keyCode === 39) {
-                        tabFocus++;
-                        // If we're at the end, go to the start
-                        if (tabFocus >= tabs.length) {
-                            tabFocus = 0;
-                        }
-                        // Move left
-                    } else if (e.keyCode === 37) {
-                        tabFocus--;
-                        // If we're at the start, move to the end
-                        if (tabFocus < 0) {
-                            tabFocus = tabs.length - 1;
-                        }
-                    }
-
-                    tabs[tabFocus].setAttribute("tabindex", 0);
-                    tabs[tabFocus].focus();
-                }
-            });
-        });
-        function changeTabs(e) {
-            const target = e.target;
-            const parent = target.parentNode;
-            const grandparent = parent.parentNode;
-
-            // Remove all current selected tabs
-            parent
-                .querySelectorAll('[aria-selected="true"]')
-                .forEach(t => t.setAttribute("aria-selected", false));
-
-            // Set this tab as selected
-            target.setAttribute("aria-selected", true);
-
-            // Hide all tab panels
-            grandparent
-                .querySelectorAll('[role="tabpanel"]')
-                .forEach(p => p.setAttribute("hidden", true));
-
-            // Show the selected panel
-            grandparent.parentNode
-                .querySelector(`#${target.getAttribute("aria-controls")}`)
-                .removeAttribute("hidden");
-        }
     </script>
 </head>
 
-<body>
-
+<body style="background-repeat:none;background-size:cover;background-attachment: fixed;">
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 px-3" href="#">KG Dashboard</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
@@ -173,116 +59,241 @@
     <div class="container-fluid">
         <div class="row">
             <nav class="d-none d-md-block col-3 col-lg-2">qq</nav>
-            <main class="col row px-2 g-3">
-                <div class="col-6" style="background:#888">ew</div>
-                <div class="col-6" style="background:#888">ew</div>
-                <div class="col-6" style="background:#888">ew</div>
+            <main class="col">
+                <div class="row p-2 g-2">
+                    <div class="col-6 border border-dark">ew</div>
+                    <div class="col-6 text-center border border-dark">
+                        <canvas id="暑さ指数ゲージ"></canvas>
 
-                <div class="col-12 col-md-6">
-                    <div class="window">
-                        <div class="title-bar">
-                            <div class="title-bar-text">Settings</div>
-                            <div class="title-bar-controls">
-                                <button aria-label="Minimize"></button>
-                                <button aria-label="Maximize"></button>
-                                <button aria-label="Close"></button>
+                        <script src="script/gauge.min.js"></script>
+                        <script>
+                            // https://www.cssscript.com/customizable-gauge-canvas/
+                            function setGage(r) {
+                                console.log("GET!");
+                                // 暑さ指数取得
+                                console.log(CSV2json(r));
+                                // ゲージ作図
+                                let canvas = document.getElementById("暑さ指数ゲージ");
+                                let gauge = new Gauge(canvas).setOptions({
+                                    // options
+                                    colorStart: "#",
+                                    colorStop: void 0,
+                                    gradientType: 0,
+                                    strokeColor: "#e0e0e0",
+                                    generateGradient: true,
+                                    percentColors: [
+                                        [0.0, "#a0d2ff"],
+                                        [0.5, "#faf500"],
+                                        [0.56, "#ff9600"],
+                                        [0.62, "#ff2800"]
+                                    ],
+                                    // customize pointer
+                                    pointer: {
+                                        length: 0.5,
+                                        strokeWidth: 0.035,
+                                        iconScale: 1.0
+                                    },
+                                    // static labels
+                                    staticLabels: {
+                                        font: "10px sans-serif",
+                                        labels: [10, 20, 25, 28, 31, 40, 50],
+                                        fractionDigits: 0
+                                    },
+                                    // static zones
+                                    staticZones: [
+                                        { strokeStyle: "#218cff", min: 0, max: 21 },
+                                        { strokeStyle: "#a0d2ff", min: 21, max: 25 },
+                                        { strokeStyle: "#faf500", min: 25, max: 28 },
+                                        { strokeStyle: "#ff9600", min: 28, max: 31 },
+                                        { strokeStyle: "#ff2800", min: 31, max: 50 }
+                                    ],
+                                    // render ticks
+                                    renderTicks: {
+                                        divisions: 5,
+                                        divWidth: 1.8,
+                                        divLength: 0.5,
+                                        divColor: "#333333",
+                                        subDivisions: 5,
+                                        subLength: 0.2,
+                                        subWidth: 0.5,
+                                        subColor: "#333333"
+                                    },
+                                    // the span of the gauge arc
+                                    angle: 0.05,
+                                    // line thickness
+                                    lineWidth: 0.44,
+                                    // radius scale
+                                    radiusScale: 0.8,
+                                    // font size
+                                    fontSize: 40,
+                                    // if false, max value increases automatically if value > maxValue
+                                    limitMax: false,
+                                    // if true, the min value of the gauge will be fixed
+                                    limitMin: false,
+                                    // High resolution support
+                                    highDpiSupport: true
+                                });
+                                gauge.maxValue = 50.0;
+                                gauge.setMinValue(0);
+                                gauge.set(25);
+                                gauge.animationSpeed = 64;
+                            }
+                        //getXML("http://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv", );
+                            /*
+                            fetch("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv", {
+                                "method": 'GET',
+                                "mode": 'cors', // CORSモード
+                                "credentials": 'include',
+                                headers: {
+                                    "Access-Control-Allow-Origin": "https://www.wbgt.env.go.jp"
+                                }
+                            });
+                            */
+                        </script>
+
+                    </div>
+                    <div class="col-6 border border-dark">
+
+                    </div>
+
+                    <!-- setting -->
+                    <div class="col-12 col-md-6">
+                        <div class="window">
+                            <div class="title-bar">
+                                <div class="title-bar-text">Settings</div>
+                                <div class="title-bar-controls">
+                                    <button aria-label="Minimize"></button>
+                                    <button aria-label="Maximize"></button>
+                                    <button aria-label="Close"></button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="window-body">
-                            <div class="tab">
-                                <menu role="tablist">
-                                    <button role="tab" aria-selected="true"
-                                        aria-controls="settings_theme">Theme</button>
-                                    <button role="tab" aria-controls="settings_Author">Author</button>
-                                </menu>
-                                <article role="tabpanel" id="settings_theme">
-                                    <fieldset>
-                                        <legend style="float:none;width:auto;font-size:inherit;">各種設定</legend>
-                                        <p>テーマ
-                                            <select id="settings_theme_form">
-                                                <option>7</option>
-                                                <option>XP</option>
-                                                <option>98</option>
-                                            </select>
-                                        </p>
-                                        <p>壁紙
-                                            <select id="settings_theme_form_wallpaper" style="max-width:100%;">
-                                                <option value="なし">なし</option>
-                                            </select>
-                                        <div id="wallpaperInfo"></div>
-                                        </p>
-                                    </fieldset>
-                                    <div role="progressbar" id="settings_theme_progressbar" class="marquee d-none">
-                                    </div>
-                                    <script>
-                                        // テーマ切替
-                                        document.getElementById("settings_theme_form").addEventListener('change', function () {
-                                            let pgbar = document.getElementById("settings_theme_progressbar");
-                                            pgbar.classList.remove("d-none");
-                                            let css;
-                                            switch (this.value) {
-                                                case "7":
-                                                    css = "https://unpkg.com/7.css";
-                                                    break;
-                                                case "XP":
-                                                    css = "https://unpkg.com/xp.css";
-                                                    break;
-                                                case "98":
-                                                    css = "https://unpkg.com/98.css";
-                                                    break;
-                                            }
-                                            setTimeout(function () {
-                                                document.getElementById("themeCSS").href = css;
-                                                pgbar.classList.add("d-none");
-                                            }, 1500);
-                                        });
-
-                                        // 壁紙切替
-                                        getXML("https://code4fukui.github.io/find47/find47images.csv", function (r) {
-                                            let json = CSV2json(r);
-                                            console.log(CSV2array(r, ","));
-                                            // console.log(json[0]);
-                                            let DD = document.getElementById("settings_theme_form_wallpaper");
-                                            for (let i = 0; i < json.length; i++) {
-                                                let opt = document.createElement("option");
-                                                opt.innerText = json[i].title + "(" + json[i].pref + ")";
-                                                opt.value = i;
-                                                DD.appendChild(opt);
-                                            }
-
-                                            document.getElementById("settings_theme_form_wallpaper").addEventListener('change',
-                                                function () {
-                                                    if (this.value == "なし") {
-                                                        document.body.background = "none";
-                                                        document.getElementById("wallpaperInfo").innerHTML = "";
-                                                        return;
-                                                    }
-                                                    let data = json[this.value];
-                                                    console.log(this.value);
-                                                    console.log(data);
-                                                    document.body.background = data.url_image;
-                                                    document.getElementById("wallpaperInfo").innerHTML = "Data Source:" + "<br/>" +
-                                                        "<a href='" + data.url + "' target='_blank'>" +
-                                                        data.title + " ／ " + data.pref + "</a><br/>" +
-                                                        (data.authoerurl == undefined ? data.author :
+                            <div class="window-body">
+                                <div class="tab">
+                                    <menu role="tablist">
+                                        <button role="tab" aria-selected="true"
+                                            aria-controls="settings_theme">Theme</button>
+                                        <button role="tab" aria-controls="settings_Author">Author</button>
+                                    </menu>
+                                    <article role="tabpanel" id="settings_theme">
+                                        <fieldset>
+                                            <legend style="float:none;width:auto;font-size:inherit;">各種設定</legend>
+                                            <p>テーマ
+                                                <select id="settings_theme_form">
+                                                    <option>7</option>
+                                                    <option>XP</option>
+                                                    <option>98</option>
+                                                </select>
+                                            </p>
+                                            <p>壁紙
+                                                <select id="settings_theme_form_wallpaper" style="max-width:100%;">
+                                                    <option value="なし">なし</option>
+                                                </select>
+                                            <div id="wallpaperInfo"></div>
+                                            </p>
+                                        </fieldset>
+                                        <div role="progressbar" id="settings_theme_progressbar" class="marquee d-none">
+                                        </div>
+                                        <script>
+                                            // テーマ切替
+                                            function setWP(data) {
+                                                document.body.background = data.url_image;
+                                                document.getElementById("wallpaperInfo").innerHTML = "Data Source:" + "<br/>" +
+                                                    "<a href='" + data.url + "' target='_blank'>" +
+                                                    data.title + " ／ " + data.pref + "</a><br/>" +
+                                                    (data.authoerurl == undefined ? data.author :
                                                         "<a href='" + data.authoerurl + "' target='_blank'>" +
                                                         data.author + "</a>");
-                                                });
-                                        });
-                                    </script>
-                                    <p class="d-none">※本設定にはCookieを使用する予定です。</p>
-                                </article>
-                                <article role="tabpanel" hidden id="settings_Author">
-                                    修正依頼、機能要望はこちらまで。<br />
-                                    <button onclick="window.open('https://github.com/Zacky0922/KG')"><i
-                                            class="fab fa-github"></i> Source on
-                                        GitHub</button>
-                                </article>
+                                            }
+
+                                            document.getElementById("settings_theme_form").addEventListener('change', function () {
+                                                let pgbar = document.getElementById("settings_theme_progressbar");
+                                                pgbar.classList.remove("d-none");
+                                                let css;
+                                                switch (this.value) {
+                                                    case "7":
+                                                        css = "https://unpkg.com/7.css";
+                                                        break;
+                                                    case "XP":
+                                                        css = "https://unpkg.com/xp.css";
+                                                        break;
+                                                    case "98":
+                                                        css = "https://unpkg.com/98.css";
+                                                        break;
+                                                }
+                                                setTimeout(function () {
+                                                    document.getElementById("themeCSS").href = css;
+                                                    console.log("Change Theme.")
+                                                    pgbar.classList.add("d-none");
+                                                }, 1500);
+                                            });
+
+                                            // 壁紙切替
+                                            getXML("https://code4fukui.github.io/find47/find47images.csv", function (r) {
+                                                let json = sort(CSV2json(r), "pref_code");
+                                                console.log(json);
+
+                                                // ランダムフラグ
+                                                let pictId = false;
+
+                                                // リスト設定
+                                                let DD = document.getElementById("settings_theme_form_wallpaper");
+                                                for (let i = 0; i < json.length; i++) {
+                                                    let optgr = document.createElement("optgroup");
+                                                    optgr.label = json[i].pref;
+                                                    for (; optgr.label == json[i].pref; i++) {
+                                                        let opt = document.createElement("option");
+                                                        opt.innerText = json[i].title;
+                                                        opt.value = i;
+                                                        optgr.appendChild(opt);
+                                                        if (i == json.length - 1) {
+                                                            break;
+                                                        }
+                                                    }
+                                                    DD.appendChild(optgr);
+                                                }
+
+                                                document.getElementById("settings_theme_form_wallpaper").addEventListener('change',
+                                                    function () {
+                                                        switch (this.value) {
+                                                            case "なし":
+                                                                document.body.background = "none";
+                                                                document.getElementById("wallpaperInfo").innerHTML = "";
+                                                                pictId = false;
+                                                                return; break;
+                                                            case "ランダム":
+                                                                pictId = true;
+                                                                break;
+                                                            default:
+                                                                pictId = false;
+                                                        }
+                                                        let data = json[(pictId ? Math.round(Math.random() * json.length) : this.value)];
+                                                        setWP(data);
+                                                    });
+
+                                                // ランダム設定
+                                                setInterval(function () {
+                                                    return;
+                                                    let data = json[(pictId ? Math.round(Math.random() * json.length) : this.value)];
+                                                    setWP(data);
+                                                }, 30 * 1000);
+                                            }, false);
+                                        </script>
+                                        <p class="d-none">※本設定にはCookieを使用する予定です。</p>
+                                    </article>
+                                    <article role="tabpanel" hidden id="settings_Author">
+                                        修正依頼、機能要望はこちらまで。<br />
+                                        <button onclick="window.open('https://github.com/Zacky0922/KG')"><i
+                                                class="fab fa-github"></i> Source on
+                                            GitHub</button>
+                                    </article>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    <!-- 折角の背景が見えるように -->
+                    <div class="col-12" style="height:99vh"></div>
+                </div>
             </main>
         </div>
     </div>
