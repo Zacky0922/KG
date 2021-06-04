@@ -20,7 +20,7 @@
 
     <!-- myLibrary -->
     <script src="./script/std_ui.js"></script>
-    <script src="./script/array.js"></script>
+    <script src="./script/std_array.js"></script>
 
     <!-- XP.css -->
     <link id="themeCSS" rel="stylesheet" href="https://unpkg.com/7.css" type="text/css">
@@ -58,14 +58,17 @@
     </header>
     <div class="container-fluid">
         <div class="row">
-            <nav class="d-none d-md-block col-3 col-lg-2">qq</nav>
+            <!-- メニュー検討：https://copypet.jp/2139/ -->
+            <div class="d-none d-md-block col-3 col-lg-2">
+                <nav style="background:#ffcccc">a</nav>
+            </div>
             <main class="col">
                 <div class="row p-2 g-2">
                     <div class="col-6 border border-dark">ew</div>
                     <div class="col-6 text-center border border-dark">
                         <canvas id="暑さ指数ゲージ"></canvas>
 
-                        <script src="script/gauge.min.js"></script>
+                        <script src="./lib/gauge.min.js"></script>
                         <script>
                             // https://www.cssscript.com/customizable-gauge-canvas/
                             function setGage(r) {
@@ -158,7 +161,7 @@
 
                     <!-- setting -->
                     <div class="col-12 col-md-6">
-                        <div class="window">
+                        <div class="window glass">
                             <div class="title-bar">
                                 <div class="title-bar-text">Settings</div>
                                 <div class="title-bar-controls">
@@ -175,109 +178,29 @@
                                         <button role="tab" aria-controls="settings_Author">Author</button>
                                     </menu>
                                     <article role="tabpanel" id="settings_theme">
-                                        <fieldset>
-                                            <legend style="float:none;width:auto;font-size:inherit;">各種設定</legend>
-                                            <p>テーマ
-                                                <select id="settings_theme_form">
-                                                    <option>7</option>
-                                                    <option>XP</option>
-                                                    <option>98</option>
-                                                </select>
-                                            </p>
-                                            <p>壁紙
-                                                <select id="settings_theme_form_wallpaper" style="max-width:100%;">
-                                                    <option value="なし">なし</option>
-                                                </select>
-                                            <div id="wallpaperInfo"></div>
-                                            </p>
-                                        </fieldset>
+                                        <form>
+                                            <fieldset>
+                                                <legend style="float:none;width:auto;font-size:inherit;">各種設定</legend>
+                                                <p>テーマ
+                                                    <select id="settings_theme_form">
+                                                        <option>7</option>
+                                                        <option>XP</option>
+                                                        <option>98</option>
+                                                    </select>
+                                                </p>
+                                                <p>壁紙
+                                                    <select id="settings_theme_form_wallpaper" style="max-width:100%;">
+                                                        <option value="なし">なし</option>
+                                                    </select><br />
+                                                    <input type="checkbox" id="settings_theme_form_WPrandom">
+                                                    <label for="settings_theme_form_WPrandom">ランダムで変更(30sec)</label>
+                                                <div id="wallpaperInfo"></div>
+                                                </p>
+                                            </fieldset>
+                                        </form>
                                         <div role="progressbar" id="settings_theme_progressbar" class="marquee d-none">
                                         </div>
-                                        <script>
-                                            // テーマ切替
-                                            function setWP(data) {
-                                                document.body.background = data.url_image;
-                                                document.getElementById("wallpaperInfo").innerHTML = "Data Source:" + "<br/>" +
-                                                    "<a href='" + data.url + "' target='_blank'>" +
-                                                    data.title + " ／ " + data.pref + "</a><br/>" +
-                                                    (data.authoerurl == undefined ? data.author :
-                                                        "<a href='" + data.authoerurl + "' target='_blank'>" +
-                                                        data.author + "</a>");
-                                            }
-
-                                            document.getElementById("settings_theme_form").addEventListener('change', function () {
-                                                let pgbar = document.getElementById("settings_theme_progressbar");
-                                                pgbar.classList.remove("d-none");
-                                                let css;
-                                                switch (this.value) {
-                                                    case "7":
-                                                        css = "https://unpkg.com/7.css";
-                                                        break;
-                                                    case "XP":
-                                                        css = "https://unpkg.com/xp.css";
-                                                        break;
-                                                    case "98":
-                                                        css = "https://unpkg.com/98.css";
-                                                        break;
-                                                }
-                                                setTimeout(function () {
-                                                    document.getElementById("themeCSS").href = css;
-                                                    console.log("Change Theme.")
-                                                    pgbar.classList.add("d-none");
-                                                }, 1500);
-                                            });
-
-                                            // 壁紙切替
-                                            getXML("https://code4fukui.github.io/find47/find47images.csv", function (r) {
-                                                let json = sort(CSV2json(r), "pref_code");
-                                                console.log(json);
-
-                                                // ランダムフラグ
-                                                let pictId = false;
-
-                                                // リスト設定
-                                                let DD = document.getElementById("settings_theme_form_wallpaper");
-                                                for (let i = 0; i < json.length; i++) {
-                                                    let optgr = document.createElement("optgroup");
-                                                    optgr.label = json[i].pref;
-                                                    for (; optgr.label == json[i].pref; i++) {
-                                                        let opt = document.createElement("option");
-                                                        opt.innerText = json[i].title;
-                                                        opt.value = i;
-                                                        optgr.appendChild(opt);
-                                                        if (i == json.length - 1) {
-                                                            break;
-                                                        }
-                                                    }
-                                                    DD.appendChild(optgr);
-                                                }
-
-                                                document.getElementById("settings_theme_form_wallpaper").addEventListener('change',
-                                                    function () {
-                                                        switch (this.value) {
-                                                            case "なし":
-                                                                document.body.background = "none";
-                                                                document.getElementById("wallpaperInfo").innerHTML = "";
-                                                                pictId = false;
-                                                                return; break;
-                                                            case "ランダム":
-                                                                pictId = true;
-                                                                break;
-                                                            default:
-                                                                pictId = false;
-                                                        }
-                                                        let data = json[(pictId ? Math.round(Math.random() * json.length) : this.value)];
-                                                        setWP(data);
-                                                    });
-
-                                                // ランダム設定
-                                                setInterval(function () {
-                                                    return;
-                                                    let data = json[(pictId ? Math.round(Math.random() * json.length) : this.value)];
-                                                    setWP(data);
-                                                }, 30 * 1000);
-                                            }, false);
-                                        </script>
+                                        <script src="./script/theme.js"></script>
                                         <p class="d-none">※本設定にはCookieを使用する予定です。</p>
                                     </article>
                                     <article role="tabpanel" hidden id="settings_Author">
