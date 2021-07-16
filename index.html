@@ -208,8 +208,10 @@
                                         <a class="h4">Log</a>
                                         <div>
                                             <dl>
-                                                <dt>2021.04.13tue</dt>
-                                                <dd>諸々fix</dd>
+                                                <dt>2021.07.16fri</dt>
+                                            <dd>諸々fix</dd>
+                                            <dt>2021.04.13tue</dt>
+                                            <dd>諸々fix</dd>
                                                 <dt>12.12sat</dt>
                                                 <dd>レイアウトfix</dd>
                                                 <dt>11.24tue</dt>
@@ -270,7 +272,7 @@
                                     info
                                 </span>Info</div>
                             <div class="card-body">
-                                <div>
+                                <div style="d-none">
                                     <h5 class="card-title">アプリ版KG Dashboard</h5>
                                     <p>下記リンク先から簡易的なアプリ機能(PWA)を実験中です。<br />
                                         <a href="./teachers/">KG Dashboard for Teachers</a>
@@ -305,7 +307,7 @@
                                 <h5 class="card-title">生徒健康観察</h5>
                                 <div class="alert alert-primary" role="alert">
                                     <h4 class="alert-heading">新・健康観察</h4>
-                                    <h6 class="text-muted">2021.04.05より利用開始</h6>
+                                    <div>2021.04.05より利用開始</div>
                                     <div class="text-center">
                                         <a class="btn btn-outline-primary"
                                             href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVURTRXNlBLM0ZMUUpMV0JaQzdRVTFHM005SyQlQCN0PWcu"
@@ -314,11 +316,41 @@
                                             href="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc={7ddd4ab2-f6e4-48de-bc81-b9069dae2ca7}&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdHideGridlines=True&wdInConfigurator=True"
                                             role="button">教員確認用</a>
                                     </div>
+                                    <div class="mt-3">
+                                        <label class="btn btn-warning"
+                                            for="8時入力chkbox">平日8時前の入力を呼び掛けてください！</label><input type="checkbox"
+                                            id="8時入力chkbox" class="chkbx_disptoggle" checked>
+                                        <div class="alert alert-warning" role="alert" id="8時入力">
+                                            SHR直前に入力が集中すると、閲覧が困難になります。<br />
+                                            8時前の入力を徹底させてください。
+                                            <hr>
+                                            <small>
+                                                データ書込みでファイルがビジー状態になることが原因です。<br />
+                                                休日は時間が分散するので、その日の内に入力してくれればOKです。</small>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <label class="btn btn-warning" for="教員確認用error">「教員確認用」が開けないとき</label>
+                                        <input type="checkbox" id="教員確認用error" class="chkbx_disptoggle" checked>
+                                        <div class="alert alert-warning" role="alert">
+                                            <ol>
+                                                <li>
+                                                    一度、<a href="https://kgefac.sharepoint.com/">『コチラ』</a>を開く。</br>
+                                                    （アクセス権を要求されますが、無視してください）
+                                                </li>
+                                                <li>前のウィンドウを閉じて、本来のページを開く。</br>
+                                                    ※本来のページがダメな場合は
+                                                    <a
+                                                        href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True">「コチラ」</a>を試してください…
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="alert alert-warning" role="alert">
                                     <h4 class="alert-heading">カスタム名票</h4>
-                                    従来の名票をそのまま移行したため、「卒業生＝アカウント抹消済み」等で表示エラーになる場合があります。<br />
-                                    新名簿の登録を希望する場合は、カスタム名票登録シートの黄色部分に必要事項を入力し、ご提出ください。
+                                    <div>必要な方は個別にご提出ください。</div>
                                     <div class="text-center">
                                         <a class="btn btn-outline-primary"
                                             href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E9%2585%258D%25E5%25B8%2583%25E8%25B3%2587%25E6%2596%2599&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E5%2585%25A8%25E6%25A0%25A1%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%252F%25E9%2585%258D%25E5%25B8%2583%25E8%25B3%2587%25E6%2596%2599"
@@ -327,52 +359,6 @@
                                             職員会議 ＞ Teams備忘録 ＞ ファイル ＞ 全校アンケート ＞ 配布資料
                                         </div>
                                     </div>
-                                </div>
-
-
-
-
-                                <div class="alert alert-secondary" role="alert">
-                                    <h4 class="alert-heading">旧・健康観察</h4>
-                                    <h6 class="text-muted">2021.04.04まで</h6>
-                                    <div class="text-center m-2">
-                                        <a class="btn btn-outline-primary" role="button"
-                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
-                                        <a class="btn btn-primary" role="button"
-                                            href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
-                                        <a class="btn btn-outline-primary" role="button"
-                                            href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
-                                    </div>
-                                </div>
-
-
-
-
-
-
-                                <div class="alert alert-warning" role="alert">
-                                    <h5>平日8時前の入力を呼び掛けてください！</h5>
-                                    SHR直前に入力が集中すると、閲覧が困難になります。<br />
-                                    8時前の入力を再度徹底させてください。
-                                    <hr>
-                                    データ書込みでファイルがビジー状態になることが原因です。<br />
-                                    休日は時間が分散するので、その日の内に入力してくれればOKです。
-                                </div>
-
-                                <label class="btn btn-warning" for="教員確認用error">「教員確認用」が開けないとき</label>
-                                <input type="checkbox" id="教員確認用error" class="chkbx_disptoggle" checked>
-                                <div class="alert alert-warning" role="alert">
-                                    <ol>
-                                        <li>
-                                            一度、<a href="https://kgefac.sharepoint.com/">『コチラ』</a>を開く。</br>
-                                            （アクセス権を要求されますが、無視してください）
-                                        </li>
-                                        <li>前のウィンドウを閉じて、本来のページを開く。</br>
-                                            ※本来のページがダメな場合は
-                                            <a
-                                                href="https://kgefac.sharepoint.com/:x:/r/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc=%7Beb2f4f79-b5c1-409d-8899-b864d080762a%7D&action=embedview&AllowTyping=True&wdInConfigurator=True">「コチラ」</a>を試してください…
-                                        </li>
-                                    </ol>
                                 </div>
                                 <hr>
                                 <h5 class="card-title">教職員健康観察</h5>
@@ -384,97 +370,9 @@
                                 </p>
                             </div>
                             <div class="card-footer">
+                                <small class="text-muted">旧健康観察は本ページ下部のLinksに移動しました</small>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- COVID-19 widget -->
-                    <div class="col-12 col-lg-6">
-                        <div class="card">
-                            <div class="card-header"><span class="material-icons">
-                                    coronavirus
-                                </span>COVID-19 Info</div>
-                            <div class="card-body">
-                                <div class="js-scrollable">
-                                    <table class="table table-bordered border-secondary" id="COVID19infoTbl">
-                                        <thead></thead>
-                                        <tfoot></tfoot>
-                                        <tbody></tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">
-                                    <a href="https://covid19japan.com/">Data Source</a>
-                                </small>
-                            </div>
-                        </div>
-                        <script>
-                            function addCOVID19tbl(title, content) {
-                                document.getElementById("COVID19infoTbl").children[2].innerHTML += "<tr><th>" +
-                                    title + "</th><td class='text-center'>" + content + "</td></tr>";
-                            }
-                            $.getJSON("https://data.covid19japan.com/summary/latest.json", (data) => {
-                                // 昨日基準で処理：今日のデータはまだない可能性がある
-                                let yesterday = new Date();
-                                yesterday = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 1);
-                                let youbi = ("日,月,火,水,木,金,土").split(",");
-
-                                // thead
-                                document.getElementById("COVID19infoTbl").children[0].innerHTML += "" +
-                                    "<tr><td colspan='2' class='text-center'>" +
-                                    yesterday.getFullYear() + "/" +
-                                    (yesterday.getMonth() + 1) + "/" +
-                                    yesterday.getDate() + "(" + youbi[yesterday.getDay()] + ")の陽性者数" +
-                                    "</td></tr>";
-
-                                // tfoot
-                                let tfootTx = data.updated;
-                                tfootTx = tfootTx.replace("T", "(").replace("+09:00", "JST)");
-                                document.getElementById("COVID19infoTbl").children[1].innerHTML += "" +
-                                    "<tr><td colspan='2' class='text-right'>Update：" +
-                                    tfootTx + "</td></tr>";
-                                for (let key in data.prefectures[4]) {
-                                    //addCOVID19tbl(key, data.prefectures[4][key]);
-                                }
-
-
-                                // 特定抽出市町村（表示名、検索文字列）・・・患者データの分析が必要かも
-                                let city = [
-                                    { "伊奈町": ["Ina"] },
-                                    { "上尾市": ["Ageo"] },
-                                    { "さいたま市": ["Saitama", "Saitama city", "Saitama City"] }
-                                ];
-
-                                // 都道府県別データ取得
-                                let tbl = { "陽性者": { "埼玉県": 0, "東京都": 0, "全国": 0 } };
-                                for (let pref in data.prefectures) {
-                                    // 陽性者記録開始日取得
-                                    let ConfirmedStartDate = data.prefectures[pref].dailyConfirmedStartDate.split("-");
-                                    ConfirmedStartDate = new Date(Number(ConfirmedStartDate[0]),
-                                        Number(ConfirmedStartDate[1]) - 1,
-                                        Number(ConfirmedStartDate[2])
-                                    );
-                                    // 処理対象日のデータ配列番号取得
-                                    let i = (yesterday.getTime() - ConfirmedStartDate.getTime()) / (1000 * 60 * 60 * 24);
-                                    switch (data.prefectures[pref].name_ja) {
-                                        case "埼玉県":
-                                            tbl["陽性者"]["埼玉県"] = data.prefectures[pref].dailyConfirmedCount[i];
-                                            break;
-                                        case "東京都":
-                                            tbl["陽性者"]["東京都"] = data.prefectures[pref].dailyConfirmedCount[i];
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    tbl["陽性者"]["全国"] += data.prefectures[pref].dailyConfirmedCount[i];
-                                }
-                                // table生成
-                                addCOVID19tbl("埼玉県", tbl["陽性者"]["埼玉県"]);
-                                addCOVID19tbl("東京都", tbl["陽性者"]["東京都"]);
-                                addCOVID19tbl("全国", tbl["陽性者"]["全国"]);
-                            });
-                        </script>
                     </div>
 
                     <!-- イベント管理 -->
@@ -484,35 +382,119 @@
                                     event_available
                                 </span>受験生向けイベント2021</div>
                             <div class="card-body">
-                                <h5 class="card-title">教職員向けフォーム</h5>
-                                <h6 class="card-subtitle text-muted">個別相談・部活動体験等の登録・確認はコチラから</h6>
+                                <h5 class="card-title">イベント登録～予約確認～個別相談</h5>
+                                <h6 class="card-subtitle text-muted">個別相談・部活動体験など</h6>
                                 <p class="card-text">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        まずはココから登録。<br />
-                                        <small>登録の手間削減のため、紙ではなくWEB登録にご協力ください。</small><br />
-                                        <a class="btn btn-outline-primary" role="button"
-                                            href="https://forms.office.com/pages/responsepage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQzlCWk5PWlo3VVkwM1E5UjU2V0ZUVUMyTCQlQCN0PWcu">イベント登録申請</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        登録イベントの参加者一覧はコチラ。<br />
-                                        <a class="btn btn-outline-primary" role="button"
+
+
+
+                                    <style>
+                                        /* https://qiita.com/suin/items/7ee3c8ae24a7d8e3ff33 */
+                                        .mysteps {
+                                            /* 連番カウンター名の定義 */
+                                            counter-reset: step-counter;
+                                            /* 縦棒との位置関係に必要 */
+                                            position: relative;
+                                            /* 縦棒と連番のためのスペースを左に確保 */
+                                            padding-left: 2rem;
+                                            /* 連番(1.5rem) + 余白 */
+                                        }
+
+                                        /* 縦棒 */
+                                        .mysteps:before {
+                                            content: "";
+                                            /* 幅と色 */
+                                            background-color: #0d6efd;
+                                            background-image: linear-gradient(0deg,
+                                                    #fff 50%, #0d6efd 50%, #0d6efd 100%);
+                                            background-size: 2px 6px;
+                                            width: 2px;
+                                            /* 位置 */
+                                            position: absolute;
+                                            top: 0.7rem;
+                                            /* 円のwidthの半分 */
+                                            left: 0.7rem;
+                                            /* 円のwidthの半分 */
+                                            height: calc(100% - 0.7rem);
+                                            /* 100% - top */
+                                            /* 連番より後ろに表示するため */
+                                            z-index: 0;
+                                        }
+
+                                        .mysteps>h5 {
+                                            /* 連番カウンターを+1する */
+                                            counter-increment: step-counter;
+                                            /* 連番カウンターを垂直方向に中央揃えで表示する */
+                                            display: flex;
+                                            align-items: center;
+                                        }
+
+                                        /* ①②③など連番 */
+                                        .mysteps>h5:before {
+                                            /* 連番カウンターの値を表示する */
+                                            content: counter(step-counter);
+                                            /* フォントと色 */
+                                            background: #0d6efd;
+                                            color: white;
+                                            font-size: 0.8rem;
+                                            font-weight: normal;
+                                            /* 文字を中央に表示する */
+                                            line-height: 1.5rem;
+                                            text-align: center;
+                                            /* 円で表示する */
+                                            width: 1.5rem;
+                                            height: 1.5rem;
+                                            border-radius: 1.5rem;
+                                            /* .stepsでmargin-left +2rem したぶん左に戻す */
+                                            position: absolute;
+                                            left: 0;
+                                            /* 縦棒より手前に表示するため */
+                                            z-index: 1;
+                                        }
+
+                                        /* 項目間マージン調整 */
+                                        .mysteps>h5 {
+                                            margin-top: 1.5rem;
+                                        }
+
+                                        .mysteps>h5:first-child {
+                                            margin-top: 0;
+                                        }
+                                    </style>
+                                <div class="mysteps">
+                                    <h5><span class="bg-primary text-white badge">教職員</span>
+                                        イベント登録</h5>
+                                    <div>誤登録防止のため、WEB登録にご協力ください。<br />
+                                        <small class="text-muted">
+                                            登録自体は手動で行なうので、即時反映ではありません。<br />
+                                            お急ぎの場合は、WEB登録後に直接お声掛けください。</small>
+                                    </div>
+                                    <div><a class="btn btn-outline-primary" role="button"
+                                            href="https://forms.office.com/pages/responsepage.aspx?id=z327fGQzzUGZdki7xIvYKpHVAnr2D4tFhVOJ99MGdnVUQzlCWk5PWlo3VVkwM1E5UjU2V0ZUVUMyTCQlQCN0PWcu">イベント登録申請</a><br />
+                                        <small class="text-muted">※登録後、Teamsチャットにリマインドが届きます</small>
+                                    </div>
+                                    <h5><span class="bg-secondary text-white badge">受験生</span>
+                                        イベント申込</h5>
+                                    <div>入力画面を確認したい方は、ご連絡ください。<br />
+                                        <small class="text-muted">※個人でのテストアカウント作成はご遠慮ください。</small>
+                                    </div>
+                                    <div><a class="btn btn-outline-secondary" role="button"
+                                            href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a></div>
+                                    <h5><span class="bg-primary text-white badge">教職員</span>
+                                        予約状況確認</h5>
+                                    <div>毎朝手動で更新します。<br />
+                                        <small class="text-muted">※たまに忘れるので、そのときはご連絡ください。</small>
+                                    </div>
+                                    <div><a class="btn btn-outline-primary" role="button"
                                             href="https://kgefac-my.sharepoint.com/personal/s-ozaki_kgef_ac_jp/Documents/shareInKG/受験生イベント集計.aspx">イベント申込状況確認</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        個別相談の教員用フォームはコチラ。<br />
-                                        <a class="btn btn-primary" role="button"
-                                            href="https://kbs.kgef.ac.jp/seiseki/">個別相談入力フォーム</a>
-                                    </li>
-                                </ul>
-                                <hr>
-                                <h5 class="card-title">受験生向けフォーム</h5>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <a class="btn btn-outline-primary" role="button"
-                                            href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a>
-                                    </li>
-                                </ul>
+                                    </div>
+                                    <h5><span class="bg-primary text-white badge">教職員</span>
+                                        個別相談</h5>
+                                    <div>個別相談入力フォームはコチラ。</div>
+                                    <div><a class="btn btn-outline-primary" role="button"
+                                            href="https://kbs.kgef.ac.jp/seiseki/">個別相談入力フォーム</a></div>
+                                </div>
+
                                 </p>
                             </div>
                             <div class="card-footer">
@@ -615,13 +597,15 @@
 
                                 <h5 class="card-title">全校概況</h5>
                                 <div class="text-center">
-                                    <iframe width="594" height="593" frameborder="0" scrolling="no"
+                                    <iframe style="width:100%;max-width:700px;height:593px" frameborder="0"
+                                        scrolling="no"
                                         src="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc={7ddd4ab2-f6e4-48de-bc81-b9069dae2ca7}&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E7%B0%A1%E6%98%93%E6%97%A5%E5%A0%B1'!P2&Item=%E7%B0%A1%E6%98%93%E6%97%A5%E5%A0%B1!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
                                 </div>
                                 <hr>
                                 <h5 class="card-title">クラス別一覧</h5>
                                 <div class="text-center">
-                                    <iframe width="800" height="900" frameborder="0" scrolling="no"
+                                    <iframe style="width:100%;max-width:700px;height:950px" frameborder="0"
+                                        scrolling="no"
                                         src="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc={7ddd4ab2-f6e4-48de-bc81-b9069dae2ca7}&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5'!C11&Item=%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
                                 </div>
                             </div>
@@ -894,6 +878,17 @@
                                                         <a class="btn btn-primary" role="button"
                                                             href="https://kgefac.sharepoint.com/sites/ICT/_layouts/15/Doc.aspx?sourcedoc=%7b3832abaf-a986-4da4-bfc1-f8ce30afcb6a%7d&action=embedview&wdAllowInteractivity=False&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
                                                     </dd>
+                                                    <dt class="col-sm-3">旧健康観察<br />(2021.04.04まで)</dt>
+                                                    <dd class="col-sm-9">
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://forms.office.com/Pages/ResponsePage.aspx?id=z327fGQzzUGZdki7xIvYKsdYGVKci-RNlTl2T9pc_TpUNkhSRTNMMVNLUzBQOVVKMVdLWkFMWDZUMCQlQCN0PWcu">生徒入力用</a>
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://kgefac.sharepoint.com/sites/msteams_777150/_layouts/15/Doc.aspx?sourcedoc={eb2f4f79-b5c1-409d-8899-b864d080762a}&action=embedview&AllowTyping=True&wdInConfigurator=True">教員確認用</a>
+                                                        <a class="btn btn-primary" role="button"
+                                                            href="https://teams.microsoft.com/_#/school/files/Teams%E5%82%99%E5%BF%98%E9%8C%B2?threadId=19%3A78b74f6be33643508b25545be068ff8f%40thread.tacv2&ctx=channel&context=%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FTeams%25E5%2582%2599%25E5%25BF%2598%25E9%258C%25B2%252F%25E3%2582%25A2%25E3%2583%25B3%25E3%2582%25B1%25E3%2583%25BC%25E3%2583%2588%25E7%25AE%25A1%25E7%2590%2586%252F%25E5%2581%25A5%25E5%25BA%25B7%25E8%25A6%25B3%25E5%25AF%259F%25E3%2581%25BE%25E3%2581%25A8%25E3%2582%2581">月例レポート</a>
+                                                    </dd>
+
+
                                                 </dl>
                                             </div>
                                         </div>
@@ -930,10 +925,32 @@
                                             aria-valuemax="100">
                                         </div>
                                     </div>
-                                    <small class="text-muted" onclick="getTimeList()">(2021年4月～)50分授業版</small>
+                                    <small class="text-muted" onclick="getTimeList()">R3前期末40分授業版</small>
                                 </div>
                                 <script>
                                     // 項目名,h,m
+                                    // 前期末40分短縮
+                                    let timetbl = [
+                                        ["--", 0, 0],
+                                        ["SHR", 8, 45],
+                                        ["1限開始", 8, 55],
+                                        ["1限終わり", 9, 35],
+                                        ["2限開始", 9, 45],
+                                        ["2限終わり", 10, 25],
+                                        ["3限開始", 10, 35],
+                                        ["3限終わり", 11, 15],
+                                        ["4限開始", 11, 25],
+                                        ["4限終わり", 12, 05],
+                                        ["5限開始", 12, 50],
+                                        ["5限終わり", 13, 30],
+                                        ["6限開始", 13, 40],
+                                        ["6限終わり", 14, 20],
+                                        ["7限開始", 14, 30],
+                                        ["7限終わり", 15, 10],
+                                        ["完全下校", 19, 00],
+                                        ["閉門", 20, 30]
+                                    ];
+                                    /*
                                     //  平常
                                     let timetbl = [
                                         ["-", 0, 0],
@@ -1037,6 +1054,97 @@
                         </div>
                     </div>
 
+                    <!-- COVID-19 widget -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header"><span class="material-icons">
+                                    coronavirus
+                                </span>COVID-19 Info</div>
+                            <div class="card-body">
+                                <div class="js-scrollable">
+                                    <table class="table table-bordered border-secondary" id="COVID19infoTbl">
+                                        <thead></thead>
+                                        <tfoot></tfoot>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="https://covid19japan.com/">Data Source</a>
+                                </small>
+                            </div>
+                        </div>
+                        <script>
+                            function addCOVID19tbl(title, content) {
+                                document.getElementById("COVID19infoTbl").children[2].innerHTML += "<tr><th>" +
+                                    title + "</th><td class='text-center'>" + content + "</td></tr>";
+                            }
+                            $.getJSON("https://data.covid19japan.com/summary/latest.json", (data) => {
+                                // 昨日基準で処理：今日のデータはまだない可能性がある
+                                let yesterday = new Date();
+                                yesterday = new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate() - 1);
+                                let youbi = ("日,月,火,水,木,金,土").split(",");
+
+                                // thead
+                                document.getElementById("COVID19infoTbl").children[0].innerHTML += "" +
+                                    "<tr><td colspan='2' class='text-center'>" +
+                                    yesterday.getFullYear() + "/" +
+                                    (yesterday.getMonth() + 1) + "/" +
+                                    yesterday.getDate() + "(" + youbi[yesterday.getDay()] + ")の陽性者数" +
+                                    "</td></tr>";
+
+                                // tfoot
+                                let tfootTx = data.updated;
+                                tfootTx = tfootTx.replace("T", "(").replace("+09:00", "JST)");
+                                document.getElementById("COVID19infoTbl").children[1].innerHTML += "" +
+                                    "<tr><td colspan='2' class='text-right'>Update：" +
+                                    tfootTx + "</td></tr>";
+                                for (let key in data.prefectures[4]) {
+                                    //addCOVID19tbl(key, data.prefectures[4][key]);
+                                }
+
+
+                                // 特定抽出市町村（表示名、検索文字列）・・・患者データの分析が必要かも
+                                let city = [
+                                    { "伊奈町": ["Ina"] },
+                                    { "上尾市": ["Ageo"] },
+                                    { "さいたま市": ["Saitama", "Saitama city", "Saitama City"] }
+                                ];
+
+                                // 都道府県別データ取得
+                                let tbl = { "陽性者": { "埼玉県": 0, "東京都": 0, "全国": 0 } };
+                                for (let pref in data.prefectures) {
+                                    // 陽性者記録開始日取得
+                                    let ConfirmedStartDate = data.prefectures[pref].dailyConfirmedStartDate.split("-");
+                                    ConfirmedStartDate = new Date(Number(ConfirmedStartDate[0]),
+                                        Number(ConfirmedStartDate[1]) - 1,
+                                        Number(ConfirmedStartDate[2])
+                                    );
+                                    // 処理対象日のデータ配列番号取得
+                                    let i = (yesterday.getTime() - ConfirmedStartDate.getTime()) / (1000 * 60 * 60 * 24);
+                                    switch (data.prefectures[pref].name_ja) {
+                                        case "埼玉県":
+                                            tbl["陽性者"]["埼玉県"] = data.prefectures[pref].dailyConfirmedCount[i];
+                                            break;
+                                        case "東京都":
+                                            tbl["陽性者"]["東京都"] = data.prefectures[pref].dailyConfirmedCount[i];
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    tbl["陽性者"]["全国"] += data.prefectures[pref].dailyConfirmedCount[i];
+                                }
+                                // table生成
+                                addCOVID19tbl("埼玉県", tbl["陽性者"]["埼玉県"]);
+                                addCOVID19tbl("東京都", tbl["陽性者"]["東京都"]);
+                                addCOVID19tbl("全国", tbl["陽性者"]["全国"]);
+                            });
+                        </script>
+                    </div>
+
+
+
                     <!-- スクールバス -->
                     <div class="col-12">
                         <div class="card">
@@ -1138,98 +1246,101 @@
                     </div>
 
                     <!-- 鉄道遅延 -->
-                    <div class="card">
-                        <div class="card-header"><span class="material-icons">
-                                train
-                            </span>Train Info</div>
-                        <div class="card-body">
-                            <div class="js-scrollable">
-                                <table class="table table-bordered border-secondary" id="TrainInfo">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>路線種</th>
-                                            <th>遅延路線</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="2" class="text-right"></td>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody></tbody>
-                                </table>
-                            </div>
-                            <!--  trigger modal -->
-                            <p>
-                                <a role="button" class="btn btn-outline-primary" data-toggle="modal"
-                                    data-target="#TrainModal">その他</a>
-                            </p>
-                            <!-- Modal -->
-                            <div class="modal fade" id="TrainModal" tabindex="-1" aria-labelledby="TrainModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="TrainModalLabel">遅延情報</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body" id="TrainModalText">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary"
-                                                data-dismiss="modal">Close</button>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header"><span class="material-icons">
+                                    train
+                                </span>Train Info</div>
+                            <div class="card-body">
+                                <div class="js-scrollable">
+                                    <table class="table table-bordered border-secondary" id="TrainInfo">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>路線種</th>
+                                                <th>遅延路線</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="2" class="text-right"></td>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <!--  trigger modal -->
+                                <p>
+                                    <a role="button" class="btn btn-outline-primary" data-toggle="modal"
+                                        data-target="#TrainModal">その他</a>
+                                </p>
+                                <!-- Modal -->
+                                <div class="modal fade" id="TrainModal" tabindex="-1" aria-labelledby="TrainModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="TrainModalLabel">遅延情報</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body" id="TrainModalText">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <script>
-                            let trainList = [
-                                { name: "ニューシャトル", line: ["ニューシャトル"] },
-                                { name: "最寄りJR線<br/>(高/宇/SS/UT)", line: ("宇都宮,高崎,湘南新宿,上野東京").split(",") },
-                                { name: "近隣JR<br/>(京浜,埼京,川越)", line: ("京浜東北,埼京,川越").split(",") },
-                                { name: "東武線<br/>(STL/UPL)", line: ("アーバンパーク,スカイツリー,野田,伊勢崎線").split(",") }
-                            ];
-                            let tbody = document.getElementById("TrainInfo");
-                            $.getJSON("https://tetsudo.rti-giken.jp/free/delay.json", (data) => {
-                                let tbody = document.getElementById("TrainInfo").children[2];
-                                for (let i = 0; i < trainList.length; i++) {
-                                    let html = "<tr><th>" + trainList[i].name + "</th><td>";
-                                    let delayFlag = false;
-                                    for (let j = 0; j < trainList[i].line.length; j++) {
-                                        for (let k in data) {
-                                            if (data[k]["name"].indexOf(trainList[i].line[j]) > -1) {
-                                                html += (delayFlag ? "<br/>" : "") + data[k].name;
-                                                delayFlag = true;
+                            <script>
+                                let trainList = [
+                                    { name: "ニューシャトル", line: ["ニューシャトル"] },
+                                    { name: "最寄りJR線<br/>(高/宇/SS/UT)", line: ("宇都宮,高崎,湘南新宿,上野東京").split(",") },
+                                    { name: "近隣JR<br/>(京浜,埼京,川越)", line: ("京浜東北,埼京,川越").split(",") },
+                                    { name: "東武線<br/>(STL/UPL)", line: ("アーバンパーク,スカイツリー,野田,伊勢崎線").split(",") }
+                                ];
+                                let tbody = document.getElementById("TrainInfo");
+                                $.getJSON("https://tetsudo.rti-giken.jp/free/delay.json", (data) => {
+                                    let tbody = document.getElementById("TrainInfo").children[2];
+                                    for (let i = 0; i < trainList.length; i++) {
+                                        let html = "<tr><th>" + trainList[i].name + "</th><td>";
+                                        let delayFlag = false;
+                                        for (let j = 0; j < trainList[i].line.length; j++) {
+                                            for (let k in data) {
+                                                if (data[k]["name"].indexOf(trainList[i].line[j]) > -1) {
+                                                    html += (delayFlag ? "<br/>" : "") + data[k].name;
+                                                    delayFlag = true;
+                                                }
                                             }
                                         }
+                                        tbody.innerHTML += html + (delayFlag ? "" : "-") + "</td></tr>";
                                     }
-                                    tbody.innerHTML += html + (delayFlag ? "" : "-") + "</td></tr>";
-                                }
-                                // 全運行情報（UNIXタイム＝1970/1/1からの秒数なので注意）
-                                let update = 0;
-                                for (let k in data) {
-                                    document.getElementById("TrainModalText").innerHTML += data[k].name + "／" + data[k].company +
-                                        " (" + (new Date(data[k].lastupdate_gmt * 1000)).toLocaleTimeString() + ")<br/>";
-                                    update = (update < data[k].lastupdate_gmt ? data[k].lastupdate_gmt : update);
-                                }
-                                update = new Date(update * 1000);
-                                document.getElementById("TrainInfo").children[1].children[0].children[0].innerHTML = "Update：" +
-                                    update.getFullYear() + "/" +
-                                    (update.getMonth() + 1) + "/" +
-                                    update.getDate() + " " +
-                                    update.getHours() + ":" +
-                                    update.getMinutes();
-                            })
-                        </script>
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                <a href="https://www.tetsudo.com/traffic/">鉄道com(運行情報まとめ)</a>
-                                /
-                                <a href="https://rti-giken.jp/fhc/api/train_tetsudo/">API</a>
-                            </small>
+                                    // 全運行情報（UNIXタイム＝1970/1/1からの秒数なので注意）
+                                    let update = 0;
+                                    for (let k in data) {
+                                        document.getElementById("TrainModalText").innerHTML += data[k].name + "／" + data[k].company +
+                                            " (" + (new Date(data[k].lastupdate_gmt * 1000)).toLocaleTimeString() + ")<br/>";
+                                        update = (update < data[k].lastupdate_gmt ? data[k].lastupdate_gmt : update);
+                                    }
+                                    update = new Date(update * 1000);
+                                    document.getElementById("TrainInfo").children[1].children[0].children[0].innerHTML = "Update：" +
+                                        update.getFullYear() + "/" +
+                                        (update.getMonth() + 1) + "/" +
+                                        update.getDate() + " " +
+                                        update.getHours() + ":" +
+                                        update.getMinutes();
+                                })
+                            </script>
+                            <div class="card-footer">
+                                <small class="text-muted">
+                                    <a href="https://www.tetsudo.com/traffic/">鉄道com(運行情報まとめ)</a>
+                                    /
+                                    <a href="https://rti-giken.jp/fhc/api/train_tetsudo/">API</a>
+                                </small>
+                            </div>
                         </div>
                     </div>
 
