@@ -209,9 +209,9 @@
                                         <div>
                                             <dl>
                                                 <dt>2021.07.16fri</dt>
-                                            <dd>諸々fix</dd>
-                                            <dt>2021.04.13tue</dt>
-                                            <dd>諸々fix</dd>
+                                                <dd>諸々fix</dd>
+                                                <dt>2021.04.13tue</dt>
+                                                <dd>諸々fix</dd>
                                                 <dt>12.12sat</dt>
                                                 <dd>レイアウトfix</dd>
                                                 <dt>11.24tue</dt>
@@ -272,7 +272,7 @@
                                     info
                                 </span>Info</div>
                             <div class="card-body">
-                                <div style="d-none">
+                                <div class="d-none">
                                     <h5 class="card-title">アプリ版KG Dashboard</h5>
                                     <p>下記リンク先から簡易的なアプリ機能(PWA)を実験中です。<br />
                                         <a href="./teachers/">KG Dashboard for Teachers</a>
@@ -908,6 +908,65 @@
             <section class="col-12 col-xl-2">
 
                 <div class="row g-2">
+
+
+                    <!-- 熱中症情報 -->
+                    <div class="col-12 d-none">
+                        <div class="card">
+                            <div class="card-header"><span class="material-icons">
+                                    wb_sunny
+                                </span>熱中症情報</div>
+                            <div class="card-body">
+                                <div class="card-text">
+
+                                </div>
+                                <script>
+                                    fetch("http://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv").then(
+                                        function (response) {
+                                            console.log("ああ");
+                                            return response.text()
+                                        }
+                                    ).then(function (csv) {
+                                        console.log(csv);
+                                    });
+
+                                    fetch("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv").then(
+                                        function (response) {
+                                            console.log("ああ");
+                                            return response.text()
+                                        }
+                                    ).then(function (csv) {
+                                        console.log(csv);
+                                    });
+
+                                    (function (dataPath) {
+                                        const request = new XMLHttpRequest();
+                                        request.addEventListener('load', (event) => {
+                                            const response = event.target.responseText;
+                                            console.log(response);
+                                        });
+                                        request.open('GET', dataPath, true);
+                                        request.send();
+                                    })("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv");
+
+                                    (function (dataPath) {
+                                        const request = new XMLHttpRequest();
+                                        request.addEventListener('load', (event) => {
+                                            const response = event.target.responseText;
+                                            console.log(response);
+                                        });
+                                        request.open('GET', dataPath, true);
+                                        request.send();
+                                    })("http://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv");
+
+                                </script>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">(</small>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <!-- 授業タイマー -->
                     <div class="col-12">
