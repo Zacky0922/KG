@@ -921,48 +921,59 @@
 
                                 </div>
                                 <script>
-                                    fetch("http://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv").then(
-                                        function (response) {
-                                            console.log("ああ");
-                                            return response.text()
-                                        }
-                                    ).then(function (csv) {
-                                        console.log(csv);
-                                    });
-
-                                    fetch("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv").then(
-                                        function (response) {
-                                            console.log("ああ");
-                                            return response.text()
-                                        }
-                                    ).then(function (csv) {
-                                        console.log(csv);
-                                    });
-
-                                    (function (dataPath) {
-                                        const request = new XMLHttpRequest();
-                                        request.addEventListener('load', (event) => {
-                                            const response = event.target.responseText;
-                                            console.log(response);
+                                    // https://developer.mozilla.org/ja/docs/Web/API/Request/Request
+                                    // https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/fetch#parameters
+                                    function fetchTest(url, init) {
+                                        fetch(url, init = {}).then(function (response) {
+                                            console.log(response.status);
+                                            return response.text();
+                                            if (response.ok) {
+                                                console.log('Fetch成功');
+                                                return response.text();
+                                            } else {
+                                                console.log('response NOT OK');
+                                                throw new Error('Network response was not ok.');
+                                            }
+                                        }).then(function (data) {
+                                            console.log(data);
+                                        }).catch(function (error) {
+                                            console.log('Fetch失敗 : ', error.message);
                                         });
-                                        request.open('GET', dataPath, true);
-                                        request.send();
-                                    })("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv");
+                                    }
+                                    (function () {
+                                        let myHeader = new Headers(
+                                            // {
+                                            // 'Content-Type': 'text/plain',
+                                            // 'Access-Control-Allow-Origin': 'https://zacky.xxxxxxxx.jp'
+                                            // }
+                                        );
+                                        // myHeader.append('Content-Type', 'text/plain');
+                                        // myHeader.append('Access-Control-Allow-Origin', 'https://zacky.xxxxxxxx.jp');
+                                        let myInit = {
+                                            method: 'GET',
+                                            // 'mode': 'no-cors',
+                                            // 'referrerPolicy': 'strict-origin-when-cross-origin'
+                                            // 'credentials': "include",
+                                            // 'headers': myHeader,
+                                            mode: 'cors',
+                                            cache: 'default'
+                                        };
+                                        // 予測値
+                                        console.log("予測値");
+                                        fetchTest("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv", myInit);
 
-                                    (function (dataPath) {
-                                        const request = new XMLHttpRequest();
-                                        request.addEventListener('load', (event) => {
-                                            const response = event.target.responseText;
-                                            console.log(response);
-                                        });
-                                        request.open('GET', dataPath, true);
-                                        request.send();
-                                    })("http://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv");
+                                        // 実況値
+                                        console.log("実況値");
+                                        fetchTest("https://www.wbgt.env.go.jp/est15WG/dl/wbgt_43241_202107.csv", myInit);
 
+                                        // test
+                                        fetch("https://zacky.ninja-x.jp/db/test.json", myInit={mode:"no-cors"});
+
+                                    })()
                                 </script>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted">(</small>
+                                <small class="text-muted"></small>
                             </div>
                         </div>
                     </div>
@@ -991,7 +1002,7 @@
                                     // 前期末40分短縮
                                     let timetbl = [
                                         ["--", 0, 0],
-                                        ["SHR", 8, 45],
+                                        ["SHR", 8, 40],
                                         ["1限開始", 8, 55],
                                         ["1限終わり", 9, 35],
                                         ["2限開始", 9, 45],
@@ -1540,9 +1551,7 @@
                                 </div>
                                 <div class="card-text" id="debugJson"></div>
                                 <script>
-                                    $.getJSON("https://zacky.ninja-x.jp/db/test.json", (data) => {
-                                        console.log(data)
-                                    });
+
                                 </script>
                             </div>
                             <div class="card-footer">
