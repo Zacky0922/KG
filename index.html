@@ -158,10 +158,14 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li><a href="https://fes.kgef.ac.jp/2020jsh/index.html">五峯祭2020</a>
+                                            <li>五峯祭
                                                 <ul>
-                                                    <li><a
-                                                            href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
+                                                    <li>
+                                                        <a href="https://fes.kgef.ac.jp/2021jsh/">五峯祭2021</a><br/>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://fes.kgef.ac.jp/2020jsh/">五峯祭2020</a><br/>
+                                                        <a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -179,6 +183,8 @@
                                             <li>数学ツール
                                                 <ul>
                                                     <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
+                                                    <li><a href="https://webdemo.myscript.com/">MyScript Webdemo</a></li>
+                                                    <li><a href="https://cloudlatex.io/">Cloud LaTeX</a></li>
                                                     <li><a href="https://ja.overleaf.com/">Overleaf</a></li>
                                                     <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
                                                     <li><a href="https://www.geogebra.org/?lang=ja">Geogebra</a></li>
@@ -189,6 +195,9 @@
                                                 <ul>
                                                     <li>
                                                         <a href="https://flow.microsoft.com/ja-jp/">PowerAutomate</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://adaptivecards.io/designer/">Adaptive Cards Designer</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -479,6 +488,8 @@
                                         <small class="text-muted">※個人でのテストアカウント作成はご遠慮ください。</small>
                                     </div>
                                     <div><a class="btn btn-outline-secondary" role="button"
+                                            href="https://jsh.kgef.ac.jp/khs/examinee/event/">イベント告知</a>
+                                            <a class="btn btn-outline-secondary" role="button"
                                             href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a></div>
                                     <h5><span class="bg-primary text-white badge">教職員</span>
                                         予約状況確認</h5>
@@ -604,7 +615,7 @@
                                 <hr>
                                 <h5 class="card-title">クラス別一覧</h5>
                                 <div class="text-center">
-                                    <iframe style="width:100%;max-width:700px;height:950px" frameborder="0"
+                                    <iframe style="width:100%;max-width:800px;height:950px" frameborder="0"
                                         scrolling="no"
                                         src="https://kgefac.sharepoint.com/sites/msteams_1d13d1/_layouts/15/Doc.aspx?sourcedoc={7ddd4ab2-f6e4-48de-bc81-b9069dae2ca7}&action=embedview&wdAllowInteractivity=False&AllowTyping=True&ActiveCell='%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5'!C11&Item=%E3%82%AF%E3%83%A9%E3%82%B9%E5%88%A5!Print_Area&wdHideGridlines=True&wdInConfigurator=True"></iframe>
                                 </div>
@@ -925,25 +936,27 @@
                                     // https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/fetch#parameters
                                     function fetchTest(url, init) {
                                         fetch(url, init = {}).then(function (response) {
+                                            console.log("aa");
                                             console.log(response.status);
-                                            return response.text();
+                                            // return response.text();
                                             if (response.ok) {
-                                                console.log('Fetch成功');
-                                                return response.text();
+                                                console.log('Fetch成功 : ', url, "\n");
+                                                return response.json();
                                             } else {
                                                 console.log('response NOT OK');
                                                 throw new Error('Network response was not ok.');
                                             }
                                         }).then(function (data) {
+                                            console.log('Fetch成功 : ', url, "\n");
                                             console.log(data);
                                         }).catch(function (error) {
-                                            console.log('Fetch失敗 : ', error.message);
+                                            console.log('Fetch失敗 : ', url, "\n", error.message);
                                         });
                                     }
                                     (function () {
                                         let myHeader = new Headers(
                                             // {
-                                            // 'Content-Type': 'text/plain',
+                                            // 'Content-Type': 'text/plain',application/json
                                             // 'Access-Control-Allow-Origin': 'https://zacky.xxxxxxxx.jp'
                                             // }
                                         );
@@ -967,9 +980,13 @@
                                         fetchTest("https://www.wbgt.env.go.jp/est15WG/dl/wbgt_43241_202107.csv", myInit);
 
                                         // test
-                                        fetch("https://zacky.ninja-x.jp/db/test.json", myInit={mode:"no-cors"});
+                                        console.log("test");
+                                        fetch("https://zacky.ninja-x.jp/db/test.json", myInit);
+                                        myHeader.append('Content-Type','application/json');
+                                        fetch("https://zacky.xxxxxxxx.jp/test/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
+                                        fetch("https://zacky0922.github.jp/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
 
-                                    })()
+                                    })();
                                 </script>
                             </div>
                             <div class="card-footer">
