@@ -161,11 +161,12 @@
                                             <li>五峯祭
                                                 <ul>
                                                     <li>
-                                                        <a href="https://fes.kgef.ac.jp/2021jsh/">五峯祭2021</a><br/>
+                                                        <a href="https://fes.kgef.ac.jp/2021jsh/">五峯祭2021</a><br />
                                                     </li>
                                                     <li>
-                                                        <a href="https://fes.kgef.ac.jp/2020jsh/">五峯祭2020</a><br/>
-                                                        <a href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
+                                                        <a href="https://fes.kgef.ac.jp/2020jsh/">五峯祭2020</a><br />
+                                                        <a
+                                                            href="https://fes.kgef.ac.jp/2020jsh/index.html?debug">debug用</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -183,7 +184,8 @@
                                             <li>数学ツール
                                                 <ul>
                                                     <li><a href="https://www.wolframalpha.com/">WolframAlpha</a></li>
-                                                    <li><a href="https://webdemo.myscript.com/">MyScript Webdemo</a></li>
+                                                    <li><a href="https://webdemo.myscript.com/">MyScript Webdemo</a>
+                                                    </li>
                                                     <li><a href="https://cloudlatex.io/">Cloud LaTeX</a></li>
                                                     <li><a href="https://ja.overleaf.com/">Overleaf</a></li>
                                                     <li><a href="https://www.mathcha.io/editor">Mathcha</a></li>
@@ -197,7 +199,8 @@
                                                         <a href="https://flow.microsoft.com/ja-jp/">PowerAutomate</a>
                                                     </li>
                                                     <li>
-                                                        <a href="https://adaptivecards.io/designer/">Adaptive Cards Designer</a>
+                                                        <a href="https://adaptivecards.io/designer/">Adaptive Cards
+                                                            Designer</a>
                                                     </li>
                                                 </ul>
                                             </li>
@@ -489,8 +492,9 @@
                                     </div>
                                     <div><a class="btn btn-outline-secondary" role="button"
                                             href="https://jsh.kgef.ac.jp/khs/examinee/event/">イベント告知</a>
-                                            <a class="btn btn-outline-secondary" role="button"
-                                            href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a></div>
+                                        <a class="btn btn-outline-secondary" role="button"
+                                            href="https://hs.kgef.ac.jp/kobetsu/moushikomi/">イベント予約フォーム</a>
+                                    </div>
                                     <h5><span class="bg-primary text-white badge">教職員</span>
                                         予約状況確認</h5>
                                     <div>毎朝手動で更新します。<br />
@@ -931,9 +935,26 @@
                                 <div class="card-text">
 
                                 </div>
+
+                                <script>
+                                    fetch("https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec?id=1F1WO_2JpdRg-0Rr6UCVNTF0mMAK5M6meGT7YA-vKago&name=WBGTさいたま"
+                                    ).then(function (response) {
+                                            // alert("ああ");
+                                            // console.log("あばば");
+                                            // let a = JSON.stringify(response);
+                                            // console.log(a);
+                                            alert(response.body);
+                                            alert(response.body.json());
+                                            alert(response.body.text());
+                                            alert(response.body.arrayBuffer());
+                                            alert(response.body.blob());
+                                        });
+                                </script>
+
                                 <script>
                                     // https://developer.mozilla.org/ja/docs/Web/API/Request/Request
                                     // https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/fetch#parameters
+                                    /*
                                     function fetchTest(url, init) {
                                         fetch(url, init = {}).then(function (response) {
                                             console.log("aa");
@@ -982,11 +1003,11 @@
                                         // test
                                         console.log("test");
                                         fetch("https://zacky.ninja-x.jp/db/test.json", myInit);
-                                        myHeader.append('Content-Type','application/json');
+                                        myHeader.append('Content-Type', 'application/json');
                                         fetch("https://zacky.xxxxxxxx.jp/test/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
                                         fetch("https://zacky0922.github.io/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
-
                                     })();
+                                    */
                                 </script>
                             </div>
                             <div class="card-footer">
