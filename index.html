@@ -926,7 +926,7 @@
 
 
                     <!-- 熱中症情報 -->
-                    <div class="col-12 d-none">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header"><span class="material-icons">
                                     wb_sunny
@@ -939,75 +939,16 @@
                                 <script>
                                     fetch("https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec?id=1F1WO_2JpdRg-0Rr6UCVNTF0mMAK5M6meGT7YA-vKago&name=WBGTさいたま"
                                     ).then(function (response) {
-                                            // alert("ああ");
-                                            // console.log("あばば");
-                                            // let a = JSON.stringify(response);
-                                            // console.log(a);
-                                            // alert(response.body);
-                                            // alert(response.body.json());
-                                            // alert(response.body.text());
-                                            // alert(response.body.arrayBuffer());
-                                            // alert(response.body.blob());
-                                        });
-                                </script>
-
-                                <script>
-                                    // https://developer.mozilla.org/ja/docs/Web/API/Request/Request
-                                    // https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/fetch#parameters
-                                    /*
-                                    function fetchTest(url, init) {
-                                        fetch(url, init = {}).then(function (response) {
-                                            console.log("aa");
-                                            console.log(response.status);
-                                            // return response.text();
-                                            if (response.ok) {
-                                                console.log('Fetch成功 : ', url, "\n");
-                                                return response.json();
-                                            } else {
-                                                console.log('response NOT OK');
-                                                throw new Error('Network response was not ok.');
-                                            }
-                                        }).then(function (data) {
-                                            console.log('Fetch成功 : ', url, "\n");
-                                            console.log(data);
-                                        }).catch(function (error) {
-                                            console.log('Fetch失敗 : ', url, "\n", error.message);
-                                        });
-                                    }
-                                    (function () {
-                                        let myHeader = new Headers(
-                                            // {
-                                            // 'Content-Type': 'text/plain',application/json
-                                            // 'Access-Control-Allow-Origin': 'https://zacky.xxxxxxxx.jp'
-                                            // }
-                                        );
-                                        // myHeader.append('Content-Type', 'text/plain');
-                                        // myHeader.append('Access-Control-Allow-Origin', 'https://zacky.xxxxxxxx.jp');
-                                        let myInit = {
-                                            method: 'GET',
-                                            // 'mode': 'no-cors',
-                                            // 'referrerPolicy': 'strict-origin-when-cross-origin'
-                                            // 'credentials': "include",
-                                            // 'headers': myHeader,
-                                            mode: 'cors',
-                                            cache: 'default'
-                                        };
-                                        // 予測値
-                                        console.log("予測値");
-                                        fetchTest("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv", myInit);
-
-                                        // 実況値
-                                        console.log("実況値");
-                                        fetchTest("https://www.wbgt.env.go.jp/est15WG/dl/wbgt_43241_202107.csv", myInit);
-
-                                        // test
-                                        console.log("test");
-                                        fetch("https://zacky.ninja-x.jp/db/test.json", myInit);
-                                        myHeader.append('Content-Type', 'application/json');
-                                        fetch("https://zacky.xxxxxxxx.jp/test/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
-                                        fetch("https://zacky0922.github.io/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
-                                    })();
-                                    */
+                                        // データ取得
+                                        return response.json();
+                                    }).then(function (data) {
+                                        // データ整形
+                                        for(let i = 0 ; i < data.length;i++){
+                                            data[i] = JSON.parse(data[i]);
+                                        }
+                                        console.log(data);
+                                        return data;
+                                    });
                                 </script>
                             </div>
                             <div class="card-footer">
