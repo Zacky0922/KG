@@ -933,7 +933,15 @@
                                 </span>熱中症情報</div>
                             <div class="card-body">
                                 <div class="card-text">
-
+                                    <table class="table table-bordered border-secondary" style="text-align:center">
+                                        <thead>
+                                            <tr>
+                                                <th>日時</th>
+                                                <th>WBGT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="WBGT"></tbody>
+                                    </table>
                                 </div>
 
                                 <script>
@@ -943,16 +951,103 @@
                                         return response.json();
                                     }).then(function (data) {
                                         // データ整形
-                                        for(let i = 0 ; i < data.length;i++){
+                                        for (let i = 0; i < data.length; i++) {
                                             data[i] = JSON.parse(data[i]);
                                         }
-                                        console.log(data);
-                                        return data;
+                                        // WBGTは1行しかないので
+                                        return data[0];
+                                    }).then(function (data) {
+                                        let WBGT = { "wbgt": [] };
+                                        // {id:****,
+                                        //  update:****,
+                                        //  wbgt: [{
+                                        //      date:****,
+                                        //      y:****,
+                                        //      m:**,
+                                        //      d:**,
+                                        //      h:**,
+                                        //      wbgt:**
+                                        //     },
+                                        //      ...]
+                                        // }
+                                        let i = 0;
+                                        for (let key in data) {
+                                            switch (key) {
+                                                case "id":
+                                                    WBGT[key] = data[key];
+                                                    break;
+                                                case "update":
+                                                    WBGT[key] = data[key];
+                                                    break;
+                                                default:
+                                                    WBGT.wbgt[i] = {
+                                                        "date": key,
+                                                        "y": Math.floor(key / 1000000),
+                                                        "m": Math.floor(key / 10000) % 100,
+                                                        "d": Math.floor(key / 100) % 100,
+                                                        "h": key % 100,
+                                                        "wbgt": data[key] / 10
+                                                    };
+                                                    i++;
+                                            }
+                                        }
+                                        console.log(WBGT);
+                                        return WBGT;
+                                    }).then(function (data) {
+                                        let tbody = document.getElementById("WBGT");
+                                        for (let i = 0; i < data.wbgt.length; i++) {
+                                            let tr = document.createElement("tr");
+                                            let td0 = document.createElement("td");
+                                            let td1 = document.createElement("td");
+                                            td0.appendChild(
+                                                document.createTextNode(
+                                                    (i == 0 || data.wbgt[i].h == 3 ?
+                                                        data.wbgt[i].m + "/" + data.wbgt[i].d + " " :
+                                                        "") +
+                                                    data.wbgt[i].h + "時"
+                                                )
+                                            );
+                                            td1.appendChild(
+                                                document.createTextNode(
+                                                    data.wbgt[i].wbgt
+                                                )
+                                            );
+                                            td1.setAttribute("data-bs-toggle", "tooltip");
+                                            // td1.setAttribute("data-bs-placement", "bottom");
+
+                                            if (data.wbgt[i].wbgt >= 31) {
+                                                tr.style.background = "#ff2800";
+                                                td1.setAttribute("title", "危険");
+                                            } else if (data.wbgt[i].wbgt >= 28) {
+                                                tr.style.background = "#ff9600";
+                                                td1.setAttribute("title", "厳重警戒");
+                                            } else if (data.wbgt[i].wbgt >= 25) {
+                                                tr.style.background = "#faf500";
+                                                td1.setAttribute("title", "警戒");
+                                            } else if (data.wbgt[i].wbgt >= 21) {
+                                                tr.style.background = "#a0d2ff";
+                                                td1.setAttribute("title", "注意");
+                                            } else {
+                                                tr.style.background = "#218cff";
+                                                td1.setAttribute("title", "ほぼ安全");
+                                            }
+                                            tr.appendChild(td0);
+                                            tr.appendChild(td1);
+                                            tbody.appendChild(tr);
+                                        }
+                                        return;
+                                    }).then(function () {
+                                        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                                        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                                            return new bootstrap.Tooltip(tooltipTriggerEl)
+                                        })
                                     });
                                 </script>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted"></small>
+                                <small class="text-muted">
+                                    出典：<a href="https://www.wbgt.env.go.jp/wbgt.php">環境省熱中症予防情報サイト</a>
+                                </small>
                             </div>
                         </div>
                     </div>
