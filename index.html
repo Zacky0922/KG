@@ -926,92 +926,128 @@
 
 
                     <!-- 熱中症情報 -->
-                    <div class="col-12 d-none">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-header"><span class="material-icons">
                                     wb_sunny
                                 </span>熱中症情報</div>
                             <div class="card-body">
                                 <div class="card-text">
-
+                                    <table class="table table-bordered border-secondary" style="text-align:center">
+                                        <thead>
+                                            <tr>
+                                                <th>日時</th>
+                                                <th>WBGT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="WBGT"></tbody>
+                                    </table>
                                 </div>
 
                                 <script>
                                     fetch("https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec?id=1F1WO_2JpdRg-0Rr6UCVNTF0mMAK5M6meGT7YA-vKago&name=WBGTさいたま"
                                     ).then(function (response) {
-                                            // alert("ああ");
-                                            // console.log("あばば");
-                                            // let a = JSON.stringify(response);
-                                            // console.log(a);
-                                            // alert(response.body);
-                                            // alert(response.body.json());
-                                            // alert(response.body.text());
-                                            // alert(response.body.arrayBuffer());
-                                            // alert(response.body.blob());
-                                        });
-                                </script>
-
-                                <script>
-                                    // https://developer.mozilla.org/ja/docs/Web/API/Request/Request
-                                    // https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/fetch#parameters
-                                    /*
-                                    function fetchTest(url, init) {
-                                        fetch(url, init = {}).then(function (response) {
-                                            console.log("aa");
-                                            console.log(response.status);
-                                            // return response.text();
-                                            if (response.ok) {
-                                                console.log('Fetch成功 : ', url, "\n");
-                                                return response.json();
-                                            } else {
-                                                console.log('response NOT OK');
-                                                throw new Error('Network response was not ok.');
+                                        // データ取得
+                                        return response.json();
+                                    }).then(function (data) {
+                                        // データ整形
+                                        for (let i = 0; i < data.length; i++) {
+                                            data[i] = JSON.parse(data[i]);
+                                        }
+                                        // WBGTは1行しかないので
+                                        return data[0];
+                                    }).then(function (data) {
+                                        let WBGT = { "wbgt": [] };
+                                        // {id:****,
+                                        //  update:****,
+                                        //  wbgt: [{
+                                        //      date:****,
+                                        //      y:****,
+                                        //      m:**,
+                                        //      d:**,
+                                        //      h:**,
+                                        //      wbgt:**
+                                        //     },
+                                        //      ...]
+                                        // }
+                                        let i = 0;
+                                        for (let key in data) {
+                                            switch (key) {
+                                                case "id":
+                                                    WBGT[key] = data[key];
+                                                    break;
+                                                case "update":
+                                                    WBGT[key] = data[key];
+                                                    break;
+                                                default:
+                                                    WBGT.wbgt[i] = {
+                                                        "date": key,
+                                                        "y": Math.floor(key / 1000000),
+                                                        "m": Math.floor(key / 10000) % 100,
+                                                        "d": Math.floor(key / 100) % 100,
+                                                        "h": key % 100,
+                                                        "wbgt": data[key] / 10
+                                                    };
+                                                    i++;
                                             }
-                                        }).then(function (data) {
-                                            console.log('Fetch成功 : ', url, "\n");
-                                            console.log(data);
-                                        }).catch(function (error) {
-                                            console.log('Fetch失敗 : ', url, "\n", error.message);
-                                        });
-                                    }
-                                    (function () {
-                                        let myHeader = new Headers(
-                                            // {
-                                            // 'Content-Type': 'text/plain',application/json
-                                            // 'Access-Control-Allow-Origin': 'https://zacky.xxxxxxxx.jp'
-                                            // }
-                                        );
-                                        // myHeader.append('Content-Type', 'text/plain');
-                                        // myHeader.append('Access-Control-Allow-Origin', 'https://zacky.xxxxxxxx.jp');
-                                        let myInit = {
-                                            method: 'GET',
-                                            // 'mode': 'no-cors',
-                                            // 'referrerPolicy': 'strict-origin-when-cross-origin'
-                                            // 'credentials': "include",
-                                            // 'headers': myHeader,
-                                            mode: 'cors',
-                                            cache: 'default'
-                                        };
-                                        // 予測値
-                                        console.log("予測値");
-                                        fetchTest("https://www.wbgt.env.go.jp/prev15WG/dl/yohou_43241.csv", myInit);
+                                        }
+                                        console.log(WBGT);
+                                        return WBGT;
+                                    }).then(function (data) {
+                                        let tbody = document.getElementById("WBGT");
+                                        for (let i = 0; i < data.wbgt.length; i++) {
+                                            let tr = document.createElement("tr");
+                                            let td0 = document.createElement("td");
+                                            let td1 = document.createElement("td");
+                                            td0.appendChild(
+                                                document.createTextNode(
+                                                    (i == 0 || data.wbgt[i].h == 3 ?
+                                                        data.wbgt[i].m + "/" + data.wbgt[i].d + " " :
+                                                        "") +
+                                                    data.wbgt[i].h + "時"
+                                                )
+                                            );
+                                            td1.appendChild(
+                                                document.createTextNode(
+                                                    data.wbgt[i].wbgt
+                                                )
+                                            );
+                                            td1.setAttribute("data-bs-toggle", "tooltip");
+                                            // td1.setAttribute("data-bs-placement", "bottom");
 
-                                        // 実況値
-                                        console.log("実況値");
-                                        fetchTest("https://www.wbgt.env.go.jp/est15WG/dl/wbgt_43241_202107.csv", myInit);
-
-                                        // test
-                                        console.log("test");
-                                        fetch("https://zacky.ninja-x.jp/db/test.json", myInit);
-                                        myHeader.append('Content-Type', 'application/json');
-                                        fetch("https://zacky.xxxxxxxx.jp/test/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
-                                        fetch("https://zacky0922.github.io/KG/data/test.json", myInit = { 'headers': myHeader, mode: 'same-origin' });
-                                    })();
-                                    */
+                                            if (data.wbgt[i].wbgt >= 31) {
+                                                tr.style.background = "#ff2800";
+                                                td1.setAttribute("title", "危険");
+                                            } else if (data.wbgt[i].wbgt >= 28) {
+                                                tr.style.background = "#ff9600";
+                                                td1.setAttribute("title", "厳重警戒");
+                                            } else if (data.wbgt[i].wbgt >= 25) {
+                                                tr.style.background = "#faf500";
+                                                td1.setAttribute("title", "警戒");
+                                            } else if (data.wbgt[i].wbgt >= 21) {
+                                                tr.style.background = "#a0d2ff";
+                                                td1.setAttribute("title", "注意");
+                                            } else {
+                                                tr.style.background = "#218cff";
+                                                td1.setAttribute("title", "ほぼ安全");
+                                            }
+                                            tr.appendChild(td0);
+                                            tr.appendChild(td1);
+                                            tbody.appendChild(tr);
+                                        }
+                                        return;
+                                    }).then(function () {
+                                        let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+                                        let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                                            return new bootstrap.Tooltip(tooltipTriggerEl)
+                                        })
+                                    });
                                 </script>
                             </div>
                             <div class="card-footer">
-                                <small class="text-muted"></small>
+                                <small class="text-muted">
+                                    出典：<a href="https://www.wbgt.env.go.jp/wbgt.php">環境省熱中症予防情報サイト</a>
+                                </small>
                             </div>
                         </div>
                     </div>
