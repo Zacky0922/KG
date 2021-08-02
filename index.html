@@ -42,7 +42,8 @@
     <!-- ScrollHint -->
     <link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
     <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.min.js"></script>
-
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/a5c7d26532.js" crossorigin="anonymous"></script>
     <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
@@ -935,7 +936,7 @@
                                 <div class="card-text">
                                     <p>WBGT予測値<br />さいたま</p>
                                     <div id="WBGT予報spinner" class="text-center">
-                                    <div class="spinner-border text-secondary" role="status"></div>
+                                        <div class="spinner-border text-secondary" role="status"></div>
                                     </div>
                                     <table id="WBGT予報" class="d-none table table-bordered border-secondary"
                                         style="text-align:center"></table>
@@ -1045,6 +1046,14 @@
                                                             data.wbgt[id].wbgt
                                                         )
                                                     );
+                                                    td.innerHTML = '<i class="far ' +
+                                                        (data.wbgt[id].wbgt >= 31 ? "fa-dizzy" :
+                                                            (data.wbgt[id].wbgt >= 28 ? "fa-tired" :
+                                                                (data.wbgt[id].wbgt >= 25 ? "fa-grimace" :
+                                                                    (data.wbgt[id].wbgt >= 21 ? "fa-frown" : "fa-meh")
+                                                                )
+                                                            )
+                                                        ) + '" style="font-size:1.5rem;"></i><br/><small>' + data.wbgt[id].wbgt+"</small>";
                                                     for (let k = 0; k < WBGTstyle.length; k++) {
                                                         if (data.wbgt[id].wbgt >= WBGTstyle[k].under) {
                                                             td.style.background = WBGTstyle[k].color;
