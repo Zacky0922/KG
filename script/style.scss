@@ -1,0 +1,79 @@
+// ステップ表示
+// https://qiita.com/suin/items/7ee3c8ae24a7d8e3ff33
+.mysteps {
+  /* 連番カウンター名の定義 */
+  counter-reset: step-counter;
+  /* 縦棒との位置関係に必要 */
+  position: relative;
+  /* 縦棒と連番のためのスペースを左に確保 */
+  padding-left: 2rem;
+  /* 連番(1.5rem) + 余白 */
+
+  &:before {
+    content: "";
+    /* 幅と色 */
+    background-color: #0d6efd;
+    background-image: linear-gradient(
+      0deg,
+      #fff 50%,
+      #0d6efd 50%,
+      #0d6efd 100%
+    );
+    background-size: 2px 6px;
+    width: 2px;
+    /* 位置 */
+    position: absolute;
+    top: 0.7rem;
+    /* 円のwidthの半分 */
+    left: 0.7rem;
+    /* 円のwidthの半分 */
+    height: calc(100% - 0.7rem);
+    /* 100% - top */
+    /* 連番より後ろに表示するため */
+    z-index: 0;
+  }
+  > h5 {
+    /* 連番カウンターを+1する */
+    counter-increment: step-counter;
+    /* 連番カウンターを垂直方向に中央揃えで表示する */
+    display: flex;
+    align-items: center;
+    /* 項目間マージン調整 */
+    margin-top: 1.5rem;
+    &:before {
+      /* 連番カウンターの値を表示する */
+      content: counter(step-counter);
+      /* フォントと色 */
+      background: #0d6efd;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: normal;
+      /* 文字を中央に表示する */
+      line-height: 1.5rem;
+      text-align: center;
+      /* 円で表示する */
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 1.5rem;
+      /* .stepsでmargin-left +2rem したぶん左に戻す */
+      position: absolute;
+      left: 0;
+      /* 縦棒より手前に表示するため */
+      z-index: 1;
+    }
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+// スクールバス
+#schoolBusTbl {
+  margin: auto;
+  th {
+    border: 1px solid #000;
+  }
+  * {
+    text-align: center;
+  }
+}

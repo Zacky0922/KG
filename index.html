@@ -84,7 +84,7 @@
         });
       });
     </script>
-
+    <link href="./script/style.min.css" rel="stylesheet" />
     <style>
       @import "../zScript/common.css";
 
@@ -598,83 +598,6 @@
                     個別相談・部活動体験など
                   </h6>
                   <div class="card-text">
-                    <style>
-                      /* https://qiita.com/suin/items/7ee3c8ae24a7d8e3ff33 */
-                      .mysteps {
-                        /* 連番カウンター名の定義 */
-                        counter-reset: step-counter;
-                        /* 縦棒との位置関係に必要 */
-                        position: relative;
-                        /* 縦棒と連番のためのスペースを左に確保 */
-                        padding-left: 2rem;
-                        /* 連番(1.5rem) + 余白 */
-                      }
-
-                      /* 縦棒 */
-                      .mysteps:before {
-                        content: "";
-                        /* 幅と色 */
-                        background-color: #0d6efd;
-                        background-image: linear-gradient(
-                          0deg,
-                          #fff 50%,
-                          #0d6efd 50%,
-                          #0d6efd 100%
-                        );
-                        background-size: 2px 6px;
-                        width: 2px;
-                        /* 位置 */
-                        position: absolute;
-                        top: 0.7rem;
-                        /* 円のwidthの半分 */
-                        left: 0.7rem;
-                        /* 円のwidthの半分 */
-                        height: calc(100% - 0.7rem);
-                        /* 100% - top */
-                        /* 連番より後ろに表示するため */
-                        z-index: 0;
-                      }
-
-                      .mysteps > h5 {
-                        /* 連番カウンターを+1する */
-                        counter-increment: step-counter;
-                        /* 連番カウンターを垂直方向に中央揃えで表示する */
-                        display: flex;
-                        align-items: center;
-                      }
-
-                      /* ①②③など連番 */
-                      .mysteps > h5:before {
-                        /* 連番カウンターの値を表示する */
-                        content: counter(step-counter);
-                        /* フォントと色 */
-                        background: #0d6efd;
-                        color: white;
-                        font-size: 0.8rem;
-                        font-weight: normal;
-                        /* 文字を中央に表示する */
-                        line-height: 1.5rem;
-                        text-align: center;
-                        /* 円で表示する */
-                        width: 1.5rem;
-                        height: 1.5rem;
-                        border-radius: 1.5rem;
-                        /* .stepsでmargin-left +2rem したぶん左に戻す */
-                        position: absolute;
-                        left: 0;
-                        /* 縦棒より手前に表示するため */
-                        z-index: 1;
-                      }
-
-                      /* 項目間マージン調整 */
-                      .mysteps > h5 {
-                        margin-top: 1.5rem;
-                      }
-
-                      .mysteps > h5:first-child {
-                        margin-top: 0;
-                      }
-                    </style>
                     <div class="mysteps">
                       <h5>
                         <span class="bg-primary text-white badge">教職員</span>
@@ -769,6 +692,201 @@
                       >◆個別相談MST管理用</a
                     >
                   </small>
+                </div>
+              </div>
+            </div>
+
+            <!-- オンライン授業 -->
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <span class="material-icons">
+                    cast_for_education </span
+                  >オンライン授業検索システム
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">授業リスト</h5>
+                  <div class="card-text">
+                    <form id="授業検索">
+                      <input type="date" name="" class="日付" />
+                      <select name="" class="時間">
+                        <option value="0">ホームルーム</option>
+                        <option value="1">1限</option>
+                        <option value="2">2限</option>
+                        <option value="3">3限</option>
+                        <option value="4">4限</option>
+                        <option value="5">5限</option>
+                        <option value="6">6限</option>
+                        <option value="7">7限</option></select
+                      ><br />
+                      <label for="">フリーワード検索</label>
+                      <input
+                        type="text"
+                        name=""
+                        class="フリーワード"
+                        disabled
+                        placeholder="準備中…"
+                      />
+                    </form>
+                    <div class="text-danger">
+                      <small>どのチームで開催されている授業なのか、などが見えるように調整しないと使い勝手が悪いですが、とりあえず途中までシステムを公開しておきます。<br>
+                      まだ調整中なので、すべての授業が反映されない場合があります。</small>
+                    </div>
+                    <div id="授業リスト"></div>
+                    <script>
+                      // 日付欄初期値設定
+                      let dateSelector =
+                        document.querySelector("#授業検索 > .日付");
+                      dateSelector.value = (function () {
+                        let today = new Date();
+                        return `${today.getFullYear()}-${
+                          today.getMonth() + 1 < 10 ? "0" : ""
+                        }${today.getMonth() + 1}-${
+                          today.getDate() < 10 ? "0" : ""
+                        }${today.getDate()}`;
+                      })();
+
+                      let myList = fetch(
+                        "https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec" +
+                          "?id=1FOnmofRExJbQ36pTaOw3_WQRHZW7LTqI4y6sA3Gwbag" +
+                          "&name=授業リスト"
+                      )
+                        .then((data) => {
+                          return data.json();
+                        })
+                        .then((data) => {
+                          // データ整形
+                          for (let i = 0; i < data.length; i++) {
+                            data[i] = JSON.parse(data[i]);
+                          }
+                          return data;
+                        })
+                        .then((json) => {
+                          // 時間調整
+                          for (let i = 0; i < json.length; i++) {
+                            let tx = json[i].start;
+                            let date = new Date(
+                              tx.substr(0, 4),
+                              tx.substr(5, 2) - 1,
+                              tx.substr(8, 2),
+                              // 時差対応
+                              Number(tx.substr(11, 2)) + 9,
+                              tx.substr(14, 2)
+                            );
+                            json[i].date = date;
+                          }
+                          return json;
+                        });
+                      function classSearch() {
+                        myList.then((json) => {
+                          // 時間帯検索
+                          let timeSelector =
+                            document.querySelector("#授業検索 .時間");
+                          let timeZone = [
+                            { i: 0, start: [8, 00], end: [8, 59] },
+                            { i: 1, start: [9, 00], end: [9, 40] },
+                            { i: 2, start: [9, 40], end: [10, 30] },
+                            { i: 3, start: [10, 30], end: [11, 20] },
+                            { i: 4, start: [11, 20], end: [12, 10] },
+                            { i: 5, start: [12, 10], end: [13, 40] },
+                            { i: 6, start: [13, 40], end: [14, 30] },
+                            { i: 7, start: [14, 30], end: [15, 20] },
+                          ];
+                          // 検索・抽出
+                          let disp = [];
+                          for (let i = 0; i < json.length; i++) {
+                            // let flag = false;
+                            // キャンセル済みは除外
+                            if (json[i].title.indexOf("Canceled:") > -1) {
+                              continue;
+                            }
+                            // 日付一致
+                            if (
+                              dateSelector.value.substr(0, 4) ==
+                                json[i].date.getFullYear() &&
+                              dateSelector.value.substr(5, 2) ==
+                                json[i].date.getMonth() + 1 &&
+                              dateSelector.value.substr(8, 2) ==
+                                json[i].date.getDate()
+                            ) {
+                            } else {
+                              continue;
+                            }
+                            // 時間一致
+                            let span = {
+                              start: new Date(
+                                json[i].date.getFullYear(),
+                                json[i].date.getMonth(),
+                                json[i].date.getDate(),
+                                timeZone[timeSelector.value].start[0],
+                                timeZone[timeSelector.value].start[1]
+                              ),
+                              end: new Date(
+                                json[i].date.getFullYear(),
+                                json[i].date.getMonth(),
+                                json[i].date.getDate(),
+                                timeZone[timeSelector.value].end[0],
+                                timeZone[timeSelector.value].end[1]
+                              ),
+                            };
+                            if (
+                              span.start.getTime() <= json[i].date.getTime() &&
+                              json[i].date.getTime() <= span.end.getTime()
+                            ) {
+                            } else {
+                              continue;
+                            }
+
+                            disp.push(json[i]);
+                          }
+
+                          // 表示
+                          let ele = document.querySelector("#授業リスト");
+                          ele.innerHTML = ""; // clear
+                          let tbl = document.createElement("table");
+                          tbl.classList.add("table","table-striped");
+                          let tbody = "";
+                          let day = ["日", "月", "火", "水", "木", "金", "土"];
+                          for (let i = 0; i < disp.length; i++) {
+                            tbody += `<tr>
+                              <td>${disp[i].date.getDate()}日(${
+                              day[disp[i].date.getDay()]
+                            })
+                              ${disp[i].date.getHours()}:${
+                              disp[i].date.getMinutes() < 10 ? "0" : ""
+                            }${disp[i].date.getMinutes()}
+                              </td>
+                              <td>${disp[i].title}</td>
+                              <td class="d-none">${disp[i].team}</td>
+                              <td class="d-none">${disp[i].teacher}</td>
+                              <td><a href="${
+                                disp[i].link
+                              }" target="_blank">参加？</a></td>
+                              </tr>`;
+                          }
+                          tbl.innerHTML += `<tbody>${tbody}</tbody>`;
+                          ele.appendChild(tbl);
+                        });
+                      }
+
+                      let formEle = document.querySelectorAll("#授業検索 *");
+                      for (let i = 0; i < formEle.length; i++) {
+                        formEle[i].addEventListener("change", classSearch);
+                      }
+                    </script>
+                    <script>
+                      import("./script/onlineClassList.js").then((m) => {
+                        return;
+                        let json = m.getOnlineClassList().json();
+                        let ele = document.querySelector("#授業リスト");
+                        ele.setAttribute("style", "border:3px red solid;");
+                        ele.innerText = "aaa";
+                      });
+                    </script>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">試験運用中</small>
                 </div>
               </div>
             </div>
@@ -1410,158 +1528,7 @@
                       style="text-align: center"
                     ></table>
                   </div>
-
-                  <script>
-                    fetch(
-                      "https://script.google.com/macros/s/AKfycbzvM19FscO7DfbCeHp6-zP9_h5qDQC8WwbXjZygcXhX9hOEHki2-Mm2oA/exec?id=1F1WO_2JpdRg-0Rr6UCVNTF0mMAK5M6meGT7YA-vKago&name=WBGTさいたま"
-                    )
-                      .then(function (response) {
-                        // データ取得
-                        return response.json();
-                      })
-                      .then(function (data) {
-                        // データ整形
-                        for (let i = 0; i < data.length; i++) {
-                          data[i] = JSON.parse(data[i]);
-                        }
-                        // WBGTは1行しかないので
-                        return data[0];
-                      })
-                      .then(function (data) {
-                        let WBGT = { wbgt: [] };
-                        // {id:****,
-                        //  update:****,
-                        //  wbgt: [{
-                        //      date:****,
-                        //      y:****,
-                        //      m:**,
-                        //      d:**,
-                        //      h:**,
-                        //      wbgt:**
-                        //     },
-                        //      ...]
-                        // }
-                        let i = 0;
-                        for (let key in data) {
-                          switch (key) {
-                            case "id":
-                              WBGT[key] = data[key];
-                              break;
-                            case "update":
-                              WBGT[key] = data[key];
-                              break;
-                            default:
-                              WBGT.wbgt[i] = {
-                                date: key,
-                                y: Math.floor(key / 1000000),
-                                m: Math.floor(key / 10000) % 100,
-                                d: Math.floor(key / 100) % 100,
-                                h: key % 100,
-                                wbgt: data[key] / 10,
-                              };
-                              i++;
-                          }
-                        }
-                        console.log(WBGT);
-                        return WBGT;
-                      })
-                      .then(function (data) {
-                        // 縦形
-                        let tbl = document.getElementById("WBGT予報");
-                        let WBGTstyle = [
-                          { under: 31, color: "#ff2800", title: "危険" },
-                          { under: 28, color: "#ff9600", title: "厳重警戒" },
-                          { under: 25, color: "#faf500", title: "警戒" },
-                          { under: 21, color: "#a0d2ff", title: "注意" },
-                          { under: 0, color: "#218cff", title: "ほぼ安全" },
-                        ];
-
-                        // ヘッダー
-                        let thead = document.createElement("thead");
-                        let tr = document.createElement("tr");
-                        let th = document.createElement("th");
-                        th.appendChild(document.createTextNode("時"));
-                        tr.appendChild(th);
-                        for (let i = 0; i <= data.wbgt.length; ) {
-                          let th = document.createElement("th");
-                          th.innerHTML =
-                            data.wbgt[i].m +
-                            "<br/>" +
-                            "月" +
-                            "<br/>" +
-                            data.wbgt[i].d +
-                            "<br/>" +
-                            "日";
-                          i = i + 8;
-                          tr.appendChild(th);
-                        }
-                        thead.appendChild(tr);
-                        tbl.appendChild(thead);
-
-                        // ボディー
-                        let tbody = document.createElement("tbody");
-                        let offset = data.wbgt[0].h / 3 - 1;
-                        for (let i = 0; i < 8; i++) {
-                          let tr = document.createElement("tr");
-                          for (let j = 0; j < 4; j++) {
-                            let td = document.createElement("td");
-                            let id = (j - 1) * 8 + i - offset;
-                            if (j == 0) {
-                              td.appendChild(
-                                document.createTextNode((i + 1) * 3)
-                              );
-                            } else if (id < 0) {
-                              td.appendChild(document.createTextNode("-"));
-                            } else {
-                              td.appendChild(
-                                document.createTextNode(data.wbgt[id].wbgt)
-                              );
-                              td.innerHTML =
-                                '<i class="far ' +
-                                (data.wbgt[id].wbgt >= 31
-                                  ? "fa-dizzy"
-                                  : data.wbgt[id].wbgt >= 28
-                                  ? "fa-tired"
-                                  : data.wbgt[id].wbgt >= 25
-                                  ? "fa-grimace"
-                                  : data.wbgt[id].wbgt >= 21
-                                  ? "fa-frown"
-                                  : "fa-meh") +
-                                '" style="font-size:1.5rem;"></i><br/><small>' +
-                                data.wbgt[id].wbgt +
-                                "</small>";
-                              for (let k = 0; k < WBGTstyle.length; k++) {
-                                if (data.wbgt[id].wbgt >= WBGTstyle[k].under) {
-                                  td.style.background = WBGTstyle[k].color;
-                                  td.setAttribute("data-bs-toggle", "tooltip");
-                                  td.setAttribute("title", WBGTstyle[k].title);
-                                  break;
-                                }
-                              }
-                            }
-                            tr.appendChild(td);
-                          }
-                          thead.appendChild(tr);
-                        }
-                        tbl.appendChild(tbody);
-                        tbl.classList.remove("d-none");
-                        document
-                          .getElementById("WBGT予報spinner")
-                          .classList.add("d-none");
-                      })
-                      .then(function () {
-                        let tooltipTriggerList = [].slice.call(
-                          document.querySelectorAll(
-                            '[data-bs-toggle="tooltip"]'
-                          )
-                        );
-                        let tooltipList = tooltipTriggerList.map(function (
-                          tooltipTriggerEl
-                        ) {
-                          return new bootstrap.Tooltip(tooltipTriggerEl);
-                        });
-                      });
-                  </script>
+                  <script src="./script/wbgt.js"></script>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">
@@ -1601,152 +1568,7 @@
                       >40分短縮</small
                     >
                   </div>
-                  <script>
-                    // 項目名,h,m
-                    //
-                    let timetbl = {
-                      平常: [
-                        ["-", 0, 0],
-                        ["SHR", 8, 40],
-                        ["1限", 8, 55],
-                        ["1限終わり", 9, 45],
-                        ["2限", 9, 55],
-                        ["2限終わり", 10, 45],
-                        ["3限", 10, 55],
-                        ["3限終わり", 11, 45],
-                        ["4限", 11, 55],
-                        ["4限終わり", 12, 45],
-                        ["5限", 13, 30],
-                        ["5限終わり", 14, 20],
-                        ["6限", 14, 30],
-                        ["6限終わり", 15, 20],
-                        ["7限", 15, 30],
-                        ["7限終わり", 16, 20],
-                        ["完全下校", 19, 00],
-                        ["閉門", 20, 00],
-                      ],
-                      "40分短縮": [
-                        ["--", 0, 0],
-                        ["SHR", 8, 45],
-                        ["1限開始", 9, 00],
-                        ["1限終わり", 9, 40],
-                        ["2限開始", 9, 50],
-                        ["2限終わり", 10, 30],
-                        ["3限開始", 10, 40],
-                        ["3限終わり", 11, 20],
-                        ["4限開始", 11, 30],
-                        ["4限終わり", 12, 10],
-                        ["5限開始", 13, 00],
-                        ["5限終わり", 13, 40],
-                        ["6限開始", 13, 50],
-                        ["6限終わり", 14, 30],
-                        ["7限開始", 14, 40],
-                        ["7限終わり", 15, 20],
-                        ["完全下校", 18, 00],
-                        ["閉門", 20, 00],
-                      ],
-                      前期末40分短縮: [
-                        ["--", 0, 0],
-                        ["SHR", 8, 40],
-                        ["1限開始", 8, 55],
-                        ["1限終わり", 9, 35],
-                        ["2限開始", 9, 45],
-                        ["2限終わり", 10, 25],
-                        ["3限開始", 10, 35],
-                        ["3限終わり", 11, 15],
-                        ["4限開始", 11, 25],
-                        ["4限終わり", 12, 05],
-                        ["5限開始", 12, 50],
-                        ["5限終わり", 13, 30],
-                        ["6限開始", 13, 40],
-                        ["6限終わり", 14, 20],
-                        ["7限開始", 14, 30],
-                        ["7限終わり", 15, 10],
-                        ["完全下校", 19, 00],
-                        ["閉門", 20, 30],
-                      ],
-                    }["40分短縮"];
-                    setInterval(function () {
-                      let now = new Date();
-                      let time = new Date();
-                      let time0;
-                      for (let i = 0; i < timetbl.length; i++) {
-                        time.setHours(timetbl[i][1], timetbl[i][2], 0, 0);
-                        if (now > time) {
-                          time0 = new Date(time);
-                          if (i == timetbl.length - 1) {
-                            document.getElementById(
-                              "授業タイマー見出し"
-                            ).innerHTML = "";
-                            document
-                              .getElementById("授業タイマー")
-                              .setAttribute("style", "width:0;");
-                            document
-                              .getElementById("授業タイマー")
-                              .setAttribute("aria-valuenow", "0");
-                            break;
-                          }
-                          continue;
-                        } else {
-                          document.getElementById(
-                            "授業タイマー見出し"
-                          ).innerHTML =
-                            timetbl[i][0] +
-                            "(" +
-                            timetbl[i][1] +
-                            ":" +
-                            ("0" + timetbl[i][2]).slice(-2) +
-                            ")まで、あと" +
-                            Math.floor(
-                              (time.getTime() - now.getTime()) / 1000 / 60
-                            ) +
-                            "分";
-                          let p =
-                            ((now.getTime() - time0.getTime()) /
-                              (time.getTime() - time0.getTime())) *
-                            100;
-                          document
-                            .getElementById("授業タイマー")
-                            .setAttribute("style", "width:" + p + "%;");
-                          document
-                            .getElementById("授業タイマー")
-                            .setAttribute("aria-valuenow", p);
-                          break;
-                        }
-                      }
-                    }, 1000);
-
-                    function getTimeList() {
-                      let tx = "";
-                      for (let i = 0; i < timetbl.length; i++) {
-                        tx +=
-                          timetbl[i][0] +
-                          "　" +
-                          timetbl[i][1] +
-                          ":" +
-                          ("0" + timetbl[i][2]).slice(-2) +
-                          "\n";
-                      }
-                      alert(tx);
-                    }
-                  </script>
-
-                  <div class="card-text" id="XMLSampleRequest"></div>
-                  <script>
-                    /*
-                                    $(document).ready(function () {
-                                        $.ajax({
-                                            type: "get",
-                                            url: "https://jsh.kgef.ac.jp/feed/"
-                                        }).done(function (result) {
-                                            $(result).find("sample").each(function () {
-                                                $("#XMLSampleRequest").append('<h3>' + $(this).find('title').text() + '</h3>' + '<p>' + $(this).find('link').text() + '</p>');
-                                            });
-                                            console.log(result);
-                                        });
-                                    });
-                                    */
-                  </script>
+                  <script src="./script/classTimer.js"></script>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">(注) 常に平日基準で表示</small>
@@ -1778,109 +1600,7 @@
                   </small>
                 </div>
               </div>
-              <script>
-                function addCOVID19tbl(title, content) {
-                  document.getElementById(
-                    "COVID19infoTbl"
-                  ).children[2].innerHTML +=
-                    "<tr><th>" +
-                    title +
-                    "</th><td class='text-center'>" +
-                    content +
-                    "</td></tr>";
-                }
-                $.getJSON(
-                  "https://data.covid19japan.com/summary/latest.json",
-                  (data) => {
-                    // 昨日基準で処理：今日のデータはまだない可能性がある
-                    let yesterday = new Date();
-                    yesterday = new Date(
-                      yesterday.getFullYear(),
-                      yesterday.getMonth(),
-                      yesterday.getDate() - 1
-                    );
-                    let youbi = "日,月,火,水,木,金,土".split(",");
-
-                    // thead
-                    document.getElementById(
-                      "COVID19infoTbl"
-                    ).children[0].innerHTML +=
-                      "" +
-                      "<tr><td colspan='2' class='text-center'>" +
-                      yesterday.getFullYear() +
-                      "/" +
-                      (yesterday.getMonth() + 1) +
-                      "/" +
-                      yesterday.getDate() +
-                      "(" +
-                      youbi[yesterday.getDay()] +
-                      ")の陽性者数" +
-                      "</td></tr>";
-
-                    // tfoot
-                    let tfootTx = data.updated;
-                    tfootTx = tfootTx
-                      .replace("T", "(")
-                      .replace("+09:00", "JST)");
-                    document.getElementById(
-                      "COVID19infoTbl"
-                    ).children[1].innerHTML +=
-                      "" +
-                      "<tr><td colspan='2' class='text-right'>Update：" +
-                      tfootTx +
-                      "</td></tr>";
-                    for (let key in data.prefectures[4]) {
-                      //addCOVID19tbl(key, data.prefectures[4][key]);
-                    }
-
-                    // 特定抽出市町村（表示名、検索文字列）・・・患者データの分析が必要かも
-                    let city = [
-                      { 伊奈町: ["Ina"] },
-                      { 上尾市: ["Ageo"] },
-                      {
-                        さいたま市: ["Saitama", "Saitama city", "Saitama City"],
-                      },
-                    ];
-
-                    // 都道府県別データ取得
-                    let tbl = { 陽性者: { 埼玉県: 0, 東京都: 0, 全国: 0 } };
-                    for (let pref in data.prefectures) {
-                      // 陽性者記録開始日取得
-                      let ConfirmedStartDate =
-                        data.prefectures[pref].dailyConfirmedStartDate.split(
-                          "-"
-                        );
-                      ConfirmedStartDate = new Date(
-                        Number(ConfirmedStartDate[0]),
-                        Number(ConfirmedStartDate[1]) - 1,
-                        Number(ConfirmedStartDate[2])
-                      );
-                      // 処理対象日のデータ配列番号取得
-                      let i =
-                        (yesterday.getTime() - ConfirmedStartDate.getTime()) /
-                        (1000 * 60 * 60 * 24);
-                      switch (data.prefectures[pref].name_ja) {
-                        case "埼玉県":
-                          tbl["陽性者"]["埼玉県"] =
-                            data.prefectures[pref].dailyConfirmedCount[i];
-                          break;
-                        case "東京都":
-                          tbl["陽性者"]["東京都"] =
-                            data.prefectures[pref].dailyConfirmedCount[i];
-                          break;
-                        default:
-                          break;
-                      }
-                      tbl["陽性者"]["全国"] +=
-                        data.prefectures[pref].dailyConfirmedCount[i];
-                    }
-                    // table生成
-                    addCOVID19tbl("埼玉県", tbl["陽性者"]["埼玉県"]);
-                    addCOVID19tbl("東京都", tbl["陽性者"]["東京都"]);
-                    addCOVID19tbl("全国", tbl["陽性者"]["全国"]);
-                  }
-                );
-              </script>
+              <script src="./script/covid19.js"></script>
             </div>
 
             <!-- スクールバス -->
@@ -1893,117 +1613,13 @@
                 <div class="card-body">
                   <div class="card-text">
                     <table id="schoolBusTbl"></table>
-                    <style>
-                      #schoolBusTbl {
-                        margin: auto;
-                      }
-
-                      #schoolBusTbl th {
-                        border: 1px solid #000;
-                      }
-
-                      #schoolBusTbl * {
-                        text-align: center;
-                      }
-                    </style>
                     <hr />
                     <small class="text-muted"
                       >2月から（本来の学校サイト上の）スクールバス時刻表データ更新方法を変更したため、こちらでも引用できるようになりました。
                       IEや古いスマホなど、特定の環境で閲覧できない場合や、何かお困り・お気付きの際はご連絡ください。</small
                     >
                   </div>
-                  <script>
-                    function setBusRow(tbody, th_tx, td_tx = null) {
-                      let tr0 = document.createElement("tr");
-                      let th = document.createElement("th");
-                      th.innerText = th_tx;
-                      tr0.appendChild(th);
-                      tbody.appendChild(tr0);
-                      if (td_tx != null) {
-                        let tr1 = document.createElement("tr");
-                        let td = document.createElement("td");
-                        td.innerText = td_tx;
-                        tr1.appendChild(td);
-                        tbody.appendChild(tr1);
-                      }
-                    }
-                    function fixBusTime(time) {
-                      for (let i = 1; i < time.length; i++) {
-                        for (let j in time[i]) {
-                          if (time[i][j] == "〃") {
-                            time[i][j] = time[i - 1][j];
-                          }
-                        }
-                      }
-                      return time;
-                    }
-                    $.ajax({
-                      type: "GET",
-                      async: true,
-                      url: "https://script.google.com/macros/s/AKfycbygYn92oqaOVmzjdtv9Tug4jGebaOq9oYW6mKIM2Foiasqbd_hTJdVnuw/exec",
-                      // exec or dev
-                    }).then(
-                      // 通信success
-                      (data) => {
-                        console.log("Ajax通信success");
-                        console.log(data);
-                        let timeTbl = data.time;
-                        timeTbl = fixBusTime(timeTbl);
-                        // let passTbl = data.pass;
-                        // 時刻表処理
-                        let tbl = document.getElementById("schoolBusTbl");
-                        tbl.innerHTML = ""; // 初期化
-                        let tbody = document.createElement("tbody");
-                        // 今日の日付行取得
-                        let d = 0;
-                        let today = new Date();
-                        for (; d < timeTbl.length; d++) {
-                          if (
-                            timeTbl[d].month == today.getMonth() + 1 &&
-                            timeTbl[d].day == today.getDate()
-                          ) {
-                            setBusRow(
-                              tbody,
-                              timeTbl[d].month +
-                                "月" +
-                                timeTbl[d].day +
-                                "日(" +
-                                timeTbl[d].yobi +
-                                ")",
-                              timeTbl[d].remark
-                            );
-                            setBusRow(
-                              tbody,
-                              timeTbl[0].ageo0,
-                              timeTbl[d].ageo0
-                            );
-                            setBusRow(
-                              tbody,
-                              timeTbl[0].hasuda0,
-                              timeTbl[d].hasuda0
-                            );
-                            setBusRow(
-                              tbody,
-                              timeTbl[0].ageo1,
-                              timeTbl[d].ageo1
-                            );
-                            setBusRow(
-                              tbody,
-                              timeTbl[0].hasuda1,
-                              timeTbl[d].hasuda1
-                            );
-                            break;
-                          }
-                        }
-                        tbl.appendChild(tbody);
-                      },
-                      // 通信error
-                      (error) => {
-                        console.log("Ajax通信error");
-                        console.log(error);
-                      }
-                    );
-                  </script>
+                  <script src="./script/schoolbus.js"></script>
                 </div>
                 <div class="card-footer">
                   <small class="text-muted">
@@ -2086,80 +1702,7 @@
                     </div>
                   </div>
                 </div>
-                <script>
-                  let trainList = [
-                    { name: "ニューシャトル", line: ["ニューシャトル"] },
-                    {
-                      name: "最寄りJR線<br/>(高/宇/SS/UT)",
-                      line: "宇都宮,高崎,湘南新宿,上野東京".split(","),
-                    },
-                    {
-                      name: "近隣JR<br/>(京浜,埼京,川越)",
-                      line: "京浜東北,埼京,川越".split(","),
-                    },
-                    {
-                      name: "東武線<br/>(STL/UPL)",
-                      line: "アーバンパーク,スカイツリー,野田,伊勢崎線".split(
-                        ","
-                      ),
-                    },
-                  ];
-                  let tbody = document.getElementById("TrainInfo");
-                  $.getJSON(
-                    "https://tetsudo.rti-giken.jp/free/delay.json",
-                    (data) => {
-                      let tbody =
-                        document.getElementById("TrainInfo").children[2];
-                      for (let i = 0; i < trainList.length; i++) {
-                        let html = "<tr><th>" + trainList[i].name + "</th><td>";
-                        let delayFlag = false;
-                        for (let j = 0; j < trainList[i].line.length; j++) {
-                          for (let k in data) {
-                            if (
-                              data[k]["name"].indexOf(trainList[i].line[j]) > -1
-                            ) {
-                              html += (delayFlag ? "<br/>" : "") + data[k].name;
-                              delayFlag = true;
-                            }
-                          }
-                        }
-                        tbody.innerHTML +=
-                          html + (delayFlag ? "" : "-") + "</td></tr>";
-                      }
-                      // 全運行情報（UNIXタイム＝1970/1/1からの秒数なので注意）
-                      let update = 0;
-                      for (let k in data) {
-                        document.getElementById("TrainModalText").innerHTML +=
-                          data[k].name +
-                          "／" +
-                          data[k].company +
-                          " (" +
-                          new Date(
-                            data[k].lastupdate_gmt * 1000
-                          ).toLocaleTimeString() +
-                          ")<br/>";
-                        update =
-                          update < data[k].lastupdate_gmt
-                            ? data[k].lastupdate_gmt
-                            : update;
-                      }
-                      update = new Date(update * 1000);
-                      document.getElementById(
-                        "TrainInfo"
-                      ).children[1].children[0].children[0].innerHTML =
-                        "Update：" +
-                        update.getFullYear() +
-                        "/" +
-                        (update.getMonth() + 1) +
-                        "/" +
-                        update.getDate() +
-                        " " +
-                        update.getHours() +
-                        ":" +
-                        update.getMinutes();
-                    }
-                  );
-                </script>
+                <script src="./script/train.js"></script>
                 <div class="card-footer">
                   <small class="text-muted">
                     <a href="https://www.tetsudo.com/traffic/"
@@ -2238,132 +1781,7 @@
                   </div>
                 </div>
               </div>
-              <script>
-                // API from https://weather.tsukumijima.net/
-                $.getJSON(
-                  "https://weather.tsukumijima.net/api/forecast/city/110010",
-                  (data) => {
-                    //sample
-                    // console.log(`id=${data.id}, name=${data.name}, email=${data.email}`);
-
-                    // 詳細モーダル設定
-                    let m = document.getElementById("WeatherForecastDetail");
-                    m.children[0].children[0].children[0].children[0].innerHTML =
-                      data.title;
-                    m.children[0].children[0].children[1].innerText =
-                      data.description.text +
-                      "\n\n気象庁予報発表日時：" +
-                      data.description.publicTime_format;
-                    m.children[0].children[0].children[1].innerHTML +=
-                      "<p class='text-right'>" +
-                      '<a href="' +
-                      data.link +
-                      '">[気象庁詳細ページ]</a>' +
-                      "</p>";
-
-                    // 3日間予報
-                    let weekday = "日,月,火,水,木,金,土".split(",");
-
-                    document.getElementById("WeatherForecast1").innerHTML =
-                      data.location.area +
-                      " " +
-                      data.location.prefecture +
-                      " " +
-                      data.location.city +
-                      "<br>" +
-                      data.publicTime_format +
-                      "発表";
-
-                    for (let i = 0; i < 3; i++) {
-                      // 表示日の日付処理
-                      let date = data.forecasts[i].date.split("-");
-                      date = new Date(date[0], date[1] - 1, date[2]);
-                      // 表示設定
-                      document.getElementById("WeatherForecast2").innerHTML +=
-                        "" +
-                        (i == 0
-                          ? '<div class="col-12 col-md-4 col-xl-12">'
-                          : '<div class="col-12 col-sm-6 col-md-4 col-xl-12">') +
-                        '<div class="card h-100">' +
-                        '<div class="card-header text-center">' +
-                        data.forecasts[i].dateLabel +
-                        " " +
-                        date.getDate() +
-                        "日(" +
-                        weekday[date.getDay()] +
-                        ")" +
-                        "</div>" +
-                        '<div class="card-body">' +
-                        '<div class="row mb-2">' +
-                        (i == 0
-                          ? '<div class="text-center align-self-center" style="width:' +
-                            data.forecasts[i].image.width +
-                            'px;">'
-                          : '<div class="col-12 text-center align-self-center">') +
-                        '<img src="' +
-                        data.forecasts[i].image.url +
-                        '"' +
-                        'width="' +
-                        data.forecasts[i].image.width +
-                        '" ' +
-                        'height="' +
-                        data.forecasts[i].image.height +
-                        '" />' +
-                        "</div>" +
-                        '<div class="col text-center align-self-center">' +
-                        (data.forecasts[i].telop == null
-                          ? "未配信"
-                          : data.forecasts[i].telop) +
-                        // 明後日の最低・最高気温は取得できない
-                        (data.forecasts[i].temperature.max == null
-                          ? ""
-                          : "<br/>" +
-                            data.forecasts[i].temperature.max.celsius +
-                            // 今日の最低気温は取得できない
-                            (data.forecasts[i].temperature.min == null
-                              ? ""
-                              : "／" +
-                                data.forecasts[i].temperature.min.celsius) +
-                            "℃") +
-                        "</div>" +
-                        "</div>" +
-                        // 明後日の降水確率は取得できない
-                        (i == 2
-                          ? ""
-                          : '<ul class="list-group card-text">' +
-                            '<li class="list-group-item text-center">降水確率</li>' +
-                            '<li class="list-group-item d-flex justify-content-between">' +
-                            "<span>00-06</span>" +
-                            "<span>" +
-                            data.forecasts[i].chanceOfRain["00-06"] +
-                            "</span>" +
-                            "</li>" +
-                            '<li class="list-group-item d-flex justify-content-between">' +
-                            "<span>06-12</span>" +
-                            "<span>" +
-                            data.forecasts[i].chanceOfRain["06-12"] +
-                            "</span>" +
-                            "</li>" +
-                            '<li class="list-group-item d-flex justify-content-between">' +
-                            "<span>12-18</span>" +
-                            "<span>" +
-                            data.forecasts[i].chanceOfRain["12-18"] +
-                            "</span>" +
-                            "</li>" +
-                            '<li class="list-group-item d-flex justify-content-between">' +
-                            "<span>18-24</span>" +
-                            "<span>" +
-                            data.forecasts[i].chanceOfRain["18-24"] +
-                            "</span>" +
-                            "</li>" +
-                            "</ul>") +
-                        "</div>" +
-                        "</div>" +
-                        "</div>";
-                    }
-                  }
-                );
-              </script>
+              <script src="./script/weather.js"></script>
             </div>
 
             <!-- debug -->
