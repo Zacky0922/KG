@@ -1,0 +1,12 @@
+// 各種ライブラリのカスタム設定
+// 設定の干渉に注意
+
+// animate.css
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+
+// bootstrap
+// $primary:#0f0;
+@import "bootstrap/scss/_bootstrap.scss";
+
+// Materialize
+// @import "materialize/sass/_materialize.scss";

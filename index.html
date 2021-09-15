@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,65 +17,60 @@
       gtag("js", new Date());
       gtag("config", "UA-163335381-1");
     </script>
-    <!-- bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <script
+    <!-- myScript -->
+    <script>
+      const module = import("./script/script.js");
+    </script>
+    <link rel="stylesheet" href="./script/style.min.css" />
+
+    <!-- bootstrap jsのみ(CSS from myScript) -->
+    <!-- <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
+    <!-- Materialize jsのみ(CSS from myScript) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
     <!-- fontawesome -->
-    <script
+    <!-- <script
       src="https://kit.fontawesome.com/a5c7d26532.js"
       crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="./script/style.min.css" />
+    ></script> -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
     <title>KG Dashboard</title>
   </head>
   <body>
-    <header class="navbar navbar-dark bg-dark sticky-top mb-2">
-      <div class="container-fluid d-flex justify-content-between">
-        <a href="#" target="_self" class="navbar-brand">KG Dashboard</a>
-        <div>
-          <div>
-            <span class="btn disabled text-light d-none d-lg-inline"
-              >Microsoft Apps</span
-            >
-            <div class="btn-group" role="group">
-              <a
-                class="btn btn-outline-light"
-                href="https://teams.microsoft.com/"
-                >Teams</a
-              >
-              <a
-                class="btn btn-outline-light"
-                href="https://outlook.office.com/mail/"
-                >Outlook</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
     <div class="container-fluid">
       <div class="row">
-        <nav
-          id="sidebarMenu"
-          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
-        >
-          <ul class="nav flex-column">
-            <li>hoge</li>
-            <li>hoge</li>
-            <li>hoge</li>
-            <li>hoge</li>
-            <li>hoge</li>
-          </ul>
-        </nav>
+        <div class="sidebar">
+          <div class="logo">logo</div>
+          <ul id="menu"></ul>
+          <script>
+            module.then((m) => {
+              m.setMenu("#menu");
+            });
+          </script>
+          <div>
+            <a href="#" class="btn btn-primary">ffdfdfdsfdsaa</a>
+          </div>
+        </div>
+
+        <div class="col">
+          <h2 id="health">健康観察</h2>
+          <h2 id="links">便利リンク</h2>
+
+          <div id="hoge"></div>
+          <script>
+            let hoge = document.querySelector("#hoge");
+            for (let i = 0; i < 200; i++) {
+              hoge.innerHTML += "hoge<br/>";
+            }
+          </script>
+        </div>
       </div>
     </div>
   </body>

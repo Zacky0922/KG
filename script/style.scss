@@ -1,17 +1,34 @@
 // 各種インポート
+@import "_custum_library.scss";
 
 // scroll hint
 @import url("https://unpkg.com/scroll-hint@latest/css/scroll-hint.css");
 
-
-
-.sidebar{
-    height:calc(100vh - 56px);
-    background:red;
-    &:before{
-        color:blue;
-    }
+body > .container-fluid {
+  margin: 0;
 }
 
+.sidebar {
+  position: sticky;
+  top: 0;
+  width: 200px;
+  height: 100vh;
+  background: gray;
+  .logo {
+    margin: 0 -12px 20px;
+  }
+  ul {
+    // padding:0;
+    list-style-type: none;
+    li {
+      line-height: 2;
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
 
-
+h2 {
+  margin: 1rem 0;
+}
