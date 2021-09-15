@@ -1,8 +1,11 @@
 // 各種インポート
-@import "_custum_library.scss";
+@import "_custom_library.scss";
 
 // scroll hint
 @import url("https://unpkg.com/scroll-hint@latest/css/scroll-hint.css");
+
+// my scss
+@import "common/_loader.scss";
 
 body > .container-fluid {
   margin: 0;

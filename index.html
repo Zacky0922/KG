@@ -30,7 +30,7 @@
       crossorigin="anonymous"
     ></script> -->
     <!-- Materialize jsのみ(CSS from myScript) -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- fontawesome -->
     <!-- <script
       src="https://kit.fontawesome.com/a5c7d26532.js"
@@ -44,9 +44,19 @@
     <title>KG Dashboard</title>
   </head>
   <body>
+    <nav class="sidenav">hoge</nav>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elem = document.querySelector(".sidenav");
+        var instances = M.Sidenav.init(elem, { preventScrolling: false });
+        instances = M.Sidenav.getInstance(elem);
+        instances.open();
+      });
+    </script>
     <div class="container-fluid">
       <div class="row">
-        <div class="sidebar">
+        <div class="sidebar white-text">
           <div class="logo">logo</div>
           <ul id="menu"></ul>
           <script>
@@ -55,12 +65,13 @@
             });
           </script>
           <div>
-            <a href="#" class="btn btn-primary">ffdfdfdsfdsaa</a>
+            <a href="#" class="waves-effect waves-light btn">ffdfdfdsfdsaa</a>
           </div>
         </div>
 
         <div class="col">
           <h2 id="health">健康観察</h2>
+          <div class="loadingSpinner"></div>
           <h2 id="links">便利リンク</h2>
 
           <div id="hoge"></div>

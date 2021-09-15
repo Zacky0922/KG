@@ -24,7 +24,7 @@ export function setMenu(query) {
   let ul = document.querySelector(query);
   ul.classList.add("list-group", "list-group-flush");
   for (let i = 0; i < menu.length; i++) {
-    ul.innerHTML += `<li class="list-group-item">
+    ul.innerHTML += `<li class="waves-effect waves-light">
         <i class="${menu[i].icon} fa-fw"></i>
         <a href="${menu[i].href}">${menu[i].tx}</a>
         </li>`;
