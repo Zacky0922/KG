@@ -22,11 +22,12 @@ export function setMenu(query) {
     },
   ];
   let ul = document.querySelector(query);
-  ul.classList.add("list-group", "list-group-flush");
+  ul.classList.add("collection");
   for (let i = 0; i < menu.length; i++) {
-    ul.innerHTML += `<li class="waves-effect waves-light">
+    ul.innerHTML += `<li class="waves-effect waves-teal">
+        <a href="${menu[i].href}">
         <i class="${menu[i].icon} fa-fw"></i>
-        <a href="${menu[i].href}">${menu[i].tx}</a>
+        <span class="d-none d-sm-inline">${menu[i].tx}</span></a>
         </li>`;
   }
 }

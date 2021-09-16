@@ -20,6 +20,13 @@
     <!-- myScript -->
     <script>
       const module = import("./script/script.js");
+      window.addEventListener("DOMContentLoaded", () => {
+        module.then((m) => {
+          // メニュー生成
+          m.setMenu("#menu");
+        });
+      });
+      // test
     </script>
     <link rel="stylesheet" href="./script/style.min.css" />
 
@@ -44,8 +51,68 @@
     <title>KG Dashboard</title>
   </head>
   <body>
-    <nav class="sidenav">hoge</nav>
+    <!-- <nav class="sidenav">hoge</nav> -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col sidebar">
+          <ul id="menu"></ul>
+        </div>
+        <div class="col">
+          <h2>
+            <span class="material-icons">sick</span>
+            <span>健康観察</span>
+          </h2>
+          <span>
+            <img
+              src="https://source.unsplash.com/500x500/?corona,virus,medical,thermometer,sick,stayhome,disease"
+              class="img-icon"
+            />
+          </span>
 
+          <h2>
+            <span class="material-icons"> wb_sunny </span>
+            <span>気象情報</span>
+          </h2>
+
+          <h2>
+            <span class="material-icons"> cast_for_education </span>
+            <span>オンライン授業</span>
+          </h2>
+          <h2>
+            <span class="material-icons"> info</span>
+            <span>各種情報</span>
+          </h2>
+          <h2>
+            <span class="material-icons"> settings</span>
+            <span>環境設定</span>
+          </h2>
+
+          <div class="hero text-center">
+            <img
+              src="https://source.unsplash.com/1600x900/?weather,sunny,rainy,cloud,landscape"
+              alt="sample"
+            />
+          </div>
+
+          <div class="hero text-center">
+            <img
+              src="https://source.unsplash.com/1600x900/?network,cyber,web"
+              alt="sample"
+            />
+          </div>
+          <span>
+            <img
+              src="https://source.unsplash.com/500x500/?configuration,setting,computer,landscape"
+              class="img-icon"
+            />
+          </span>
+          <div class="hero gradBG" style="height:30%"></div>
+          <div class="spikes spikes-before spikes-after hero">
+            hogehoge
+          </div>
+        </div>
+      </div>
+    </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var elem = document.querySelector(".sidenav");
@@ -54,35 +121,10 @@
         instances.open();
       });
     </script>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="sidebar white-text">
-          <div class="logo">logo</div>
-          <ul id="menu"></ul>
-          <script>
-            module.then((m) => {
-              m.setMenu("#menu");
-            });
-          </script>
-          <div>
-            <a href="#" class="waves-effect waves-light btn">ffdfdfdsfdsaa</a>
-          </div>
-        </div>
-
-        <div class="col">
-          <h2 id="health">健康観察</h2>
-          <div class="loadingSpinner"></div>
-          <h2 id="links">便利リンク</h2>
-
-          <div id="hoge"></div>
-          <script>
-            let hoge = document.querySelector("#hoge");
-            for (let i = 0; i < 200; i++) {
-              hoge.innerHTML += "hoge<br/>";
-            }
-          </script>
-        </div>
+    <footer>
+      <div class="spikes spikes-before">
+        フッター
       </div>
-    </div>
+    </footer>
   </body>
 </html>
