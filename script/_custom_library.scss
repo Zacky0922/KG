@@ -1,13 +1,15 @@
 // 各種ライブラリのカスタム設定
-// 変数が干渉しないようにスコープ分け
+// 変数が干渉しないようにスコープ分け or 個別にcssにする
+
+// Material Icons
+@import "libs/_materialIcons.scss";
+// Materialize
+@import url("libs/materialize/sass/materialize.min.css");
+// bootstrap
+// @import url("libs/bootstrap/scss/bootstrap.min.css");
 
 // animate.css
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+// scroll hint
+@import url("https://unpkg.com/scroll-hint@latest/css/scroll-hint.css");
 
-
-
-// Materialize
-@import url("materialize/sass/materialize.min.css");
-
-// bootstrap
-@import url("bootstrap/scss/bootstrap.min.css");

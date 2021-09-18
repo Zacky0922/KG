@@ -1,33 +1,37 @@
-export function setMenu(query) {
-  let menu = [
-    {
-      tx: "健康観察",
-      href: "#health",
-      icon: "fas fa-viruses",
-    },
-    {
-      tx: "便利リンク",
-      href: "#links",
-      icon: "fas fa-link",
-    },
-    {
-      tx: "気象情報",
-      href: "#weather",
-      icon: "fas fa-cloud-sun-rain",
-    },
-    {
-      tx: "設定",
-      href: "#config",
-      icon: "fas fa-cog",
-    },
-  ];
-  let ul = document.querySelector(query);
-  ul.classList.add("collection");
-  for (let i = 0; i < menu.length; i++) {
-    ul.innerHTML += `<li class="waves-effect waves-teal">
-        <a href="${menu[i].href}">
-        <i class="${menu[i].icon} fa-fw"></i>
-        <span class="d-none d-sm-inline">${menu[i].tx}</span></a>
-        </li>`;
-  }
+// 汎用ローダー
+let scripts = [
+  // github button
+  "https://buttons.github.io/buttons.js",
+];
+for (let i = 0; i < scripts.length; i++) {
+  let script = document.createElement("script");
+  script.src = scripts[i];
+  document.head.appendChild(script);
 }
+// 初期設定
+window.addEventListener("DOMContentLoaded", () => {
+  // メニュー生成
+  import("./common/menu.js").then((m) => {
+    m.setMenu("#menu");
+  });
+
+  // Materialize init
+  // action button
+  let elems = document.querySelectorAll(".fixed-action-btn");
+  let instances = M.FloatingActionButton.init(elems, {
+    direction: "left",
+    hoverEnabled: false,
+  });
+
+  // お遊び
+  fetch("https://picsum.photos/?landscape,sea,lake,mountain/info")
+    .then(data => {
+      return data.text();
+    })
+    .then(json => {
+      // document.head.style.backgroundImage = json.url;
+    }
+    
+  )
+});
+// test

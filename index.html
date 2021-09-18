@@ -18,16 +18,7 @@
       gtag("config", "UA-163335381-1");
     </script>
     <!-- myScript -->
-    <script>
-      const module = import("./script/script.js");
-      window.addEventListener("DOMContentLoaded", () => {
-        module.then((m) => {
-          // メニュー生成
-          m.setMenu("#menu");
-        });
-      });
-      // test
-    </script>
+    <script src="./script/script.js"></script>
     <link rel="stylesheet" href="./script/style.min.css" />
 
     <!-- bootstrap jsのみ(CSS from myScript) -->
@@ -43,6 +34,14 @@
       src="https://kit.fontawesome.com/a5c7d26532.js"
       crossorigin="anonymous"
     ></script> -->
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
       rel="stylesheet"
@@ -51,80 +50,90 @@
     <title>KG Dashboard</title>
   </head>
   <body>
-    <!-- <nav class="sidenav">hoge</nav> -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col sidebar">
-          <ul id="menu"></ul>
-        </div>
-        <div class="col">
-          <h2>
-            <span class="material-icons">sick</span>
-            <span>健康観察</span>
-          </h2>
-          <span>
-            <img
-              src="https://source.unsplash.com/500x500/?corona,virus,medical,thermometer,sick,stayhome,disease"
-              class="img-icon"
-            />
-          </span>
-
-          <h2>
-            <span class="material-icons"> wb_sunny </span>
-            <span>気象情報</span>
-          </h2>
-
-          <h2>
-            <span class="material-icons"> cast_for_education </span>
-            <span>オンライン授業</span>
-          </h2>
-          <h2>
-            <span class="material-icons"> info</span>
-            <span>各種情報</span>
-          </h2>
-          <h2>
-            <span class="material-icons"> settings</span>
-            <span>環境設定</span>
-          </h2>
-
-          <div class="hero text-center">
-            <img
-              src="https://source.unsplash.com/1600x900/?weather,sunny,rainy,cloud,landscape"
-              alt="sample"
-            />
+    <div class="sidebar_container">
+      <div class="sidebar">
+        <h1 class="sidebar-mini d-none">KG Dashboard</h1>
+        <ul id="menu"></ul>
+      </div>
+      <div class="sidebar_main">
+        <nav class="headerNav">
+          <div class="">
+            <a href="#" class="brand-logo right">KG Dashboard</a>
+            <div
+              class="left clickable waves-effect waves-dark"
+              id="menuSwitch"
+              style="padding: 0 10px"
+              onclick="document.querySelector('.sidebar').classList.toggle('sidebar_undisp');return false;"
+            >
+              <i class="material-icons">menu</i>
+            </div>
           </div>
+        </nav>
+        <article>
+          <h2 id="health">健康観察</h2>
 
-          <div class="hero text-center">
-            <img
-              src="https://source.unsplash.com/1600x900/?network,cyber,web"
-              alt="sample"
-            />
+          <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red">
+              <i class="large material-icons">mode_edit</i>
+            </a>
+            <ul>
+              <li>
+                <a class="btn-floating red"
+                  ><i class="material-icons">insert_chart</i></a
+                >
+              </li>
+              <li>
+                <a class="btn-floating yellow darken-1"
+                  ><i class="material-icons">format_quote</i></a
+                >
+              </li>
+              <li>
+                <a class="btn-floating green"
+                  ><i class="material-icons">publish</i></a
+                >
+              </li>
+              <li>
+                <a class="btn-floating blue"
+                  ><i class="material-icons">attach_file</i></a
+                >
+              </li>
+            </ul>
           </div>
-          <span>
-            <img
-              src="https://source.unsplash.com/500x500/?configuration,setting,computer,landscape"
-              class="img-icon"
-            />
-          </span>
-          <div class="hero gradBG" style="height:30%"></div>
-          <div class="spikes spikes-before spikes-after hero">
-            hogehoge
+        </article>
+        <article>
+          <h2 id="weather">気象情報</h2>
+        </article>
+        <article>
+          <h2 id="links">便利リンク</h2>
+        </article>
+        <article>
+          <h2 id="setting"><span class="material-icons">settings</span>設定</h2>
+          <div>
+            <h3>背景設定</h3>
           </div>
-        </div>
+          <div>
+            <h3>メニュー設定</h3>
+          </div>
+          <hr />
+          <div>
+            <a
+              class="github-button"
+              href="https://github.com/Zacky0922/KG"
+              data-size="large"
+              aria-label=""
+            >
+              Repository
+            </a>
+          </div>
+        </article>
+        <span id="test">aa</span>
+        <script>
+          for (let i = 0; i < 500; i++) {
+            document.write("hoge<br>");
+          }
+        </script>
       </div>
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var elem = document.querySelector(".sidenav");
-        var instances = M.Sidenav.init(elem, { preventScrolling: false });
-        instances = M.Sidenav.getInstance(elem);
-        instances.open();
-      });
-    </script>
-    <footer>
-      <div class="spikes spikes-before">
-        フッター
-      </div>
-    </footer>
+    <footer class="spike-before">ふったー</footer>
   </body>
 </html>

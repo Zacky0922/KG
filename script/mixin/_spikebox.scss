@@ -1,0 +1,35 @@
+@mixin spike_default($h) {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: block;
+  height: $h; // この2行でサイズ決定
+  background-size: $h 100%;
+  background-position: 0 0;
+}
+
+@mixin spikebox($color: #2c3e50, $h: 15px) {
+  position: relative;
+  background: $color;
+  // 位置設定
+  &.spike-before {
+    margin-top: $h;
+    &::before {
+      @include spike_default($h);
+      bottom: 100%;
+      background-image: linear-gradient(135deg, transparent 75%, $color 75%),
+        linear-gradient(225deg, transparent 75%, $color 75%);
+    }
+  }
+  &.spike-after {
+    margin-bottom: $h;
+    &::after {
+      @include spike_default($h);
+      top: 100%;
+      background-image: linear-gradient(135deg, $color 25%, transparent 25%),
+        linear-gradient(225deg, $color 25%, transparent 25%);
+    }
+  }
+}

@@ -1,54 +1,47 @@
 // 各種インポート
-@import "_custom_library.scss";
+@import "_custom_library";
 
-// material icons
-@import url("https://fonts.googleapis.com/css2?family=Material+Icons");
-// @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// mixin
+@import "mixin/_spikebox.scss";
+@import "mixin/_glass.scss";
 
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: "liga";
-}
-// scroll hint
-@import url("https://unpkg.com/scroll-hint@latest/css/scroll-hint.css");
-
-// my scss
+// common
+@import "common/_layout.scss";
 @import "common/_loader.scss";
+@import "common/_h.scss";
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
 
 // debug
 * {
-  // border: 1px dashed red;
+  // border: 1px dashed blue;
+  vertical-align: middle;
 }
+
+// 基準作成
+:root {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 12px; // = 1.0rem
+}
+
+// 全体フォーマット
 body {
   margin: 0;
+  padding: 0;
+  min-height:100vh;
+  // background-image: url("https://source.unsplash.com/?nature,landscape.jpg");
+  // background-image: url("https://source.unsplash.com/random");
+  // background: url("https://picsum.photos/1000.jpg") fixed;
+  // background-size: cover;
+  background: linear-gradient(30deg, #0040ff, #ff0101, #6600ff, #ff00cc);
+  // background-size: 800% 800%;
+  animation: GradientBackground 10s ease infinite;
 }
 
-footer{
-  position: absolute;
-  bottom:0;
-}
-
-h2 {
-  margin: 1rem 0;
+// bs
+.d-none{
+  display: none;
 }
 
 .img-icon {
@@ -59,9 +52,6 @@ h2 {
 
 // https://fuze.8bit.codes/
 .gradBG {
-  background: linear-gradient(45deg, #00c2ff, #003eff, #6800ff, #ff00cd);
-  background-size: 800% 800%;
-  animation: GradientBackground 10s ease infinite;
 }
 @keyframes GradientBackground {
   0% {
@@ -75,72 +65,6 @@ h2 {
   }
 }
 
-@mixin spikes_default($h) {
-  content: "";
-  position: absolute;
-  right: 0;
-  left: 0;
-  z-index: 10;
-  display: block;
-  height: $h; // この2行でサイズ決定
-  background-size: $h 100%;
-  background-position: 0 0;
-}
-.spikes {
-  $spike-color: #2c3e50;
-  $h:15px;
-
-  position: relative;
-  background: $spike-color;
-  &.spikes-before {
-    margin-top: $h;
-    &::before {
-      @include spikes_default($h);
-      bottom: 100%;
-      background-image: linear-gradient(
-          135deg,
-          transparent 75%,
-          $spike-color 75%
-        ),
-        linear-gradient(225deg, transparent 75%, $spike-color 75%);
-    }
-  }
-  &.spikes-after {
-    margin-bottom: $h;
-    &::after {
-      @include spikes_default($h);
-      top: 100%;
-      background-image: linear-gradient(
-          135deg,
-          $spike-color 25%,
-          transparent 25%
-        ),
-        linear-gradient(225deg, $spike-color 25%, transparent 25%);
-    }
-  }
-}
-
-.sidebar {
-  max-width: 150px;
-  padding: 0;
-  li {
-    display: block;
-    padding: 0;
-    margin: 1px 0;
-    a {
-      display: block;
-      padding: 0.8em 0.5em;
-    }
-  }
-}
-
-.col {
-  .hero {
-    width: calc(100%+var(--bs-gutter-x) / 2);
-    margin-left: 0 calc(-1 * var(--bs-gutter-x) / 2); // .col本体のマージンを削除
-    margin-right: 0 calc(-1 * var(--bs-gutter-x) / 2); // .col本体のマージンを削除
-    > * {
-      max-width: 100%;
-    }
-  }
+.clickable{
+  cursor: pointer;
 }

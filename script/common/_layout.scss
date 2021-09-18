@@ -1,0 +1,90 @@
+.headerNav {
+  @include glassMorphism(rgba(64, 64, 192, 0.3));
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  #menuSwitch{
+    // margin:0;
+  }
+}
+
+@mixin sidebar_content-large {
+}
+@mixin sidebar_content-small {
+  display: block;
+  font-size: 0.3rem;
+  text-align: center;
+}
+
+.sidebar_container {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+
+  .sidebar {
+    @include glassMorphism(rgba(55, 158, 255, 0.4));
+    position: sticky;
+    top: 0;
+    border-top: none;
+    border-left: none;
+    border-end-end-radius: 5px;
+    h1 {
+      margin: 0 0 5px;
+      font-size: 1.8rem;
+      padding-right: 15px;
+    }
+    ul#menu {
+      font-size: 1.5rem;
+      li {
+        display: block;
+        margin: 0;
+        padding: 0;
+        border-bottom: rgba(255, 255, 255, 0.5) 1px double;
+        a {
+          display: block;
+          margin: 0;
+          padding: 10px 10px;
+          color: white !important;
+          .sidebar_icon {
+            width: 1.8rem;
+            text-align: center;
+            i {
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+    }
+    // 表示モード
+    .sidebar_content {
+      display: inline-block;
+    }
+    // 非表示モード
+    &.sidebar_undisp {
+      a {
+        text-align: center;
+        .sidebar_content {
+          display: block;
+          font-size: 0.3rem;
+        }
+      }
+    }
+  }
+
+  .sidebar_main {
+    flex: 1;
+    article {
+      margin: 8px 8px 30px;
+    }
+  }
+}
+
+footer {
+  @include spikebox(#0004ff, 15px);
+  color: white;
+  // margin-top: 0 !important;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
