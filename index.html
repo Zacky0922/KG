@@ -50,66 +50,130 @@
     <title>KG Dashboard</title>
   </head>
   <body>
+    <nav class="headerNav">
+      <a href="#" class="brand-logo right">KG Dashboard</a>
+      <div
+        class="left clickable waves-effect waves-dark"
+        id="menuSwitch"
+        style="padding: 0 10px"
+        onclick="document.querySelector('.sidebar').classList.toggle('sidebar_undisp');return false;"
+      >
+        <i class="material-icons">menu</i>
+      </div>
+    </nav>
     <div class="sidebar_container">
       <div class="sidebar">
         <h1 class="sidebar-mini d-none">KG Dashboard</h1>
         <ul id="menu"></ul>
       </div>
       <div class="sidebar_main">
-        <nav class="headerNav">
-          <div class="">
-            <a href="#" class="brand-logo right">KG Dashboard</a>
-            <div
-              class="left clickable waves-effect waves-dark"
-              id="menuSwitch"
-              style="padding: 0 10px"
-              onclick="document.querySelector('.sidebar').classList.toggle('sidebar_undisp');return false;"
-            >
-              <i class="material-icons">menu</i>
+        <div class="heroHeading pattern-dots-md" style="padding: 20px">
+          <div class="card white">
+            <div class="card-content">
+              <span class="card-title">Weather</span>
+              <p>
+                I am a very simple card. I am good at containing small bits of
+                information. I am convenient because I require little markup to
+                use effectively.
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
             </div>
           </div>
-        </nav>
+        </div>
         <article>
           <h2 id="health">健康観察</h2>
-
-          <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
-              <i class="large material-icons">mode_edit</i>
-            </a>
-            <ul>
-              <li>
-                <a class="btn-floating red"
-                  ><i class="material-icons">insert_chart</i></a
-                >
-              </li>
-              <li>
-                <a class="btn-floating yellow darken-1"
-                  ><i class="material-icons">format_quote</i></a
-                >
-              </li>
-              <li>
-                <a class="btn-floating green"
-                  ><i class="material-icons">publish</i></a
-                >
-              </li>
-              <li>
-                <a class="btn-floating blue"
-                  ><i class="material-icons">attach_file</i></a
-                >
-              </li>
-            </ul>
+          <div>
+            <div class="fixed-action-btn">
+              <a class="btn-floating btn-large red">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li>
+                  <a class="btn-floating red"
+                    ><i class="material-icons">insert_chart</i></a
+                  >
+                </li>
+                <li>
+                  <a class="btn-floating yellow darken-1"
+                    ><i class="material-icons">format_quote</i></a
+                  >
+                </li>
+                <li>
+                  <a class="btn-floating green"
+                    ><i class="material-icons">publish</i></a
+                  >
+                </li>
+                <li>
+                  <a class="btn-floating blue"
+                    ><i class="material-icons">attach_file</i></a
+                  >
+                </li>
+              </ul>
+            </div>
+            aa
           </div>
         </article>
         <article>
           <h2 id="weather">気象情報</h2>
+          <div id="weatherInfo">
+            <select name="" id="" class="weatherInfo_select"></select>
+            <select name="" id="" class="weatherInfo_select"></select>
+            <select name="" id="" class="weatherInfo_select"></select>
+            <select name="" id="" class="weatherInfo_select"></select>
+            <select name="" id="" class="weatherInfo_select"></select>
+          </div>
+          <style>
+            #weatherInfo select {
+              display: block;
+            }
+          </style>
+          <script src="./script/weather.js"></script>
         </article>
         <article>
           <h2 id="links">便利リンク</h2>
+          <div id="testArea">
+            <div class="testdiv">a</div>
+            <div class="testdiv">a</div>
+            <div class="testdiv">a</div>
+          </div>
+          <script>
+            let wrap = document.querySelector("#testArea");
+            let test = wrap.querySelectorAll(".testdiv");
+            test[0].remove();
+            let e = document.createElement("div");
+            e.innerText = "aa";
+            test[2].parentNode.replaceChild(e, test[2]);
+            // test[2] = e;
+            a = e;
+            a.style.background = "red";
+          </script>
         </article>
         <article>
           <h2 id="setting"><span class="material-icons">settings</span>設定</h2>
           <div>
             <h3>背景設定</h3>
+            <form id="bgSetting">
+              <div id="nowBg"></div>
+              <fieldset>
+                <div class="input-field">
+                  <label for="">背景ソース</label>
+                  <select name="" id="bg_category"></select>
+                </div>
+                <div class="">
+                  <label for="">カラー</label>
+                  <input type="color" name="" id="bg_color" value="#cccccc" />
+                </div>
+                <div class="">
+                  <label for=""></label>
+                  <select name="" id="bg_sublist"></select>
+                </div>
+                <div id="bg_photoList"></div>
+              </fieldset>
+            </form>
+            <script src="./script/bgSelector.js"></script>
           </div>
           <div>
             <h3>メニュー設定</h3>
@@ -128,7 +192,7 @@
         </article>
         <span id="test">aa</span>
         <script>
-          for (let i = 0; i < 500; i++) {
+          for (let i = 0; i < 100; i++) {
             document.write("hoge<br>");
           }
         </script>

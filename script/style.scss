@@ -11,17 +11,18 @@
 @import "common/_h.scss";
 
 // font
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap");
 
 // debug
 * {
   // border: 1px dashed blue;
   vertical-align: middle;
+  box-sizing: border-box;
 }
 
 // 基準作成
 :root {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 12px; // = 1.0rem
 }
 
@@ -29,18 +30,16 @@
 body {
   margin: 0;
   padding: 0;
-  min-height:100vh;
+  min-height: 100vh;
   // background-image: url("https://source.unsplash.com/?nature,landscape.jpg");
   // background-image: url("https://source.unsplash.com/random");
   // background: url("https://picsum.photos/1000.jpg") fixed;
   // background-size: cover;
-  background: linear-gradient(30deg, #0040ff, #ff0101, #6600ff, #ff00cc);
-  // background-size: 800% 800%;
-  animation: GradientBackground 10s ease infinite;
+  // background: #aaa;
 }
 
 // bs
-.d-none{
+.d-none {
   display: none;
 }
 
@@ -65,6 +64,37 @@ body {
   }
 }
 
-.clickable{
+.clickable {
   cursor: pointer;
+}
+
+.heroHeading{
+  
+}
+
+//
+#bg_photoList {
+  input[type="radio"] {
+    display: none;
+    & + label {
+      display: inline-block;
+      border: 3px transparent solid;
+      overflow: hidden;
+      img {
+      max-width:50%;
+        max-width: 150px;
+        transform:scale(1);
+        transition:transform 0.2s;
+      }
+      &:hover {
+        border-color: blue;
+        img{
+          transform:scale(1.3);
+        }
+      }
+    }
+    &:checked + label {
+      border-color: red;
+    }
+  }
 }
