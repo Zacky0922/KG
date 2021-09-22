@@ -3,7 +3,7 @@
 let scripts = [
   // github button
   "https://buttons.github.io/buttons.js",
-  "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js",
+  "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"
 ];
 for (let i = 0; i < scripts.length; i++) {
   let script = document.createElement("script");

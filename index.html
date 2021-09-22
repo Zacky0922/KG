@@ -70,6 +70,25 @@
         <div class="heroHeading pattern-dots-md" style="padding: 20px">
           <div class="card white">
             <div class="card-content">
+              <span class="card-title">健康観察</span>
+              <p>
+                I am a very simple card. I am good at containing small bits of
+                information. I am convenient because I require little markup to
+                use effectively.
+              </p>
+            </div>
+            <div class="card-action">
+              <a
+                href="https://teams.microsoft.com/_#/school/files/WEB%E3%82%B5%E3%82%A4%E3%83%88%E9%96%A2%E4%BF%82?threadId=19%3Af7977620b7234abf8ccc2a9972d71e3f%40thread.tacv2&ctx=channel&context=%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FWEB%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%25E9%2596%25A2%25E4%25BF%2582%252F%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020"
+                >相談関連files</a
+              >
+              <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/"
+                >個別相談MST管理用</a
+              >
+            </div>
+          </div>
+          <div class="card white hoverable">
+            <div class="card-content">
               <span class="card-title">Weather</span>
               <p>
                 I am a very simple card. I am good at containing small bits of
@@ -80,6 +99,48 @@
             <div class="card-action">
               <a href="#">This is a link</a>
               <a href="#">This is a link</a>
+            </div>
+          </div>
+          <div class="card white hoverable">
+            <div class="card-content">
+              <span class="card-title">RSS</span>
+              <p id="KGrss"></p>
+              <script>
+                fetch(
+                  "https://cors-anywhere.herokuapp.com/"+
+                "https://jsh.kgef.ac.jp/kg/?feed")
+                  .then((response) => response.text())
+                  .then((str) =>
+                    new window.DOMParser().parseFromString(str, "text/xml")
+                  )
+                  .then((data) => console.log(data));
+
+                import("./script/libs/rss-parser.min.js").then((m) => {
+                  const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+
+                  let parser = new m.RSSParser();
+                  parser.parseURL(
+                    // CORS_PROXY +
+                    "https://jsh.kgef.ac.jp/feed/",
+                    function (err, feed) {
+                      if (err) throw err;
+                      console.log(feed.title);
+                      feed.items.forEach(function (entry) {
+                        console.log(entry.title + ":" + entry.link);
+                      });
+                    }
+                  );
+                });
+              </script>
+            </div>
+            <div class="card-action">
+              <a
+                href="https://teams.microsoft.com/_#/school/files/WEB%E3%82%B5%E3%82%A4%E3%83%88%E9%96%A2%E4%BF%82?threadId=19%3Af7977620b7234abf8ccc2a9972d71e3f%40thread.tacv2&ctx=channel&context=%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020&rootfolder=%252Fsites%252Fmsteams_1d13d1%252FShared%2520Documents%252FWEB%25E3%2582%25B5%25E3%2582%25A4%25E3%2583%2588%25E9%2596%25A2%25E4%25BF%2582%252F%25E4%25BA%2588%25E7%25B4%2584%25E3%2582%25B7%25E3%2582%25B9%25E3%2583%2586%25E3%2583%25A0v2020"
+                >相談関連files</a
+              >
+              <a href="https://hs.kgef.ac.jp/kobetsu/mstmnt/"
+                >個別相談MST管理用</a
+              >
             </div>
           </div>
         </div>
@@ -118,15 +179,10 @@
         </article>
         <article>
           <h2 id="weather">気象情報</h2>
-          <div id="weatherInfo">
-            <select name="" id="" class="weatherInfo_select"></select>
-            <select name="" id="" class="weatherInfo_select"></select>
-            <select name="" id="" class="weatherInfo_select"></select>
-            <select name="" id="" class="weatherInfo_select"></select>
-            <select name="" id="" class="weatherInfo_select"></select>
-          </div>
+          <div id="weatherArea"></div>
+          <div id="weatherInfo"></div>
           <style>
-            #weatherInfo select {
+            #weatherArea select {
               display: block;
             }
           </style>
