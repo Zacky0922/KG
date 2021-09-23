@@ -68,7 +68,7 @@
       </div>
       <div class="sidebar_main">
         <div class="heroHeading pattern-dots-md" style="padding: 20px">
-          <div class="card white">
+          <div class="card white hoverable">
             <div class="card-content">
               <span class="card-title">健康観察</span>
               <p>
@@ -90,11 +90,14 @@
           <div class="card white hoverable">
             <div class="card-content">
               <span class="card-title">Weather</span>
-              <p>
-                I am a very simple card. I am good at containing small bits of
-                information. I am convenient because I require little markup to
-                use effectively.
-              </p>
+              <div id="weatherArea"></div>
+              <div id="weatherInfo"></div>
+              <style>
+                #weatherArea select {
+                  display: block;
+                }
+              </style>
+              <script src="./script/weather.js"></script>
             </div>
             <div class="card-action">
               <a href="#">This is a link</a>
@@ -106,31 +109,31 @@
               <span class="card-title">RSS</span>
               <p id="KGrss"></p>
               <script>
-                fetch(
-                  "https://cors-anywhere.herokuapp.com/"+
-                "https://jsh.kgef.ac.jp/kg/?feed")
-                  .then((response) => response.text())
-                  .then((str) =>
-                    new window.DOMParser().parseFromString(str, "text/xml")
-                  )
-                  .then((data) => console.log(data));
+                // fetch(
+                //   "https://cors-anywhere.herokuapp.com/"+
+                // "https://jsh.kgef.ac.jp/kg/?feed")
+                //   .then((response) => response.text())
+                //   .then((str) =>
+                //     new window.DOMParser().parseFromString(str, "text/xml")
+                //   )
+                //   .then((data) => console.log(data));
 
-                import("./script/libs/rss-parser.min.js").then((m) => {
-                  const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+                // import("./script/libs/rss-parser.min.js").then((m) => {
+                //   const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
-                  let parser = new m.RSSParser();
-                  parser.parseURL(
-                    // CORS_PROXY +
-                    "https://jsh.kgef.ac.jp/feed/",
-                    function (err, feed) {
-                      if (err) throw err;
-                      console.log(feed.title);
-                      feed.items.forEach(function (entry) {
-                        console.log(entry.title + ":" + entry.link);
-                      });
-                    }
-                  );
-                });
+                //   let parser = new m.RSSParser();
+                //   parser.parseURL(
+                //     // CORS_PROXY +
+                //     "https://jsh.kgef.ac.jp/feed/",
+                //     function (err, feed) {
+                //       if (err) throw err;
+                //       console.log(feed.title);
+                //       feed.items.forEach(function (entry) {
+                //         console.log(entry.title + ":" + entry.link);
+                //       });
+                //     }
+                //   );
+                // });
               </script>
             </div>
             <div class="card-action">
@@ -179,14 +182,6 @@
         </article>
         <article>
           <h2 id="weather">気象情報</h2>
-          <div id="weatherArea"></div>
-          <div id="weatherInfo"></div>
-          <style>
-            #weatherArea select {
-              display: block;
-            }
-          </style>
-          <script src="./script/weather.js"></script>
         </article>
         <article>
           <h2 id="links">便利リンク</h2>
