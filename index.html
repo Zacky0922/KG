@@ -104,6 +104,23 @@
               <a href="#">This is a link</a>
             </div>
           </div>
+
+          <div class="card white hoverable">
+            <div class="card-content">
+              <span class="card-title">Weather</span>
+              <div id="weatherArea2"></div>
+              <div id="weatherInfo2"></div>
+              <script>
+                import("./script/jma.js").then((m) => {
+                  let JMA = new m.JMA();
+                });
+              </script>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is a link</a>
+            </div>
+          </div>
           <div class="card white hoverable">
             <div class="card-content">
               <span class="card-title">RSS</span>
@@ -204,27 +221,19 @@
         </article>
         <article>
           <h2 id="setting"><span class="material-icons">settings</span>設定</h2>
+
           <div>
             <h3>背景設定</h3>
-            <form id="bgSetting">
-              <div id="nowBg"></div>
-              <fieldset>
-                <div class="input-field">
-                  <label for="">背景ソース</label>
-                  <select name="" id="bg_category"></select>
-                </div>
-                <div class="">
-                  <label for="">カラー</label>
-                  <input type="color" name="" id="bg_color" value="#cccccc" />
-                </div>
-                <div class="">
-                  <label for=""></label>
-                  <select name="" id="bg_sublist"></select>
-                </div>
-                <div id="bg_photoList"></div>
+            <form>
+              <fieldset id="bgSettingForm" class="bgPhotoList">
               </fieldset>
             </form>
-            <script src="./script/bgSelector.js"></script>
+            <script>
+              import("./script/bgSelector.js").then((m) => {
+                let BG = new m.bgSelector();
+                BG.setSelector(document.getElementById("bgSettingForm"));
+              });
+            </script>
           </div>
           <div>
             <h3>メニュー設定</h3>

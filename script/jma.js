@@ -21,8 +21,22 @@ export class JMA {
     return res.json();
   });
 
+  // 地域選択レベル
+  #areaLv = 5;
 
-  constructor() {}
+  constructor({
+    // 地域選択レベル
+    lv = 5,
+    // 初期地域設定
+    areaInit = ["010300", "110000", "110010", "110011", "1130100"],
+  } = {}) {
+    this.#areaLv = lv;
+    // alert(lv);
+    // areaData = async Promise.all([this.#areaJson, this.#weatherCodes])
+    //   .then(val => {
+
+    //   });
+  }
 
   #setSelectbox(ele, parent, keys, defaultValue = null) {
     // 内容クリア

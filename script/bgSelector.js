@@ -1,27 +1,14 @@
-// 初期設定
-(function () {
-  // フォーム部品取得
-  let form = document.querySelector("#bgSetting");
-  let bg_category = form.querySelector("#bg_category");
-  let bg_color = form.querySelector("#bg_color");
-  let bg_sublist = form.querySelector("#bg_sublist");
-  let bg_photo = form.querySelector("#bg_photoList");
-
-  // 各種画像リスト取得
-  const pictList = [
+export class bgSelector {
+  // 画像リスト
+  #pictList = [
     { title: "color", val: "color" },
     { title: "FIND47", val: "find47" },
     { title: "スタジオジブリ", val: "ghibli" },
   ];
-  let find47json = null;
-  let find47photos = null;
-  const setBg_color = function () {
-    document.body.setAttribute("style", `background:${bg_color.value}`);
-    Cookies.remove("img_url");
-    Cookies.remove("copyright");
-    Cookies.set("bgColor", bg_color.value);
-  };
-  let ghibli = [
+
+  #find47json = null;
+  #find47photos = null;
+  #ghibli = [
     {
       title: "風の谷のナウシカ",
       copyright: "© 1984 Studio Ghibli・H",
@@ -172,8 +159,233 @@
     },
   ];
 
-  // 画像一覧生成func
-  const setImgList = function ({ value, img_url, alt }) {
+  // 現在表示情報
+  #nowDisp = ["color", null, null];
+
+  // サブ選択リスト表示領域
+  #selectArea; // ラッパー
+  #desc = document.createElement("div");
+  #catList = document.createElement("select");
+  #colorSel = document.createElement("input");
+  #subList = document.createElement("select");
+  #photoList = document.createElement("div");
+  // 背景設定target
+  #target = document.body;
+
+  constructor(target = document.body) {
+    this.#target = target;
+    // js-cookieモジュールimport
+    import(
+    "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+    );
+  }
+
+  setSelector(ele) {
+    // subList群設定
+    this.#selectArea = ele;
+    this.#selectArea.appendChild(this.#desc);
+    this.#selectArea.appendChild(this.#catList);
+    this.#colorSel.type = "color";
+    this.#colorSel.value = "#cccccc";
+    this.#selectArea.appendChild(this.#colorSel);
+    this.#selectArea.appendChild(this.#subList);
+    this.#selectArea.appendChild(this.#photoList);
+    for (let i = 0; i < this.#pictList.length; i++) {
+      this.#catList.appendChild(
+        this.#getOption(this.#pictList[i].title, this.#pictList[i].val)
+      );
+    }
+    // イベント設定
+    this.#catList.addEventListener("change", (e) => {
+      this.#changeCatList(e);
+    });
+    this.#subList.addEventListener("change", (e) => {
+      this.#changeSubList(e);
+    });
+    this.#colorSel.addEventListener("change", (e) => {
+      this.#changeColor(e);
+    });
+    this.#photoList.addEventListener("change", (e) => {
+      this.#setBg(e);
+    });
+    // 初期値設定、初期発火
+    this.#catList.dispatchEvent(new Event("change"));
+    this.#subList.dispatchEvent(new Event("change"));
+  }
+
+  #changeCatList(e) {
+    this.#nowDisp[0] = e.target.value;
+    this.#subList.innerHTML = "";
+    this.#photoList.innerHTML = "";
+    switch (this.#nowDisp[0]) {
+      case "color":
+        this.#colorSel.style.display = "inline";
+        this.#subList.style.display = "none";
+        this.#desc.innerHTML = "";
+        return;
+        break;
+      case "find47":
+        // 初期設定
+        if (this.#find47json === null) {
+          this.#initFind47();
+        }
+        this.#find47photos.then((json) => {
+          for (let i = 0; i < json.length; i++) {
+            this.#subList.appendChild(
+              this.#getOption(
+                `${(json[i][0].prefecture.name_ja + "　　").slice(0, 4)} : ${
+                  json[i].length
+                }件`,
+                json[i][0].prefecture.code - 1
+              )
+            );
+          }
+        });
+        break;
+      case "ghibli":
+        for (let i = 0; i < this.#ghibli.length; i++) {
+          this.#subList.appendChild(this.#getOption(this.#ghibli[i].title, i));
+        }
+        break;
+    }
+    this.#subList.style.display = "inline";
+    this.#colorSel.style.display = "none";
+  }
+
+  #changeColor(e) {
+    this.#nowDisp[1] = e.target.value;
+    this.#nowDisp[2] = null;
+    this.#target.setAttribute("style", `background:${e.target.value}`);
+  }
+
+  #changeSubList(e) {
+    console.log("changeSubList");
+    this.#nowDisp[1] = e.target.value;
+    this.#photoList.innerHTML = "";
+    switch (this.#nowDisp[0]) {
+      case "color":
+        break;
+      case "find47":
+        this.#find47photos.then((json) => {
+          let prefPhotos = json[this.#nowDisp[1]];
+          for (let i = 0; i < prefPhotos.length; i++) {
+            this.#setImgItem(
+              this.#photoList,
+              prefPhotos[i].thumb_url,
+              prefPhotos[i].id,
+              "alt text"
+            );
+          }
+        });
+        break;
+      case "ghibli":
+        for (let i = 0; i < this.#ghibli[this.#nowDisp[1]].imgs; i++) {
+          this.#setImgItem(
+            this.#photoList,
+            `https://www.ghibli.jp/gallery/thumb-${
+              this.#ghibli[this.#nowDisp[1]].url + ("000" + (i + 1)).slice(-3)
+            }.png`,
+            i,
+            "alt text"
+          );
+        }
+        break;
+    }
+  }
+
+  #setBg(e) {
+    console.log("setBg");
+    this.#nowDisp[2] = e.target.value;
+    switch (this.#nowDisp[0]) {
+      case "color":
+        break;
+      case "find47":
+        this.#find47json.then((json) => {
+          for (let i = 0; i < json.length; i++) {
+            // 該当idで背景設定
+            if (json[i].id == this.#nowDisp[2]) {
+              this.#setBg_(json[i].url);
+              this.#desc.innerHTML = `<a href="${json[i].page_url}" target="_blank" rel="noopener noreferrer">
+                ${json[i].title}
+                </a> ＠${json[i].prefecture.name_ja}
+                <br/>
+                ${json[i].phtotographer.name} ／
+                <a href="https://find47.jp/ja/" target="_blank" rel="noopener noreferrer">FIND/47</a>
+                （<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+              CC表示4.0 国際</a>）
+                `;
+              break;
+            }
+          }
+        });
+        break;
+      case "ghibli":
+        this.#setBg_(
+          `https://www.ghibli.jp/gallery/${
+            this.#ghibli[this.#nowDisp[1]].url
+          }${("000" + (Number(this.#nowDisp[2]) + 1)).slice(-3)}.jpg`
+        );
+        this.#desc.innerHTML = `
+        <a href="https://www.ghibli.jp/works/${
+          this.#ghibli[this.#nowDisp[1]].url
+        }/" target="_blank" rel="noopener noreferrer">
+          「${this.#ghibli[this.#nowDisp[1]].title}」
+          ${this.#ghibli[this.#nowDisp[1]].copyright}
+          </a>`;
+
+        break;
+    }
+  }
+
+  #setBg_(img_url) {
+    console.log("setBg_");
+    this.#target.setAttribute(
+      "style",
+      `background:${
+        this.#colorSel.value
+      } url("${img_url}") no-repeat border-box center / cover fixed content-box;`
+    );
+    Cookies.set("bg",img_url);
+  }
+
+  // FIND47系処理
+  #initFind47() {
+    // 一覧リスト生成
+    this.#find47json = fetch(
+      "https://raw.githubusercontent.com/code4fukui/find47/main/images.json"
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json.images);
+        return json.images;
+      });
+    // 都道府県別リスト生成
+    this.#find47photos = this.#find47json.then((json) => {
+      // 都道府県分類
+      let photos = new Array(47);
+      for (let i = 0; i < photos.length; i++) {
+        photos[i] = [];
+      }
+      for (let i = 0; i < json.length; i++) {
+        photos[json[i].prefecture.code - 1].push(json[i]);
+      }
+      console.log(photos);
+      return photos;
+    });
+  }
+
+  // 汎用
+  // option要素生成
+  #getOption(tx, val) {
+    let opt = document.createElement("option");
+    opt.value = val;
+    opt.innerText = tx;
+    return opt;
+  }
+  // 画像リスト要素生成
+  #setImgItem(ele, src, value, alt) {
     let radio = document.createElement("input");
     radio.type = "radio";
     radio.name = "bgPhotoList";
@@ -181,177 +393,8 @@
     radio.id = "bgPhotoList_" + value;
     let label = document.createElement("label");
     label.setAttribute("for", "bgPhotoList_" + value);
-    label.innerHTML = `<img src="${img_url}" 
-            alt="${alt}">`;
-    bg_photo.appendChild(radio);
-    bg_photo.appendChild(label);
-  };
-  // 背景設定
-  const setBg = function ({ img_url, copyright }) {
-    // copyright表示
-    document.querySelector("#nowBg").innerHTML = copyright;
-    // 背景表示
-    document.body.setAttribute(
-      "style",
-      `background:#fff url("${img_url}") no-repeat border-box center
-        /cover fixed content-box;`
-    );
-    Cookies.set("img_url", img_url);
-    Cookies.set("copyright", copyright);
-  };
-  window.addEventListener("load", () => {
-    setBg({
-      img_url: Cookies.get("img_url"),
-      copyright: Cookies.get("copyright"),
-    });
-    console.log(Cookies.get());
-  });
-
-  // 背景category設定
-  for (let i = 0; i < pictList.length; i++) {
-    let opt = document.createElement("option");
-    opt.innerText = pictList[i].title;
-    opt.value = pictList[i].val;
-    bg_category.appendChild(opt);
+    label.innerHTML = `<img src="${src}" alt="${alt}">`;
+    ele.appendChild(radio);
+    ele.appendChild(label);
   }
-  bg_category.addEventListener("change", (e) => {
-    // クリアしてからリスト設定
-    bg_sublist.innerHTML = "";
-    bg_photo.innerHTML = "";
-    switch (e.target.value) {
-      case "color":
-        bg_color.style.display = "inline";
-        bg_sublist.style.display = "none";
-        bg_photo.style.display = "none";
-        setBg_color();
-        return;
-      case "find47":
-        // 初回読み込み時のみ
-        if (find47json == null) {
-          find47json = fetch(
-            "https://raw.githubusercontent.com/code4fukui/find47/main/images.json"
-          )
-            .then((res) => {
-              return res.json();
-            })
-            .then((json) => {
-              console.log(json.images[0]);
-              return json.images;
-            });
-          find47photos = find47json.then((json) => {
-            // 都道府県分類
-            let photos = new Array(47);
-            for (let i = 0; i < photos.length; i++) {
-              photos[i] = [];
-            }
-            for (let i = 0; i < json.length; i++) {
-              photos[json[i].prefecture.code - 1].push(json[i]);
-            }
-            return photos;
-          });
-        }
-        find47photos.then((photos) => {
-          for (let i = 0; i < photos.length; i++) {
-            let opt = document.createElement("option");
-            opt.value = photos[i][0].prefecture.code - 1;
-            opt.innerText =
-              (photos[i][0].prefecture.name_ja + "　").slice(0, 4) +
-              ` [${photos[i].length}件]`;
-            bg_sublist.appendChild(opt);
-          }
-        });
-        break;
-      case "ghibli":
-        for (let i = 0; i < ghibli.length; i++) {
-          let opt = document.createElement("option");
-          opt.value = i;
-          opt.innerText = ghibli[i].title;
-          bg_sublist.appendChild(opt);
-        }
-        break;
-    }
-    bg_color.style.display = "none";
-    bg_sublist.style.display = "inline";
-    bg_photo.style.display = "block";
-  });
-
-  // 色セレクタ設定
-  bg_color.addEventListener("change", (e) => {
-    setBg_color();
-  });
-
-  // 画像カテゴリ設定
-  bg_sublist.addEventListener("change", (e) => {
-    bg_photo.innerHTML = "";
-    switch (bg_category.value) {
-      case "find47":
-        find47photos.then((photos) => {
-          // 都道府県リスト選択時の処理
-          let i = e.target.value; // 都道府県コード(-1)取得
-          // 写真リスト再生成
-          for (let j = 0; j < photos[i].length; j++) {
-            setImgList({
-              value: photos[i][j].id,
-              img_url: photos[i][j].thumb_url,
-              alt: photos[i][j].title + "\n" + photos[i][j].phtotographer,
-            });
-          }
-        });
-        break;
-      case "ghibli":
-        for (let i = 0; i < ghibli[e.target.value].imgs; i++) {
-          setImgList({
-            value: i + 1,
-            img_url: `https://www.ghibli.jp/gallery/thumb-${
-              ghibli[e.target.value].url + ("000" + (i + 1)).slice(-3)
-            }.png`,
-            alt:
-              ghibli[e.target.value].title +
-              "\n" +
-              ghibli[e.target.value].copyright,
-          });
-        }
-        break;
-    }
-  });
-
-  // 画像リスト選択時の処理
-  bg_photo.addEventListener("change", (e) => {
-    switch (bg_category.value) {
-      case "find47":
-        // setBg_find47(e.target.value); // id指定
-        find47json.then((json) => {
-          // 画像抽出
-          for (let i = 0; i < json.length; i++) {
-            if (json[i].id == e.target.value) {
-              json = json[i];
-              break;
-            }
-          }
-          setBg({
-            img_url: json.url,
-            copyright: `<div><a href="${json.page_url}" target="_blank" rel="noopener noreferrer">
-                ${json.title} ／ ${json.phtotographer.name}
-              </a>
-              （<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
-              CC表示4.0 国際</a>）</div>
-              <div><a href="https://find47.jp/ja/" target="_blank" rel="noopener noreferrer">FIND/47</a></div>`,
-          });
-        });
-        break;
-      case "ghibli":
-        setBg({
-          img_url: `https://www.ghibli.jp/gallery/${
-            ghibli[bg_sublist.value].url
-          }${("000" + e.target.value).slice(-3)}.jpg`,
-          copyright: `<div><a href="https://www.ghibli.jp/works/${
-            ghibli[bg_sublist.value].url
-          }/" target="_blank" rel="noopener noreferrer">
-            ${ghibli[bg_sublist.value].title}
-            </a></div>
-            <div>${ghibli[bg_sublist.value].copyright}</div>`,
-        });
-        break;
-    }
-  });
-})();
+}
