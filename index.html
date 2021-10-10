@@ -91,28 +91,20 @@
             <div class="card-content">
               <span class="card-title">Weather</span>
               <div id="weatherArea"></div>
-              <div id="weatherInfo"></div>
-              <style>
-                #weatherArea select {
-                  display: block;
-                }
-              </style>
-              <script src="./script/weather.js"></script>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-
-          <div class="card white hoverable">
-            <div class="card-content">
-              <span class="card-title">Weather</span>
-              <div id="weatherArea2"></div>
-              <div id="weatherInfo2"></div>
+              <div id="weatherInfo">
+                <span class="loadingSpinner"></span>
+              </div>
               <script>
                 import("./script/jma.js").then((m) => {
-                  let JMA = new m.JMA();
+                  (async () => {
+                    let JMA = new m.JMA();
+                    // DB取得
+                    await JMA.init();
+                    // 選択ボックス表示
+                    await JMA.setSelectboxes(document.querySelector("#weatherArea"));
+                    // 初期発火
+                    await JMA.setWeather(document.querySelector("#weatherInfo"));
+                  })();
                 });
               </script>
             </div>
@@ -225,8 +217,7 @@
           <div>
             <h3>背景設定</h3>
             <form>
-              <fieldset id="bgSettingForm" class="bgPhotoList">
-              </fieldset>
+              <fieldset id="bgSettingForm" class="bgPhotoList"></fieldset>
             </form>
             <script>
               import("./script/bgSelector.js").then((m) => {
