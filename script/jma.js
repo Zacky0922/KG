@@ -177,6 +177,8 @@ export class JMA {
   // 基本イベント
   // ■ □ ■ □ ■ □ ■ □ ■ □ ■ □
   async setWeather(ele) {
+    // loading表示
+     ele.innerHTML = "<div class='loadingSpinner'></div>";
     // 気象情報取得
     await this.getWeather(this.selBox.map((x) => x.value));
     // 表示設定
