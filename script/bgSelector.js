@@ -176,8 +176,9 @@ export class bgSelector {
     this.#target = target;
     // js-cookieモジュールimport
     import(
-    "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
+      "https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs"
     );
+    this.pullSS();
   }
 
   setSelector(ele) {
@@ -345,7 +346,7 @@ export class bgSelector {
         this.#colorSel.value
       } url("${img_url}") no-repeat border-box center / cover fixed content-box;`
     );
-    Cookies.set("bg",img_url);
+    Cookies.set("bg", img_url);
   }
 
   // FIND47系処理
@@ -396,5 +397,53 @@ export class bgSelector {
     label.innerHTML = `<img src="${src}" alt="${alt}">`;
     ele.appendChild(radio);
     ele.appendChild(label);
+  }
+
+  // debug
+  pullSS() {
+    return;
+    // スプシに書き込み
+    let json = [];
+    let row = 0;
+    for (let i = 0; i < this.#ghibli.length; i++) {
+      for (let j = 0; j < this.#ghibli[i].imgs; j++) {
+        json[row] = [
+          "",
+          "ghibli",
+          "スタジオジブリ｜STUDIO GHIBLI",
+          "https://www.ghibli.jp",
+          this.#ghibli[i].title,
+          `https://www.ghibli.jp/works/${this.#ghibli[i].url}/`,
+          this.#ghibli[i].title,
+          `https://www.ghibli.jp/gallery/${this.#ghibli[i].url}${(
+            "000" +
+            (j + 1)
+          ).slice(-3)}.jpg`,
+          `https://www.ghibli.jp/gallery/thumb-${
+            this.#ghibli[i].url + ("000" + (j + 1)).slice(-3)
+          }.png`,
+          this.#ghibli[i].copyright,
+        ];
+        row++;
+      }
+    }
+    console.log(json);
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxhextp-qnvP7LU_fwpwZck4oLzIbrmyJQuCaK2pvUgNgqzYIF2tkr0hS_-V6oNOas-xQ/exec",
+      {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "no-cors", // no-cors, *cors, same-origin
+        // cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        // credentials: "same-origin", // include, *same-origin, omit
+        headers: { "Content-Type": "application/json" },
+        // redirect: "follow", // manual, *follow, error
+        // referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify({
+          id: "1dPBt1OldNAOz5pIFPksDint9wqUcRl-H26LNVKsN6zY",
+          sheet: "wallpaper",
+          data: json,
+        }),
+      }
+    );
   }
 }
